@@ -1,0 +1,7 @@
+site_name: PayFort API Reference
+
+nav:
+    -Home:index.md
+    -Merchant Page: MerchantPage.md
+    
+theme: readthedocs
