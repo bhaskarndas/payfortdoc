@@ -76,7 +76,7 @@ HTTPs Form Post Request
 
 ------
 
-**service_command** ^string, mandatory^
+**service_command <sup>string,mandatory</sup>**
 	Description - Command
 	Maximum length - 20
 	Possible values - **Tokenization**
