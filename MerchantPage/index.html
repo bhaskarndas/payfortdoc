@@ -58,6 +58,27 @@
     <a class="current" href="./">Merchant Page</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#merchant-page">Merchant Page</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#features">Features</a></li>
+        
+            <li><a class="toctree-l3" href="#how-it-works-overview">How it works - overview</a></li>
+        
+            <li><a class="toctree-l3" href="#merchant-page-request">Merchant Page - Request</a></li>
+        
+            <li><a class="toctree-l3" href="#merchant-page-response">Merchant Page - Response</a></li>
+        
+            <li><a class="toctree-l3" href="#merchant-page-operations">Merchant Page Operations</a></li>
+        
+            <li><a class="toctree-l3" href="#how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</a></li>
+        
+            <li><a class="toctree-l3" href="#merchant-page-customization">Merchant Page Customization</a></li>
+        
+        </ul>
+    
+
     </ul>
 	    </li>
           
@@ -93,7 +114,86 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="merchant-page">Merchant Page</h1>
+<p>This integration uses PayFort inline frame (iframe) to collect Customer's credit card information. It helps you to accept your Customer's payments on your website.</p>
+<p>PayFort processes the transaction and returns the results back to the Merchants through invisible redirection.</p>
+<hr />
+<h2 id="features">Features</h2>
+<ul>
+<li>No Customer redirection.</li>
+<li>No PCI-Compliance needed.</li>
+<li>A replica of your website appearance and your payment flow.</li>
+</ul>
+<hr />
+<h2 id="how-it-works-overview">How it works - overview</h2>
+<p><strong>1.</strong> The Merchant page (payment details form) will appear to your Customer encapsulated inside an iframe that has the same look and feel of your website.</p>
+<p><strong>2.</strong> We then receive the payment details and send you confirmation to complete the transaction.</p>
+<p>Remember - You have the option to redirect the Customer directly to the Merchant Page (payment details form).</p>
+<h3 id="integration-flow">Integration Flow</h3>
+<p>The Customer begins the checkout process on the Merchant’s website.</p>
+<p><strong>2.</strong> The Merchant requests to display the Merchant Page (payment details form) encapsulated inside an iframe which has been themed as the Merchant website. Then the Customer enters the card’s details on the Merchant page.</p>
+<p><strong>3.</strong> PayFort checks the card details.</p>
+<p><strong>4.</strong> PayFort creates a token for the Customer transaction and sends it to the Merchant.</p>
+<p><strong>5.</strong> The Merchant then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFort.</p>
+<p><strong>6.</strong> In case the Merchant receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:</p>
+<p><strong>a.</strong> The Merchant redirects the Customer to the ACS to check his card enrollment.</p>
+<p><strong>b.</strong> The Customer enters authentication data on the ACS platform.</p>
+<p><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
+<p>Remember - In this case, PayFort returns <strong>status “20: On hold”</strong> and <strong>message “064: 3-D Secure check requested”</strong>. For example, PayFort is waiting for the Merchant to authenticate the Customer.</p>
+<p><strong>7.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.</p>
+<p><strong>8.</strong> PayFort sends the payment results to the Merchant.</p>
+<p>Remember -
+- If the Merchant includes the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.
+- If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.</p>
+<h3 id="merchant-page-urls">Merchant Page URLs</h3>
+<h4 id="test-environment-urls">Test Environment URLs</h4>
+<p>https://sbcheckout.payfort.com/FortAPI/paymentPage</p>
+<h4 id="production-environment-urls">Production Environment URLs</h4>
+<p>https://checkout.payfort.com/FortAPI/paymentPage</p>
+<h3 id="parameters-submission-type">Parameters Submission Type</h3>
+<p>HTTPs Form Post Request</p>
+<h2 id="merchant-page-request">Merchant Page - Request</h2>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<hr />
+<p><strong>service_command</strong> ^string, mandatory^
+    Description - Command
+    Maximum length - 20
+    Possible values - <strong>Tokenization</strong></p>
+<h2 id="merchant-page-response">Merchant Page - Response</h2>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<h2 id="merchant-page-operations">Merchant Page Operations</h2>
+<h3 id="merchant-page-operations-urls">Merchant Page Operations URLs</h3>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.payfort.com/FortAPI/paymentApi</p>
+<h3 id="parameters-submission-type_1">Parameters Submission Type</h3>
+<p>REST POST request using JSON.</p>
+<h3 id="operations-request">Operations - Request</h3>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<h3 id="operations-response">Operations - Response</h3>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<h2 id="how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</h2>
+<p>The Tokenization service is applicable to be integrated through the Merchant Page Channel through the below steps:
+<strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
+<strong>2.</strong> The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
+<strong>3.</strong> No need to open the Merchant Page to fill all the card details again in the next checkouts.</p>
+<p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
+<p><strong>Remember:</strong>
+Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service</a> for more details about the token name parameter.</p>
+<h2 id="merchant-page-customization">Merchant Page Customization</h2>
+<p><strong>This is a list with all customizable CSS classes on the basic merchant page:</strong></p>
+<ul>
+<li>The <strong><code>Wrapper</code></strong> class: responsible for the total width of the form container and the background.</li>
+<li>The <strong><code>Container</code></strong> class: responsible for the form’s shape and width.</li>
+<li>The <strong><code>Popover</code></strong> class: responsible for the error messages.</li>
+<li>The <strong><code>Half-container</code></strong> class: used to merge the date and CVV fields into one block if needed.</li>
+<li>The <strong><code>Input</code></strong> class: is the container of each single input field.</li>
+<li>The <strong><code>Pay</code></strong> class: responsible for the submit button.</li>
+<li>The <strong><code>Visa/ MasterCard</code></strong> classes: used to change the color of the Visa/ MasterCard colors.</li>
+</ul>
+<p>Remember - You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.</p>
+<p>Remember - “Theme” files can be uploaded from the back-office using the Payment Page template screen.</p>
               
             </div>
           </div>
