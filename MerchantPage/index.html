@@ -114,7 +114,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="merchant-page">Merchant Page</h1>
+                <div class="toc">
+<ul>
+<li><a href="#merchant-page">Merchant Page</a><ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#how-it-works-overview">How it works - overview</a><ul>
+<li><a href="#integration-flow">Integration Flow</a></li>
+<li><a href="#merchant-page-urls">Merchant Page URLs</a><ul>
+<li><a href="#test-environment-urls">Test Environment URLs</a></li>
+<li><a href="#production-environment-urls">Production Environment URLs</a></li>
+</ul>
+</li>
+<li><a href="#parameters-submission-type">Parameters Submission Type</a></li>
+</ul>
+</li>
+<li><a href="#merchant-page-request">Merchant Page - Request</a></li>
+<li><a href="#merchant-page-response">Merchant Page - Response</a></li>
+<li><a href="#merchant-page-operations">Merchant Page Operations</a><ul>
+<li><a href="#merchant-page-operations-urls">Merchant Page Operations URLs</a></li>
+<li><a href="#parameters-submission-type_1">Parameters Submission Type</a></li>
+<li><a href="#operations-request">Operations - Request</a></li>
+<li><a href="#operations-response">Operations - Response</a></li>
+</ul>
+</li>
+<li><a href="#how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</a></li>
+<li><a href="#merchant-page-customization">Merchant Page Customization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="merchant-page">Merchant Page</h1>
 <p>This integration uses PayFort inline frame (iframe) to collect Customer's credit card information. It helps you to accept your Customer's payments on your website.</p>
 <p>PayFort processes the transaction and returns the results back to the Merchants through invisible redirection.</p>
 <hr />
@@ -128,7 +157,7 @@
 <h2 id="how-it-works-overview">How it works - overview</h2>
 <p><strong>1.</strong> The Merchant page (payment details form) will appear to your Customer encapsulated inside an iframe that has the same look and feel of your website.</p>
 <p><strong>2.</strong> We then receive the payment details and send you confirmation to complete the transaction.</p>
-<p>Remember - You have the option to redirect the Customer directly to the Merchant Page (payment details form).</p>
+<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the Merchant Page (payment details form).</em></p>
 <h3 id="integration-flow">Integration Flow</h3>
 <p>The Customer begins the checkout process on the Merchant’s website.</p>
 <p><strong>2.</strong> The Merchant requests to display the Merchant Page (payment details form) encapsulated inside an iframe which has been themed as the Merchant website. Then the Customer enters the card’s details on the Merchant page.</p>
@@ -139,12 +168,12 @@
 <p><strong>a.</strong> The Merchant redirects the Customer to the ACS to check his card enrollment.</p>
 <p><strong>b.</strong> The Customer enters authentication data on the ACS platform.</p>
 <p><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
-<p>Remember - In this case, PayFort returns <strong>status “20: On hold”</strong> and <strong>message “064: 3-D Secure check requested”</strong>. For example, PayFort is waiting for the Merchant to authenticate the Customer.</p>
+<p><strong><em>Note</em></strong> - <em>In this case, PayFort returns</em> <strong>status “20: On hold”</strong> <em>and</em> <strong>message “064: 3-D Secure check requested”</strong>. <em>For example, PayFort is waiting for the Merchant to authenticate the Customer.</em></p>
 <p><strong>7.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.</p>
 <p><strong>8.</strong> PayFort sends the payment results to the Merchant.</p>
-<p>Remember -
-- If the Merchant includes the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.
-- If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.</p>
+<p><strong><em>Note</em></strong> -
+- <em>If the Merchant includes the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em>
+<em>- If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.</em></p>
 <h3 id="merchant-page-urls">Merchant Page URLs</h3>
 <h4 id="test-environment-urls">Test Environment URLs</h4>
 <p>https://sbcheckout.payfort.com/FortAPI/paymentPage</p>
@@ -159,22 +188,22 @@
 <table>
 <thead>
 <tr>
-<th>Attribute Features</th>
-<th>Description</th>
+<th align="left">Attribute Features</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Type</td>
-<td>Command</td>
+<td align="left">Type</td>
+<td align="left">Command</td>
 </tr>
 <tr>
-<td>Maximum length</td>
-<td>20</td>
+<td align="left">Maximum length</td>
+<td align="left">20</td>
 </tr>
 <tr>
-<td>Possible values</td>
-<td>Tokenization</td>
+<td align="left">Possible values</td>
+<td align="left">Tokenization</td>
 </tr>
 </tbody>
 </table>
@@ -227,8 +256,451 @@
 </tbody>
 </table>
 <hr />
+<p><strong>merchant_reference</strong><sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Merchant’s unique order number</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td>- _ .</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td>CycHZxVj</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong> <sup>string, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The checkout page and messages language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible values/Expected values</td>
+<td>en/ar</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong> <sup>hash, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>7cad05f0212ed933c9a5d5dffa31661acf2c827a</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>token_name</strong><sup> alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The token received from the Tokenization process.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>@ - _</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Op9Vmp</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>return_url</strong><sup> alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The URL of the Merchant’s page to be displayed to the customer when the order is processed.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>$ ! = ? # &amp; - _ /</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><a href="http://www.merchant.com"><strong>http://www.merchant.com</strong></a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="merchant-page-response">Merchant Page - Response</h2>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<p><strong>service_command</strong><sup> string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Command</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>TOKENIZATION</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup> alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Access Code</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>zx0IPmPy5jp1vAz8Kpg7</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The ID of the Merchant.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>CycHZxVj</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The checkout page and message language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>en/ar</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup> hash</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>7cad05f0212ed933c9a5d5dffa31661acf2c827a</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>token_name</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The token received from the Tokenization process.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Op9Vmp</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>expiry_date</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card’s expiry date.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>2105</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_number</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The masked credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number.</em>*<em>AMEX payment option takes 15 digits card number.<br/>*Otherwise, they take 16 digits card number.</em></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong><em>400555</em></strong><strong>*0001</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Message description of the response code. It returns according to the request language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Possible/expected values</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong><sup> numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a>.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>20064</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#statuses">statuses</a>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_bin</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The first 6 digits of the card number.*If the card number for MEEZA was of length 19 then the card bin will be the first 8 digits.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>478773</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="merchant-page-operations">Merchant Page Operations</h2>
 <h3 id="merchant-page-operations-urls">Merchant Page Operations URLs</h3>
 <p><strong>Test Environment URL:</strong></p>
@@ -239,16 +711,1495 @@
 <p>REST POST request using JSON.</p>
 <h3 id="operations-request">Operations - Request</h3>
 <p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<hr />
+<p><strong>command</strong><sup> string, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Command</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>AUTHORIZATION, PURCHASE</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup> alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>access code</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>zx0IPmPy5jp1vAz</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong> <sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The ID of the Merchant.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>CycHZxVj</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong> <sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>- _ .</strong></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong> <sup>numeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>10000</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup> string, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>AED</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong> <sup>string, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The checkout page and messages language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>en/ar</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_email</strong> <sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The customer's email</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>254</td>
+</tr>
+<tr>
+<td>Special Characters</td>
+<td><strong>_ - . @ +</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>customer@domain.com</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_ip</strong> <sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>It holds the customer’s IP address.<br /> <em>It’s Mandatory, if the fraud service is active.<br /> </em>We support IPv4 and IPv6 as shown in the example below.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Special Characters</td>
+<td><strong>. :</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>IPv4 → 192.178.1.10</strong><br /><strong>IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>token_name</strong> <sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Token received from the Tokenization process.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Special Characters</td>
+<td><strong>- . @</strong>**</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Op9Vmp</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup> hash, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>7cad05f0212ed933c9a5d5dffa31661acf2c827a</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>payment_option</strong> <sup>string, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Payment Option</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>- MASTERCARD</strong><br />- <strong>VISA</strong><br />- <strong>AMEX</strong><br />- <strong>MADA</strong> (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf"><strong>MADA Branding Document</strong></a><br /><strong>- MEEZA</strong> (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>eci</strong> <sup>string, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Ecommerce indicator.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td>- <strong>ECOMMERCE</strong><br />- <strong>MOTO</strong><br />- <strong>RECCURING</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>It holds the description of the order.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>' / . _ - # : $ Space</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>iPhone 6-S</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_security_code</strong> <sup>numeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A security code for the card. <br />* Only AMEX accepts card security code of 4 digits.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>123</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_name</strong> <sup>string, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Customer’s name</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>_ \ / - . ' Space</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>999</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>. ; / _ - , ' @</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra1</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>. ; / _ - , ' @</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra2</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>. ; / _ - , ' @</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>merchant_extra3</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>. ; / _ - , ' @</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra4</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>. ; / _ - , ' @</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra5</strong> <sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>. ; / _ - , ' @</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>remember_me</strong><sup> string, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>This parameter provides you with an indication to whether to save this token for the user based on the user selection.<br /> *The Tokenization service MUST be activated in order to be able to send “remember_me” parameter.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>-Yes</strong><br /><strong>- No</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>phone_number</strong><sup>alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The customer’s number</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>+ - ( ) Space</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>00962797219966</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>settlement_reference</strong><sup> alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>34</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>- _ .</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>return_url</strong><sup> alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The URL of the Merchant’s page to be displayed to the customer when theorder is processed.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>$ ! = ? # &amp; - _ / : .</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>http://www.merchant.com</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Note</em></strong> : Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.<br/>For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.<br/>Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<hr />
 <h3 id="operations-response">Operations - Response</h3>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<hr />
+<p><strong>command</strong><sup> string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Command</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>AUTHORIZATION, PURCHASE</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup> alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>access code</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>zx0IPmPy5jp1vAz</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The ID of the Merchant.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>CycHZxVj</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The transaction’s amount.<br /></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>10000</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup> string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>AED</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The checkout page and messages language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>en/ar</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_email</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The customer's email</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>254</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>customer1@domain.com</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_ip</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>It holds the customer’s IP address.<br /> *We support IPv4 and IPv6.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>IPv4 → 192.178.1.10</strong><br /><strong>IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>token_name</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Token received from the Tokenization process.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Op9Vmp</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup> hash</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A string hashed using the Secure Hash Algorithm.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>7cad05f0212ed933c9a5d5dffa31661acf2c827a</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>payment_option</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Payment Option</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>- MASTERCARD</strong><br />- <strong>VISA</strong><br />- <strong>AMEX</strong><br />- <strong>MADA</strong> (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf"><strong>MADA Branding Document</strong></a><br /><strong>- MEEZA</strong> (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>eci</strong> <sup>string,</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Ecommerce indicator.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td>- <strong>ECOMMERCE</strong><br />- <strong>MOTO</strong><br />- <strong>RECCURING</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>It holds the description of the order.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>iPhone 6-S</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>149295435400084008</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>authorization_code</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The authorization code returned from the 3rd party.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>P1000000000000372136</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Message description of the response code. It returns according to the request language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a></strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a>.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>20064</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_name</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Customer’s name</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra</strong> <sup>alphanumeric, </sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>999</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra1</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra2</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>merchant_extra3</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra4</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_extra5</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Extra data sent by merchant. <br />Will be received and sent back as received. <br />Will not be displayed in any report.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>expiry_date</strong><sup> numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card’s expiry date.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>2105</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_number</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The masked credit card’s number. <br />Only the MEEZA payment option takes19 digits card number.<br /><em>AMEX payment option takes 15 digits card number.</em><br />Otherwise, they take 16 digits card number.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>400555<strong><em>*</em></strong>*0001</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong><sup> numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#statuses">statuses</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_holder_name</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card holder name.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>3ds_url</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The URL where the Merchant redirects a customer whose card is 3-D Secure for authentication.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>http://www.3dsecure.com</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>remember_me</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>This parameter provides you with an indication to whether to save this token for the user based on the user selection.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>-Yes</strong><br /><strong>-No</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>phone_number</strong><sup> alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The customer’s phone number.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>00962797219966</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>settlement_reference</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Merchant submits this value to the FORT. The value is then passed to the acquiring bank and displayed to the merchant in the Acquirer settlement file.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>34</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Note</em></strong> - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<hr />
 <h2 id="how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</h2>
 <p>The Tokenization service is applicable to be integrated through the Merchant Page Channel through the below steps:
 <strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
 <strong>2.</strong> The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
 <strong>3.</strong> No need to open the Merchant Page to fill all the card details again in the next checkouts.</p>
 <p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
-<p><strong>Remember:</strong>
+<p><strong><em>Note</em></strong>
 Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service</a> for more details about the token name parameter.</p>
+<hr />
 <h2 id="merchant-page-customization">Merchant Page Customization</h2>
 <p><strong>This is a list with all customizable CSS classes on the basic merchant page:</strong></p>
 <ul>
@@ -260,8 +2211,8 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
 <li>The <strong><code>Pay</code></strong> class: responsible for the submit button.</li>
 <li>The <strong><code>Visa/ MasterCard</code></strong> classes: used to change the color of the Visa/ MasterCard colors.</li>
 </ul>
-<p>Remember - You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.</p>
-<p>Remember - “Theme” files can be uploaded from the back-office using the Payment Page template screen.</p>
+<p><strong><em>Note</em></strong> - You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.</p>
+<p><strong><em>Note</em></strong>- “Theme” files can be uploaded from the back-office using the Payment Page template screen.</p>
               
             </div>
           </div>
