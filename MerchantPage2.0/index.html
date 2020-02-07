@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Merchant Page - PayFort API Reference</title>
+  <title>Merchant Page 2.0 - PayFort API Reference</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Merchant Page";
-    var mkdocs_page_input_path = "MerchantPage.md";
+    var mkdocs_page_name = "Merchant Page 2.0";
+    var mkdocs_page_input_path = "MerchantPage2.0.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -53,9 +53,14 @@
     <a class="" href="..">Home</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../MerchantPage/">Merchant Page</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Merchant Page</a>
+    <a class="current" href="./">Merchant Page 2.0</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#merchant-page">Merchant Page</a></li>
@@ -66,25 +71,18 @@
         
             <li><a class="toctree-l3" href="#how-it-works-overview">How it works - overview</a></li>
         
-            <li><a class="toctree-l3" href="#merchant-page-request">Merchant Page - Request</a></li>
+            <li><a class="toctree-l3" href="#merchant-page-20-request">Merchant Page 2.0 - Request</a></li>
         
-            <li><a class="toctree-l3" href="#merchant-page-response">Merchant Page - Response</a></li>
+            <li><a class="toctree-l3" href="#merchant-page-20-response">Merchant Page 2.0 - Response</a></li>
         
-            <li><a class="toctree-l3" href="#merchant-page-operations">Merchant Page Operations</a></li>
+            <li><a class="toctree-l3" href="#merchant-page-20-operations">Merchant Page 2.0 Operations</a></li>
         
-            <li><a class="toctree-l3" href="#how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</a></li>
-        
-            <li><a class="toctree-l3" href="#merchant-page-customization">Merchant Page Customization</a></li>
+            <li><a class="toctree-l3" href="#how-to-add-the-tokenization-service-on-the-merchant-20-page-channel">How to add the Tokenization service on the Merchant 2.0 Page channel?</a></li>
         
         </ul>
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../MerchantPage2.0/">Merchant Page 2.0</a>
 	    </li>
           
         </ul>
@@ -109,7 +107,7 @@
     
       
     
-    <li>Merchant Page</li>
+    <li>Merchant Page 2.0</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -125,7 +123,7 @@
 <li><a href="#features">Features</a></li>
 <li><a href="#how-it-works-overview">How it works - overview</a><ul>
 <li><a href="#integration-flow">Integration Flow</a></li>
-<li><a href="#merchant-page-urls">Merchant Page URLs</a><ul>
+<li><a href="#merchant-page-20-urls">Merchant Page 2.0 URLs</a><ul>
 <li><a href="#test-environment-urls">Test Environment URLs</a></li>
 <li><a href="#production-environment-urls">Production Environment URLs</a></li>
 </ul>
@@ -133,24 +131,22 @@
 <li><a href="#parameters-submission-type">Parameters Submission Type</a></li>
 </ul>
 </li>
-<li><a href="#merchant-page-request">Merchant Page - Request</a></li>
-<li><a href="#merchant-page-response">Merchant Page - Response</a></li>
-<li><a href="#merchant-page-operations">Merchant Page Operations</a><ul>
-<li><a href="#merchant-page-operations-urls">Merchant Page Operations URLs</a></li>
+<li><a href="#merchant-page-20-request">Merchant Page 2.0 - Request</a></li>
+<li><a href="#merchant-page-20-response">Merchant Page 2.0 - Response</a></li>
+<li><a href="#merchant-page-20-operations">Merchant Page 2.0 Operations</a><ul>
+<li><a href="#merchant-page-20-operations-urls">Merchant Page 2.0 Operations URLs</a></li>
 <li><a href="#parameters-submission-type_1">Parameters Submission Type</a></li>
 <li><a href="#operations-request">Operations - Request</a></li>
 <li><a href="#operations-response">Operations - Response</a></li>
 </ul>
 </li>
-<li><a href="#how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</a></li>
-<li><a href="#merchant-page-customization">Merchant Page Customization</a></li>
+<li><a href="#how-to-add-the-tokenization-service-on-the-merchant-20-page-channel">How to add the Tokenization service on the Merchant 2.0 Page channel?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <h1 id="merchant-page">Merchant Page</h1>
-<p>This integration uses PayFort inline frame (iframe) to collect Customer's credit card information. It helps you to accept your Customer's payments on your website.</p>
-<p>PayFort processes the transaction and returns the results back to the Merchants through invisible redirection.</p>
+<p>This type of integration allows the Merchant to develop his own payment form that collects the card details. The card details are sent directly to PayFort and substituted with Token. The Merchant uses the Token created to complete the transaction.</p>
 <hr />
 <h2 id="features">Features</h2>
 <ul>
@@ -160,33 +156,34 @@
 </ul>
 <hr />
 <h2 id="how-it-works-overview">How it works - overview</h2>
-<p><strong>1.</strong> The Merchant page (payment details form) will appear to your Customer encapsulated inside an iframe that has the same look and feel of your website.</p>
-<p><strong>2.</strong> We then receive the payment details and send you confirmation to complete the transaction.</p>
-<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the Merchant Page (payment details form).</em></p>
+<p><strong>1.</strong> The Merchant develops the form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
+<strong>2.</strong> PayFort receives the payment details and returns the response which includes the Token to the Merchant.
+<strong>3.</strong> The Merchant use it to complete the <a href="https://docs.payfort.com/docs/api/build/index.html#operations-request">Authorization or Purchase operation</a>.</p>
+<p><strong><em>Note</em></strong> - <em>The Merchant should develop a form that does not send data to his website but directly submits the form to PayFort.</em></p>
 <h3 id="integration-flow">Integration Flow</h3>
-<p>The Customer begins the checkout process on the Merchant’s website.</p>
-<p><strong>2.</strong> The Merchant requests to display the Merchant Page (payment details form) encapsulated inside an iframe which has been themed as the Merchant website. Then the Customer enters the card’s details on the Merchant page.</p>
-<p><strong>3.</strong> PayFort checks the card details.</p>
-<p><strong>4.</strong> PayFort creates a token for the Customer transaction and sends it to the Merchant.</p>
-<p><strong>5.</strong> The Merchant then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFort.</p>
-<p><strong>6.</strong> In case the Merchant receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:</p>
-<p><strong>a.</strong> The Merchant redirects the Customer to the ACS to check his card enrollment.</p>
-<p><strong>b.</strong> The Customer enters authentication data on the ACS platform.</p>
-<p><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
+<p><strong>1.</strong> The Customer begins the checkout process on the Merchant’s website.</p>
+<p><strong>2.</strong> The Merchant displays the form he developed to collect the card’s details. Then the Customer enters the card’s details on the Merchant page.</p>
+<p><strong>3.</strong> PayFort validates the card format.</p>
+<p><strong>4.</strong> PayFort creates a token for the card details and sends it back to the Merchant.</p>
+<p><strong>5.</strong> The Merchant stores the Token and proceeds with the transaction.</p>
+<p><strong>6.</strong> The Merchant sends a payment request along with the Token to PayFort.</p>
+<p><strong>7.</strong> PayFort sends the Merchant the 3-D Secure URL, and response indicating that a check is required:</p>
+<p><strong>a.</strong> The Merchant redirects the Customer to check his card enrollment.
+  <strong>b.</strong> The Customer enters authentication data.
+  <strong>c.</strong> 3-D Secure authentication is completed and PayFort receives the authentication results.</p>
 <p><strong><em>Note</em></strong> - <em>In this case, PayFort returns</em> <strong>status “20: On hold”</strong> <em>and</em> <strong>message “064: 3-D Secure check requested”</strong>. <em>For example, PayFort is waiting for the Merchant to authenticate the Customer.</em></p>
-<p><strong>7.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.</p>
-<p><strong>8.</strong> PayFort sends the payment results to the Merchant.</p>
+<p><strong>8.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.</p>
+<p><strong>9.</strong> The payment results are displayed to the Customer.</p>
 <p><strong><em>Note</em></strong> -
-- <em>If the Merchant includes the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em>
-<em>- If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.</em></p>
-<h3 id="merchant-page-urls">Merchant Page URLs</h3>
+- <em>If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.</em></p>
+<h3 id="merchant-page-20-urls">Merchant Page 2.0 URLs</h3>
 <h4 id="test-environment-urls">Test Environment URLs</h4>
 <p>https://sbcheckout.payfort.com/FortAPI/paymentPage</p>
 <h4 id="production-environment-urls">Production Environment URLs</h4>
 <p>https://checkout.payfort.com/FortAPI/paymentPage</p>
 <h3 id="parameters-submission-type">Parameters Submission Type</h3>
 <p>HTTPs Form Post Request</p>
-<h2 id="merchant-page-request">Merchant Page - Request</h2>
+<h2 id="merchant-page-20-request">Merchant Page 2.0 - Request</h2>
 <p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
 <hr />
 <p><strong>service_command <sup>string,mandatory</sup></strong></p>
@@ -308,7 +305,79 @@
 </tr>
 <tr>
 <td>Possible values/Expected values</td>
-<td>en/ar</td>
+<td><strong>en/ar</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>expiry_date</strong> <sup>numeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card's expiry date.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>2105</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_number</strong> <sup>numeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The clear credit card’s number.<br/><em>Only the MEEZA payment option takes 19 digits card number.<br/></em>AMEX payment option takes 15 digits card number.<br/>*Otherwise, they take 16 digits card number.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>4005550000000001</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_security_code</strong> <sup>numeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A security code for the card. <br />* Only AMEX accepts card security code of 4 digits.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>123</strong></td>
 </tr>
 </tbody>
 </table>
@@ -365,6 +434,58 @@
 </tbody>
 </table>
 <hr />
+<p><strong>card_holder_name</strong> <sup>string, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card holder name.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong><code>'</code>- .</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>remember_me</strong> <sup>string, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>This parameter provides you with an indication to whether to save this token for the user based on the user selection.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>-Yes</strong><br /><strong>-No</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
 <p><strong>return_url</strong><sup> alphanumeric, optional</sup></p>
 <table>
 <thead>
@@ -392,7 +513,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="merchant-page-response">Merchant Page - Response</h2>
+<p><strong><em>Note</em></strong> - <em>Please don’t include the following parameters in calculating the signature if you are using Merchant Page 2.0 tokenization request:</em>
+<em>card_security_code, card number, expiry_date, card_holder_name, remember_me.</em></p>
+<h2 id="merchant-page-20-response">Merchant Page 2.0 - Response</h2>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
 <p><strong>service_command</strong><sup> string</sup></p>
 <table>
@@ -706,8 +829,82 @@
 </tbody>
 </table>
 <hr />
-<h2 id="merchant-page-operations">Merchant Page Operations</h2>
-<h3 id="merchant-page-operations-urls">Merchant Page Operations URLs</h3>
+<p><strong>card_holder_name</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card holder name.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>John Smith</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>remember_me</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>This parameter provides you with an indication to whether to save this token for the user based on the user selection.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td><strong>-Yes</strong><br /><strong>-No</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>return_url</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The URL of the Merchant’s page to be displayed to the customer when the order is processed.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>http://www.merchant.com</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong><em>Note</em></strong> - <em>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones</em>.</p>
+<hr />
+<h2 id="merchant-page-20-operations">Merchant Page 2.0 Operations</h2>
+<h3 id="merchant-page-20-operations-urls">Merchant Page 2.0 Operations URLs</h3>
 <p><strong>Test Environment URL:</strong></p>
 <p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
 <p><strong>Production Environment URL:</strong></p>
@@ -1399,7 +1596,9 @@
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note</em></strong> : Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.<br/>For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.<br/>Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<p><strong><em>Note</em></strong> : Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
 <hr />
 <h3 id="operations-response">Operations - Response</h3>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
@@ -2196,28 +2395,15 @@
 </table>
 <p><strong><em>Note</em></strong> - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
 <hr />
-<h2 id="how-to-add-the-tokenization-service-on-the-merchant-page-channel">How to add the Tokenization service on the Merchant Page channel?</h2>
-<p>The Tokenization service is applicable to be integrated through the Merchant Page Channel through the below steps:
+<h2 id="how-to-add-the-tokenization-service-on-the-merchant-20-page-channel">How to add the Tokenization service on the Merchant 2.0 Page channel?</h2>
+<p>The Tokenization service is applicable to be integrated through the Merchant Page 2.0 Channel through the below steps:
 <strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
 <strong>2.</strong> The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
 <strong>3.</strong> No need to open the Merchant Page to fill all the card details again in the next checkouts.</p>
 <p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
 <p><strong><em>Note</em></strong>
 Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service</a> for more details about the token name parameter.</p>
-<hr />
-<h2 id="merchant-page-customization">Merchant Page Customization</h2>
-<p><strong>This is a list with all customizable CSS classes on the basic merchant page:</strong></p>
-<ul>
-<li>The <strong><code>Wrapper</code></strong> class: responsible for the total width of the form container and the background.</li>
-<li>The <strong><code>Container</code></strong> class: responsible for the form’s shape and width.</li>
-<li>The <strong><code>Popover</code></strong> class: responsible for the error messages.</li>
-<li>The <strong><code>Half-container</code></strong> class: used to merge the date and CVV fields into one block if needed.</li>
-<li>The <strong><code>Input</code></strong> class: is the container of each single input field.</li>
-<li>The <strong><code>Pay</code></strong> class: responsible for the submit button.</li>
-<li>The <strong><code>Visa/ MasterCard</code></strong> classes: used to change the color of the Visa/ MasterCard colors.</li>
-</ul>
-<p><strong><em>Note</em></strong> - You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.</p>
-<p><strong><em>Note</em></strong>- “Theme” files can be uploaded from the back-office using the Payment Page template screen.</p>
+<p>Was this helpful? Yes No</p>
               
             </div>
           </div>
@@ -2225,10 +2411,8 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../MerchantPage2.0/" class="btn btn-neutral float-right" title="Merchant Page 2.0">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MerchantPage/" class="btn btn-neutral" title="Merchant Page"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -2254,10 +2438,8 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../MerchantPage/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../MerchantPage2.0/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
