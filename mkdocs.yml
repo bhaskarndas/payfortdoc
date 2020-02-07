@@ -3,5 +3,6 @@ site_name: PayFort API Reference
 nav:
     - Home: index.md
     - Merchant Page: MerchantPage.md
+    - Merchant Page 2.0: MerchantPage2.0.md
     
 theme: readthedocs
