@@ -1,10 +1,14 @@
 [TOC]
 
-# Merchant Page
+# Integrations
 
-This integration uses PayFort inline frame (iframe) to collect Customer's credit card information. It helps you to accept your Customer's payments on your website.
+There are two ways by which you can achieve integrations as mentioned:
 
-PayFort processes the transaction and returns the results back to the Merchants through invisible redirection.
+1. Using **PayFort iFrame**.
+
+2. Using custom form.
+
+   
 
 ------
 
@@ -16,51 +20,63 @@ PayFort processes the transaction and returns the results back to the Merchants 
 
 ------
 
+## 1. Using PayFort iFrame
 
+You can use ***PayFort iFrame*** on your website to collect Customer's credit card information. 
 
-## How it works - overview
+*PayFort* processes the transaction and returns the results back to the your site through invisible redirection. Please refer figure 1.
 
-**1.** The Merchant page (payment details form) will appear to your Customer encapsulated inside an iframe that has the same look and feel of your website.
+![Figure1](img\image-20200211222706973.png)
+Figure 1 - Using PayFort iFrame
 
-**2.** We then receive the payment details and send you confirmation to complete the transaction.
+------
 
- ***Note*** - *You have the option to redirect the Customer directly to the Merchant Page (payment details form).*
+### How it Works - Overview
 
-### Integration Flow
+**1.** The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel of as that of your website.
 
-The Customer begins the checkout process on the Merchant’s website.
+**2.** PayFort then receives the payment details and sends you the confirmation to complete the transaction.
 
-**2.** The Merchant requests to display the Merchant Page (payment details form) encapsulated inside an iframe which has been themed as the Merchant website. Then the Customer enters the card’s details on the Merchant page.
+ ***Note*** - *You have the option to redirect the Customer directly to the payment details form.*
 
-**3.** PayFort checks the card details.
+------
 
-**4.** PayFort creates a token for the Customer transaction and sends it to the Merchant.
+### Integration Flow using iFrame
 
-**5.** The Merchant then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
+![Integration](img\image-20200212214741915.png)
 
-**6.** In case the Merchant receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:
+1. The Customer begins the checkout process on your website.
 
-  **a.** The Merchant redirects the Customer to the ACS to check his card enrollment.
+2. The Merchant requests to display the Merchant Page (payment details form) encapsulated inside an iframe which has been themed as the Merchant website. Then the Customer enters the card’s details on the Merchant page.
 
-  **b.** The Customer enters authentication data on the ACS platform.
+3. PayFort checks the card details.
 
-  **c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.
+4. PayFort creates a token for the Customer transaction and sends it to the Merchant.
 
+5. The Merchant then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
 
+6. In case the Merchant receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:
 
- ***Note*** - *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the Merchant to authenticate the Customer.*
+   **a.** The Merchant redirects the Customer to the ACS to check his card enrollment.
 
-**7.** PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.
+   **b.** The Customer enters authentication data on the ACS platform.
 
-**8.** PayFort sends the payment results to the Merchant.
+   **c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.
 
- ***Note*** -
+***Note*** 
+
+- *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the Merchant to authenticate the Customer.*
+
+1. PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.
+2. PayFort sends the payment results to the Merchant.
+
+   ***Note*** -
 \- *If the Merchant includes the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
 *\- If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.*
 
 ------
 
-### Merchant Page URLs
+### Integration URLs
 
 #### Test Environment URLs
 
@@ -70,11 +86,15 @@ https://sbcheckout.payfort.com/FortAPI/paymentPage
 
 https://checkout.payfort.com/FortAPI/paymentPage
 
+------
+
 ### Parameters Submission Type
 
 HTTPs Form Post Request
 
-## Merchant Page - Request
+------
+
+## Integration Page - Request Parameters
 
 **Include the following parameters in the Request you will send to PayFort:**
 
@@ -161,7 +181,7 @@ HTTPs Form Post Request
 | Special characters | **$ ! = ? # & - _ /**                                        |
 | Example            | [**http://www.merchant.com**](http://www.merchant.com)       |
 
-## Merchant Page - Response
+## Integration Page- Response Parameters
 
 **The following parameters will be returned in PayFort’s Response:**
 
@@ -295,9 +315,9 @@ HTTPs Form Post Request
 
 ------
 
-## Merchant Page Operations
+## Integration Page - Operations
 
-### Merchant Page Operations URLs
+### Operations URLs
 
 **Test Environment URL:**
 
@@ -307,11 +327,15 @@ https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 
 https://paymentservices.payfort.com/FortAPI/paymentApi
 
+------
+
 ### Parameters Submission Type
 
 REST POST request using JSON.
 
-### Operations - Request
+------
+
+### Operations - Request Parameters
 
 **Include the following parameters in the Request you will send to PayFort:**
 
@@ -592,7 +616,7 @@ REST POST request using JSON.
 
 ------
 
-### Operations - Response
+### Operations - Response Parameters
 
 **The following parameters will be returned in PayFort’s Response:**
 
@@ -928,7 +952,7 @@ REST POST request using JSON.
 
 ------
 
-## How to add the Tokenization service on the Merchant Page channel?
+## How to add the Tokenization service on the Integration Page channel?
 
 The Tokenization service is applicable to be integrated through the Merchant Page Channel through the below steps:
 **1.** The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
@@ -942,7 +966,7 @@ Please refer to section [FORT Tokenization Service](https://docs.payfort.com/doc
 
 ------
 
-## Merchant Page Customization
+## Integration Page Customization
 
 **This is a list with all customizable CSS classes on the basic merchant page:**
 
