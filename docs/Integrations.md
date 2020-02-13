@@ -707,21 +707,21 @@ You can also design and develop your own custom for for collecting the card deta
 
 ------
 
-# Integration Page - Operations
+## Integration Page - Operations
 
-## Operations URLs
+### Operations URLs
 
-### **Test Environment URL**
+#### **Test Environment URL**
 
 https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 
-### **Production Environment URL**
+#### **Production Environment URL**
 
 https://paymentservices.payfort.com/FortAPI/paymentApi
 
 ------
 
-### Parameters Submission Type
+#### Parameters Submission Type
 
 REST POST request using JSON.
 
