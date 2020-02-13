@@ -1,5 +1,7 @@
 [TOC]
 
+------
+
 # Integrations
 
 There are two ways by which you can achieve integrations as mentioned:
@@ -72,6 +74,10 @@ Figure 1 - Using PayFort iFrame
 5. The Merchant then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
 
 6. In case the Merchant receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:
+
+   a.
+
+7. 
 
    **a.** The Merchant redirects the Customer to the ACS to check his card enrollment.
 
@@ -342,7 +348,7 @@ Figure 1 - Using PayFort iFrame
 
 You can also design and develop your own custom for for collecting the card details. The card details are sent directly to PayFort and substituted with Token. You can then use this Token to complete the transaction.
 
-![image-20200213222409527](img\custom-payment-form)
+![custom-payment](img\custom-payment-form.png)
 
 ------
 
