@@ -6,7 +6,7 @@ There are two ways by which you can achieve integrations as mentioned:
 
 1. Using **PayFort iFrame**.
 
-2. Using custom form.
+2. Using custom payment form.
 
    
 
@@ -17,6 +17,22 @@ There are two ways by which you can achieve integrations as mentioned:
 - No Customer redirection.
 - No PCI-Compliance needed.
 - A replica of your website appearance and your payment flow.
+
+------
+
+## Integration Page URLs 
+
+### Test Environment URLs
+
+https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+
+### Production Environment URLs
+
+https://paymentservices.payfort.com/FortAPI/paymentApi
+
+### Parameters Submission Type
+
+REST POST request using JSON
 
 ------
 
@@ -41,7 +57,7 @@ Figure 1 - Using PayFort iFrame
 
 ------
 
-### Integration Flow using iFrame
+### Integration Flow Using iFrame
 
 ![Integration](img\image-20200212214741915.png)
 
@@ -68,33 +84,22 @@ Figure 1 - Using PayFort iFrame
 - *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the Merchant to authenticate the Customer.*
 
 1. PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.
+
 2. PayFort sends the payment results to the Merchant.
 
    ***Note*** -
-\- *If the Merchant includes the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
-*\- If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.*
+   \- *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
+   *\- If the Token is sent by you, it will be generated with the same name as sent by your website.*
+
+   
 
 ------
 
-### Integration URLs
-
-#### Test Environment URLs
-
-https://sbcheckout.payfort.com/FortAPI/paymentPage
-
-#### Production Environment URLs
-
-https://checkout.payfort.com/FortAPI/paymentPage
+### Integration Using iFrame
 
 ------
 
-### Parameters Submission Type
-
-HTTPs Form Post Request
-
-------
-
-## Integration Page - Request Parameters
+#### Request Parameters
 
 **Include the following parameters in the Request you will send to PayFort:**
 
@@ -102,21 +107,21 @@ HTTPs Form Post Request
 
 **service_command <sup>string,mandatory</sup>**
 
-| Attribute Features | Description  |
-| :----------------- | :----------- |
-| Type               | Command      |
-| Maximum length     | 20           |
-| Possible values    | Tokenization |
+| Attribute Features              | Description      |
+| :------------------------------ | :--------------- |
+| Type                            | Command          |
+| Maximum length                  | 20               |
+| Possible values/Expected values | **TOKENIZATION** |
 
 ------
 
 **Access_code**<sup> alphanumeric, mandatory</sup>
 
-| Attribute Features | Description     |
-| ------------------ | --------------- |
-| Type               | Access Code     |
-| Maximum length     | 20              |
-| Possible values    | zx0IPmPy5jp1vAz |
+| Attribute Features | Description         |
+| ------------------ | ------------------- |
+| Type               | Access Code         |
+| Maximum length     | 20                  |
+| Possible values    | **zx0IPmPy5jp1vAz** |
 
 ------
 
@@ -126,7 +131,7 @@ HTTPs Form Post Request
 | ------------------ | ----------------------- |
 | Type               | The ID of the Merchant. |
 | Maximum length     | 20                      |
-| Possible values    | CycHZxVj                |
+| Possible values    | **CycHZxVj**            |
 
 ------
 
@@ -137,7 +142,7 @@ HTTPs Form Post Request
 | Type               | Merchant’s unique order number |
 | Maximum length     | 40                             |
 | Special characters | \- _ .                         |
-| Possible values    | CycHZxVj                       |
+| Possible values    | **XYZ9239-yu898**              |
 
 ------
 
@@ -147,7 +152,7 @@ HTTPs Form Post Request
 | ------------------------------- | ---------------------------------------- |
 | Type                            | The checkout page and messages language. |
 | Maximum length                  | 2                                        |
-| Possible values/Expected values | en/ar                                    |
+| Possible values/Expected values | **en/ar**                                |
 
 ------
 
@@ -181,9 +186,356 @@ HTTPs Form Post Request
 | Special characters | **$ ! = ? # & - _ /**                                        |
 | Example            | [**http://www.merchant.com**](http://www.merchant.com)       |
 
-## Integration Page- Response Parameters
+------
+
+#### Response Parameters
 
 **The following parameters will be returned in PayFort’s Response:**
+
+------
+
+**service_command**<sup> string</sup>
+
+| Attribute Features | Description      |
+| ------------------ | ---------------- |
+| Type               | Command          |
+| Maximum length     | 20               |
+| Possible values    | **TOKENIZATION** |
+
+------
+
+**access_code**<sup> alphanumeric</sup>
+
+| Attribute Features | Description              |
+| ------------------ | ------------------------ |
+| Type               | Access Code              |
+| Maximum length     | 20                       |
+| Example            | **zx0IPmPy5jp1vAz8Kpg7** |
+
+------
+
+**merchant_identifier** <sup>alphanumeric</sup>
+
+| Attribute Features | Description             |
+| ------------------ | ----------------------- |
+| Type               | The ID of the Merchant. |
+| Maximum length     | 20                      |
+| Example            | **CycHZxVj**            |
+
+------
+
+**merchant_reference** <sup>alphanumeric</sup>
+
+| Attribute Features | Description                         |
+| ------------------ | ----------------------------------- |
+| Type               | The Merchant’s unique order number. |
+| Maximum length     | 40                                  |
+| Example            | **XYZ9239-yu898**                   |
+
+------
+
+**language** <sup>string</sup>
+
+| Attribute Features | Description                             |
+| ------------------ | --------------------------------------- |
+| Type               | The checkout page and message language. |
+| Maximum length     | 2                                       |
+| Possible values    | **en/ar**                               |
+
+------
+
+**signature**<sup> hash</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | A string hashed using the Secure Hash Algorithm. Please refer to section [Signature](https://docs.payfort.com/docs/api/build/index.html#signature) |
+| Maximum length     | 200                                                          |
+| Example            | **7cad05f0212ed933c9a5d5dffa31661acf2c827a**                 |
+
+------
+
+**token_name** <sup>alphanumeric</sup>
+
+| Attribute Features | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| Type               | The token received from the Tokenization process. |
+| Maximum length     | 100                                               |
+| Example            | **Op9Vmp**                                        |
+
+------
+
+**expiry_date** <sup>numeric</sup>
+
+| Attribute Features | Description             |
+| ------------------ | ----------------------- |
+| Type               | The card’s expiry date. |
+| Maximum length     | 4                       |
+| Example            | **2105**                |
+
+------
+
+**card_number** <sup>numeric</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | The masked credit card’s number. *Only the MEEZA payment option takes 19 digits card number.***AMEX payment option takes 15 digits card number.<br/>\*Otherwise, they take 16 digits card number.* |
+| Maximum length     | 19                                                           |
+| Example            | **400555******0001**                                         |
+
+------
+
+**response_message** <sup>alphanumeric</sup>
+
+| Attribute Features       | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| Type                     | Message description of the response code. It returns according to the request language. |
+| Maximum length           | 150                                                          |
+| Possible/expected values | Please refer to section [messages](https://docs.payfort.com/docs/api/build/index.html#messages) |
+
+------
+
+**response_code**<sup> numeric</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response [status](https://docs.payfort.com/docs/api/build/index.html#statuses), and the last 3 digits represent the response [messages](https://docs.payfort.com/docs/api/build/index.html#messages). |
+| Maximum length     | 5                                                            |
+| Example            | **20064**                                                    |
+
+------
+
+**status** <sup>numeric</sup>
+
+| Attribute Features       | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| Type                     | A two-digit numeric value that indicates the status of the transaction. |
+| Maximum length           | 2                                                            |
+| Possible/Expected values | Please refer to section [statuses](https://docs.payfort.com/docs/api/build/index.html#statuses). |
+
+------
+
+**card_bin** <sup>numeric</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | The first 6 digits of the card number.*If the card number for MEEZA was of length 19 then the card bin will be the first 8 digits. |
+| Maximum length     | 8                                                            |
+| Example            | **478773**                                                   |
+
+------
+
+**return_url** <sup>alphanumeric</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | The URL of the Merchant’s page to be displayed to the customer when the order is processed. |
+| Maximum length     | 400                                                          |
+| Example            | **http://www.merchant.com**                                  |
+
+***Note:***
+
+*Every parameter that you send in the Request should be received at your end in the Response -even the optional ones-.*
+
+------
+
+## 2. Using Custom Payment Form
+
+You can also design and develop your own custom for for collecting the card details. The card details are sent directly to PayFort and substituted with Token. You can then use this Token to complete the transaction.
+
+![image-20200213222409527](img\custom-payment-form)
+
+------
+
+### How it works - overview
+
+**1.** You develop your own custom payment form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
+**2.** PayFort receives the payment details and returns the response which includes the Token to your website.
+**3.** You use the token to complete the [Authorization or Purchase operation](https://docs.payfort.com/docs/api/build/index.html#operations-request).
+
+ ***Note*** - You should develop a form that does not send data to your website but directly submits the form to PayFort.*
+
+------
+
+### Integration Flow Using Custom Payment Form
+
+**1.** The Customer begins the checkout process on your website.
+
+**2.** Your website displays the custom payment form to collect the card’s details. Then the Customer enters the card’s details on the payment page.
+
+**3.** PayFort validates the card format.
+
+**4.** PayFort creates a token for the card details and sends it back to your website.
+
+**5.** Your website stores the Token and proceeds with the transaction.
+
+**6.** Your website sends a payment request along with the Token to PayFort.
+
+**7.** PayFort sends your website the 3-D Secure URL, and response indicating that a check is required:
+
+  **a.** Payment form redirects the Customer to check his card enrollment.
+  **b.** The Customer enters authentication data.
+  **c.** 3-D Secure authentication is completed and PayFort receives the authentication results.
+
+ ***Note*** - *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the payment form to authenticate the Customer.*
+
+**8.** PayFort completes the operation based on the 3-D Secure response and returns the response to the website.
+
+**9.** The payment results are displayed to the Customer.
+
+ ***Note*** -
+\- *If the Token is sent by the payment form, it will be generated with the same name sent by the website.*
+
+------
+
+### Integration Using Custom Payment Form
+
+------
+
+#### Request Parameters
+
+**Include the following parameters in the Request you will send to PayFort:**
+
+------
+
+**service_command <sup>string,mandatory</sup>**
+
+| Attribute Features              | Description  |
+| :------------------------------ | :----------- |
+| Type                            | Command      |
+| Maximum length                  | 20           |
+| Possible values/Expected values | TOKENIZATION |
+
+------
+
+**Access_code**<sup> alphanumeric, mandatory</sup>
+
+| Attribute Features | Description     |
+| ------------------ | --------------- |
+| Type               | Access Code     |
+| Maximum length     | 20              |
+| Possible values    | zx0IPmPy5jp1vAz |
+
+------
+
+**merchant_identifier** <sup>alphanumeric, mandatory</sup>
+
+| Attribute Features | Description             |
+| ------------------ | ----------------------- |
+| Type               | The ID of the Merchant. |
+| Maximum length     | 20                      |
+| Possible values    | CycHZxVj                |
+
+------
+
+**merchant_reference**<sup>alphanumeric, mandatory</sup>
+
+| Attribute Features | Description                    |
+| ------------------ | ------------------------------ |
+| Type               | Merchant’s unique order number |
+| Maximum length     | 40                             |
+| Special characters | \- _ .                         |
+| Possible values    | **XYZ9239-yu898**              |
+
+------
+
+**language** <sup>string, mandatory</sup>
+
+| Attribute Features              | Description                              |
+| ------------------------------- | ---------------------------------------- |
+| Type                            | The checkout page and messages language. |
+| Maximum length                  | 2                                        |
+| Possible values/Expected values | **en/ar**                                |
+
+------
+
+**expiry_date** <sup>numeric, mandatory</sup>
+
+| Attribute Features | Description                              |
+| ------------------ | ---------------------------------------- |
+| Type               | The checkout page and messages language. |
+| Maximum length     | 4                                        |
+| Example            | **2105**                                 |
+
+------
+
+**card_number** <sup>numeric, mandatory</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | The clear credit card’s number.<br />*Only the MEEZA payment option takes 19 digits card number.<br/>*AMEX payment option takes 15 digits card number.<br/>*Otherwise, they take 16 digits card number. |
+| Maximum length     | 19                                                           |
+| Example            | **4005550000000001**                                         |
+
+------
+
+**card_security_code** <sup>numeric, mandatory</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | A security code for the card. * Only AMEX accepts card security code of 4 digits. |
+| Maximum length     | 4                                                            |
+| Example            | **123**                                                      |
+
+------
+
+**signature** <sup>hash, mandatory</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | A string hashed using the Secure Hash Algorithm. Please refer to section [Signature](https://docs.payfort.com/docs/api/build/index.html#signature) |
+| Maximum length     | 200                                                          |
+| Example            | **7cad05f0212ed933c9a5d5dffa31661acf2c827a**                 |
+
+------
+
+**token_name**<sup> alphanumeric, optional</sup>
+
+| Attribute Features | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| Type               | The token received from the Tokenization process. |
+| Maximum length     | 100                                               |
+| Special characters | **@ - _**                                         |
+| Example            | **Op9Vmp**                                        |
+
+------
+
+**card_holder_name**<sup> string, optional</sup>
+
+| Attribute Features | Description           |
+| ------------------ | --------------------- |
+| Type               | The card holder name. |
+| Maximum length     | 50                    |
+| Special characters | **@ - _**             |
+| Example            | **John Smith**        |
+
+------
+
+**remember_me**<sup> string, optional</sup>
+
+| Attribute Features       | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| Type                     | This parameter provides you with an indication to whether to save this token for the user based on the user selection. |
+| Maximum length           | 3                                                            |
+| Possible/Expected values | **-Yes**<br />**-No**                                        |
+
+------
+
+**return_url**<sup> alphanumeric, optional</sup>
+
+| Attribute Features | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Type               | The URL of the Merchant’s page to be displayed to the customer when the order is processed. |
+| Maximum length     | 400                                                          |
+| Special characters | **$ ! = ? # & - _ /**                                        |
+| Example            | [**http://www.merchant.com**](http://www.merchant.com)       |
+
+------
+
+#### Response Parameters
+
+**The following parameters will be returned in PayFort’s Response:**
+
+------
 
 **service_command**<sup> string</sup>
 
@@ -315,15 +667,49 @@ HTTPs Form Post Request
 
 ------
 
-## Integration Page - Operations
+**card_holder_name** <sup>string</sup>
 
-### Operations URLs
+| Attribute Features | Description           |
+| ------------------ | --------------------- |
+| Type               | The card holder name. |
+| Maximum length     | 50                    |
+| Example            | **John Smith**        |
 
-**Test Environment URL:**
+------
+
+**remember_me** <sup>string</sup>
+
+| Attribute Features        | Description                                                  |
+| ------------------------- | ------------------------------------------------------------ |
+| Type                      | This parameter provides you with an indication to whether to save this token for the user based on the user selection. |
+| Maximum length            | 3                                                            |
+| Possible/ expected values | **\- YES,<br /> - NO**                                       |
+
+------
+
+**return_url** <sup>string</sup>
+
+| Attribute Features        | Description                                                  |
+| ------------------------- | ------------------------------------------------------------ |
+| Type                      | The URL of the Merchant’s page to be displayed to the customer when the order is processed. |
+| Maximum length            | 400                                                          |
+| Possible/ expected values | **http://www.merchant.com**                                  |
+
+***Note:***
+
+*Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.*
+
+------
+
+# Integration Page - Operations
+
+## Operations URLs
+
+### **Test Environment URL**
 
 https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 
-**Production Environment URL:**
+### **Production Environment URL**
 
 https://paymentservices.payfort.com/FortAPI/paymentApi
 
