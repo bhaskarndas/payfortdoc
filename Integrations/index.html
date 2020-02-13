@@ -84,12 +84,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../MerchantPage/">Merchant Page</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../MerchantPage2.0/">Merchant Page 2.0</a>
+    <a class="" href="../glossary/">Glossary</a>
 	    </li>
           
         </ul>
@@ -136,22 +131,16 @@
 </li>
 <li><a href="#1-using-payfort-iframe">1. Using PayFort iFrame</a><ul>
 <li><a href="#how-it-works-overview">How it Works - Overview</a></li>
-<li><a href="#integration-flow-using-iframe">Integration Flow Using iFrame</a></li>
-<li><a href="#integration-using-iframe">Integration Using iFrame</a><ul>
+<li><a href="#integration-flow">Integration Flow</a></li>
 <li><a href="#request-parameters">Request Parameters</a></li>
 <li><a href="#response-parameters">Response Parameters</a></li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a href="#2-using-custom-payment-form">2. Using Custom Payment Form</a><ul>
 <li><a href="#how-it-works-overview_1">How it works - overview</a></li>
-<li><a href="#integration-flow-using-custom-payment-form">Integration Flow Using Custom Payment Form</a></li>
-<li><a href="#integration-using-custom-payment-form">Integration Using Custom Payment Form</a><ul>
+<li><a href="#integration-flow_1">Integration Flow</a></li>
 <li><a href="#request-parameters_1">Request Parameters</a></li>
 <li><a href="#response-parameters_1">Response Parameters</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#integration-page-operations">Integration Page - Operations</a><ul>
@@ -209,7 +198,7 @@ Figure 1 - Using PayFort iFrame</p>
 <p><strong>2.</strong> PayFort then receives the payment details and sends you the confirmation to complete the transaction.</p>
 <p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the payment details form.</em></p>
 <hr />
-<h3 id="integration-flow-using-iframe">Integration Flow Using iFrame</h3>
+<h3 id="integration-flow">Integration Flow</h3>
 <p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
 <ol>
 <li>
@@ -254,9 +243,7 @@ Figure 1 - Using PayFort iFrame</p>
    - <em>If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em>
    <em>- If the Token is sent by you, it will be generated with the same name as sent by your website.</em></p>
 <hr />
-<h3 id="integration-using-iframe">Integration Using iFrame</h3>
-<hr />
-<h4 id="request-parameters">Request Parameters</h4>
+<h3 id="request-parameters">Request Parameters</h3>
 <p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
 <hr />
 <p><strong>service_command <sup>string,mandatory</sup></strong></p>
@@ -463,7 +450,7 @@ Figure 1 - Using PayFort iFrame</p>
 </tbody>
 </table>
 <hr />
-<h4 id="response-parameters">Response Parameters</h4>
+<h3 id="response-parameters">Response Parameters</h3>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
 <hr />
 <p><strong>service_command</strong><sup> string</sup></p>
@@ -814,7 +801,8 @@ Figure 1 - Using PayFort iFrame</p>
 <strong>3.</strong> You use the token to complete the <a href="https://docs.payfort.com/docs/api/build/index.html#operations-request">Authorization or Purchase operation</a>.</p>
 <p><strong><em>Note</em></strong> - You should develop a form that does not send data to your website but directly submits the form to PayFort.*</p>
 <hr />
-<h3 id="integration-flow-using-custom-payment-form">Integration Flow Using Custom Payment Form</h3>
+<h3 id="integration-flow_1">Integration Flow</h3>
+<p><img alt="image-20200213230424907" src="../img/image-20200213230424907.png" /></p>
 <p><strong>1.</strong> The Customer begins the checkout process on your website.</p>
 <p><strong>2.</strong> Your website displays the custom payment form to collect the card’s details. Then the Customer enters the card’s details on the payment page.</p>
 <p><strong>3.</strong> PayFort validates the card format.</p>
@@ -831,9 +819,7 @@ Figure 1 - Using PayFort iFrame</p>
 <p><strong><em>Note</em></strong> -
 - <em>If the Token is sent by the payment form, it will be generated with the same name sent by the website.</em></p>
 <hr />
-<h3 id="integration-using-custom-payment-form">Integration Using Custom Payment Form</h3>
-<hr />
-<h4 id="request-parameters_1">Request Parameters</h4>
+<h3 id="request-parameters_1">Request Parameters</h3>
 <p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
 <hr />
 <p><strong>service_command <sup>string,mandatory</sup></strong></p>
@@ -1164,7 +1150,7 @@ Figure 1 - Using PayFort iFrame</p>
 </tbody>
 </table>
 <hr />
-<h4 id="response-parameters_1">Response Parameters</h4>
+<h3 id="response-parameters_1">Response Parameters</h3>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
 <hr />
 <p><strong>service_command</strong><sup> string</sup></p>
@@ -3074,7 +3060,7 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../MerchantPage/" class="btn btn-neutral float-right" title="Merchant Page">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../glossary/" class="btn btn-neutral float-right" title="Glossary">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -3106,7 +3092,7 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../MerchantPage/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../glossary/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
