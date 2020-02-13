@@ -59,7 +59,7 @@ Figure 1 - Using PayFort iFrame
 
 ------
 
-### Integration Flow Using iFrame
+### Integration Flow
 
 ![Integration](img\image-20200212214741915.png)
 
@@ -101,11 +101,7 @@ Figure 1 - Using PayFort iFrame
 
 ------
 
-### Integration Using iFrame
-
-------
-
-#### Request Parameters
+### Request Parameters
 
 **Include the following parameters in the Request you will send to PayFort:**
 
@@ -194,7 +190,7 @@ Figure 1 - Using PayFort iFrame
 
 ------
 
-#### Response Parameters
+### Response Parameters
 
 **The following parameters will be returned in PayFort’s Response:**
 
@@ -362,7 +358,9 @@ You can also design and develop your own custom for for collecting the card deta
 
 ------
 
-### Integration Flow Using Custom Payment Form
+### Integration Flow
+
+![image-20200213230424907](img\image-20200213230424907.png)
 
 **1.** The Customer begins the checkout process on your website.
 
@@ -393,11 +391,7 @@ You can also design and develop your own custom for for collecting the card deta
 
 ------
 
-### Integration Using Custom Payment Form
-
-------
-
-#### Request Parameters
+### Request Parameters
 
 **Include the following parameters in the Request you will send to PayFort:**
 
@@ -537,7 +531,7 @@ You can also design and develop your own custom for for collecting the card deta
 
 ------
 
-#### Response Parameters
+### Response Parameters
 
 **The following parameters will be returned in PayFort’s Response:**
 
