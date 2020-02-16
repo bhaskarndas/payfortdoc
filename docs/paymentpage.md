@@ -2,9 +2,9 @@
 
 ------
 
-# Integrations
+# Payment Page
 
-There are two ways by which you can achieve integrations as mentioned:
+There are two ways by which you can create payment page as mentioned:
 
 1. Using **PayFort iFrame**.
 
@@ -22,7 +22,7 @@ There are two ways by which you can achieve integrations as mentioned:
 
 ------
 
-## Integration Page URLs 
+## Payment Page URLs 
 
 ### Test Environment URLs
 
@@ -1330,12 +1330,12 @@ REST POST request using JSON.
 
 ------
 
-## How to add the Tokenization service on the Integration Page channel?
+## How to add the Tokenization service on the Payment Page?
 
-The Tokenization service is applicable to be integrated through the Merchant Page Channel through the below steps:
+The Tokenization service is applicable to be integrated through the payment page through the below steps:
 **1.** The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
-**2.** The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
-**3.** No need to open the Merchant Page to fill all the card details again in the next checkouts.
+**2.** The payment page will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
+**3.** No need to open the Payment Details Form to fill all the card details again in the next checkouts.
 
 If the Customer wants to update/ delete his card, you should check [Update Token](https://docs.payfort.com/docs/api/build/index.html#update-token-service) section.
 
@@ -1344,7 +1344,7 @@ Please refer to section [FORT Tokenization Service](https://docs.payfort.com/doc
 
 ------
 
-## Integration Page Customization
+## Payment Page Customization
 
 **This is a list with all customizable CSS classes on the basic merchant page:**
 
