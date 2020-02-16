@@ -12,6 +12,14 @@
 
 ------
 
+## P
+
+- **PCI-DSS**- Payment Card Industry Data Security Standard. A set of security standards which forms the compliance scheme. The compliance aims to secure credit and debit card transactions against payment frauds.
+
+------
+
+
+
 ## R
 
 - **Redirection** - Routing to other site (bank or financial institution) or webpage through the action on the page for authentication purpose. The action could be submit button.
