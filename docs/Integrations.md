@@ -76,15 +76,16 @@ Figure 1 - Using PayFort iFrame
 6. In case your website receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
    **a.** Your payment processing page redirects the Customer to the ACS to check his card enrollment.<br>**b.** The Customer enters authentication data on the ACS platform.<br>**c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.
 
-   ***Note***<br>*In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment processing page to authenticate the Customer.*
-
-7. PayFort completes the operation based on the 3-D Secure response and returns the response to your site.
+7. PayFort completes the operation based on the 3-D Secure response and returns the response to your integration page.
 
 8. PayFort sends the payment results to your site.
+   
 
    ***Note*** -
-   \- *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
-   *\- If the Token is sent by you, it will be generated with the same name as sent by your website.*
+
+   * -In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment processing page to authenticate the Customer.*
+   * *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
+   * If the Token is sent by you, it will be generated with the same name as sent by your website.*
 
 ------
 
