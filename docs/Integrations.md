@@ -82,13 +82,9 @@ Figure 1 - Using PayFort iFrame
 
 8. PayFort sends the payment results to your site.
 
-   
-
    ***Note*** -
    \- *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
    *\- If the Token is sent by you, it will be generated with the same name as sent by your website.*
-
-
 
 ------
 
