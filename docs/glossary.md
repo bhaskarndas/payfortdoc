@@ -7,3 +7,11 @@
 ------
 
 ## A
+
+- **ACS** - **Access Control Server** running on the bank side that authenticates e-commerce transactions through the 3D Secure URL.
+
+------
+
+## U
+
+- **URL**- Uniform Resource locator. Example : https:\\www.example.com
