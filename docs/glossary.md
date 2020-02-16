@@ -14,13 +14,9 @@
 
 ## R
 
-- **Redirection** - Routing to other site or webpage through the action on the page. The action could be submit button.
+- **Redirection** - Routing to other site (bank or financial institution) or webpage through the action on the page for authentication purpose. The action could be submit button.
 
 ------
-
-
-
-
 
 ## U
 

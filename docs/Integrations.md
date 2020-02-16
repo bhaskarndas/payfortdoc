@@ -16,8 +16,8 @@ There are two ways by which you can achieve integrations as mentioned:
 
 ## Features
 
-- No Customer redirection.
-- No PCI-Compliance needed.
+- No Customer redirection which means your customers will not be redirected to third party website for payment and will be able to pay only on your page.
+- No PCI-Compliance needed. Since PayFort is PCI-DSS compliant its means your business transactions  will be PCI-Compliant.
 - A replica of your website appearance and your payment flow.
 
 ------
