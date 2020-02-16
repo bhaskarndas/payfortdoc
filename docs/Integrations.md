@@ -83,7 +83,7 @@ Figure 1 - Using PayFort iFrame
 
    ***Note*** -
 
-   * -In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment processing page to authenticate the Customer.*
+   * In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment processing page to authenticate the Customer.*
    * *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
    * If the Token is sent by you, it will be generated with the same name as sent by your website.*
 
