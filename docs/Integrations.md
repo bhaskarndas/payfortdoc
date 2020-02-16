@@ -65,39 +65,34 @@ Figure 1 - Using PayFort iFrame
 
 1. The Customer begins the checkout process on your website.
 
-2. The Merchant requests to display the Merchant Page (payment details form) encapsulated inside an iframe which has been themed as the Merchant website. Then the Customer enters the card’s details on the Merchant page.
+2. The Payment details form encapsulated inside iFrame is displayed on your payment processing page.  Then the Customer enters the card’s details on the Merchant page.
 
 3. PayFort checks the card details.
 
-4. PayFort creates a token for the Customer transaction and sends it to the Merchant.
+4. PayFort creates a token for the Customer transaction and sends it to the integration page.
 
-5. The Merchant then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
+5. The Payment processing page then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
 
-6. In case the Merchant receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:
-
-   a.
-
-7. 
-
-   **a.** The Merchant redirects the Customer to the ACS to check his card enrollment.
+6. In case your website receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:
+   **a.** Your payment processing page redirects the Customer to the ACS to check his card enrollment.
 
    **b.** The Customer enters authentication data on the ACS platform.
 
    **c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.
 
-***Note*** 
+   ***Note*** 
 
-- *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the Merchant to authenticate the Customer.*
+   *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment processing page to authenticate the Customer.*
 
-1. PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.
+7. PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.
 
-2. PayFort sends the payment results to the Merchant.
+8. PayFort sends the payment results to your site.
 
    ***Note*** -
    \- *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
    *\- If the Token is sent by you, it will be generated with the same name as sent by your website.*
 
-   
+
 
 ------
 
