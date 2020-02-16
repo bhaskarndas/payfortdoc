@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Integrations - PayFort API Reference</title>
+  <title>PaymentPage - PayFort API Reference</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Integrations";
-    var mkdocs_page_input_path = "Integrations.md";
+    var mkdocs_page_name = "PaymentPage";
+    var mkdocs_page_input_path = "paymentpage.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -55,16 +55,16 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Integrations</a>
+    <a class="current" href="./">PaymentPage</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#integrations">Integrations</a></li>
+    <li class="toctree-l2"><a href="#payment-page">Payment Page</a></li>
     
         <ul>
         
             <li><a class="toctree-l3" href="#features">Features</a></li>
         
-            <li><a class="toctree-l3" href="#integration-page-urls">Integration Page URLs</a></li>
+            <li><a class="toctree-l3" href="#payment-page-urls">Payment Page URLs</a></li>
         
             <li><a class="toctree-l3" href="#1-using-payfort-iframe">1. Using PayFort iFrame</a></li>
         
@@ -72,9 +72,9 @@
         
             <li><a class="toctree-l3" href="#integration-page-operations">Integration Page - Operations</a></li>
         
-            <li><a class="toctree-l3" href="#how-to-add-the-tokenization-service-on-the-integration-page-channel">How to add the Tokenization service on the Integration Page channel?</a></li>
+            <li><a class="toctree-l3" href="#how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</a></li>
         
-            <li><a class="toctree-l3" href="#integration-page-customization">Integration Page Customization</a></li>
+            <li><a class="toctree-l3" href="#payment-page-customization">Payment Page Customization</a></li>
         
         </ul>
     
@@ -109,7 +109,7 @@
     
       
     
-    <li>Integrations</li>
+    <li>PaymentPage</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -121,9 +121,9 @@
               
                 <div class="toc">
 <ul>
-<li><a href="#integrations">Integrations</a><ul>
+<li><a href="#payment-page">Payment Page</a><ul>
 <li><a href="#features">Features</a></li>
-<li><a href="#integration-page-urls">Integration Page URLs</a><ul>
+<li><a href="#payment-page-urls">Payment Page URLs</a><ul>
 <li><a href="#test-environment-urls">Test Environment URLs</a></li>
 <li><a href="#production-environment-urls">Production Environment URLs</a></li>
 <li><a href="#parameters-submission-type">Parameters Submission Type</a></li>
@@ -154,15 +154,15 @@
 <li><a href="#operations-response-parameters">Operations - Response Parameters</a></li>
 </ul>
 </li>
-<li><a href="#how-to-add-the-tokenization-service-on-the-integration-page-channel">How to add the Tokenization service on the Integration Page channel?</a></li>
-<li><a href="#integration-page-customization">Integration Page Customization</a></li>
+<li><a href="#how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</a></li>
+<li><a href="#payment-page-customization">Payment Page Customization</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <hr />
-<h1 id="integrations">Integrations</h1>
-<p>There are two ways by which you can achieve integrations as mentioned:</p>
+<h1 id="payment-page">Payment Page</h1>
+<p>There are two ways by which you can create payment page as mentioned:</p>
 <ol>
 <li>
 <p>Using <strong>PayFort iFrame</strong>.</p>
@@ -179,7 +179,7 @@
 <li>A replica of your website appearance and your payment flow.</li>
 </ul>
 <hr />
-<h2 id="integration-page-urls">Integration Page URLs</h2>
+<h2 id="payment-page-urls">Payment Page URLs</h2>
 <h3 id="test-environment-urls">Test Environment URLs</h3>
 <p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
 <h3 id="production-environment-urls">Production Environment URLs</h3>
@@ -3030,16 +3030,16 @@ Figure 1 - Using PayFort iFrame</p>
 </table>
 <p><strong><em>Note</em></strong> - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
 <hr />
-<h2 id="how-to-add-the-tokenization-service-on-the-integration-page-channel">How to add the Tokenization service on the Integration Page channel?</h2>
-<p>The Tokenization service is applicable to be integrated through the Merchant Page Channel through the below steps:
+<h2 id="how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</h2>
+<p>The Tokenization service is applicable to be integrated through the payment page through the below steps:
 <strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
-<strong>2.</strong> The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
-<strong>3.</strong> No need to open the Merchant Page to fill all the card details again in the next checkouts.</p>
+<strong>2.</strong> The payment page will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
+<strong>3.</strong> No need to open the Payment Details Form to fill all the card details again in the next checkouts.</p>
 <p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
 <p><strong><em>Note</em></strong>
 Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service</a> for more details about the token name parameter.</p>
 <hr />
-<h2 id="integration-page-customization">Integration Page Customization</h2>
+<h2 id="payment-page-customization">Payment Page Customization</h2>
 <p><strong>This is a list with all customizable CSS classes on the basic merchant page:</strong></p>
 <ul>
 <li>The <strong><code>Wrapper</code></strong> class: responsible for the total width of the form container and the background.</li>
