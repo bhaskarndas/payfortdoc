@@ -63,29 +63,30 @@ Figure 1 - Using PayFort iFrame
 
 ![Integration](img\image-20200212214741915.png)
 
-1. The Customer begins the checkout process on your website.
+1. The customer begins the checkout process on your website.
 
-2. The Payment details form encapsulated inside iFrame is displayed on your payment processing page.  Then the Customer enters the card’s details on the Merchant page.
+2. The payment page encapsulated inside iFrame is displayed.  Then the Customer enters the card’s details on the payment page.
 
 3. PayFort checks the card details.
 
-4. PayFort creates a token for the Customer transaction and sends it to the integration page.
+4. PayFort creates a token for the Customer transaction and sends it to the payment page.
 
-5. The Payment processing page then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
+5. The Payment page then sends a [JSON request](https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations) along with the token to PayFort.
 
-6. In case your website receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
-   **a.** Your payment processing page redirects the Customer to the ACS to check his card enrollment.<br>**b.** The Customer enters authentication data on the ACS platform.<br>**c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.
+6. In case your page receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
+   **a.** Your payment page redirects the Customer to the ACS to check his card enrollment.<br>**b.** The Customer enters authentication data on the ACS platform.<br>**c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.
 
-7. PayFort completes the operation based on the 3-D Secure response and returns the response to your integration page.
+7. PayFort completes the operation based on the 3-D Secure response and returns the response to your payment page.
 
 8. PayFort sends the payment results to your site.
    
 
    ***Note*** -
 
-   * In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment processing page to authenticate the Customer.*
+   * In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for your payment page to authenticate the Customer.*
    * *If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*
-   * If the Token is sent by you, it will be generated with the same name as sent by your integration page.
+   * If the Token is sent by you, it will be generated with the same name as sent by your page.
+   * Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.
 
 ------
 
@@ -338,8 +339,8 @@ You can also design and develop your own custom for for collecting the card deta
 
 ### How it works - overview
 
-**1.** You develop your own custom payment form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
-**2.** PayFort receives the payment details and returns the response which includes the Token to your website.
+**1.** You develop your own custom payment details form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
+**2.** PayFort receives the payment details and returns the response which includes the Token to your payment processing page.
 **3.** You use the token to complete the [Authorization or Purchase operation](https://docs.payfort.com/docs/api/build/index.html#operations-request).
 
  ***Note*** - You should develop a form that does not send data to your website but directly submits the form to PayFort.*
@@ -356,26 +357,29 @@ You can also design and develop your own custom for for collecting the card deta
 
 **3.** PayFort validates the card format.
 
-**4.** PayFort creates a token for the card details and sends it back to your website.
+**4.** PayFort creates a token for the card details and sends it back to your payment page.
 
-**5.** Your website stores the Token and proceeds with the transaction.
+**5.** Payment page stores the Token and proceeds with the transaction.
 
-**6.** Your website sends a payment request along with the Token to PayFort.
+**6.** Payment page sends a payment request along with the Token to PayFort.
 
-**7.** PayFort sends your website the 3-D Secure URL, and response indicating that a check is required:
+**7.** PayFort sends the 3-D Secure URL, and response indicating that a check is required:
 
-  **a.** Payment form redirects the Customer to check his card enrollment.
+  **a.** Payment page redirects the Customer to check his card enrollment.
   **b.** The Customer enters authentication data.
   **c.** 3-D Secure authentication is completed and PayFort receives the authentication results.
 
- ***Note*** - *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the payment form to authenticate the Customer.*
+ ***Note*** - *In this case, PayFort returns* **status “20: On hold”** *and* **message “064: 3-D Secure check requested”**. *For example, PayFort is waiting for the payment page to authenticate the Customer.*
 
 **8.** PayFort completes the operation based on the 3-D Secure response and returns the response to the website.
 
 **9.** The payment results are displayed to the Customer.
 
  ***Note*** -
-\- *If the Token is sent by the payment form, it will be generated with the same name sent by the website.*
+
+- *If the Token is sent by the payment page, it will be generated with the same name sent by the website.*
+
+- Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.
 
 ------
 

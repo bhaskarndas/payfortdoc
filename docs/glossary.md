@@ -12,6 +12,16 @@
 
 ------
 
+## R
+
+- **Redirection** - Routing to other site or webpage through the action on the page. The action could be submit button.
+
+------
+
+
+
+
+
 ## U
 
 - **URL**- Uniform Resource locator. Example : https:\\www.example.com
