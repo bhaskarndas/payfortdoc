@@ -1,18 +1,108 @@
 body {
-    padding-top: 70px;
+/*    padding-top: 70px;*/
+}
+.metadata{
+    list-style:none;
+    padding:0;
+    margin:0;
+    margin-bottom: 15px;
+    color: #999;
+    font-size:0.85em;
+}
+.last-updated-holder {
+    float: left;
+    margin-right: 20px;
+}
+.metadata.page-metadata .last-updated-text,
+.metadata.page-metadata .contributors-text{
+    margin-right:5px
+}
+body[dir=rtl] .metadata.page-metadata .last-updated-text,
+body[dir=rtl] .metadata.page-metadata .contributors-text{
+    margin-right:0;
+    margin-left:5px
+}
+.page-metadata .contributors{
+    display:inline-block;
+    list-style:none;
+    margin:0!important;
+    padding:0!important
+}
+.page-metadata .contributors li{
+    display:inline-block;
+    vertical-align:top;
+    margin:0;
+    padding:0
+}
+.page-metadata .contributors li img{
+    border-radius:100%;
+    height:16px;
+/*    margin-top:5px;*/
+    margin-top:-3px;
+    overflow:hidden;
+    width:16px
 }
 
-h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id]:before {
-    content: "";
-    display: block;
-    margin-top: -75px;
-    height: 75px;
+#content {
+    padding-top: 80px;
+}
+
+.has-jumbotron #content {
+    padding-top: 0px;
+}
+.jumbotron {
+    margin-top: 30px;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+.card-deck {
+    margin-bottom: 20px;
+}
+.sticky-offset {
+    top: 75px;
 }
 
 ul.nav li.main {
     font-weight: bold;
 }
 
+.dropdown-submenu{
+    position: relative;
+}
+.dropdown-submenu a::after{
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 3px;
+    top: 40%;
+}
+.dropdown-submenu .dropdown-menu {
+    display: none !important;
+}
+.dropdown-submenu:hover .dropdown-menu,.dropdown-submenu:focus .dropdown-menu{
+    display: flex !important;
+    flex-direction: column;
+    position: absolute !important;
+    margin-top: -30px;
+    left: 100%;
+}
+@media (max-width: 992px) {
+    .dropdown-menu{
+        width: 50%;
+    }
+    .dropdown-menu .dropdown-submenu{
+        width: auto;
+    }
+}
+.btn:visited {
+    color: white;
+}
+/*
+h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id]:before {
+    content: "";
+    display: block;
+    margin-top: -75px;
+    height: 75px;
+}
 div.col-md-9 {
     padding-bottom: 100px;
 }
@@ -24,6 +114,7 @@ div.source-links {
 div.col-md-9 img {
   max-width: 100%;
 }
+*/
 
 /*
  * Side navigation
@@ -34,7 +125,7 @@ div.col-md-9 img {
 
 /* By default it's not affixed in mobile views, so undo that */
 .bs-sidebar.affix {
-    position: static;
+/*    position: static;*/
 }
 
 .bs-sidebar.well {
@@ -43,8 +134,8 @@ div.col-md-9 img {
 
 /* First level of nav */
 .bs-sidenav {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     padding-top:    10px;
     padding-bottom: 10px;
     border-radius: 5px;
@@ -92,11 +183,11 @@ div.col-md-9 img {
         width: 213px;
     }
     .bs-sidebar.affix {
-        position: fixed; /* Undo the static from mobile first approach */
+        /*position: fixed;*/ /* Undo the static from mobile first approach */
         top: 80px;
     }
     .bs-sidebar.affix-bottom {
-        position: absolute; /* Undo the static from mobile first approach */
+        /*position: absolute;*/ /* Undo the static from mobile first approach */
     }
     .bs-sidebar.affix-bottom .bs-sidenav,
     .bs-sidebar.affix .bs-sidenav {
