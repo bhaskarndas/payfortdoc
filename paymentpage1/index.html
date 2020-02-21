@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>MerchantPage2.0 - PayFort Documentation</title>
+        <title>Paymentpage1 - PayFort Documentation</title>
     <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -74,84 +74,135 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#merchant-page">Merchant Page</a></li>
+        <li class="main active"><a href="#payment-page">Payment Page</a></li>
             <li><a href="#features">Features</a></li>
-            <li><a href="#how-it-works-overview">How it works - overview</a></li>
-            <li><a href="#merchant-page-20-request">Merchant Page 2.0 - Request</a></li>
-            <li><a href="#merchant-page-20-response">Merchant Page 2.0 - Response</a></li>
-            <li><a href="#merchant-page-20-operations">Merchant Page 2.0 Operations</a></li>
-            <li><a href="#how-to-add-the-tokenization-service-on-the-merchant-20-page-channel">How to add the Tokenization service on the Merchant 2.0 Page channel?</a></li>
+            <li><a href="#payment-page-urls">Payment Page URLs</a></li>
+            <li><a href="#1-using-payfort-iframe">1. Using PayFort iFrame</a></li>
+            <li><a href="#2-using-custom-payment-form">2. Using Custom Payment Form</a></li>
+            <li><a href="#integration-page-operations">Integration Page - Operations</a></li>
+            <li><a href="#how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</a></li>
+            <li><a href="#payment-page-customization">Payment Page Customization</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <div class="toc">
 <ul>
-<li><a href="#merchant-page">Merchant Page</a><ul>
+<li><a href="#payment-page">Payment Page</a><ul>
 <li><a href="#features">Features</a></li>
-<li><a href="#how-it-works-overview">How it works - overview</a><ul>
-<li><a href="#integration-flow">Integration Flow</a></li>
-<li><a href="#merchant-page-20-urls">Merchant Page 2.0 URLs</a><ul>
+<li><a href="#payment-page-urls">Payment Page URLs</a><ul>
 <li><a href="#test-environment-urls">Test Environment URLs</a></li>
 <li><a href="#production-environment-urls">Production Environment URLs</a></li>
-</ul>
-</li>
 <li><a href="#parameters-submission-type">Parameters Submission Type</a></li>
 </ul>
 </li>
-<li><a href="#merchant-page-20-request">Merchant Page 2.0 - Request</a></li>
-<li><a href="#merchant-page-20-response">Merchant Page 2.0 - Response</a></li>
-<li><a href="#merchant-page-20-operations">Merchant Page 2.0 Operations</a><ul>
-<li><a href="#merchant-page-20-operations-urls">Merchant Page 2.0 Operations URLs</a></li>
-<li><a href="#parameters-submission-type_1">Parameters Submission Type</a></li>
-<li><a href="#operations-request">Operations - Request</a></li>
-<li><a href="#operations-response">Operations - Response</a></li>
+<li><a href="#1-using-payfort-iframe">1. Using PayFort iFrame</a><ul>
+<li><a href="#how-it-works-overview">How it Works - Overview</a></li>
+<li><a href="#integration-flow">Integration Flow</a></li>
+<li><a href="#request-parameters">Request Parameters</a></li>
+<li><a href="#response-parameters">Response Parameters</a></li>
 </ul>
 </li>
-<li><a href="#how-to-add-the-tokenization-service-on-the-merchant-20-page-channel">How to add the Tokenization service on the Merchant 2.0 Page channel?</a></li>
+<li><a href="#2-using-custom-payment-form">2. Using Custom Payment Form</a><ul>
+<li><a href="#how-it-works-overview_1">How it works - overview</a></li>
+<li><a href="#integration-flow_1">Integration Flow</a></li>
+<li><a href="#request-parameters_1">Request Parameters</a></li>
+<li><a href="#response-parameters_1">Response Parameters</a></li>
+</ul>
+</li>
+<li><a href="#integration-page-operations">Integration Page - Operations</a><ul>
+<li><a href="#operations-urls">Operations URLs</a><ul>
+<li><a href="#test-environment-url">Test Environment URL</a></li>
+<li><a href="#production-environment-url">Production Environment URL</a></li>
+<li><a href="#parameters-submission-type_1">Parameters Submission Type</a></li>
+</ul>
+</li>
+<li><a href="#operations-request-parameters">Operations - Request Parameters</a></li>
+<li><a href="#operations-response-parameters">Operations - Response Parameters</a></li>
+</ul>
+</li>
+<li><a href="#how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</a></li>
+<li><a href="#payment-page-customization">Payment Page Customization</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h1 id="merchant-page">Merchant Page</h1>
-<p>This type of integration allows the Merchant to develop his own payment form that collects the card details. The card details are sent directly to PayFort and substituted with Token. The Merchant uses the Token created to complete the transaction.</p>
+<hr />
+<h1 id="payment-page">Payment Page</h1>
+<p>There are two ways by which you can create payment page as mentioned:</p>
+<ol>
+<li>
+<p>Using <strong>PayFort iFrame</strong>.</p>
+</li>
+<li>
+<p>Using custom payment form.</p>
+</li>
+</ol>
 <hr />
 <h2 id="features">Features</h2>
 <ul>
-<li>No Customer redirection.</li>
-<li>No PCI-Compliance needed.</li>
+<li>No Customer redirection which means your customers will not be redirected to third party website for payment and will be able to pay only on your page.</li>
+<li>No PCI-Compliance needed. Since PayFort is PCI-DSS compliant its means your business transactions  will be PCI-Compliant.</li>
 <li>A replica of your website appearance and your payment flow.</li>
 </ul>
 <hr />
-<h2 id="how-it-works-overview">How it works - overview</h2>
-<p><strong>1.</strong> The Merchant develops the form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
-<strong>2.</strong> PayFort receives the payment details and returns the response which includes the Token to the Merchant.
-<strong>3.</strong> The Merchant use it to complete the <a href="https://docs.payfort.com/docs/api/build/index.html#operations-request">Authorization or Purchase operation</a>.</p>
-<p><strong><em>Note</em></strong> - <em>The Merchant should develop a form that does not send data to his website but directly submits the form to PayFort.</em></p>
-<h3 id="integration-flow">Integration Flow</h3>
-<p><strong>1.</strong> The Customer begins the checkout process on the Merchant’s website.</p>
-<p><strong>2.</strong> The Merchant displays the form he developed to collect the card’s details. Then the Customer enters the card’s details on the Merchant page.</p>
-<p><strong>3.</strong> PayFort validates the card format.</p>
-<p><strong>4.</strong> PayFort creates a token for the card details and sends it back to the Merchant.</p>
-<p><strong>5.</strong> The Merchant stores the Token and proceeds with the transaction.</p>
-<p><strong>6.</strong> The Merchant sends a payment request along with the Token to PayFort.</p>
-<p><strong>7.</strong> PayFort sends the Merchant the 3-D Secure URL, and response indicating that a check is required:</p>
-<p><strong>a.</strong> The Merchant redirects the Customer to check his card enrollment.
-  <strong>b.</strong> The Customer enters authentication data.
-  <strong>c.</strong> 3-D Secure authentication is completed and PayFort receives the authentication results.</p>
-<p><strong><em>Note</em></strong> - <em>In this case, PayFort returns</em> <strong>status “20: On hold”</strong> <em>and</em> <strong>message “064: 3-D Secure check requested”</strong>. <em>For example, PayFort is waiting for the Merchant to authenticate the Customer.</em></p>
-<p><strong>8.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the Merchant.</p>
-<p><strong>9.</strong> The payment results are displayed to the Customer.</p>
-<p><strong><em>Note</em></strong> -
-- <em>If the Token is sent by the Merchant, it will be generated with the same name sent by the Merchant.</em></p>
-<h3 id="merchant-page-20-urls">Merchant Page 2.0 URLs</h3>
-<h4 id="test-environment-urls">Test Environment URLs</h4>
-<p>https://sbcheckout.payfort.com/FortAPI/paymentPage</p>
-<h4 id="production-environment-urls">Production Environment URLs</h4>
-<p>https://checkout.payfort.com/FortAPI/paymentPage</p>
+<h2 id="payment-page-urls">Payment Page URLs</h2>
+<h3 id="test-environment-urls">Test Environment URLs</h3>
+<p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
+<h3 id="production-environment-urls">Production Environment URLs</h3>
+<p>https://paymentservices.payfort.com/FortAPI/paymentApi</p>
 <h3 id="parameters-submission-type">Parameters Submission Type</h3>
-<p>HTTPs Form Post Request</p>
-<h2 id="merchant-page-20-request">Merchant Page 2.0 - Request</h2>
+<p>REST POST request using JSON</p>
+<hr />
+<h2 id="1-using-payfort-iframe">1. Using PayFort iFrame</h2>
+<p>You can use <strong><em>PayFort iFrame</em></strong> on your website to collect Customer's credit card information. </p>
+<p><em>PayFort</em> processes the transaction and returns the results back to the your site through invisible redirection. Please refer figure 1.</p>
+<p><img alt="Figure1" src="../img/image-20200211222706973.png" />
+Figure 1 - Using PayFort iFrame</p>
+<hr />
+<h3 id="how-it-works-overview">How it Works - Overview</h3>
+<p><strong>1.</strong> The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel of as that of your website.</p>
+<p><strong>2.</strong> PayFort then receives the payment details and sends you the confirmation to complete the transaction.</p>
+<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the payment details form.</em></p>
+<hr />
+<h3 id="integration-flow">Integration Flow</h3>
+<p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
+<ol>
+<li>
+<p>The customer begins the checkout process on your website.</p>
+</li>
+<li>
+<p>The payment page encapsulated inside iFrame is displayed.  Then the Customer enters the card’s details on the payment page.</p>
+</li>
+<li>
+<p>PayFort checks the card details.</p>
+</li>
+<li>
+<p>PayFort creates a token for the Customer transaction and sends it to the payment page.</p>
+</li>
+<li>
+<p>The Payment page then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFort.</p>
+</li>
+<li>
+<p>In case your page receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
+   <strong>a.</strong> Your payment page redirects the Customer to the ACS to check his card enrollment.<br><strong>b.</strong> The Customer enters authentication data on the ACS platform.<br><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
+</li>
+<li>
+<p>PayFort completes the operation based on the 3-D Secure response and returns the response to your payment page.</p>
+</li>
+<li>
+<p>PayFort sends the payment results to your site.</p>
+</li>
+</ol>
+<p><strong><em>Note</em></strong> -</p>
+<ul>
+<li>In this case, PayFort returns<em> </em><em>status “20: On hold”</em><em> </em>and<em> </em><em>message “064: 3-D Secure check requested”</em><em>. </em>For example, PayFort is waiting for your payment page to authenticate the Customer.*</li>
+<li><em>If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em></li>
+<li>If the Token is sent by you, it will be generated with the same name as sent by your page.</li>
+<li>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</li>
+</ul>
+<hr />
+<h3 id="request-parameters">Request Parameters</h3>
 <p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
 <hr />
 <p><strong>service_command <sup>string,mandatory</sup></strong></p>
@@ -172,8 +223,591 @@
 <td align="left">20</td>
 </tr>
 <tr>
-<td align="left">Possible values</td>
-<td align="left">Tokenization</td>
+<td align="left">Possible values/Expected values</td>
+<td align="left"><strong>TOKENIZATION</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Access_code</strong><sup> alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Access Code</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>zx0IPmPy5jp1vAz</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong> <sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The ID of the Merchant.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>CycHZxVj</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>alphanumeric, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Merchant’s unique order number</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td>- _ .</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong> <sup>string, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The checkout page and messages language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible values/Expected values</td>
+<td><strong>en/ar</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong> <sup>hash, mandatory</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>7cad05f0212ed933c9a5d5dffa31661acf2c827a</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>token_name</strong><sup> alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The token received from the Tokenization process.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>@ - _</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Op9Vmp</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>return_url</strong><sup> alphanumeric, optional</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The URL of the Merchant’s page to be displayed to the customer when the order is processed.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Special characters</td>
+<td><strong>$ ! = ? # &amp; - _ /</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><a href="http://www.merchant.com"><strong>http://www.merchant.com</strong></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="response-parameters">Response Parameters</h3>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<hr />
+<p><strong>service_command</strong><sup> string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Command</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>TOKENIZATION</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup> alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Access Code</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>zx0IPmPy5jp1vAz8Kpg7</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The ID of the Merchant.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>CycHZxVj</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>XYZ9239-yu898</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong> <sup>string</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The checkout page and message language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible values</td>
+<td><strong>en/ar</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup> hash</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>7cad05f0212ed933c9a5d5dffa31661acf2c827a</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>token_name</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The token received from the Tokenization process.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Op9Vmp</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>expiry_date</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The card’s expiry date.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>2105</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_number</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The masked credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number.</em>*<em>AMEX payment option takes 15 digits card number.<br/>*Otherwise, they take 16 digits card number.</em></td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>400555</strong><strong>**0001</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Message description of the response code. It returns according to the request language.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Possible/expected values</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong><sup> numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a>.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>20064</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Possible/Expected values</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#statuses">statuses</a>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>card_bin</strong> <sup>numeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The first 6 digits of the card number.*If the card number for MEEZA was of length 19 then the card bin will be the first 8 digits.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>478773</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>return_url</strong> <sup>alphanumeric</sup></p>
+<table>
+<thead>
+<tr>
+<th>Attribute Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>The URL of the Merchant’s page to be displayed to the customer when the order is processed.</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>http://www.merchant.com</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Note:</em></strong></p>
+<p><em>Every parameter that you send in the Request should be received at your end in the Response -even the optional ones-.</em></p>
+<hr />
+<h2 id="2-using-custom-payment-form">2. Using Custom Payment Form</h2>
+<p>You can also design and develop your own custom for for collecting the card details. The card details are sent directly to PayFort and substituted with Token. You can then use this Token to complete the transaction.</p>
+<p><img alt="custom-payment" src="../img/custom-payment-form.png" /></p>
+<hr />
+<h3 id="how-it-works-overview_1">How it works - overview</h3>
+<p><strong>1.</strong> You develop your own custom payment details form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
+<strong>2.</strong> PayFort receives the payment details and returns the response which includes the Token to your payment processing page.
+<strong>3.</strong> You use the token to complete the <a href="https://docs.payfort.com/docs/api/build/index.html#operations-request">Authorization or Purchase operation</a>.</p>
+<p><strong><em>Note</em></strong> - You should develop a form that does not send data to your website but directly submits the form to PayFort.*</p>
+<hr />
+<h3 id="integration-flow_1">Integration Flow</h3>
+<p><img alt="image-20200213230424907" src="../img/image-20200213230424907.png" /></p>
+<p><strong>1.</strong> The Customer begins the checkout process on your website.</p>
+<p><strong>2.</strong> Your website displays the custom payment form to collect the card’s details. Then the Customer enters the card’s details on the payment page.</p>
+<p><strong>3.</strong> PayFort validates the card format.</p>
+<p><strong>4.</strong> PayFort creates a token for the card details and sends it back to your payment page.</p>
+<p><strong>5.</strong> Payment page stores the Token and proceeds with the transaction.</p>
+<p><strong>6.</strong> Payment page sends a payment request along with the Token to PayFort.</p>
+<p><strong>7.</strong> PayFort sends the 3-D Secure URL, and response indicating that a check is required:</p>
+<p><strong>a.</strong> Payment page redirects the Customer to check his card enrollment.
+  <strong>b.</strong> The Customer enters authentication data.
+  <strong>c.</strong> 3-D Secure authentication is completed and PayFort receives the authentication results.</p>
+<p><strong><em>Note</em></strong> - <em>In this case, PayFort returns</em> <strong>status “20: On hold”</strong> <em>and</em> <strong>message “064: 3-D Secure check requested”</strong>. <em>For example, PayFort is waiting for the payment page to authenticate the Customer.</em></p>
+<p><strong>8.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the website.</p>
+<p><strong>9.</strong> The payment results are displayed to the Customer.</p>
+<p><strong><em>Note</em></strong> -</p>
+<ul>
+<li>
+<p><em>If the Token is sent by the payment page, it will be generated with the same name sent by the website.</em></p>
+</li>
+<li>
+<p>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</p>
+</li>
+</ul>
+<hr />
+<h3 id="request-parameters_1">Request Parameters</h3>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<hr />
+<p><strong>service_command <sup>string,mandatory</sup></strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute Features</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Type</td>
+<td align="left">Command</td>
+</tr>
+<tr>
+<td align="left">Maximum length</td>
+<td align="left">20</td>
+</tr>
+<tr>
+<td align="left">Possible values/Expected values</td>
+<td align="left">TOKENIZATION</td>
 </tr>
 </tbody>
 </table>
@@ -249,7 +883,7 @@
 </tr>
 <tr>
 <td>Possible values</td>
-<td>CycHZxVj</td>
+<td><strong>XYZ9239-yu898</strong></td>
 </tr>
 </tbody>
 </table>
@@ -289,7 +923,7 @@
 <tbody>
 <tr>
 <td>Type</td>
-<td>The card's expiry date.</td>
+<td>The checkout page and messages language.</td>
 </tr>
 <tr>
 <td>Maximum length</td>
@@ -313,7 +947,7 @@
 <tbody>
 <tr>
 <td>Type</td>
-<td>The clear credit card’s number.<br/><em>Only the MEEZA payment option takes 19 digits card number.<br/></em>AMEX payment option takes 15 digits card number.<br/>*Otherwise, they take 16 digits card number.</td>
+<td>The clear credit card’s number.<br /><em>Only the MEEZA payment option takes 19 digits card number.<br/></em>AMEX payment option takes 15 digits card number.<br/>*Otherwise, they take 16 digits card number.</td>
 </tr>
 <tr>
 <td>Maximum length</td>
@@ -337,7 +971,7 @@
 <tbody>
 <tr>
 <td>Type</td>
-<td>A security code for the card. <br />* Only AMEX accepts card security code of 4 digits.</td>
+<td>A security code for the card. * Only AMEX accepts card security code of 4 digits.</td>
 </tr>
 <tr>
 <td>Maximum length</td>
@@ -402,7 +1036,7 @@
 </tbody>
 </table>
 <hr />
-<p><strong>card_holder_name</strong> <sup>string, optional</sup></p>
+<p><strong>card_holder_name</strong><sup> string, optional</sup></p>
 <table>
 <thead>
 <tr>
@@ -421,7 +1055,7 @@
 </tr>
 <tr>
 <td>Special characters</td>
-<td><strong><code>'</code>- .</strong></td>
+<td><strong>@ - _</strong></td>
 </tr>
 <tr>
 <td>Example</td>
@@ -430,7 +1064,7 @@
 </tbody>
 </table>
 <hr />
-<p><strong>remember_me</strong> <sup>string, optional</sup></p>
+<p><strong>remember_me</strong><sup> string, optional</sup></p>
 <table>
 <thead>
 <tr>
@@ -481,10 +1115,10 @@
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note</em></strong> - <em>Please don’t include the following parameters in calculating the signature if you are using Merchant Page 2.0 tokenization request:</em>
-<em>card_security_code, card number, expiry_date, card_holder_name, remember_me.</em></p>
-<h2 id="merchant-page-20-response">Merchant Page 2.0 - Response</h2>
+<hr />
+<h3 id="response-parameters_1">Response Parameters</h3>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<hr />
 <p><strong>service_command</strong><sup> string</sup></p>
 <table>
 <thead>
@@ -839,13 +1473,13 @@
 <td>3</td>
 </tr>
 <tr>
-<td>Possible/Expected values</td>
-<td><strong>-Yes</strong><br /><strong>-No</strong></td>
+<td>Possible/ expected values</td>
+<td><strong>- YES,<br /> - NO</strong></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><strong>return_url</strong> <sup>alphanumeric</sup></p>
+<p><strong>return_url</strong> <sup>string</sup></p>
 <table>
 <thead>
 <tr>
@@ -863,23 +1497,25 @@
 <td>400</td>
 </tr>
 <tr>
-<td>Example</td>
+<td>Possible/ expected values</td>
 <td><strong>http://www.merchant.com</strong></td>
 </tr>
 </tbody>
 </table>
+<p><strong><em>Note:</em></strong></p>
+<p><em>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</em></p>
 <hr />
-<p><strong><em>Note</em></strong> - <em>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones</em>.</p>
-<hr />
-<h2 id="merchant-page-20-operations">Merchant Page 2.0 Operations</h2>
-<h3 id="merchant-page-20-operations-urls">Merchant Page 2.0 Operations URLs</h3>
-<p><strong>Test Environment URL:</strong></p>
+<h2 id="integration-page-operations">Integration Page - Operations</h2>
+<h3 id="operations-urls">Operations URLs</h3>
+<h4 id="test-environment-url"><strong>Test Environment URL</strong></h4>
 <p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
-<p><strong>Production Environment URL:</strong></p>
+<h4 id="production-environment-url"><strong>Production Environment URL</strong></h4>
 <p>https://paymentservices.payfort.com/FortAPI/paymentApi</p>
-<h3 id="parameters-submission-type_1">Parameters Submission Type</h3>
+<hr />
+<h4 id="parameters-submission-type_1">Parameters Submission Type</h4>
 <p>REST POST request using JSON.</p>
-<h3 id="operations-request">Operations - Request</h3>
+<hr />
+<h3 id="operations-request-parameters">Operations - Request Parameters</h3>
 <p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
 <hr />
 <p><strong>command</strong><sup> string, mandatory</sup></p>
@@ -1564,11 +2200,9 @@
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note</em></strong> : Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
-For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
-Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<p><strong><em>Note</em></strong> : Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.<br/>For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.<br/>Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
 <hr />
-<h3 id="operations-response">Operations - Response</h3>
+<h3 id="operations-response-parameters">Operations - Response Parameters</h3>
 <p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
 <hr />
 <p><strong>command</strong><sup> string</sup></p>
@@ -2363,15 +2997,28 @@ Another example: If the amount value was 100 JOD; according to ISO code 3, you s
 </table>
 <p><strong><em>Note</em></strong> - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
 <hr />
-<h2 id="how-to-add-the-tokenization-service-on-the-merchant-20-page-channel">How to add the Tokenization service on the Merchant 2.0 Page channel?</h2>
-<p>The Tokenization service is applicable to be integrated through the Merchant Page 2.0 Channel through the below steps:
+<h2 id="how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</h2>
+<p>The Tokenization service is applicable to be integrated through the payment page through the below steps:
 <strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
-<strong>2.</strong> The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
-<strong>3.</strong> No need to open the Merchant Page to fill all the card details again in the next checkouts.</p>
+<strong>2.</strong> The payment page will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
+<strong>3.</strong> No need to open the Payment Details Form to fill all the card details again in the next checkouts.</p>
 <p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
 <p><strong><em>Note</em></strong>
 Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service</a> for more details about the token name parameter.</p>
-<p>Was this helpful? Yes No</p></div>
+<hr />
+<h2 id="payment-page-customization">Payment Page Customization</h2>
+<p><strong>This is a list with all customizable CSS classes on the basic merchant page:</strong></p>
+<ul>
+<li>The <strong><code>Wrapper</code></strong> class: responsible for the total width of the form container and the background.</li>
+<li>The <strong><code>Container</code></strong> class: responsible for the form’s shape and width.</li>
+<li>The <strong><code>Popover</code></strong> class: responsible for the error messages.</li>
+<li>The <strong><code>Half-container</code></strong> class: used to merge the date and CVV fields into one block if needed.</li>
+<li>The <strong><code>Input</code></strong> class: is the container of each single input field.</li>
+<li>The <strong><code>Pay</code></strong> class: responsible for the submit button.</li>
+<li>The <strong><code>Visa/ MasterCard</code></strong> classes: used to change the color of the Visa/ MasterCard colors.</li>
+</ul>
+<p><strong><em>Note</em></strong> - You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.</p>
+<p><strong><em>Note</em></strong>- “Theme” files can be uploaded from the back-office using the Payment Page template screen.</p></div>
         </div>
 
         <footer class="col-md-12">

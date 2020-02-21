@@ -7,22 +7,22 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>PayFort Documentation</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Redirections - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+    <script src="../js/jquery-1.10.2.min.js" defer></script>
+    <script src="../js/bootstrap-3.3.7.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">PayFort Documentation</a>
+                    <a class="navbar-brand" href="..">PayFort Documentation</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,16 +47,16 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">Home</a>
+                                <a href="..">Home</a>
                             </li>
                             <li >
-                                <a href="/paymentpage/">PaymentPage</a>
+                                <a href="../paymentpage/">PaymentPage</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Redirections</a>
                             </li>
                             <li >
-                                <a href="/redirections/">Redirections</a>
-                            </li>
-                            <li >
-                                <a href="/glossary/">Glossary</a>
+                                <a href="../glossary/">Glossary</a>
                             </li>
                         </ul>
 
@@ -66,21 +66,52 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../paymentpage/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../glossary/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#redirections">Redirections</a></li>
+            <li><a href="#authorization-and-purchase">Authorization and Purchase</a></li>
+            <li><a href="#authorization-purchase-urls">Authorization/ Purchase URLs</a></li>
+            <li><a href="#parameters-submission-type">Parameters Submission Type</a></li>
+            <li><a href="#authorization-purchase-request">Authorization/ Purchase - Request</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="redirections">Redirections</h1>
+<h2 id="authorization-and-purchase">Authorization and Purchase</h2>
+<p>Operations that help the Merchant to complete the payment process. The <strong>Authorization</strong> operation hold an amount from the Customer’s credit card account for a period of time until the Merchant capture or void the transaction. If no capture or void was processed during this period, the transaction will be voided automatically. In <strong>Purchase</strong> you will send one single request in order to authorize and capture the transaction amount.
+We offer the Merchant to <strong>Redirect</strong> the Customer from his website to PayFort’s gateway page to fill out his credit card details during these operations.</p>
+<hr />
+<h2 id="authorization-purchase-urls">Authorization/ Purchase URLs</h2>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbcheckout.payfort.com/FortAPI/paymentPage</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://checkout.payfort.com/FortAPI/paymentPage</p>
+<hr />
+<h2 id="parameters-submission-type">Parameters Submission Type</h2>
+<p>HTTPs Form Post Request.</p>
+<pre><code class="html">&lt;form method=&quot;post&quot; action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; id=&quot;form1&quot; name=&quot;form1&quot;&gt; &lt;/form&gt;
+</code></pre>
 
-
+<hr />
+<h2 id="authorization-purchase-request">Authorization/ Purchase - Request</h2>
+<p>Please take a look at the <strong>Authorization/ Purchase Request Example</strong> on the right side of the page.</p></div>
         </div>
 
         <footer class="col-md-12">
@@ -88,11 +119,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
