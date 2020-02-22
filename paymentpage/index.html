@@ -14,7 +14,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Payment Page - PayFort API Reference</title>
+        <title>Payment Page - PayFort Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
       
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 	<div class="container">
-	<a class="navbar-brand" href="..">PayFort API Reference</a>
+	<a class="navbar-brand" href="..">PayFort Documentation</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
 	</button>
@@ -85,8 +85,8 @@
 <p>You can get started with PayFort by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
 <p>PayFort offers you two approaches for integrations with your merchant site as mentioned below:</p>
 <ul>
-<li>By using <a href="" title="#iframe">PayFort iFrame</a></li>
-<li>By developing your own custom payment form.</li>
+<li>By using PayFort iFrame <a href="#using-payfort-iframe"><i class="fa fa-link"></i></a></li>
+<li>By developing your own custom payment form<a href="../custompaymentform/"><i class="fa fa-link"></i></a></li>
 </ul>
 <hr />
 <h2 id="payfort-payment-features">PayFort Payment Features</h2>
@@ -105,123 +105,18 @@
 <p>​                                                     Figure 1 </p>
 <p>​                                 Shopping cart applications supported by PayFort</p>
 <hr />
-<h2 id="using-payfort-iframe"><a name="iframe"></a>Using PayFort iFrame</h2>
-<p><em>PayFort</em> <strong><em>iFrame</em></strong> help you to create a payment form which is customizable. It gives the customer to provide their payment details on your site checkout page or in your mobile based app. Once the details are entered PayFort generates a secure single use token through tokenization process. This token can be used to request a payment without the need to store any customer's payment information in your site.</p>
-<p><em>PayFort</em> processes the transaction and returns the results back to the your site through invisible redirection.
- <a href="https://mattermost.com"><img alt="button" src="http://www.presentationpro.com/images/product/medium/slide/PPP_CGENE_LT3_Presentation-PowerPoint-Slide-Graphic_Push_Button_Up.jpg" /></a></p>
-<p>Please refer figure 2.</p>
-<p><img alt="Figure1" src="../img/image-20200211222706973.png" />
-Figure 2 - Using PayFort iFrame</p>
+<h2 id="using-payfort-iframe">Using PayFort iFrame</h2>
+<p><em>PayFort</em> <strong><em>iFrame</em></strong> helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page or in your mobile based app. Once the details are entered PayFort generates a secure single use token through tokenization process. This token can be used to request a payment without the need to store any customer's payment information in your site.</p>
+<p><em>PayFort</em> processes the transaction and returns the results back to the your site through invisible redirection.</p>
+<p><a href="../iframe_web/"><button class="btn btn-primary">check out iframe for web here</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../iframe_web/"><button class="btn btn-primary">check out iframe for mobile here</button></a></p>
 <hr />
-<h3 id="how-it-works-overview">How it Works - Overview</h3>
-<p><strong>1.</strong> The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel of as that of your website.</p>
-<p><strong>2.</strong> PayFort then receives the payment details and sends you the confirmation to complete the transaction.</p>
-<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the payment details form.</em></p>
+<h2 id="using-custom-payment-form">Using Custom Payment Form</h2>
 <hr />
-<h3 id="integration-flow">Integration Flow</h3>
-<p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
-<ol>
-<li>
-<p>The customer begins the checkout process on your website.</p>
-</li>
-<li>
-<p>The payment page encapsulated inside iFrame is displayed.  Then the Customer enters the card’s details on the payment page.</p>
-</li>
-<li>
-<p>PayFort checks the card details.</p>
-</li>
-<li>
-<p>PayFort creates a token for the Customer transaction and sends it to the payment page.</p>
-</li>
-<li>
-<p>The Payment page then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFort.</p>
-</li>
-<li>
-<p>In case your page receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
-   <strong>a.</strong> Your payment page redirects the Customer to the ACS to check his card enrollment.<br><strong>b.</strong> The Customer enters authentication data on the ACS platform.<br><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
-</li>
-<li>
-<p>PayFort completes the operation based on the 3-D Secure response and returns the response to your payment page.</p>
-</li>
-<li>
-<p>PayFort sends the payment results to your site.</p>
-</li>
-</ol>
-<p><strong><em>Note</em></strong> -</p>
-<ul>
-<li>In this case, PayFort returns<em> </em><em>status “20: On hold”</em><em> </em>and<em> </em><em>message “064: 3-D Secure check requested”</em><em>. </em>For example, PayFort is waiting for your payment page to authenticate the Customer.*</li>
-<li><em>If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em></li>
-<li>If the Token is sent by you, it will be generated with the same name as sent by your page.</li>
-<li>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</li>
-</ul>
-<hr />
-<h2 id="2-using-custom-payment-form">2. Using Custom Payment Form</h2>
 <p>You can also design and develop your own custom for for collecting the card details. The card details are sent directly to PayFort and substituted with Token. You can then use this Token to complete the transaction.</p>
-<p><img alt="custom-payment" src="../img/custom-payment-form.png" /></p>
+<p><a href="../custompaymentform/"><button class="btn btn-primary">custom payment form </button></a></p>
 <hr />
-<h3 id="how-it-works-overview_1">How it works - overview</h3>
-<p><strong>1.</strong> You develop your own custom payment details form that collects the card details (credit card number, expiry date, CVV), and sends the request to PayFort.
-<strong>2.</strong> PayFort receives the payment details and returns the response which includes the Token to your payment processing page.
-<strong>3.</strong> You use the token to complete the <a href="https://docs.payfort.com/docs/api/build/index.html#operations-request">Authorization or Purchase operation</a>.</p>
-<p><strong><em>Note</em></strong> - You should develop a form that does not send data to your website but directly submits the form to PayFort.*</p>
-<hr />
-<h3 id="integration-flow_1">Integration Flow</h3>
-<p><img alt="image-20200213230424907" src="../img/image-20200213230424907.png" /></p>
-<p><strong>1.</strong> The Customer begins the checkout process on your website.</p>
-<p><strong>2.</strong> Your website displays the custom payment form to collect the card’s details. Then the Customer enters the card’s details on the payment page.</p>
-<p><strong>3.</strong> PayFort validates the card format.</p>
-<p><strong>4.</strong> PayFort creates a token for the card details and sends it back to your payment page.</p>
-<p><strong>5.</strong> Payment page stores the Token and proceeds with the transaction.</p>
-<p><strong>6.</strong> Payment page sends a payment request along with the Token to PayFort.</p>
-<p><strong>7.</strong> PayFort sends the 3-D Secure URL, and response indicating that a check is required:</p>
-<p><strong>a.</strong> Payment page redirects the Customer to check his card enrollment.
-  <strong>b.</strong> The Customer enters authentication data.
-  <strong>c.</strong> 3-D Secure authentication is completed and PayFort receives the authentication results.</p>
-<p><strong><em>Note</em></strong> - <em>In this case, PayFort returns</em> <strong>status “20: On hold”</strong> <em>and</em> <strong>message “064: 3-D Secure check requested”</strong>. <em>For example, PayFort is waiting for the payment page to authenticate the Customer.</em></p>
-<p><strong>8.</strong> PayFort completes the operation based on the 3-D Secure response and returns the response to the website.</p>
-<p><strong>9.</strong> The payment results are displayed to the Customer.</p>
-<p><strong><em>Note</em></strong> -</p>
-<ul>
-<li>
-<p><em>If the Token is sent by the payment page, it will be generated with the same name sent by the website.</em></p>
-</li>
-<li>
-<p>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</p>
-</li>
-</ul>
-<hr />
-<h2 id="integration-page-operations">Integration Page - Operations</h2>
-<h3 id="operations-urls">Operations URLs</h3>
-<h4 id="test-environment-url"><strong>Test Environment URL</strong></h4>
-<p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
-<h4 id="production-environment-url"><strong>Production Environment URL</strong></h4>
-<p>https://paymentservices.payfort.com/FortAPI/paymentApi</p>
-<hr />
-<h4 id="parameters-submission-type">Parameters Submission Type</h4>
-<p>REST POST request using JSON.</p>
-<hr />
-<h2 id="how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</h2>
-<p>The Tokenization service is applicable to be integrated through the payment page through the below steps:
-<strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
-<strong>2.</strong> The payment page will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
-<strong>3.</strong> No need to open the Payment Details Form to fill all the card details again in the next checkouts.</p>
-<p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
-<p><strong><em>Note</em></strong>
-Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service</a> for more details about the token name parameter.</p>
-<hr />
-<h2 id="payment-page-customization">Payment Page Customization</h2>
-<p><strong>This is a list with all customizable CSS classes on the basic merchant page:</strong></p>
-<ul>
-<li>The <strong><code>Wrapper</code></strong> class: responsible for the total width of the form container and the background.</li>
-<li>The <strong><code>Container</code></strong> class: responsible for the form’s shape and width.</li>
-<li>The <strong><code>Popover</code></strong> class: responsible for the error messages.</li>
-<li>The <strong><code>Half-container</code></strong> class: used to merge the date and CVV fields into one block if needed.</li>
-<li>The <strong><code>Input</code></strong> class: is the container of each single input field.</li>
-<li>The <strong><code>Pay</code></strong> class: responsible for the submit button.</li>
-<li>The <strong><code>Visa/ MasterCard</code></strong> classes: used to change the color of the Visa/ MasterCard colors.</li>
-</ul>
-<p><strong><em>Note</em></strong> - You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.</p>
-<p><strong><em>Note</em></strong>- “Theme” files can be uploaded from the back-office using the Payment Page template screen.</p>
+<h1 id="get-started-with-testing">Get Started With Testing</h1>
+<p>If you have developed your payment page then you can proceed with creating a testing account from this <a href="" title="https://www.payfort.com/test-account/">link</a></p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <li class="last-updated-holder displayDate loading">
@@ -256,17 +151,9 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
                     <a href="#using-payfort-iframe" class="nav-link">Using PayFort iFrame</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#2-using-custom-payment-form" class="nav-link">2. Using Custom Payment Form</a>
+                    <a href="#using-custom-payment-form" class="nav-link">Using Custom Payment Form</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#integration-page-operations" class="nav-link">Integration Page - Operations</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#how-to-add-the-tokenization-service-on-the-payment-page" class="nav-link">How to add the Tokenization service on the Payment Page?</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#payment-page-customization" class="nav-link">Payment Page Customization</a>
-                </li>
+            <li class="nav-item main"><a class="nav-link" href="#get-started-with-testing">Get Started With Testing</a></li>
         </ul>
     </div>
 </div></div>

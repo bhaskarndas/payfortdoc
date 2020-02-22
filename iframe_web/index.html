@@ -14,7 +14,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Glossary - PayFort Documentation</title>
+        <title>iFrame For Web - PayFort Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -52,8 +52,8 @@
             <li >
               <a class="nav-link" href="../paymentpage/">Payment Page</a>
             </li>
-            <li class="active">
-              <a class="nav-link" href="./">Glossary</a>
+            <li >
+              <a class="nav-link" href="../glossary/">Glossary</a>
             </li>
           </ul>
 	  
@@ -75,36 +75,108 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     
-    <li class="breadcrumb-item active" aria-current="page">Glossary</li>
+    <li class="breadcrumb-item active" aria-current="page">iFrame For Web</li>
   </ol>
 </nav>
 
 
-<h1 id="glossary-of-terms-used">Glossary of Terms Used</h1>
-<h2 id="number">Number</h2>
-<ul>
-<li><strong>3-D Secure URL</strong> -  An <a href="https://en.wikipedia.org/wiki/XML">XML</a>-based protocol designed to be an additional security layer for online <a href="https://en.wikipedia.org/wiki/Credit_card">credit</a> and <a href="https://en.wikipedia.org/wiki/Debit_card">debit card</a> transactions.</li>
-</ul>
+<h1 id="iframe-for-web">iFrame For Web</h1>
+<p>You can setup payment form and start accepting payments within few minutes with the help of iFrame. PayFort provides easy to use iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, Diners etc. </p>
+<p><img alt="Figure1" src="../img/image-20200211222706973.png" /></p>
+<p>Figure 1 - Using PayFort iFrame for web</p>
 <hr />
-<h2 id="a">A</h2>
-<ul>
-<li><strong>ACS</strong> - <strong>Access Control Server</strong> running on the bank side that authenticates e-commerce transactions through the 3D Secure URL.</li>
-</ul>
+<h2 id="how-it-works">How it Works</h2>
+<p><strong>1.</strong> The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel as that of your website.</p>
+<p><strong>2.</strong> PayFort then receives the payment details and sends you the confirmation to complete the transaction.</p>
+<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the payment details form.</em></p>
 <hr />
-<h2 id="p">P</h2>
-<ul>
-<li><strong>PCI-DSS</strong>- Payment Card Industry Data Security Standard. A set of security standards which forms the compliance scheme. The compliance aims to secure credit and debit card transactions against payment frauds.</li>
-</ul>
+<h2 id="integration-flow">Integration Flow</h2>
+<p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
 <hr />
-<h2 id="r">R</h2>
-<ul>
-<li><strong>Redirection</strong> - Routing to other site (bank or financial institution) or webpage through the action on the page for authentication purpose. The action could be submit button.</li>
-</ul>
+<h2 id="give-it-a-try">Give It a Try</h2>
+<p>Use one of our <a href="https://docs.payfort.com/">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
+<p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
+<p>Comment--Need to add dynamic code script block to accept test card and generate a test token here.</p>
 <hr />
-<h2 id="u">U</h2>
-<ul>
-<li><strong>URL</strong>- Uniform Resource locator. Example : https:\www.example.com</li>
-</ul>
+<h1 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h1>
+<h2 id="before-you-start">Before you start</h2>
+<p>Make sure you have your <code>public_key</code>. You can find it in the <a href="https://hub.checkout.com/v2">Hub</a>, under <strong>Settings &gt; Channels</strong>. If you don't have an account with us yet, you can request a free test one at <a href="https://checkout.com/">Checkout.com</a>.</p>
+<h2 id="add-the-code-snippet-to-your-site">Add the code snippet to your site</h2>
+<p>The following code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using Frames. Simply copy it and add it to your checkout page, replacing the supplied <code>publicKey</code> with your own. The card token will be posted via the URL specified in the form's <code>action</code> attribute.</p>
+<div class="container">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#htmlcode">HTML</a>
+    </li>
+    </ul>
+<a name=htmlcode></a>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Checkout Frames v2&lt;/title&gt;
+  &lt;style&gt;*,*::after,*::before{box-sizing:border-box}html{padding:1rem;background-color:#FFF;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}#payment-form{width:31.5rem;margin:0 auto}iframe{width:100%}.one-liner{display:flex;flex-direction:column}#pay-button{border:none;border-radius:3px;color:#FFF;font-weight:500;height:40px;width:100%;background-color:#13395E;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:active{background-color:#0B2A49;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:hover{background-color:#15406B;box-shadow:0 2px 5px 0 rgba(19,57,94,0.4)}#pay-button:disabled{background-color:#697887;box-shadow:none}#pay-button:not(:disabled){cursor:pointer}.card-frame{border:solid 1px #13395E;border-radius:3px;width:100%;margin-bottom:8px;height:40px;box-shadow:0 1px 3px 0 rgba(19,57,94,0.2)}.card-frame.frame--rendered{opacity:1}.card-frame.frame--rendered.frame--focus{border:solid 1px #13395E;box-shadow:0 2px 5px 0 rgba(19,57,94,0.15)}.card-frame.frame--rendered.frame--invalid{border:solid 1px #D96830;box-shadow:0 2px 5px 0 rgba(217,104,48,0.15)}.success-payment-message{color:#13395E;line-height:1.4}.token{color:#b35e14;font-size:0.9rem;font-family:monospace}@media screen and (min-width: 31rem){.one-liner{flex-direction:row}.card-frame{width:318px;margin-bottom:0}#pay-button{width:175px;margin-left:8px}}&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;!-- add frames script here --&gt;
+  &lt;script src=&quot; &quot;&gt;&lt;/script&gt;
+  &lt;form id=&quot;payment-form&quot; method=&quot;POST&quot; action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot;&gt;
+    &lt;div class=&quot;one-liner&quot;&gt;
+      &lt;div class=&quot;card-frame&quot;&gt;
+        &lt;!-- form will be added here --&gt;
+      &lt;/div&gt;
+      &lt;!-- add submit button --&gt;  
+      &lt;button id=&quot;pay-button&quot; disabled&gt;
+        PAY GBP 24.99
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;success-payment-message&quot;&gt;&lt;/p&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    var payButton = document.getElementById(&quot;pay-button&quot;);
+    var form = document.getElementById(&quot;payment-form&quot;);
+
+    Frames.init(&quot;pk_test_6ff46046-30af-41d9-bf58-929022d2cd14&quot;);
+
+    Frames.addEventHandler(
+      Frames.Events.CARD_VALIDATION_CHANGED,
+      function (event) {
+        console.log(&quot;CARD_VALIDATION_CHANGED: %o&quot;, event);
+
+        payButton.disabled = !Frames.isCardValid();
+      }
+    );
+
+    Frames.addEventHandler(
+      Frames.Events.CARD_TOKENIZED,
+      function (event) {
+        var el = document.querySelector(&quot;.success-payment-message&quot;);
+        el.innerHTML = &quot;Card tokenization completed&lt;br&gt;&quot; +
+          &quot;Your card token is: &lt;span class=\&quot;token\&quot;&gt;&quot; + event.token + &quot;&lt;/span&gt;&quot;;
+      }
+    );
+
+    form.addEventListener(&quot;submit&quot;, function (event) {
+      event.preventDefault();
+      Frames.submitCard();
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+</div>
+
+<p>```</p>
+<hr />
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <li class="last-updated-holder displayDate loading">
@@ -131,21 +203,22 @@
 
     <div id="toc-collapse" class="navbar-collapse collapse card">
         <ul class="nav flex-column bs-sidenav">
-            <li class="nav-item main"><a class="nav-link" href="#glossary-of-terms-used">Glossary of Terms Used</a></li>
+            <li class="nav-item main"><a class="nav-link" href="#iframe-for-web">iFrame For Web</a></li>
                 <li class="nav-item">
-                    <a href="#number" class="nav-link">Number</a>
+                    <a href="#how-it-works" class="nav-link">How it Works</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#a" class="nav-link">A</a>
+                    <a href="#integration-flow" class="nav-link">Integration Flow</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#p" class="nav-link">P</a>
+                    <a href="#give-it-a-try" class="nav-link">Give It a Try</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</a></li>
+                <li class="nav-item">
+                    <a href="#before-you-start" class="nav-link">Before you start</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#r" class="nav-link">R</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#u" class="nav-link">U</a>
+                    <a href="#add-the-code-snippet-to-your-site" class="nav-link">Add the code snippet to your site</a>
                 </li>
         </ul>
     </div>
