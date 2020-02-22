@@ -35,28 +35,38 @@
     </head>
 
     <body class="">
-      
+
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 	<div class="container">
 	<a class="navbar-brand" href="..">PayFort Documentation</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
 	</button>
-	
+
 	<div class="collapse navbar-collapse">
           <!-- Main navigation -->
-          <ul class="nav navbar-nav">
-            <li >
-              <a class="nav-link" href="..">Home</a>
-            </li>
-            <li class="active">
-              <a class="nav-link" href="./">Payment Page</a>
-            </li>
-            <li >
-              <a class="nav-link" href="../glossary/">Glossary</a>
-            </li>
-          </ul>
-	  
+          <nav class="nav">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown active">
+                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Payment Processing">Payment Processing <b class="caret"></b></a>
+                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Payment Processing">
+                  
+<a href="./" class="dropdown-item active">Payment Page</a>
+                  
+<a href="../iframe_web/" class="dropdown-item">iFrame For Web</a>
+                  
+<a href="../custompaymentform/" class="dropdown-item">Custom Payment Form</a>
+                </div>
+              </li>
+              <li >
+                <a class="nav-link" href="https://docs.payfort.com/docs/api/build/index.html">API Reference</a>
+              </li>
+              <li >
+                <a class="nav-link" href="../glossary/">Glossary</a>
+              </li>
+            </ul>
+          </nav>
+
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
@@ -74,6 +84,10 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    
+    
+    <li class="breadcrumb-item">Payment Processing</li>
+    
     
     <li class="breadcrumb-item active" aria-current="page">Payment Page</li>
   </ol>
@@ -115,7 +129,7 @@
 <p>You can also design and develop your own custom for for collecting the card details. The card details are sent directly to PayFort and substituted with Token. You can then use this Token to complete the transaction.</p>
 <p><a href="../custompaymentform/"><button class="btn btn-primary">custom payment form </button></a></p>
 <hr />
-<h1 id="get-started-with-testing">Get Started With Testing</h1>
+<h2 id="get-started-with-testing">Get Started With Testing</h2>
 <p>If you have developed your payment page then you can proceed with creating a testing account from this <a href="" title="https://www.payfort.com/test-account/">link</a></p>
 <hr />
 <h2 id="need-further-help">Need further help?</h2>
@@ -156,7 +170,9 @@
                 <li class="nav-item">
                     <a href="#using-custom-payment-form" class="nav-link">Using Custom Payment Form</a>
                 </li>
-            <li class="nav-item main"><a class="nav-link" href="#get-started-with-testing">Get Started With Testing</a></li>
+                <li class="nav-item">
+                    <a href="#get-started-with-testing" class="nav-link">Get Started With Testing</a>
+                </li>
                 <li class="nav-item">
                     <a href="#need-further-help" class="nav-link">Need further help?</a>
                 </li>
@@ -165,7 +181,7 @@
 </div></div>
       </div>
       </div>
-      
+
       <footer class="col-md-12">
 	<hr>
 	<div class="container">
@@ -177,7 +193,7 @@
       </script>
       <script src="../js/base.js" defer></script>
       <script src="../search/main.js" defer></script>
-      
+
       <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -241,6 +257,6 @@
         </div>
     </div>
 </div>
-      
+
     </body>
 </html>
