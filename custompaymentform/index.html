@@ -56,6 +56,8 @@
 <a href="../iframe_web/" class="dropdown-item">iFrame For Web</a>
                   
 <a href="./" class="dropdown-item active">Custom Payment Form</a>
+                  
+<a href="../testing/" class="dropdown-item">Testing</a>
                 </div>
               </li>
               <li >
@@ -163,12 +165,48 @@
 <p><img alt="" src="../img/paymentintegration settings.png" /></p>
 <p>Figure 2 : Uploading custom template</p>
 <p>The Payment Page Template available in the backoffice provides you the feature to create a custom payment processing page. Refer to the figure 2. Once you upload your custom payment page our support team will validate the same.</p>
-<p><img alt="" src="C:/dev/payfortdoc/docs/img/integrationsettings2.png" /></p>
+<p><img alt="" src="../img/integrationsettings2.png" /></p>
 <p>Figure 3:  Generating Access Code.</p>
 <hr />
 <h2 id="start-testing">Start testing</h2>
 <p>Ready to try out your integration? Create a test account to get everything working perfectly before going live.<br/><br/>
 <a href="" title="https://www.payfort.com/test-account/"><button class="btn btn-primary">Get test account </button></a></p>
+<h2 id="add-the-code-snippet-to-your-site">Add the code snippet to your site</h2>
+<p>The following code snippet shown here is an example of the start of the payment process. Simply copy it and add it to your checkout page, replacing the supplied <code>acccess_code</code> with your own. The card token will be posted via the URL specified in the form's <code>action</code> attribute.</p>
+<div class="container">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#htmlcode">HTML</a>
+    </li>
+    </ul>
+<a name=htmlcode></a>
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<pre><code class="php+HTML">&lt;html&gt;
+
+&lt;body&gt;
+ &lt;form method=&quot;post&quot; action=&quot;https://checkout.payfort.com/FortAPI/paymentPage&quot; class=&quot;pay_form&quot; name=&quot;form1&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; value=&quot;access_code&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;1000&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;command&quot; value=&quot;PURCHASE&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;currency&quot; value=&quot;USD&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;customer_email&quot; value=&quot;user@mail.com&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;customer_name&quot; value=&quot;customer name&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;language&quot; value=&quot;en&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; value=&quot;identifier_code&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; value=&quot;order_id&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; value=&quot;my_return_url&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;signature&quot; value=&quot;form_signature&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</div>
+
 <hr />
 <h2 id="how-to-add-the-tokenization-service-on-the-payment-page">How to add the Tokenization service on the Payment Page?</h2>
 <p>The Tokenization service is applicable to be integrated through the payment page through the below steps:</p>
@@ -234,6 +272,9 @@ Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.h
                 </li>
                 <li class="nav-item">
                     <a href="#start-testing" class="nav-link">Start testing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#add-the-code-snippet-to-your-site" class="nav-link">Add the code snippet to your site</a>
                 </li>
                 <li class="nav-item">
                     <a href="#how-to-add-the-tokenization-service-on-the-payment-page" class="nav-link">How to add the Tokenization service on the Payment Page?</a>
