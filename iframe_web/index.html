@@ -48,8 +48,8 @@
           <nav class="nav">
             <ul class="navbar-nav">
               <li class="nav-item dropdown active">
-                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Payment Processing">Payment Processing <b class="caret"></b></a>
-                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Payment Processing">
+                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Quick Start">Quick Start <b class="caret"></b></a>
+                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Quick Start">
                   
 <a href="../paymentpage/" class="dropdown-item">Payment Page</a>
                   
@@ -58,6 +58,13 @@
 <a href="../custompaymentform/" class="dropdown-item">Custom Payment Form</a>
                   
 <a href="../testing/" class="dropdown-item">Testing</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Payment Actions">Payment Actions <b class="caret"></b></a>
+                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Payment Actions">
+                  
+<a href="../transactionrequest/" class="dropdown-item">Payment Request</a>
                 </div>
               </li>
               <li >
@@ -88,7 +95,7 @@
   <ol class="breadcrumb">
     
     
-    <li class="breadcrumb-item">Payment Processing</li>
+    <li class="breadcrumb-item">Quick Start</li>
     
     
     <li class="breadcrumb-item active" aria-current="page">iFrame For Web</li>
@@ -145,13 +152,23 @@
 </ul>
 <hr />
 <h2 id="give-it-a-try">Give It a Try</h2>
-<p>Use one of our <a href="https://docs.payfort.com/">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
+<p>Use one of our <a href="../testing/">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
 <p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
 <p>Comment--Need to add dynamic code script block to accept test card and generate a test token here.</p>
 <hr />
-<h1 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h1>
-<h2 id="before-you-start">Before you start</h2>
-<p>Make sure you have your <code>access_code</code>. Refer to Figure 2 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings<strong>Security Settings &gt; Access Code</strong>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with an active account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
+<h2 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h2>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="production-environment">Production Environment</h3>
+<pre><code>POST https://checkout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<h3 id="sandbox">Sandbox</h3>
+<pre><code>POST https://sbcheckout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<hr />
+<h3 id="before-you-start">Before you start</h3>
+<p>Make sure you have your <code>access_code</code>. Refer to Figure 2 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings &gt; <strong>Security Settings &gt; Access Code</strong>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with an active account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
 <p><a name="figure2"></a><br/></p>
 <p><img alt="" src="../img/integrationsettings2.png" /></p>
 <p>Figure 2 : Access Code Generation</p>
@@ -160,92 +177,30 @@
 <p><img alt="" src="../img/paymentintegration settings.png" /></p>
 <p>Figure 3 : Use Payment Settings to create a payment form</p>
 <hr />
-<h2 id="add-the-code-snippet-to-your-site">Add the code snippet to your site</h2>
-<p>The following code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using Frames. Simply copy it and add it to your checkout page, replacing the supplied <code>acccess_code</code> with your own. The card token will be posted via the URL specified in the form's <code>action</code> attribute.</p>
-<div class="container">
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#htmlcode">HTML</a>
-    </li>
-    </ul>
-<a name=htmlcode></a>
-
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Checkout Frames v2&lt;/title&gt;
-  &lt;style&gt;*,*::after,*::before{box-sizing:border-box}html{padding:1rem;background-color:#FFF;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}#payment-form{width:31.5rem;margin:0 auto}iframe{width:100%}.one-liner{display:flex;flex-direction:column}#pay-button{border:none;border-radius:3px;color:#FFF;font-weight:500;height:40px;width:100%;background-color:#13395E;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:active{background-color:#0B2A49;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:hover{background-color:#15406B;box-shadow:0 2px 5px 0 rgba(19,57,94,0.4)}#pay-button:disabled{background-color:#697887;box-shadow:none}#pay-button:not(:disabled){cursor:pointer}.card-frame{border:solid 1px #13395E;border-radius:3px;width:100%;margin-bottom:8px;height:40px;box-shadow:0 1px 3px 0 rgba(19,57,94,0.2)}.card-frame.frame--rendered{opacity:1}.card-frame.frame--rendered.frame--focus{border:solid 1px #13395E;box-shadow:0 2px 5px 0 rgba(19,57,94,0.15)}.card-frame.frame--rendered.frame--invalid{border:solid 1px #D96830;box-shadow:0 2px 5px 0 rgba(217,104,48,0.15)}.success-payment-message{color:#13395E;line-height:1.4}.token{color:#b35e14;font-size:0.9rem;font-family:monospace}@media screen and (min-width: 31rem){.one-liner{flex-direction:row}.card-frame{width:318px;margin-bottom:0}#pay-button{width:175px;margin-left:8px}}&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;div class=&quot;container&quot;&gt;
-  &lt;ul class=&quot;nav&quot;&gt;
-    &lt;li class=&quot;nav-item&quot;&gt;
-      &lt;a class=&quot;nav-link&quot; href=&quot;#htmlcode&quot;&gt;HTML&lt;/a&gt;
-    &lt;/li&gt;
-    &lt;/ul&gt;
-&lt;a name=htmlcode&gt;&lt;/a&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-
-​    
-
-  &lt;!-- add frames script here --&gt;
-  &lt;script src=&quot; &quot;&gt;&lt;/script&gt;
-  &lt;form id=&quot;payment-form&quot; method=&quot;POST&quot; action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot;&gt;
-    &lt;div class=&quot;one-liner&quot;&gt;
-      &lt;div class=&quot;card-frame&quot;&gt;
-        &lt;!-- form will be added here --&gt;
-      &lt;/div&gt;
-      &lt;!-- add submit button --&gt;  
-      &lt;button id=&quot;pay-button&quot; disabled&gt;
-        PAY GBP 24.99
-      &lt;/button&gt;
+<h2 id="sample-iframe-code-snippet">Sample iFrame code snippet</h2>
+<p>The following sample code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using iFrames. Incase you are using php you can try out the below code example and add it to your checkout page. </p>
+<p>​    </p>
+<pre><code class="php+HTML">&lt;div class=&quot;popup-win&quot; id=&quot;popup-win&quot; style=&quot;display: none;&quot;&gt;
+    &lt;div class=&quot;popup-header&quot;&gt;
     &lt;/div&gt;
-    &lt;p class=&quot;success-payment-message&quot;&gt;&lt;/p&gt;
-  &lt;/form&gt;
+    &lt;div class=&quot;popup-subtitle&quot;&gt;
+        Transaction Value:&lt;span class='currency-txt'&gt;AED&amp;nbsp; 17.00&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;iframe id=&quot;ifrmPAYFORT&quot; name=&quot;ifrmPAYFORT&quot; style=&quot;width: 100%; height: 450px&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
 
-  &lt;script&gt;
-    var payButton = document.getElementById(&quot;pay-button&quot;);
-    var form = document.getElementById(&quot;payment-form&quot;);
+&lt;div class=&quot;overlay&quot; id=&quot;overlay&quot;&gt;&lt;/div&gt;
+    &lt;form METHOD=&quot;post&quot; ACTION=&quot;http://localhost/phppayfort/success.php&quot; id=&quot;payfortForm&quot; name=&quot;payfortForm&quot; target=&quot;ifrmPAYFORT&quot;&gt;
 
-    Frames.init(&quot;pk_test_6ff46046-30af-41d9-bf58-929022d2cd14&quot;);
-
-    Frames.addEventHandler(
-      Frames.Events.CARD_VALIDATION_CHANGED,
-      function (event) {
-        console.log(&quot;CARD_VALIDATION_CHANGED: %o&quot;, event);
-
-        payButton.disabled = !Frames.isCardValid();
-      }
-    );
-
-    Frames.addEventHandler(
-      Frames.Events.CARD_TOKENIZED,
-      function (event) {
-        var el = document.querySelector(&quot;.success-payment-message&quot;);
-        el.innerHTML = &quot;Card tokenization completed&lt;br&gt;&quot; +
-          &quot;Your card token is: &lt;span class=\&quot;token\&quot;&gt;&quot; + event.token + &quot;&lt;/span&gt;&quot;;
-      }
-    );
-
-    form.addEventListener(&quot;submit&quot;, function (event) {
-      event.preventDefault();
-      Frames.submitCard();
-    });
-  &lt;/script&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;
-
+        &lt;input type=&quot;hidden&quot; name=&quot;service_command&quot; value=&quot;&lt;?php echo $requestParams['service_command'] ?&gt;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;language&quot; value=&quot;&lt;?php echo $requestParams['language'] ?&gt;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; value=&quot;&lt;?php echo $requestParams['merchant_identifier'] ?&gt;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; value=&quot;&lt;?php echo $requestParams['access_code'] ?&gt;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;signature&quot; value=&quot;&lt;?php echo $signature ?&gt;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; value=&quot;&lt;?php echo $requestParams['return_url'] ?&gt;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; value=&quot;&lt;?php echo $requestParams['merchant_reference'] ?&gt;&quot;&gt;
+    &lt;/form&gt;
 </code></pre>
 
-</div>
-
-<p>```</p>
 <hr />
 <h2 id="need-further-help">Need further help?</h2>
 <p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
@@ -285,12 +240,14 @@
                 <li class="nav-item">
                     <a href="#give-it-a-try" class="nav-link">Give It a Try</a>
                 </li>
-            <li class="nav-item main"><a class="nav-link" href="#integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</a></li>
                 <li class="nav-item">
-                    <a href="#before-you-start" class="nav-link">Before you start</a>
+                    <a href="#integrate-iframes-to-payment-page" class="nav-link">Integrate iFrames to Payment Page</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#add-the-code-snippet-to-your-site" class="nav-link">Add the code snippet to your site</a>
+                    <a href="#endpoints" class="nav-link">Endpoints</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sample-iframe-code-snippet" class="nav-link">Sample iFrame code snippet</a>
                 </li>
                 <li class="nav-item">
                     <a href="#need-further-help" class="nav-link">Need further help?</a>
