@@ -1,107 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-      <script>
-	// Hack for scrolling window when linking to anchor tag with fixed nav header
-        var shiftWindow = function() { scrollBy(0, -75) };
-        window.addEventListener("hashchange", shiftWindow);
-        function load() { if (window.location.hash) shiftWindow(); }
-      </script>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>iFrame For Web - PayFort Documentation</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>iFrame For Web - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../css/highlight.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/http.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/base.js"></script> 
-    </head>
-
-    <body class="">
-
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-	<div class="container">
-	<a class="navbar-brand" href="..">PayFort Documentation</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-	</button>
-
-	<div class="collapse navbar-collapse">
-          <!-- Main navigation -->
-          <nav class="nav">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown active">
-                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Quick Start">Quick Start <b class="caret"></b></a>
-                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Quick Start">
-                  
-<a href="./" class="dropdown-item active">iFrame For Web</a>
-                  
-<a href="../custompaymentform/" class="dropdown-item">Custom Payment Form</a>
-                  
-<a href="../testing/" class="dropdown-item">Testing</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Payment Actions">Payment Actions <b class="caret"></b></a>
-                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Payment Actions">
-                  
-<a href="../transactionrequest/" class="dropdown-item">Payment Request</a>
-                </div>
-              </li>
-              <li >
-                <a class="nav-link" href="https://docs.payfort.com/docs/api/build/index.html">API Reference</a>
-              </li>
-              <li >
-                <a class="nav-link" href="../glossary/">Glossary</a>
-              </li>
-            </ul>
-          </nav>
-
-          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-		<i class="fa fa-search"></i> Search
-              </a>
-            </li>
-          </ul>
-	</div>
-	</div>
-      </nav><div id="content" class="container">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
         
-      <div class="row">
-        <div class="col-md-9" role="main">
+        var pageToc = [
+          {title: "iFrame For Web", url: "#_top", children: [
+              {title: "How it Works", url: "#how-it-works" },
+              {title: "Integration Flow", url: "#integration-flow" },
+              {title: "Give It a Try", url: "#give-it-a-try" },
+              {title: "Integrate iFrames to Payment Page", url: "#integrate-iframes-to-payment-page" },
+              {title: "Endpoints", url: "#endpoints" },
+              {title: "Sample iFrame code snippet", url: "#sample-iframe-code-snippet" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    
-    
-    <li class="breadcrumb-item">Quick Start</li>
-    
-    
-    <li class="breadcrumb-item active" aria-current="page">iFrame For Web</li>
-  </ol>
-</nav>
 
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
 
-<h1 id="iframe-for-web">iFrame For Web</h1>
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../custompaymentform/" class="btn btn-xs btn-link">
+        Custom Payment Form
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="iframe-for-web">iFrame For Web</h1>
 <p>You can setup payment form and start accepting payments within few minutes with the help of iFrame. PayFort provides easy to use iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, Diners etc. </p>
 <p><img alt="Figure1" src="../img/image-20200211222706973.png" /></p>
 <p>Figure 1 - Using PayFort iFrame for web</p>
@@ -172,7 +150,7 @@
 <p>Figure 2 : Access Code Generation</p>
 <p>The Payment Page Template available in the backoffice provides you the feature to create a payment processing page using PayFort iFrame. Refer to the Figure 3  <a href="#figure3"><i class="fa fa-link"></i></a></p>
 <p><a name="figure3"></a><br/></p>
-<p><img alt="" src="../img/paymentintegration settings.png" /></p>
+<p><img alt="" src="../img/paymentintegration%20settings.png" /></p>
 <p>Figure 3 : Use Payment Settings to create a payment form</p>
 <hr />
 <h2 id="sample-iframe-code-snippet">Sample iFrame code snippet</h2>
@@ -203,134 +181,34 @@
 <h2 id="need-further-help">Need further help?</h2>
 <p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
 
-<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
-  <li class="last-updated-holder displayDate loading">
-    <span class="last-updated-text">Last updated:</span>
-    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date"></time>
-  </li>
-<!--
-  <li class="readingTime">
-    2 minutes to read
-  </li>
--->
-  <li class="contributors-holder">
-    <span class="contributors-text">Contributors</span>
-    <ul class="contributors" data-bi-name="contributors"></ul>
-  </li>
-</ul>
-</div>
-        <div class="col-md-3"><div class="navbar-light navbar-expand-md hidden-print sticky-top sticky-offset" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
+  <br>
+    
 
-    <div id="toc-collapse" class="navbar-collapse collapse card">
-        <ul class="nav flex-column bs-sidenav">
-            <li class="nav-item main"><a class="nav-link" href="#iframe-for-web">iFrame For Web</a></li>
-                <li class="nav-item">
-                    <a href="#how-it-works" class="nav-link">How it Works</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#integration-flow" class="nav-link">Integration Flow</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#give-it-a-try" class="nav-link">Give It a Try</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#integrate-iframes-to-payment-page" class="nav-link">Integrate iFrames to Payment Page</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#endpoints" class="nav-link">Endpoints</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#sample-iframe-code-snippet" class="nav-link">Sample iFrame code snippet</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#need-further-help" class="nav-link">Need further help?</a>
-                </li>
-        </ul>
-    </div>
-</div></div>
-      </div>
-      </div>
+    
+    
+      
+    
 
-      <footer class="col-md-12">
-	<hr>
-	<div class="container">
-	</div>
-      </footer>
-      <script>
-	var base_url = "..",
-            shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-      </script>
-      <script src="../js/base.js" defer></script>
-      <script src="../search/main.js" defer></script>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../custompaymentform/" class="btn btn-xs btn-link">
+        Custom Payment Form
+      </a>
+    </div>
+    
+  </div>
 
-      <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+    <br>
 </div>
 
-    </body>
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
 </html>
