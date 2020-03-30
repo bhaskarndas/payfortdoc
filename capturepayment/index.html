@@ -104,17 +104,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code>POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 </code></pre>
 
-<div><i class="fa fa-info"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>You can send “merchant_reference” and/ or “fort_id” in the CAPTURE request.</div>
 
-1. You can send “merchant_reference” and/ or “fort_id” in the CAPTURE request. 
-
-
-2. Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
-   For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
-   Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.
-3. Every parameter the Merchant sends in the Request should be received by the Merchant in the Response even the optional ones.
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code.<br/>
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.<br/>
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.
 
 </div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response even the optional ones.</div>
 
 <h2 id="request-example">Request example</h2>
 <pre><code class="json">{
