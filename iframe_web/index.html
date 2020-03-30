@@ -134,7 +134,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h2>
 <h2 id="endpoints">Endpoints</h2>
-<h3 id="production-environment">Production Environment</h3>
+<h3 id="live">Live</h3>
 <pre><code>POST https://checkout.payfort.com/FortAPI/paymentPage
 </code></pre>
 
@@ -154,27 +154,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Figure 3 : Use Payment Settings to create a payment form</p>
 <hr />
 <h2 id="sample-iframe-code-snippet">Sample iFrame code snippet</h2>
-<p>The following sample code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using iFrames. Incase you are using php you can try out the below code example and add it to your checkout page. </p>
+<p>The following sample code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using iFrames. </p>
 <p>​    </p>
-<pre><code class="php+HTML">&lt;div class=&quot;popup-win&quot; id=&quot;popup-win&quot; style=&quot;display: none;&quot;&gt;
-    &lt;div class=&quot;popup-header&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;popup-subtitle&quot;&gt;
-        Transaction Value:&lt;span class='currency-txt'&gt;AED&amp;nbsp; 17.00&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;iframe id=&quot;ifrmPAYFORT&quot; name=&quot;ifrmPAYFORT&quot; style=&quot;width: 100%; height: 450px&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+<pre><code class="html">&lt;html&gt;
+   &lt;/head&gt;
+&lt;body&gt;
+&lt;iframe  style=&quot;border:5px dotted red&quot; name=&quot;myframe&quot; src = &quot;&quot; width=&quot;400&quot; height=&quot;600&quot;&gt;
+&lt;/iframe&gt;
+&lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; method=&quot;post&quot; id=&quot;&quot; target=&quot;myframe&quot;&gt;
 
-&lt;div class=&quot;overlay&quot; id=&quot;overlay&quot;&gt;&lt;/div&gt;
-    &lt;form METHOD=&quot;post&quot; ACTION=&quot;http://localhost/phppayfort/success.php&quot; id=&quot;payfortForm&quot; name=&quot;payfortForm&quot; target=&quot;ifrmPAYFORT&quot;&gt;
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
 
-        &lt;input type=&quot;hidden&quot; name=&quot;service_command&quot; value=&quot;&lt;?php echo $requestParams['service_command'] ?&gt;&quot;&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;language&quot; value=&quot;&lt;?php echo $requestParams['language'] ?&gt;&quot;&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; value=&quot;&lt;?php echo $requestParams['merchant_identifier'] ?&gt;&quot;&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; value=&quot;&lt;?php echo $requestParams['access_code'] ?&gt;&quot;&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;signature&quot; value=&quot;&lt;?php echo $signature ?&gt;&quot;&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; value=&quot;&lt;?php echo $requestParams['return_url'] ?&gt;&quot;&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; value=&quot;&lt;?php echo $requestParams['merchant_reference'] ?&gt;&quot;&gt;
-    &lt;/form&gt;
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;language&quot; value=&quot; &quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;merchant_identifier&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;access_code&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;signature&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;return_url&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;merchant_reference&quot; value=&quot;&quot;&gt;
+
+&lt;input value=&quot;Send&quot; type=&quot;submit&quot; id=&quot;form1&quot;&gt;
+
+&lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
 </code></pre>
 
 <hr />

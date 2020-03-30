@@ -153,7 +153,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <hr />
 <h2 id="endpoints">Endpoints</h2>
-<h3 id="production-environment">Production Environment</h3>
+<h3 id="live">Live</h3>
 <pre><code>POST https://checkout.PayFort.com/FortAPI/paymentPage
 </code></pre>
 
@@ -189,18 +189,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="php+HTML">&lt;html&gt;
 
 &lt;body&gt;
- &lt;form method=&quot;post&quot; action=&quot;https://checkout.payfort.com/FortAPI/paymentPage&quot; class=&quot;pay_form&quot; name=&quot;form1&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; value=&quot;access_code&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;1000&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;command&quot; value=&quot;PURCHASE&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;currency&quot; value=&quot;USD&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;customer_email&quot; value=&quot;user@mail.com&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;customer_name&quot; value=&quot;customer name&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;language&quot; value=&quot;en&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; value=&quot;identifier_code&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; value=&quot;order_id&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; value=&quot;my_return_url&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;signature&quot; value=&quot;form_signature&quot;&gt;
+ &lt;form method=&quot;post&quot; action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; id=form1 name=form1&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;language&quot; value=&quot; &quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;merchant_identifier&quot; value=&quot; &quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;access_code&quot; value=&quot; &quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;signature&quot; value=&quot;&quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;return_url&quot; value=&quot; &quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;merchant_reference&quot; value=&quot;&quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;card_number&quot; value=&quot;&quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;expiry_date&quot; value=&quot;&quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;card_security_code&quot; value=&quot;&quot;&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;card_holder_name&quot; value=&quot; &quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;&quot; id=&quot;submit2&quot; name=&quot;&quot;&gt;
 &lt;/form&gt;
 &lt;/body&gt;
 &lt;/html&gt;
