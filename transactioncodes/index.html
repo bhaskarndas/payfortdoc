@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Transactioncodes - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Transaction Response Codes", url: "#_top", children: [
+              {title: "Status Codes", url: "#status-codes" },
+              {title: "Message Codes", url: "#message-codes" },
+          ]},
+          {title: "Need further help?", url: "#need-further-help", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <h2 id="transaction-response-codes">Transaction Response Codes</h2>
+<hr />
+<p>The Response code is made up of 5 digits; a combination of a 2-digit Status (Please see section Status Codes<a href="#status-codes"><i class="fa fa-link"></i></a>  ) and a 3-digit Message (Please see section message codes<a href="#message-codes"><i class="fa fa-link"></i></a>  )</p>
+<h3 id="status-codes">Status Codes</h3>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="right">Status Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">00</td>
+<td align="left">Invalid Request.</td>
+</tr>
+<tr>
+<td align="right">01</td>
+<td align="left">Order Stored.</td>
+</tr>
+<tr>
+<td align="right">02</td>
+<td align="left">Authorization Success.</td>
+</tr>
+<tr>
+<td align="right">03</td>
+<td align="left">Authorization Failed.</td>
+</tr>
+<tr>
+<td align="right">04</td>
+<td align="left">Capture Success.</td>
+</tr>
+<tr>
+<td align="right">05</td>
+<td align="left">Capture failed.</td>
+</tr>
+<tr>
+<td align="right">06</td>
+<td align="left">Refund Success.</td>
+</tr>
+<tr>
+<td align="right">07</td>
+<td align="left">Refund Failed.</td>
+</tr>
+<tr>
+<td align="right">08</td>
+<td align="left">Authorization Voided Successfully.</td>
+</tr>
+<tr>
+<td align="right">09</td>
+<td align="left">Authorization Void Failed.</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="left">Incomplete.</td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td align="left">Check status Failed.</td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td align="left">Check status success.</td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td align="left">Purchase Failure.</td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td align="left">Purchase Success.</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="left">Uncertain Transaction.</td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td align="left">Tokenization failed.</td>
+</tr>
+<tr>
+<td align="right">18</td>
+<td align="left">Tokenization success.</td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td align="left">Transaction pending.</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="left">On hold.</td>
+</tr>
+<tr>
+<td align="right">21</td>
+<td align="left">SDK Token creation failure.</td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td align="left">SDK Token creation success.</td>
+</tr>
+<tr>
+<td align="right">23</td>
+<td align="left">Failed to process Digital Wallet service.</td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td align="left">Digital wallet order processed successfully.</td>
+</tr>
+<tr>
+<td align="right">27</td>
+<td align="left">Check card balance failed.</td>
+</tr>
+<tr>
+<td align="right">28</td>
+<td align="left">Check card balance success.</td>
+</tr>
+<tr>
+<td align="right">29</td>
+<td align="left">Redemption failed.</td>
+</tr>
+<tr>
+<td align="right">30</td>
+<td align="left">Redemption success.</td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td align="left">Reverse Redemption transaction failed.</td>
+</tr>
+<tr>
+<td align="right">32</td>
+<td align="left">Reverse Redemption transaction success.</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="left">Transaction In review.</td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td align="left">Currency conversion success.</td>
+</tr>
+<tr>
+<td align="right">43</td>
+<td align="left">Currency conversion failed.</td>
+</tr>
+<tr>
+<td align="right">44</td>
+<td align="left">3ds success.</td>
+</tr>
+<tr>
+<td align="right">45</td>
+<td align="left">3ds failed.</td>
+</tr>
+<tr>
+<td align="right">46</td>
+<td align="left">Bill creation success.</td>
+</tr>
+<tr>
+<td align="right">47</td>
+<td align="left">Bill creation failed.</td>
+</tr>
+<tr>
+<td align="right">48</td>
+<td align="left">Generating invoice payment link success.</td>
+</tr>
+<tr>
+<td align="right">49</td>
+<td align="left">Generating invoice payment link failed.</td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td align="left">Batch file upload successfully.</td>
+</tr>
+<tr>
+<td align="right">51</td>
+<td align="left">Upload batch file failed.</td>
+</tr>
+<tr>
+<td align="right">52</td>
+<td align="left">Token created successfully.</td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td align="left">Token creation failed.</td>
+</tr>
+<tr>
+<td align="right">54</td>
+<td align="left">Get Tokens Success.</td>
+</tr>
+<tr>
+<td align="right">55</td>
+<td align="left">Get Tokens Failed.</td>
+</tr>
+<tr>
+<td align="right">56</td>
+<td align="left">Reporting Request Success.</td>
+</tr>
+<tr>
+<td align="right">57</td>
+<td align="left">Reporting Request Failed.</td>
+</tr>
+<tr>
+<td align="right">58</td>
+<td align="left">Token updated successfully.</td>
+</tr>
+<tr>
+<td align="right">59</td>
+<td align="left">Token updated failed.</td>
+</tr>
+<tr>
+<td align="right">62</td>
+<td align="left">Get Installment Plans Successfully.</td>
+</tr>
+<tr>
+<td align="right">63</td>
+<td align="left">Get Installment plans Failed.</td>
+</tr>
+<tr>
+<td align="right">66</td>
+<td align="left">Delete Token Success.</td>
+</tr>
+<tr>
+<td align="right">70</td>
+<td align="left">Get batch results successfully.</td>
+</tr>
+<tr>
+<td align="right">71</td>
+<td align="left">Get batch results failed.</td>
+</tr>
+<tr>
+<td align="right">72</td>
+<td align="left">Batch processing success.</td>
+</tr>
+<tr>
+<td align="right">73</td>
+<td align="left">Batch processing failed.</td>
+</tr>
+<tr>
+<td align="right">74</td>
+<td align="left">Bank transfer successfully.</td>
+</tr>
+<tr>
+<td align="right">75</td>
+<td align="left">Bank transfer failed.</td>
+</tr>
+<tr>
+<td align="right">76</td>
+<td align="left">Batch validation successfully.</td>
+</tr>
+<tr>
+<td align="right">77</td>
+<td align="left">Batch validation failed.</td>
+</tr>
+<tr>
+<td align="right">80</td>
+<td align="left">Credit card verified successfully.</td>
+</tr>
+<tr>
+<td align="right">81</td>
+<td align="left">Failed to verify credit card.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="message-codes">Message Codes</h3>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="right">Message Code</th>
+<th align="left">Message Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">000</td>
+<td align="left">Success.</td>
+</tr>
+<tr>
+<td align="right">001</td>
+<td align="left">Missing parameter.</td>
+</tr>
+<tr>
+<td align="right">002</td>
+<td align="left">Invalid parameter format.</td>
+</tr>
+<tr>
+<td align="right">003</td>
+<td align="left">Payment option is not available for this merchant’s account.</td>
+</tr>
+<tr>
+<td align="right">004</td>
+<td align="left">Invalid command.</td>
+</tr>
+<tr>
+<td align="right">005</td>
+<td align="left">Invalid amount.</td>
+</tr>
+<tr>
+<td align="right">006</td>
+<td align="left">Technical problem.</td>
+</tr>
+<tr>
+<td align="right">007</td>
+<td align="left">Duplicate order number.</td>
+</tr>
+<tr>
+<td align="right">008</td>
+<td align="left">Signature mismatch.</td>
+</tr>
+<tr>
+<td align="right">009</td>
+<td align="left">Invalid merchant identifier.</td>
+</tr>
+<tr>
+<td align="right">010</td>
+<td align="left">Invalid access code.</td>
+</tr>
+<tr>
+<td align="right">011</td>
+<td align="left">Order not saved.</td>
+</tr>
+<tr>
+<td align="right">012</td>
+<td align="left">Card expired.</td>
+</tr>
+<tr>
+<td align="right">013</td>
+<td align="left">Invalid currency.</td>
+</tr>
+<tr>
+<td align="right">014</td>
+<td align="left">Inactive payment option.</td>
+</tr>
+<tr>
+<td align="right">015</td>
+<td align="left">Inactive merchant account.</td>
+</tr>
+<tr>
+<td align="right">016</td>
+<td align="left">Invalid card number.</td>
+</tr>
+<tr>
+<td align="right">017</td>
+<td align="left">Operation not allowed by the acquirer.</td>
+</tr>
+<tr>
+<td align="right">018</td>
+<td align="left">Operation not allowed by processor.</td>
+</tr>
+<tr>
+<td align="right">019</td>
+<td align="left">Inactive acquirer.</td>
+</tr>
+<tr>
+<td align="right">020</td>
+<td align="left">Processor is inactive.</td>
+</tr>
+<tr>
+<td align="right">021</td>
+<td align="left">Payment option deactivated by acquirer.</td>
+</tr>
+<tr>
+<td align="right">023</td>
+<td align="left">Currency not accepted by acquirer.</td>
+</tr>
+<tr>
+<td align="right">024</td>
+<td align="left">Currency not accepted by processor.</td>
+</tr>
+<tr>
+<td align="right">025</td>
+<td align="left">Processor integration settings are missing.</td>
+</tr>
+<tr>
+<td align="right">026</td>
+<td align="left">Acquirer integration settings are missing.</td>
+</tr>
+<tr>
+<td align="right">027</td>
+<td align="left">Invalid extra parameters.</td>
+</tr>
+<tr>
+<td align="right">029</td>
+<td align="left">Insufficient funds.</td>
+</tr>
+<tr>
+<td align="right">030</td>
+<td align="left">Authentication failed.</td>
+</tr>
+<tr>
+<td align="right">031</td>
+<td align="left">Invalid issuer.</td>
+</tr>
+<tr>
+<td align="right">032</td>
+<td align="left">Invalid parameter length.</td>
+</tr>
+<tr>
+<td align="right">033</td>
+<td align="left">Parameter value not allowed.</td>
+</tr>
+<tr>
+<td align="right">034</td>
+<td align="left">Operation not allowed.</td>
+</tr>
+<tr>
+<td align="right">035</td>
+<td align="left">Order created successfully.</td>
+</tr>
+<tr>
+<td align="right">036</td>
+<td align="left">Order not found.</td>
+</tr>
+<tr>
+<td align="right">037</td>
+<td align="left">Missing return URL.</td>
+</tr>
+<tr>
+<td align="right">038</td>
+<td align="left">Token service inactive.</td>
+</tr>
+<tr>
+<td align="right">039</td>
+<td align="left">No active payment option found.</td>
+</tr>
+<tr>
+<td align="right">040</td>
+<td align="left">Invalid transaction source.</td>
+</tr>
+<tr>
+<td align="right">042</td>
+<td align="left">Operation amount exceeds the authorized amount.</td>
+</tr>
+<tr>
+<td align="right">043</td>
+<td align="left">Inactive Operation.</td>
+</tr>
+<tr>
+<td align="right">044</td>
+<td align="left">Token name does not exist.</td>
+</tr>
+<tr>
+<td align="right">046</td>
+<td align="left">Channel is not configured for the selected payment option.</td>
+</tr>
+<tr>
+<td align="right">047</td>
+<td align="left">Order already processed.</td>
+</tr>
+<tr>
+<td align="right">048</td>
+<td align="left">Operation amount exceeds captured amount.</td>
+</tr>
+<tr>
+<td align="right">049</td>
+<td align="left">Operation not valid for this payment option.</td>
+</tr>
+<tr>
+<td align="right">050</td>
+<td align="left">Merchant per transaction limit exceeded.</td>
+</tr>
+<tr>
+<td align="right">051</td>
+<td align="left">Technical error.</td>
+</tr>
+<tr>
+<td align="right">052</td>
+<td align="left">Consumer is not in OLP database.</td>
+</tr>
+<tr>
+<td align="right">053</td>
+<td align="left">Merchant is not found in OLP Engine DB.</td>
+</tr>
+<tr>
+<td align="right">054</td>
+<td align="left">Transaction cannot be processed at this moment.</td>
+</tr>
+<tr>
+<td align="right">055</td>
+<td align="left">OLP ID Alias is not valid. Please contact your bank.</td>
+</tr>
+<tr>
+<td align="right">056</td>
+<td align="left">OLP ID Alias does not exist. Please enter a valid OLP ID Alias.</td>
+</tr>
+<tr>
+<td align="right">057</td>
+<td align="left">Transaction amount exceeds the daily transaction limit.</td>
+</tr>
+<tr>
+<td align="right">058</td>
+<td align="left">Transaction amount exceeds the per transaction limit.</td>
+</tr>
+<tr>
+<td align="right">059</td>
+<td align="left">Merchant Name and SADAD Merchant ID do not match.</td>
+</tr>
+<tr>
+<td align="right">060</td>
+<td align="left">The entered OLP password is incorrect. Please provide a valid password.</td>
+</tr>
+<tr>
+<td align="right">062</td>
+<td align="left">Token has been created.</td>
+</tr>
+<tr>
+<td align="right">063</td>
+<td align="left">Token has been updated.</td>
+</tr>
+<tr>
+<td align="right">064</td>
+<td align="left">3-D Secure check requested.</td>
+</tr>
+<tr>
+<td align="right">065</td>
+<td align="left">Transaction waiting for customer’s action.</td>
+</tr>
+<tr>
+<td align="right">066</td>
+<td align="left">Merchant reference already exists.</td>
+</tr>
+<tr>
+<td align="right">067</td>
+<td align="left">Dynamic Descriptor not configured for selected payment option.</td>
+</tr>
+<tr>
+<td align="right">068</td>
+<td align="left">SDK service is inactive.</td>
+</tr>
+<tr>
+<td align="right">069</td>
+<td align="left">Mapping not found for the given error code.</td>
+</tr>
+<tr>
+<td align="right">070</td>
+<td align="left">device_id mismatch.</td>
+</tr>
+<tr>
+<td align="right">071</td>
+<td align="left">Failed to initiate connection.</td>
+</tr>
+<tr>
+<td align="right">072</td>
+<td align="left">Transaction has been cancelled by the consumer.</td>
+</tr>
+<tr>
+<td align="right">073</td>
+<td align="left">Invalid request format.</td>
+</tr>
+<tr>
+<td align="right">074</td>
+<td align="left">Transaction failed.</td>
+</tr>
+<tr>
+<td align="right">075</td>
+<td align="left">Transaction failed.</td>
+</tr>
+<tr>
+<td align="right">076</td>
+<td align="left">Transaction not found in OLP.</td>
+</tr>
+<tr>
+<td align="right">077</td>
+<td align="left">Error transaction code not found.</td>
+</tr>
+<tr>
+<td align="right">078</td>
+<td align="left">Failed to check fraud screen.</td>
+</tr>
+<tr>
+<td align="right">079</td>
+<td align="left">Transaction challenged by fraud rules.</td>
+</tr>
+<tr>
+<td align="right">080</td>
+<td align="left">Invalid payment option.</td>
+</tr>
+<tr>
+<td align="right">082</td>
+<td align="left">Inactive fraud service.</td>
+</tr>
+<tr>
+<td align="right">083</td>
+<td align="left">Unexpected user behavior.</td>
+</tr>
+<tr>
+<td align="right">084</td>
+<td align="left">Transaction amount is either bigger than maximum or less than minimum amount accepted for the selected plan.</td>
+</tr>
+<tr>
+<td align="right">086</td>
+<td align="left">Installment plan is not configured for Merchant account.</td>
+</tr>
+<tr>
+<td align="right">087</td>
+<td align="left">Card BIN does not match accepted issuer bank.</td>
+</tr>
+<tr>
+<td align="right">088</td>
+<td align="left">Token name was not created for this transaction.</td>
+</tr>
+<tr>
+<td align="right">089</td>
+<td align="left">Failed to retrieve digital wallet details.</td>
+</tr>
+<tr>
+<td align="right">090</td>
+<td align="left">Transaction in review.</td>
+</tr>
+<tr>
+<td align="right">092</td>
+<td align="left">Invalid issuer code.</td>
+</tr>
+<tr>
+<td align="right">093</td>
+<td align="left">service inactive.</td>
+</tr>
+<tr>
+<td align="right">094</td>
+<td align="left">Invalid Plan Code.</td>
+</tr>
+<tr>
+<td align="right">095</td>
+<td align="left">Inactive Issuer.</td>
+</tr>
+<tr>
+<td align="right">096</td>
+<td align="left">Inactive Plan.</td>
+</tr>
+<tr>
+<td align="right">097</td>
+<td align="left">Operation not allowed for service.</td>
+</tr>
+<tr>
+<td align="right">098</td>
+<td align="left">Invalid or expired call_id.</td>
+</tr>
+<tr>
+<td align="right">099</td>
+<td align="left">Failed to execute service.</td>
+</tr>
+<tr>
+<td align="right">100</td>
+<td align="left">Invalid expiry date.</td>
+</tr>
+<tr>
+<td align="right">101</td>
+<td align="left">Bill number not found.</td>
+</tr>
+<tr>
+<td align="right">102</td>
+<td align="left">Apple Pay order has been expired.</td>
+</tr>
+<tr>
+<td align="right">103</td>
+<td align="left">Duplicate subscription ID.</td>
+</tr>
+<tr>
+<td align="right">104</td>
+<td align="left">No plans valid for request.</td>
+</tr>
+<tr>
+<td align="right">105</td>
+<td align="left">Invalid bank code.</td>
+</tr>
+<tr>
+<td align="right">106</td>
+<td align="left">Inactive bank.</td>
+</tr>
+<tr>
+<td align="right">107</td>
+<td align="left">Invalid transfer_date.</td>
+</tr>
+<tr>
+<td align="right">110</td>
+<td align="left">Contradicting parameters, please refer to the integration guide.</td>
+</tr>
+<tr>
+<td align="right">111</td>
+<td align="left">Service not applicable for payment option.</td>
+</tr>
+<tr>
+<td align="right">112</td>
+<td align="left">Service not applicable for payment operation.</td>
+</tr>
+<tr>
+<td align="right">113</td>
+<td align="left">Service not applicable for e-commerce indicator.</td>
+</tr>
+<tr>
+<td align="right">114</td>
+<td align="left">Token already exist.</td>
+</tr>
+<tr>
+<td align="right">115</td>
+<td align="left">Expired invoice payment link.</td>
+</tr>
+<tr>
+<td align="right">116</td>
+<td align="left">Inactive notification type.</td>
+</tr>
+<tr>
+<td align="right">117</td>
+<td align="left">Invoice payment link already processed.</td>
+</tr>
+<tr>
+<td align="right">118</td>
+<td align="left">Order bounced.</td>
+</tr>
+<tr>
+<td align="right">119</td>
+<td align="left">Request dropped.</td>
+</tr>
+<tr>
+<td align="right">120</td>
+<td align="left">Payment link terms and conditions not found.</td>
+</tr>
+<tr>
+<td align="right">121</td>
+<td align="left">Card number is not verified.</td>
+</tr>
+<tr>
+<td align="right">122</td>
+<td align="left">Invalid date interval.</td>
+</tr>
+<tr>
+<td align="right">123</td>
+<td align="left">You have exceeded the maximum number of attempts.</td>
+</tr>
+<tr>
+<td align="right">124</td>
+<td align="left">Account successfully created.</td>
+</tr>
+<tr>
+<td align="right">125</td>
+<td align="left">Invoice already paid.</td>
+</tr>
+<tr>
+<td align="right">126</td>
+<td align="left">Duplicate invoice ID.</td>
+</tr>
+<tr>
+<td align="right">127</td>
+<td align="left">Merchant reference is not generated yet.</td>
+</tr>
+<tr>
+<td align="right">128</td>
+<td align="left">The generated report is still pending, you can’t download it now.</td>
+</tr>
+<tr>
+<td align="right">129</td>
+<td align="left">“Downloaded report” queue is full. Wait till its empty again.</td>
+</tr>
+<tr>
+<td align="right">134</td>
+<td align="left">Your search results have exceeded the maximum number of records.</td>
+</tr>
+<tr>
+<td align="right">136</td>
+<td align="left">The Batch file validation is failed.</td>
+</tr>
+<tr>
+<td align="right">137</td>
+<td align="left">Invalid Batch file execution date.</td>
+</tr>
+<tr>
+<td align="right">138</td>
+<td align="left">The Batch file still under validation.</td>
+</tr>
+<tr>
+<td align="right">140</td>
+<td align="left">The Batch file still under processing.</td>
+</tr>
+<tr>
+<td align="right">141</td>
+<td align="left">The Batch reference does not exist.</td>
+</tr>
+<tr>
+<td align="right">142</td>
+<td align="left">The Batch file header is invalid.</td>
+</tr>
+<tr>
+<td align="right">144</td>
+<td align="left">Invalid Batch file.</td>
+</tr>
+<tr>
+<td align="right">146</td>
+<td align="left">The Batch reference is already exist.</td>
+</tr>
+<tr>
+<td align="right">147</td>
+<td align="left">The Batch process request has been received.</td>
+</tr>
+<tr>
+<td align="right">148</td>
+<td align="left">Batch file will be processed.</td>
+</tr>
+<tr>
+<td align="right">149</td>
+<td align="left">Payment link request id not found.</td>
+</tr>
+<tr>
+<td align="right">150</td>
+<td align="left">Payment link is already open.</td>
+</tr>
+<tr>
+<td align="right">151</td>
+<td align="left">3ds_id does not exist.</td>
+</tr>
+<tr>
+<td align="right">152</td>
+<td align="left">3Ds verification doesn’t match the request details.</td>
+</tr>
+<tr>
+<td align="right">154</td>
+<td align="left">You have reached the maximum number of upload retries.</td>
+</tr>
+<tr>
+<td align="right">155</td>
+<td align="left">The upload retries is not configured.</td>
+</tr>
+<tr>
+<td align="right">662</td>
+<td align="left">Operation not allowed. The specified order is not confirmed yet.</td>
+</tr>
+<tr>
+<td align="right">666</td>
+<td align="left">Transaction declined.</td>
+</tr>
+<tr>
+<td align="right">773</td>
+<td align="left">Transaction closed.</td>
+</tr>
+<tr>
+<td align="right">777</td>
+<td align="left">The transaction has been processed, but failed to receive confirmation.</td>
+</tr>
+<tr>
+<td align="right">778</td>
+<td align="left">Session timed-out.</td>
+</tr>
+<tr>
+<td align="right">779</td>
+<td align="left">Transformation error.</td>
+</tr>
+<tr>
+<td align="right">780</td>
+<td align="left">Transaction number transformation error.</td>
+</tr>
+<tr>
+<td align="right">781</td>
+<td align="left">Message or response code transformation error.</td>
+</tr>
+<tr>
+<td align="right">783</td>
+<td align="left">Installments service inactive.</td>
+</tr>
+<tr>
+<td align="right">784</td>
+<td align="left">Transaction still processing you can’t make another transaction.</td>
+</tr>
+<tr>
+<td align="right">785</td>
+<td align="left">Transaction blocked by fraud check.</td>
+</tr>
+<tr>
+<td align="right">787</td>
+<td align="left">Failed to authenticate the user.</td>
+</tr>
+<tr>
+<td align="right">788</td>
+<td align="left">Invalid bill number.</td>
+</tr>
+<tr>
+<td align="right">789</td>
+<td align="left">Expired bill number.</td>
+</tr>
+<tr>
+<td align="right">790</td>
+<td align="left">Invalid bill type code.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

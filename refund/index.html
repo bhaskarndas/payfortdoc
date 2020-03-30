@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Refund Payment - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Refund a payment", url: "#_top", children: [
+              {title: "The request", url: "#the-request" },
+              {title: "Endpoints", url: "#endpoints" },
+              {title: "The response", url: "#the-response" },
+          ]},
+          {title: "Go to Full API", url: "#go-to-full-api", children: [
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../cards/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../cards/" class="btn btn-xs btn-link">
+        Cards
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../voidauthorization/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../voidauthorization/" class="btn btn-xs btn-link">
+        Void an Authorization
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="refund-a-payment">Refund a payment</h1>
+<hr />
+<p>This operation <strong>returns</strong> the entire amount of a transaction or part of it AFTER being captured.</p>
+<h2 id="the-request">The request</h2>
+<p>Use the details below to set up your request.</p>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="live">Live</h3>
+<pre><code>POST https://paymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+<h3 id="sandbox">Sandbox</h3>
+<pre><code>POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+<h3 id="request-example">Request example</h3>
+<h4 id="json">JSON</h4>
+<pre><code class="json">{
+'command':'REFUND',
+'access_code':'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier':'CycHZxVj',
+'merchant_reference':' XYZ9239-yu898',
+'amount':'10000',
+'currency':'AED',  
+'language':'en',
+'signature':'7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'fort_id':'149295435400084008',
+'order_description':'iPhone 6-S',
+}
+</code></pre>
+
+<h2 id="the-response">The response</h2>
+<hr />
+<p>If you receive status code <code>20064</code> with status code <code>04</code> it means your request for refund has been accepted by the PayFort Server. The response sent by the server will be in the format of JSON.</p>
+<h3 id="response-examples">Response examples</h3>
+<pre><code class="json">{&quot;command&quot;:&quot;REFUND&quot;,
+ &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+ &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+ &quot;merchant_reference&quot;:&quot;XYZ9239-yu898&quot;,
+ &quot;amount&quot;:&quot;10000&quot;,
+ &quot;currency&quot;:&quot;AED&quot;,
+ &quot;language&quot;:&quot;en&quot;,
+ &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+ &quot;fort_id&quot;:&quot;149295435400084008&quot;,
+ &quot;order_description&quot;:&quot;iPhone 6-S&quot;,
+ &quot;response_message&quot;:&quot;Success&quot;,
+ &quot;response_code&quot;:&quot;20064&quot;,
+ status&quot;:&quot;04&quot;
+}
+</code></pre>
+
+<p>You can check out various transaction codes by visiting this <a href="../transactioncodes/">link</a></p>
+<h1 id="go-to-full-api">Go to Full API</h1>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../cards/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../cards/" class="btn btn-xs btn-link">
+        Cards
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../voidauthorization/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../voidauthorization/" class="btn btn-xs btn-link">
+        Void an Authorization
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
