@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>iFrame For Web - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "iFrame For Web", url: "#_top", children: [
+              {title: "How it Works", url: "#how-it-works" },
+              {title: "Integration Flow", url: "#integration-flow" },
+              {title: "Give It a Try", url: "#give-it-a-try" },
+              {title: "Integrate iFrames to Payment Page", url: "#integrate-iframes-to-payment-page" },
+              {title: "Endpoints", url: "#endpoints" },
+              {title: "Sample iFrame code snippet", url: "#sample-iframe-code-snippet" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../custompaymentform/" class="btn btn-xs btn-link">
+        Custom Payment Form
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="iframe-for-web">iFrame For Web</h1>
+<p>You can setup payment form and start accepting payments within few minutes with the help of iFrame. PayFort provides easy to use iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, Diners etc. </p>
+<p><img alt="Figure1" src="../img/image-20200211222706973.png" /></p>
+<p>Figure 1 - Using PayFort iFrame for web</p>
+<hr />
+<h2 id="how-it-works">How it Works</h2>
+<p><strong>1.</strong> The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel as that of your website.</p>
+<p><strong>2.</strong> PayFort then receives the payment details and sends you the confirmation to complete the transaction.</p>
+<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the payment details form.</em></p>
+<hr />
+<h2 id="integration-flow">Integration Flow</h2>
+<p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
+<p>Figure 2 : Integration Flow using iFrame</p>
+<ol>
+<li>
+<p>The customer begins the checkout process on your website.</p>
+</li>
+<li>
+<p>The payment page encapsulated inside iFrame is displayed.  Then the Customer enters the card’s details on the payment page.</p>
+</li>
+<li>
+<p>PayFort checks the card details.</p>
+</li>
+<li>
+<p>PayFort creates a token for the Customer transaction and sends it to the payment page.</p>
+</li>
+<li>
+<p>The Payment page then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFort.</p>
+</li>
+<li>
+<p>In case your page receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
+   <strong>a.</strong> Your payment page redirects the Customer to the ACS to check his card enrollment.<br><strong>b.</strong> The Customer enters authentication data on the ACS platform.<br><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
+</li>
+<li>
+<p>PayFort completes the operation based on the 3-D Secure response and returns the response to your payment page.</p>
+</li>
+<li>
+<p>PayFort sends the payment results to your site.</p>
+</li>
+</ol>
+<p><strong><em>Note</em></strong> -</p>
+<ul>
+<li>In this case, PayFort returns<em> </em><em>status “20: On hold”</em><em> </em>and<em> </em><em>message “064: 3-D Secure check requested”</em><em>. </em>For example, PayFort is waiting for your payment page to authenticate the Customer.*</li>
+<li><em>If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em></li>
+<li>If the Token is sent by you, it will be generated with the same name as sent by your page.</li>
+<li>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</li>
+</ul>
+<hr />
+<h2 id="give-it-a-try">Give It a Try</h2>
+<p>Use one of our <a href="../testing/">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
+<p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
+<p>Comment--Need to add dynamic code script block to accept test card and generate a test token here.</p>
+<hr />
+<h2 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h2>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="live">Live</h3>
+<pre><code>POST https://checkout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<h3 id="sandbox">Sandbox</h3>
+<pre><code>POST https://sbcheckout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<hr />
+<h3 id="before-you-start">Before you start</h3>
+<p>Make sure you have your <code>access_code</code>. Refer to Figure 2 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings &gt; <strong>Security Settings &gt; Access Code</strong>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with an active account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
+<p><a name="figure2"></a><br/></p>
+<p><img alt="" src="../img/integrationsettings2.png" /></p>
+<p>Figure 2 : Access Code Generation</p>
+<p>The Payment Page Template available in the backoffice provides you the feature to create a payment processing page using PayFort iFrame. Refer to the Figure 3  <a href="#figure3"><i class="fa fa-link"></i></a></p>
+<p><a name="figure3"></a><br/></p>
+<p><img alt="" src="../img/paymentintegration%20settings.png" /></p>
+<p>Figure 3 : Use Payment Settings to create a payment form</p>
+<hr />
+<h2 id="sample-iframe-code-snippet">Sample iFrame code snippet</h2>
+<p>The following sample code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using iFrames. </p>
+<p>​    </p>
+<pre><code class="html">&lt;html&gt;
+   &lt;/head&gt;
+&lt;body&gt;
+&lt;iframe  style=&quot;border:5px dotted red&quot; name=&quot;myframe&quot; src = &quot;&quot; width=&quot;400&quot; height=&quot;600&quot;&gt;
+&lt;/iframe&gt;
+&lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; method=&quot;post&quot; id=&quot;&quot; target=&quot;myframe&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;language&quot; value=&quot; &quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;merchant_identifier&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;access_code&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;signature&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;return_url&quot; value=&quot;&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; NAME=&quot;merchant_reference&quot; value=&quot;&quot;&gt;
+
+&lt;input value=&quot;Send&quot; type=&quot;submit&quot; id=&quot;form1&quot;&gt;
+
+&lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+<hr />
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../custompaymentform/" class="btn btn-xs btn-link">
+        Custom Payment Form
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

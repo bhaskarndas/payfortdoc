@@ -1,171 +1,505 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
   
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Home - PayFort API Reference</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="None">
+    
+    
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>PayFort Documentation</title>
+    <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
-  <link rel="stylesheet" href="css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Home";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap-3.3.7.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    
+      <script src="./js/elasticlunr.min.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '.';
+      var is_top_frame = (window === window.parent);
+        
+        var pageToc = [
+          {title: "Get Started With PayFort", url: "#_top", children: [
+              {title: "PayFort Payment Features", url: "#payfort-payment-features" },
+              {title: "Using PayFort iFrame", url: "#using-payfort-iframe" },
+              {title: "Using Custom Payment Form", url: "#using-custom-payment-form" },
+              {title: "Get Started With Testing", url: "#get-started-with-testing" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="./js/base.js"></script> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
-  <div class="wy-grid-for-nav">
-
+<nav class="navbar wm-page-top-frame">
+  <div class="container-fluid wm-top-container">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> PayFort API Reference</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    <div class="wm-top-tool pull-right wm-vcenter">
+      <form class="dropdown wm-vcentered" id="wm-search-form" action="./search.html">
+        
+        <button id="wm-search-show" class="btn btn-sm btn-default" type="submit"
+          ><i class="fa fa-search" aria-hidden="true"></i></button>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href=".">Home</a>
-    <ul class="subnav">
+        <div class="input-group input-group-sm wm-top-search">
+          <input type="text" name="q" class="form-control" id="mkdocs-search-query" placeholder="Search" autocomplete="off">
+          <span class="input-group-btn" role="search">
             
-    <li class="toctree-l2"><a href="#welcome-to-mkdocs">Welcome to MkDocs</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#commands">Commands</a></li>
-        
-            <li><a class="toctree-l3" href="#project-layout">Project layout</a></li>
-        
-        </ul>
-    
-
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="MerchantPage/">Merchant Page</a>
-	    </li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">PayFort API Reference</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Home</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
-</ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="MerchantPage/" class="btn btn-neutral float-right" title="Merchant Page">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
+            <button class="btn btn-default dropdown-toggle collapse" data-toggle="dropdown" type="button"><span class="caret"></span></button>
+            <ul id="mkdocs-search-results" class="dropdown-menu dropdown-menu-right"></ul>
+            <button id="wm-search-go" class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
         </div>
+      </form>
+    </div>
+
+    
+    <div class="wm-top-tool wm-vcenter pull-right wm-small-left">
+      <button id="wm-toc-button" type="button" class="btn btn-sm btn-default wm-vcentered"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+    </div>
+
+    
+    
+
+    
+    <a href="" class="wm-top-brand wm-top-link wm-vcenter">
+      
+      <div class="wm-top-title">
+        PayFort Documentation<br>
+        
       </div>
+    </a>
+  </div>
+</nav>
 
-    </section>
+  <div id="main-content" class="wm-page-top-frame">
+    
+<nav class="wm-toc-pane">
+  
+  <ul class="wm-toctree">
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Get Started (Process Payments)</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Integration Type</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Merchant Page</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="iframe_web/" class="wm-article-link wm-toc-text">iFrame For Web</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="custompaymentform/" class="wm-article-link wm-toc-text">Custom Payment Form</a>
+</li>
+  </ul>
+</li>
 
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Redirection</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="redirection/" class="wm-article-link wm-toc-text">What is redirection?</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="capturepayment/" class="wm-article-link wm-toc-text">Capture Payment</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="voidauthorization/" class="wm-article-link wm-toc-text">Void an Authorization</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="refund/" class="wm-article-link wm-toc-text">Refund Payment</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Mobile</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="mobilesdk/" class="wm-article-link wm-toc-text">Mobile SDK Library</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="androidsdk/" class="wm-article-link wm-toc-text">Integrate Android SDK</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="iossdk/" class="wm-article-link wm-toc-text">Integrate iOS SDK</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Plugins</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/docs/api/build/index.html" class="wm-article-link wm-toc-text">API Reference</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/pdf/PAYFORT_Merchant_Integration_Guide_V_10.0.pdf" class="wm-article-link wm-toc-text">Merchant Integration Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/pdf/FORT_Mobile-SDK_Android_Integration_Guide_v_3.3.pdf" class="wm-article-link wm-toc-text">Android SDK Integration Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/pdf/FORT_Mobile-SDK_iOS_Integration_Guide_v_3.6.pdf" class="wm-article-link wm-toc-text">iOS SDK Integration Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/pdf/PAYFORT_Fraud_Native_Mobile_SDK_V_1.2.pdf" class="wm-article-link wm-toc-text">Fraud Native Mobile SDK Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/pdf/Visa_Checkout_PAYFORT.pdf" class="wm-article-link wm-toc-text">Visa Checkout Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="https://docs.payfort.com/pdf/Batch_Processing_Integration_Guide_V_1.4.pdf" class="wm-article-link wm-toc-text">Batch Processing Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">SDKs</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Prestashop</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Prestashop%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">Getting Started Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/prestashop-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Prestashop 1.7</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/prestashop1.7-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Woocommerce</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Woocommerce%20Integration%20Guidance.pdf" class="wm-article-link wm-toc-text">Getting Started Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/woocommerce-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Magento</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Magento%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">Getting Started Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/magento-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Magento2</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Magento%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">Getting Started Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/magento2-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">CS Cart 3</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/cscart3-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">CS Cart 4</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Cscart4%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">Getting Started Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Cscart4%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Open Cart</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="Getting Started Guide:https://docs.payfort.com/pdf/plugins/Opncart%201%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">None</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/opencart-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Open Cart 2</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://docs.payfort.com/pdf/plugins/Opncart%202%20Integration%20Guide.pdf" class="wm-article-link wm-toc-text">Getting Started Guide</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/opencart2.0-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Open Cart 3</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/opencart3-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Php</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/payfort-php-sdk" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Laravel</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/wshurafa/laravel-payfort" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 "><a href="https://github.com/payfort/payfort-dotnet-sdk" class="wm-article-link wm-toc-text">C#/.Net SDK</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Java SDK</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/payfort-java-sdk" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Android SDK</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/fort-android-sdk" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">iOS SDK</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/payfort/fort-ios-sdk" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Python SDK</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/alisterionold/payfort-python" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">React Native SDK</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/Simicart/RN-Payfort-SDK" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Node.js SDK</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="https://github.com/zivost/payfort-node" class="wm-article-link wm-toc-text">Download</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Trusted</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="trusted.md" class="wm-article-link wm-toc-text">What is Trusted?</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Payment Methods</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="cards/" class="wm-article-link wm-toc-text">Cards</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="wallets.md" class="wm-article-link wm-toc-text">Wallets</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="cash_atm_payment.md" class="wm-article-link wm-toc-text">Cash and ATM Payments</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="banktransfers.md" class="wm-article-link wm-toc-text">Bank Transfers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="directdebit.md" class="wm-article-link wm-toc-text">Direct Debit</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Payment Types</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="moto.md" class="wm-article-link wm-toc-text">Moto</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="recurring.md" class="wm-article-link wm-toc-text">Recurring(API)</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="subscription.md" class="wm-article-link wm-toc-text">Subscription(Back Office)</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 "><a href="testing/" class="wm-article-link wm-toc-text">Testing</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Looking for more?</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Protect</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="fraudbasic.md" class="wm-article-link wm-toc-text">Fraud Basic(Protect)</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="aciredfraud.md" class="wm-article-link wm-toc-text">ACI Red Fraud(Protect+)</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 "><a href="tokenization.md" class="wm-article-link wm-toc-text">Tokenization (Safe)</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="bypass.md" class="wm-article-link wm-toc-text">Bypass</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="monitor.md" class="wm-article-link wm-toc-text">Monitor</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="reportingapi.md" class="wm-article-link wm-toc-text">Data Mine(Reporting API)</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="installments.md" class="wm-article-link wm-toc-text">Installments</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="collection.md" class="wm-article-link wm-toc-text">Collect</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 "><a href="glossary/" class="wm-article-link wm-toc-text">Glossary</a>
+</li>
+  </ul>
+</nav>
+
+    <div class="wm-content-pane">
+      <iframe class="wm-article" name="article"></iframe>
+    </div>
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="MerchantPage/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <h1 id="get-started-with-payfort">Get Started With PayFort</h1>
+<hr />
+<p>PayFort helps you to build a robust payment system for your merchant site. With the help of <a href="">PayFort</a> you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. </p>
+<p>You can get started with PayFort by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
+<p>PayFort offers you two approaches for integrations with your merchant site as mentioned below:</p>
+<ul>
+<li>By using PayFort iFrame <a href="#using-payfort-iframe"><i class="fa fa-anchor"></i></a></li>
+<li>By developing your own custom payment form<a href="custompaymentform/"><i class="fa fa-anchor"></i></a></li>
+</ul>
+<hr />
+<h2 id="payfort-payment-features">PayFort Payment Features</h2>
+<hr />
+<ul>
+<li>
+<p>With PayFort You need not redirect your customers to third party website for payment and they will be able to pay on the payment page of your website.</p>
+</li>
+<li>
+<p>You are no longer required to get your website PCI-Compliant. Since PayFort is PCI-DSS compliant it means your business transactions  will be PCI-Compliant automatically.</p>
+</li>
+<li>
+<p>It offers payment solutions for various shopping cart applications including your own in house shopping cart application.</p>
+</li>
+</ul>
+<p><img alt="image-20200220202239150" src="img/image-20200220202239150.png" /></p>
+<p>​                                                     Figure 1 </p>
+<p>​                                 Shopping cart applications supported by PayFort</p>
+<hr />
+<h2 id="using-payfort-iframe">Using PayFort iFrame</h2>
+<hr />
+<p><em>PayFort</em> <strong><em>iFrame</em></strong> helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page or in your mobile based app. Once the details are entered PayFort generates a secure single use token through tokenization process. This token can be used to request a payment without the need to store any customer's payment information in your site.</p>
+<p><em>PayFort</em> processes the transaction and returns the results back to the your site through invisible redirection.</p>
+<p><a href="iframe_web/"><button class="btn btn-primary">check out iframe for web here</button></a></p>
+<hr />
+<h2 id="using-custom-payment-form">Using Custom Payment Form</h2>
+<hr />
+<p>You can also design and develop your own custom for for collecting the card details. The card details are sent directly to PayFort and substituted with Token. You can then use this Token to complete the transaction.</p>
+<p><a href="custompaymentform/"><button class="btn btn-primary">custom payment form </button></a></p>
+<hr />
+<h2 id="get-started-with-testing">Get Started With Testing</h2>
+<p>If you have developed your payment page then you can proceed with creating a testing account from this <a href="" title="https://www.payfort.com/test-account/">link</a></p>
+<hr />
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    <br>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
 
 </body>
 </html>
-
 <!--
-MkDocs version : 1.0.4
-Build Date UTC : 2020-02-04 12:26:07
+MkDocs version : 1.1
+Build Date UTC : 2020-04-02 05:39:50
 -->

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Integrate iOS SDK - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Integrate iOS SDK", url: "#_top", children: [
+              {title: "About the Software", url: "#about-the-software" },
+              {title: "Include the SDK to your Xcode Project", url: "#include-the-sdk-to-your-xcode-project" },
+              {title: "Installation", url: "#installation" },
+              {title: "SDK - Response", url: "#sdk-response" },
+              {title: "Hidden PayFort loading", url: "#hidden-payfort-loading" },
+              {title: "Custom Payment Designing", url: "#custom-payment-designing" },
+          ]},
+          {title: "Go to Full API", url: "#go-to-full-api", children: [
+          ]},
+          {title: "Need further help?", url: "#need-further-help", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../cards/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../cards/" class="btn btn-xs btn-link">
+        Cards
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../androidsdk/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../androidsdk/" class="btn btn-xs btn-link">
+        Integrate Android SDK
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="integrate-ios-sdk">Integrate iOS SDK</h2>
+<hr />
+<p>To process a transaction using the FORT Mobile SDK, create a Mobile SDK Token and proceed through the following sections.</p>
+<h3 id="about-the-software">About the Software</h3>
+<hr />
+<h4 id="supported-platforms">Supported Platforms</h4>
+<p>IOS 8+</p>
+<h4 id="localization">Localization</h4>
+<p>The FORT Mobile SDK supports both English and Arabic languages.</p>
+<h4 id="screen-orientation">Screen Orientation</h4>
+<p>Portrait is the only orientation supported within the FORT Mobile SDK.</p>
+<h4 id="supported-payment-methods">Supported Payment Methods</h4>
+<p>Through the first version of the FORT Mobile SDK, the Merchant has the ability to process a <strong>CREDIT CARD</strong> transactions only.</p>
+<h4 id="supported-payment-options">Supported Payment Options</h4>
+<p>The supported credit card payment options are <strong>VISA</strong>, <strong>MASTERCARD</strong>, <strong>American Express (AMEX)</strong>, <strong>MADA</strong> and <strong>MEEZA</strong>.</p>
+<h3 id="include-the-sdk-to-your-xcode-project">Include the SDK to your Xcode Project</h3>
+<hr />
+<ol>
+<li><a href="https://docs.payfort.com/docs/api/build/lib/PayFortSDK2.1.zip">Download</a> and extract sdk.</li>
+<li>Drag the PayFortSDK.framework &amp; PayFortSDK.bundle to Frameworks in Project Navigator.</li>
+<li>Create a new group Frameworks if it does not exist:</li>
+<li>Choose Create groups for any added folders.</li>
+<li>Make Sure to select Copy files if needed.</li>
+<li>Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.</li>
+<li>For Swift Projects Don’t forget to add the <strong>#import</strong> to the <strong>Bridging-Header.h</strong></li>
+</ol>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>
+    Ensure linked once in the Linked Framework and Libraries or just drag the PayFortSDK.framework to Embedded Binaries in the general tab in the project settings.
+</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, secondary-click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final, same as below:</div>
+
+<pre><code class="xml">&lt;/dict&gt;element
+&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
+&lt;dict&gt;
+&lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;&lt;true/&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To make the application not disconnected when go to background make sure to add this code:</div>
+
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">(void)applicationDidEnterBackground:(UIApplication *)application {
+__block UIBackgroundTaskIdentifier backgroundTask; backgroundTask =
+[application beginBackgroundTaskWithExpirationHandler: ^ {
+[application endBackgroundTask:backgroundTask];
+backgroundTask = UIBackgroundTaskInvalid; }];
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">func applicationDidEnterBackground(_ application: UIApplication) {
+var bgTask: UIBackgroundTaskIdentifier = 0
+bgTask = application.beginBackgroundTask(expirationHandler: {
+application.endBackgroundTask(bgTask)
+bgTask = UIBackgroundTaskInvalid
+})
+}
+</code></pre>
+
+<h3 id="installation">Installation</h3>
+<ol>
+<li>Import the PayFort Library.</li>
+</ol>
+<p><code>#import &lt;PayFortSDK/PayFortSDK.h&gt;</code></p>
+<ol>
+<li>Initialize PayFortConrtoller with targeted environment, You set the target environment by setting one the two ENUM <em>KPayFortEnviromentSandBox</em> or <em>KPayFortEnviromentProduction</em>.</li>
+</ol>
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">PayFortController *payFort = [[PayFortControlleralloc]initWithEnviroment:KPayFortEnviromentSandBox];
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">let payFort = PayFortController.init(enviroment: KPayFortEnviromentSandBox)
+</code></pre>
+
+<ol>
+<li>Set Dictionary contain all keys and values for SDK.</li>
+</ol>
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
+[request setValue:@“10000” forKey:@“amount”];
+[request setValue:@“AUTHORIZATION” forKey:@“command”];
+[request setValue:@“USD” forKey:@“currency”];
+[request setValue:@ “email@domain.com” forKey:@“customer_email”];
+[request setValue:@“en” forKey:@“language”];
+[request setValue:@“112233682686” forKey:@“merchant_reference”];
+[request setValue:`SDK TOKEN GOES HERE` forKey:@“sdk_token”];
+[request setValue:@“” forKey:@“payment_option”];
+[request setValue:@“gr66zzwW9” forKey:@“token_name&quot;];
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">let request = NSMutableDictionary.init()
+request.setValue(“1000”, forKey: “amount”)
+request.setValue(“AUTHORIZATION”, forKey: “command”)
+request.setValue(“USD”, forKey: “currency”)
+request.setValue(“email@domain.com”, forKey: “customer_email”)
+request.setValue(“en”, forKey: “language”)
+request.setValue(“112233682686”, forKey: “merchant_reference”)
+request.setValue(“token” , forKey: “sdk_token”)
+</code></pre>
+
+<ol>
+<li>Call PayFort and Response callback</li>
+</ol>
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">[payFort callPayFortWithRequest:request currentViewController:self
+Success:^(NSDictionary *requestDic, NSDictionary *responeDic) {
+NSLog(@“Success”);
+NSLog(@“responeDic=%@”,responeDic);
+}
+Canceled:^(NSDictionary *requestDic, NSDictionary *responeDic) {
+NSLog(@“Canceled”);
+NSLog(@“responeDic=%@”,responeDic);
+}
+Faild:^(NSDictionary *requestDic, NSDictionary *responeDic, NSString *message) {
+NSLog(@“Faild”);
+NSLog(@“responeDic=%@”,responeDic);
+}];
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">PayFort.callPayFort(withRequest: request, currentViewController: self,
+success: { (requestDic, responeDic) in
+print(“success”)
+},
+canceled: { (requestDic, responeDic) in
+print(“canceled”)
+},
+faild: { (requestDic, responeDic, message) in
+print(“faild”)
+})
+</code></pre>
+
+<h3 id="sdk-response">SDK - Response</h3>
+<p>By default the response will be dictionary to show the sent data in addition to the status, response message and response code.
+The response will be ready in the registered call back handler with success, failed and cancelled. You can view the response by log the result as the followings:</p>
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">[payFort callPayFortWithRequest:request currentViewController:self
+Success:^(NSDictionary *requestDic, NSDictionary *responeDic) {
+NSLog(@“Success”);
+NSLog(@“requestDic=%@”,requestDic);
+NSLog(@“responeDic=%@”,responeDic);
+}
+Canceled:^(NSDictionary *requestDic, NSDictionary *responeDic) {
+NSLog(@“Canceled”);
+NSLog(@“requestDic=%@”,requestDic);
+NSLog(@“responeDic=%@”,responeDic);
+
+}
+Faild:^(NSDictionary *requestDic, NSDictionary *responeDic, NSString *message) {
+NSLog(@“Faild”);
+NSLog(@“requestDic=%@”,requestDic);
+NSLog(@“responeDic=%@”,responeDic);
+NSLog(@“message=%@”,message);
+
+}];
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">PayFort.callPayFort(withRequest: request, currentViewController: self,
+success: { (requestDic, responeDic) in
+print(“success”)
+print(“responeDic=(responeDic)”)
+print(“responeDic=(responeDic)”)
+},
+canceled: { (requestDic, responeDic) in
+print(“canceled”)
+print(“requestDic=(requestDic)”)
+print(“responeDic=(responeDic)”)
+},
+faild: { (requestDic, responeDic, message) in
+print(“faild”)
+print(“requestDic=(requestDic)”)
+print(“responeDic=(responeDic)”)
+print(“message=(message)”)
+})
+</code></pre>
+
+<p>Also there is an option to show response view directly in elegant view that show response results either its success or failed. By activating the following option:</p>
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">PayFort.IsShowResponsePage = YES;
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">PayFort.IsShowResponsePage = true;
+</code></pre>
+
+<h3 id="hidden-payfort-loading">Hidden PayFort loading</h3>
+<p>There is an option to hide loading view when SDK initialize the connection request. By disable the following option:</p>
+<p><strong>Objective C</strong></p>
+<pre><code class="objective-c">PayFort.HideLoading = YES;
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre><code class="swift">PayFort.HideLoading = true;
+</code></pre>
+
+<h3 id="custom-payment-designing">Custom Payment Designing</h3>
+<p>You have the option to provide your custom UI theme for the payment view by the followings:</p>
+<ul>
+<li>Create your nibFile .xib and set the name of Arabic xib same name with English one with suffix -ar.</li>
+<li>Link the xib with PayFortView and bind all the IBOutlets in interface section</li>
+</ul>
+<pre><code>IBOutlet UILabel *titleLbl;
+IBOutlet UIButton *BackBtn;
+IBOutlet UILabel *PriceLbl;
+IBOutlet JVFloatLabeledTextField *CardNameTxt;
+IBOutlet JVFloatLabeledTextField *CardNumberTxt;
+IBOutlet JVFloatLabeledTextField *CVCNumberTxt;
+IBOutlet JVFloatLabeledTextField *ExpDateTxt;
+IBOutlet UILabel *cardNumberErrorlbl;
+IBOutlet UILabel *cVCNumberErrorlbl;
+IBOutlet UILabel *expDateErrorlbl;
+IBOutlet UISwitch *savedCardSwitch;
+IBOutlet UIButton *paymentBtn;
+IBOutlet UILabel *saveCardLbl;
+IBOutlet UIImageView *imageCard;
+</code></pre>
+
+<ul>
+<li>Assign new created xib file to PayFort Controller.</li>
+</ul>
+<p><code>[payFort setPayFortCustomViewNib:@“PayFortView2”];</code></p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>If you call Arabic view and the Arabic view not existed the application will crash.</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Don’t forget to set the custom view field in the identity inspector.</div>
+
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../cards/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../cards/" class="btn btn-xs btn-link">
+        Cards
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../androidsdk/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../androidsdk/" class="btn btn-xs btn-link">
+        Integrate Android SDK
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

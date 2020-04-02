@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>What is redirection? - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "How it works?", url: "#_top", children: [
+          ]},
+          {title: "Before you Start", url: "#before-you-start", children: [
+          ]},
+          {title: "Try it out", url: "#try-it-out", children: [
+              {title: "Endpoints", url: "#endpoints" },
+          ]},
+          {title: "How to add the Tokenization service on the Redirection channel?", url: "#how-to-add-the-tokenization-service-on-the-redirection-channel", children: [
+          ]},
+          {title: "Go to Full API", url: "#go-to-full-api", children: [
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../capturepayment/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../capturepayment/" class="btn btn-xs btn-link">
+        Capture Payment
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../custompaymentform/" class="btn btn-xs btn-link">
+        Custom Payment Form
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <hr />
+<p>Redirection process enables you to capture payments.</p>
+<p>PayFort Redirection consists of Authorization and Purchase processing.</p>
+<h1 id="how-it-works">How it works?</h1>
+<hr />
+<p>The <strong>Authorization</strong> operation hold an amount from the Customer’s credit card account for a period of time until you capture or void the transaction. If no capture or void is processed during this period, the transaction will be voided automatically. In <strong>Purchase</strong> you will send one single request in order to authorize and capture the transaction amount.</p>
+<p>We offer you to <strong>Redirect</strong> your Customer from your website to PayFort’s gateway page to fill out his credit card details during these operations.</p>
+<p><strong>
+Looking to void a payment?</strong>
+You can <a href="../voidauthorization/">void</a> an authorized payment at any time. However, captured payments can only be <a href="../refund/">refunded</a>.</p>
+<h1 id="before-you-start">Before you Start</h1>
+<hr />
+<p>You are required to signup for test account by visiting this <a href="" title="https://www.payfort.com/test-account/">link</a> for testing your sample integrations. You can also directly get started by signing up for the live account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
+<h1 id="try-it-out">Try it out</h1>
+<hr />
+<p>You can use the below URLS to test the redirection methods.</p>
+<h3 id="endpoints">Endpoints</h3>
+<p><strong>SandBox:</strong></p>
+<pre><code>POST https://sbcheckout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<p><strong>Live:</strong></p>
+<pre><code>POST https://checkout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<h1 id="how-to-add-the-tokenization-service-on-the-redirection-channel">How to add the Tokenization service on the Redirection channel?</h1>
+<hr />
+<p>The Tokenization service is applicable to be integrated through the Redirection Channel through the below steps:</p>
+<ol>
+<li>The Customer enables the remember_me option displayed in the payment page.</li>
+<li>Processes the first PURCHASE/ AUTHORIZATION payment successfully.</li>
+<li>The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment.</li>
+</ol>
+<p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
+<h1 id="go-to-full-api">Go to Full API</h1>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../capturepayment/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../capturepayment/" class="btn btn-xs btn-link">
+        Capture Payment
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../custompaymentform/" class="btn btn-xs btn-link">
+        Custom Payment Form
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
