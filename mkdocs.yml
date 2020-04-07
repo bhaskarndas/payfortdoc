@@ -33,71 +33,15 @@ nav:
                 - Mobile SDK Library: mobilesdk.md
                 - Integrate Android SDK: androidsdk.md
                 - Integrate iOS SDK: iossdk.md
-            - Plugins:
-                - API Reference: https://docs.payfort.com/docs/api/build/index.html
-                - Merchant Integration Guide: https://docs.payfort.com/pdf/PAYFORT_Merchant_Integration_Guide_V_10.0.pdf
-                - Android SDK Integration Guide: https://docs.payfort.com/pdf/FORT_Mobile-SDK_Android_Integration_Guide_v_3.3.pdf
-                - iOS SDK Integration Guide: https://docs.payfort.com/pdf/FORT_Mobile-SDK_iOS_Integration_Guide_v_3.6.pdf
-                - Fraud Native Mobile SDK Guide: https://docs.payfort.com/pdf/PAYFORT_Fraud_Native_Mobile_SDK_V_1.2.pdf
-                - Visa Checkout Guide: https://docs.payfort.com/pdf/Visa_Checkout_PAYFORT.pdf
-                - Batch Processing Guide: https://docs.payfort.com/pdf/Batch_Processing_Integration_Guide_V_1.4.pdf
-                - SDKs:
-                    - Prestashop:
-                        - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Prestashop%20Integration%20Guide.pdf
-                        - Download: https://github.com/payfort/prestashop-payfort
-                    - Prestashop 1.7:
-                        - Download: https://github.com/payfort/prestashop1.7-payfort
-                    - Woocommerce:
-                        - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Woocommerce%20Integration%20Guidance.pdf
-                        - Download: https://github.com/payfort/woocommerce-payfort
-                    - Magento:
-                        - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Magento%20Integration%20Guide.pdf
-                        - Download: https://github.com/payfort/magento-payfort
-                    - Magento2:
-                        - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Magento%20Integration%20Guide.pdf
-                        - Download: https://github.com/payfort/magento2-payfort
-                    - CS Cart 3:
-                        - Download: https://github.com/payfort/cscart3-payfort
-                    - CS Cart 4:
-                        - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Cscart4%20Integration%20Guide.pdf
-                        - Download: https://docs.payfort.com/pdf/plugins/Cscart4%20Integration%20Guide.pdf
-                    - Open Cart:
-                        - Getting Started Guide:https://docs.payfort.com/pdf/plugins/Opncart%201%20Integration%20Guide.pdf
-                        - Download: https://github.com/payfort/opencart-payfort
-                    - Open Cart 2:
-                        - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Opncart%202%20Integration%20Guide.pdf
-                        - Download: https://github.com/payfort/opencart2.0-payfort
-                    - Open Cart 3:
-                        - Download: https://github.com/payfort/opencart3-payfort
-                    - Php:
-                        - Download: https://github.com/payfort/payfort-php-sdk
-                    - Laravel:
-                        - Download: https://github.com/wshurafa/laravel-payfort
-                
-                    - C#/.Net SDK: https://github.com/payfort/payfort-dotnet-sdk
-            
-                    - Java SDK:
-                        - Download: https://github.com/payfort/payfort-java-sdk
-                    - Android SDK:
-                        - Download: https://github.com/payfort/fort-android-sdk
-                    
-                    - iOS SDK:
-                        - Download: https://github.com/payfort/fort-ios-sdk
-                    - Python SDK:
-                        - Download: https://github.com/alisterionold/payfort-python
-                    - React Native SDK:
-                        - Download: https://github.com/Simicart/RN-Payfort-SDK
-                    - Node.js SDK:
-                        - Download: https://github.com/zivost/payfort-node
-            - Trusted:
-               - What is Trusted?: trusted.md
+            - Plugins: plugins.md
+            - Trusted: trusted.md
+              
                     
         - Payment Methods:
             - Cards: cards.md
             - Wallets: wallets.md
-            - Cash and ATM Payments: cash_atm_payment.md
-            - Bank Transfers: banktransfers.md
-            - Direct Debit: directdebit.md
+            - Lend: lend.md
+            - Decline Codes: declinecodes.md
         - Payment Types:
             - Moto: moto.md
             - Recurring(API): recurring.md
@@ -146,8 +90,65 @@ nav:
     
     
     
-    
+    - Resources:
+            
+        - API Reference: https://docs.payfort.com/docs/api/build/index.html
+        - Merchant Integration Guide: https://docs.payfort.com/pdf/PAYFORT_Merchant_Integration_Guide_V_10.0.pdf
+        - Android SDK Integration Guide: https://docs.payfort.com/pdf/FORT_Mobile-SDK_Android_Integration_Guide_v_3.3.pdf
+        - iOS SDK Integration Guide: https://docs.payfort.com/pdf/FORT_Mobile-SDK_iOS_Integration_Guide_v_3.6.pdf
+        - Fraud Native Mobile SDK Guide: https://docs.payfort.com/pdf/PAYFORT_Fraud_Native_Mobile_SDK_V_1.2.pdf
+        - Visa Checkout Guide: https://docs.payfort.com/pdf/Visa_Checkout_PAYFORT.pdf
+        - Batch Processing Guide: https://docs.payfort.com/pdf/Batch_Processing_Integration_Guide_V_1.4.pdf
+        - SDKs:
+            - Prestashop:
+                - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Prestashop%20Integration%20Guide.pdf
+                - Download: https://github.com/payfort/prestashop-payfort
+            - Prestashop 1.7:
+                - Download: https://github.com/payfort/prestashop1.7-payfort
+            - Woocommerce:
+                - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Woocommerce%20Integration%20Guidance.pdf
+                - Download: https://github.com/payfort/woocommerce-payfort
+            - Magento:
+                - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Magento%20Integration%20Guide.pdf
+                - Download: https://github.com/payfort/magento-payfort
+            - Magento2:
+                - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Magento%20Integration%20Guide.pdf
+                - Download: https://github.com/payfort/magento2-payfort
+            - CS Cart 3:
+                - Download: https://github.com/payfort/cscart3-payfort
+            - CS Cart 4:
+                - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Cscart4%20Integration%20Guide.pdf
+                - Download: https://docs.payfort.com/pdf/plugins/Cscart4%20Integration%20Guide.pdf
+            - Open Cart:
+                - Getting Started Guide:https://docs.payfort.com/pdf/plugins/Opncart%201%20Integration%20Guide.pdf
+                - Download: https://github.com/payfort/opencart-payfort
+            - Open Cart 2:
+                - Getting Started Guide: https://docs.payfort.com/pdf/plugins/Opncart%202%20Integration%20Guide.pdf
+                - Download: https://github.com/payfort/opencart2.0-payfort
+            - Open Cart 3:
+                - Download: https://github.com/payfort/opencart3-payfort
+            - Php:
+                - Download: https://github.com/payfort/payfort-php-sdk
+            - Laravel:
+                - Download: https://github.com/wshurafa/laravel-payfort
+                
+            - C#/.Net SDK: https://github.com/payfort/payfort-dotnet-sdk
+            
+            - Java SDK:
+                - Download: https://github.com/payfort/payfort-java-sdk
+            - Android SDK:
+                - Download: https://github.com/payfort/fort-android-sdk
+                    
+            - iOS SDK:
+                - Download: https://github.com/payfort/fort-ios-sdk
+            - Python SDK:
+                - Download: https://github.com/alisterionold/payfort-python
+            - React Native SDK:
+                - Download: https://github.com/Simicart/RN-Payfort-SDK
+            - Node.js SDK:
+                - Download: https://github.com/zivost/payfort-node
     - Glossary: glossary.md
+    - Dummy Testing: dummy.md
         
 # extra_css:
     # - css/style5.css

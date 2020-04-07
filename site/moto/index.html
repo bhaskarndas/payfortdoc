@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Moto - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "MOTO Channel", url: "#_top", children: [
+              {title: "Endpoints", url: "#endpoints" },
+              {title: "Parameters Submission Type", url: "#parameters-submission-type" },
+              {title: "The Request", url: "#the-request" },
+              {title: "The Response", url: "#the-response" },
+          ]},
+          {title: "Go to Full API", url: "#go-to-full-api", children: [
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../recurring/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../recurring/" class="btn btn-xs btn-link">
+        Recurring(API)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../declinecodes/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../declinecodes/" class="btn btn-xs btn-link">
+        Decline Codes
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="moto-channel">MOTO Channel</h1>
+<hr />
+<p><strong>MOTO</strong> (Mobile Order/ Telephone Order) channel allows the Merchant to process MOTO transactions through the FORT API using credit card Tokens ONLY.</p>
+<h2 id="endpoints">Endpoints</h2>
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">POST  https://sbpaymentservices.PayFort.com/FortAPI/paymentApi
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="http">POST  https://paymentservices.PayFort.com/FortAPI/paymentApi
+</code></pre>
+
+<hr />
+<h2 id="parameters-submission-type">Parameters Submission Type</h2>
+<p>REST POST request using JSON.</p>
+<hr />
+<h2 id="the-request">The Request</h2>
+<p>The sample JSON Request</p>
+<pre><code class="json">{&quot;command&quot;:&quot;PURCHASE&quot;,
+ &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+ &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+ &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
+ &quot;amount&quot;: &quot;10000&quot;,
+ &quot;currency&quot;: &quot;AED&quot;,
+ &quot;language&quot;:&quot;en&quot;,
+ &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
+ &quot;eci&quot;:&quot;MOTO&quot;,
+ &quot;token_name&quot;:&quot;Op9Vmp&quot;,
+ &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+ &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
+ &quot;order_description&quot;:&quot;iPhone6-S&quot;,
+ &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
+ &quot;customer_name&quot;:&quot;John Smith&quot;,
+ &quot;phone_number&quot;:&quot;00962797219966&quot;,
+ &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
+ &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
+ &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
+}
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+    Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
+
+<h2 id="the-response">The Response</h2>
+<hr />
+<p>Here is the response example</p>
+<pre><code class="json">{&quot;command&quot;:&quot;PURCHASE&quot;,
+ &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+ &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+ &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
+ &quot;amount&quot;:&quot;10000&quot;,
+ &quot;currency&quot;:&quot;AED&quot;,
+ &quot;language&quot;:&quot;en&quot;,
+ &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
+ &quot;eci&quot;:&quot;MOTO&quot;,
+ &quot;token_name&quot;:&quot;Op9Vmp&quot;,
+ &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+ &quot;order_description&quot;:&quot;iPhone6-S&quot;,
+ &quot;fort_id&quot;:&quot;149295435400084008&quot;,
+ &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
+ &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
+ &quot;customer_name&quot;:&quot;John Smith&quot;,
+ &quot;authorization_code&quot;:&quot;P1000000000000372136&quot;,
+ &quot;response_message&quot;:&quot;Success&quot;,
+ &quot;response_code&quot;:&quot;20064&quot;,
+ &quot;status&quot;:&quot;04&quot;,
+ &quot;expiry_date&quot;:&quot;2105&quot;,
+ &quot;card_number&quot;:&quot;400555******0001&quot;,
+ &quot;phone_number&quot;:&quot;00962797219966&quot;,
+ &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
+ &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
+ &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
+}
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
+
+<h1 id="go-to-full-api">Go to Full API</h1>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../recurring/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../recurring/" class="btn btn-xs btn-link">
+        Recurring(API)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../declinecodes/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../declinecodes/" class="btn btn-xs btn-link">
+        Decline Codes
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

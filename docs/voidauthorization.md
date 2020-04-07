@@ -85,5 +85,7 @@ Check out our full API by visiting this [link](https://docs.payfort.com/docs/api
 
 ## Need further help?
 
+------
+
 Thanks for using PayFort.com. If you need any help or support, then message our support team at [support@payfort.com](mailto:support@payfort.com).
 

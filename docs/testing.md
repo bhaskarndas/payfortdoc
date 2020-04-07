@@ -119,7 +119,6 @@ You want to test a transaction but you don’t have a credit card or user creden
     </tbody>
   </table>
 </div>
-
 ------
 
 <div class="container">
