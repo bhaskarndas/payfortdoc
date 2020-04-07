@@ -196,66 +196,138 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 <h4 id="integration-flow_1">Integration Flow</h4>
 <hr />
 <p>This integration allows the you to host Visa Checkout button on his website giving him maximum control over the look and feel and user experience. The following steps describe how this integration works:</p>
-<ol>
+<ul>
 <li>You should include the following JavaScript in the HTML header of its checkout page. This JavaScript loads the Visa Checkout library and defines handlers to initialization and payment events.</li>
-</ol>
-<pre><code class="html">    &lt;head&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    function onVisaCheckoutReady() {
-    V.init({
-    apikey : “#API_KEY#”, // This will be provided by PayFort
-    externalProfileId : “#PROFILE_NAME#”, // This will be provided by PayFort
-    settings : {
-    locale : “en_AE”,
-    countryCode : “AE”, // depends on ISO-3166-1 alpha-2 standard codes
-    review : {
-    message : “Merchant defined message”, //
-    buttonAction : “Continue” // The button label
-    },
-    threeDSSetup : {
-    threeDSActive : “false” // true to enable the 3ds false to disable it
-    }
-    },
-    paymentRequest : {
-    currencyCode : “USD”, //depends on ISO 4217 standard alpha-3 code values
-    subtotal : “10.00”, // Subtotal of the payment.
-    }
-    });
-    V.on(“payment.success”, function(payment) {
-    document.write(JSON.stringify(payment)); // response when received success operation
-    });
-    V.on(“payment.cancel”, function(payment) {
-    document.write(JSON.stringify(payment)); // response when cancel operation
-    });
-    V.on(“payment.error”, function(payment, error) {
-    document.write(JSON.stringify(payment));// response when received error operation
-    document.write(error);
-    });
-    }
-    &lt;/script&gt;
-    &lt;/head&gt;
+</ul>
+<pre><code class="html">&lt;head&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+function onVisaCheckoutReady() {
+V.init({
+apikey : “#API_KEY#”, // This will be provided by PayFort
+        externalProfileId : “#PROFILE_NAME#”, // This will be provided by PayFort
+        settings : {
+        locale : “en_AE”,
+        countryCode : “AE”, // depends on ISO-3166-1 alpha-2 standard codes
+        review : {
+        message : “Merchant defined message”, //
+        buttonAction : “Continue” // The button label
+        },
+        threeDSSetup : {
+        threeDSActive : “false” // true to enable the 3ds false to disable it
+        }
+        },
+        paymentRequest : {
+        currencyCode : “USD”, //depends on ISO 4217 standard alpha-3 code values
+        subtotal : “10.00”, // Subtotal of the payment.
+        }
+        });
+        V.on(“payment.success”, function(payment) {
+        document.write(JSON.stringify(payment)); //response when received success operation
+        });
+        V.on(“payment.cancel”, function(payment) {
+        document.write(JSON.stringify(payment)); //response when cancel operation
+        });
+        V.on(“payment.error”, function(payment, error) {
+        document.write(JSON.stringify(payment));//response when received error operation
+        document.write(error);
+        });
+        }
+        &lt;/script&gt;
+        &lt;/head&gt;
 </code></pre>
 
-<ol>
-<li>
-<p>You should use the following class to render Visa Checkout button that a consumer clicks to initiate a payment.</p>
-</li>
-<li></li>
-<li>
-<p>You should use the following JavaScript to control the operation on Visa Checkout on the website.</p>
-</li>
-<li>
-<p>After completing the previous steps, the consumer clicks on Visa Checkout button, Visa Checkout light box appears and the user complete the checkout process.</p>
-</li>
-<li>
-<p>You will receive a successful response. The response associated with the payment success event returns list of parameters. The Merchant has to collect the value of “call_id” parameter to be used in the following step.</p>
-</li>
-<li>
-<p>You submit Purchase request to the FORT adding 2 extra parameters: digital-wallet, call_id. Please refer to Merchant Hosted Visa Checkout - Request for more details.
-<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Merchants Page should be activated to accept Purchase and Authorization transactions</div></p>
-</li>
+<ul>
+<li>You should use the following class to render Visa Checkout button that a consumer clicks to initiate a payment.</li>
+</ul>
+<pre><code class="html">&lt;body&gt;
+&lt;img alt=“Visa Checkout” class=“v-button” role=“button”
+src=“https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?cardBrands=VISA,MASTERCARD” /&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h5 id="endpoints">Endpoints</h5>
+<hr />
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="http">https://secure.checkout.visa.com/wallet-services-web/xo/button.png
+</code></pre>
+
+<ul>
+<li>You should use the following JavaScript to control the operation on Visa Checkout on the website.</li>
+</ul>
+<pre><code class="html">  &lt;body&gt;
+  &lt;script type=“text/javascript”
+  src=“https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js”&gt;
+  &lt;/script&gt;
+  &lt;/body&gt;
+</code></pre>
+
+<ul>
+<li>After completing the previous steps, the consumer clicks on Visa Checkout button, Visa Checkout light box appears and the user complete the checkout process.</li>
+<li>You will receive a successful response. The response associated with the payment success event returns list of parameters. The Merchant has to collect the value of “call_id” parameter to be used in the following step.</li>
+<li>You submit Purchase request to the FORT adding 2 extra parameters: digital-wallet, call_id. Please refer to Merchant Hosted Visa Checkout - Request for more details.</li>
+</ul>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Merchants Page should be activated to accept Purchase and Authorization transactions</div>
+
+<ul>
 <li>The Merchant system receives the FORT’s purchase request and then uses Visa Checkout update image pixel. Below you can find an example of how to use Visa Checkout update image pixel. Please refer to “Visa checkout PayFort documentation” for more details.</li>
-</ol>
+</ul>
+<pre><code class="html">  &lt;img src=“https://sandbox.secure.checkout.visa.com/wallet-services-web/payment/updatepaymentinfo.gif?apikey=…&amp;callId=…&amp;currencyCode=USD&amp;total=11.00&amp;subtotal=11.00” /&gt;
+</code></pre>
+
+<p>The following example shows an HTML web page that loads the Visa Checkout library, defines handlers for initialization and payment events, and creates a Visa Checkout button:</p>
+<pre><code class="html">&lt;html&gt;
+
+&lt;head&gt;
+&lt;script type=“text/javascript”&gt;
+function onVisaCheckoutReady() {
+V.init({
+apikey : “#API_KEY#”, // This will be provided by PayFort
+externalProfileId : “#PROFILE_NAME#”, // This will be provided by PayFort
+settings : {
+locale : “en_AE”,
+countryCode : “AE”, // depends on ISO-3166-1 alpha-2 standard codes
+review : {
+message : “Merchant defined message”, //
+buttonAction : “Continue” // The button label
+},
+threeDSSetup : {
+threeDSActive : “false” // true to enable the 3ds false to disable it
+}
+},
+paymentRequest : {
+currencyCode : “USD”, //depends on ISO 4217 standard alpha-3 code values
+subtotal : “10.00”, // Subtotal of the payment.
+}
+});
+V.on(“payment.success”, function(payment) {
+document.write(JSON.stringify(payment)); // response when received success operation
+});
+V.on(“payment.cancel”, function(payment) {
+document.write(JSON.stringify(payment)); // response when cancel operation
+});
+V.on(“payment.error”, function(payment, error) {
+document.write(JSON.stringify(payment));// response when received error operation
+document.write(error);
+});
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;img alt=“Visa Checkout” class=“v-button” role=“button&quot;src=&quot;https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?cardBrands=VISA,MASTERCARD,DISCOVER,AMEX” /&gt;
+
+&lt;script type=“text/javascript” src=“https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js”&gt;
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+</code></pre>
 
   <br>
     

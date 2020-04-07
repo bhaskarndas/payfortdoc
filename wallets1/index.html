@@ -93,8 +93,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>The Merchant submits a form that includes all the parameters.</li>
 </ol>
 <p>The Merchant calls the following URL to be redirected to the FORT:   </p>
-<p><code>html
-   https://checkout.payfort.com/FortAPI/paymentPage</code></p>
+<pre><code class="html">   https://checkout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
 <ol>
 <li>
 <p>The FORT returns a response to the Merchant.</p>
@@ -121,7 +122,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h3 id="service-request-example">Service Request Example</h3>
 <p>Below is the sample html request.</p>
-<pre><code class="php+HTML">&lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot;method=&quot;post&quot;id=&quot;simulatorForm&quot;&gt;
+<pre><code class="html">&lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot;method=&quot;post&quot;id=&quot;simulatorForm&quot;&gt;
 &lt;input type=&quot;hidden&quot; name=&quot;digital_wallet&quot; id=&quot;digital_wallet&quot; value=&quot;MASTERPASS&quot;/&gt;
 &lt;input type=&quot;hidden&quot; name=&quot;command&quot;id=&quot;command&quot; value=&quot;AUTHORIZATION&quot;/&gt;
 &lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; id=&quot;access_code&quot; value=&quot;zx0IPmPy5jp1vAz&quot;/&gt;
@@ -184,9 +185,8 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 <ol>
 <li>You should include the following JavaScript in the HTML header of its checkout page. This JavaScript loads the Visa Checkout library and defines handlers to initialization and payment events.</li>
 </ol>
-<p><code>html
-   &lt;head&gt;
-   &lt;script type="text/javascript"&gt;
+<pre><code class="html">   &lt;head&gt;
+   &lt;script type=&quot;text/javascript&quot;&gt;
    function onVisaCheckoutReady() {
    V.init({
    apikey : “#API_KEY#”, // This will be provided by PayFort
@@ -219,41 +219,48 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
    });
    }
    &lt;/script&gt;
-   &lt;/head&gt;</code></p>
+   &lt;/head&gt;
+</code></pre>
+
 <ol>
 <li>You should use the following class to render Visa Checkout button that a consumer clicks to initiate a payment.</li>
 </ol>
-<p><code>html
-   &lt;body&gt;
+<pre><code class="html">   &lt;body&gt;
    &lt;img alt=“Visa Checkout” class=“v-button” role=“button”
    src=“https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?cardBrands=VISA,MASTERCARD” /&gt;
-   &lt;/body&gt;</code></p>
+   &lt;/body&gt;
+</code></pre>
+
 <p>#### Endpoints</p>
 <hr />
 <p><strong>Sandbox</strong></p>
-<p><code>http
-   https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png</code></p>
+<pre><code class="http">   https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png
+</code></pre>
+
 <p><strong>Live</strong></p>
-<p><code>http
-   https://secure.checkout.visa.com/wallet-services-web/xo/button.png</code></p>
+<pre><code class="http">   https://secure.checkout.visa.com/wallet-services-web/xo/button.png
+</code></pre>
+
 <ol>
 <li>You should use the following JavaScript to control the operation on Visa Checkout on the website.</li>
 </ol>
-<p>```html
-   <body></p>
-<p><script type=“text/javascript”
-   src=“https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js”>
-   </script></p>
-<p></body>
-   ```</p>
+<pre><code class="html">   &lt;body&gt;
+   &lt;script type=“text/javascript”
+   src=“https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js”&gt;
+   &lt;/script&gt;
+   &lt;/body&gt;
+</code></pre>
+
 <p>#### Endpoints</p>
 <hr />
 <p><strong>Sandbox</strong></p>
-<p><code>http
-   https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js</code></p>
+<pre><code class="http">https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js
+</code></pre>
+
 <p><strong>Live</strong></p>
-<p><code>http
-   https://assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js</code></p>
+<pre><code class="http">https://assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js
+</code></pre>
+
 <ol>
 <li>
 <p>After completing the previous steps, the consumer clicks on Visa Checkout button, Visa Checkout light box appears and the user complete the checkout process.</p>
@@ -269,13 +276,14 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 <ol>
 <li>The Merchant system receives the FORT’s purchase request and then uses Visa Checkout update image pixel. Below you can find an example of how to use Visa Checkout update image pixel. Please refer to “Visa checkout PayFort documentation” for more details.</li>
 </ol>
-<p><code>html
-   &lt;img src=“https://sandbox.secure.checkout.visa.com/wallet-services-web/payment/updatepaymentinfo.gif?apikey=…&amp;callId=…&amp;currencyCode=USD&amp;total=11.00&amp;subtotal=11.00” /&gt;</code></p>
+<pre><code class="html">   &lt;img src=“https://sandbox.secure.checkout.visa.com/wallet-services-web/payment/updatepaymentinfo.gif?apikey=…&amp;callId=…&amp;currencyCode=USD&amp;total=11.00&amp;subtotal=11.00” /&gt;
+</code></pre>
+
 <p>The following example shows an HTML web page that loads the Visa Checkout library, defines handlers for initialization and payment events, and creates a Visa Checkout button:</p>
-<p>```html
-   <html></p>
-<p><head>
-   <script type=“text/javascript”>
+<pre><code class="html">   &lt;html&gt;
+
+   &lt;head&gt;
+   &lt;script type=“text/javascript”&gt;
    function onVisaCheckoutReady() {
    V.init({
    apikey : “#API_KEY#”, // This will be provided by PayFort
@@ -307,15 +315,19 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
    document.write(error);
    });
    }
-   </script>
-   </head></p>
-<p><body>
-   <img alt=“Visa Checkout” class=“v-button” role=“button"src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?cardBrands=VISA,MASTERCARD,DISCOVER,AMEX” /></p>
-<p><script type=“text/javascript” src=“https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js”>
-   </script></p>
-<p></body>
-   </html>
-   ```</p>
+   &lt;/script&gt;
+   &lt;/head&gt;
+
+   &lt;body&gt;
+   &lt;img alt=“Visa Checkout” class=“v-button” role=“button&quot;src=&quot;https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?cardBrands=VISA,MASTERCARD,DISCOVER,AMEX” /&gt;
+
+   &lt;script type=“text/javascript” src=“https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js”&gt;
+   &lt;/script&gt;
+
+   &lt;/body&gt;
+   &lt;/html&gt;
+</code></pre>
+
 <h2 id="apple-pay">Apple Pay</h2>
 <p>Apple Pay provides an easy way for users to buy goods and services using iPhone, iPad and Apple Watch through mobile application or website. Checking out is as easy as selecting “Apple Pay” and placing a finger on the touch ID of an iPhone, iPad or simply double clicking the side button on the Apple Watch. It’s quick, easy and secure!</p>
 <p>When using a credit or debit card with Apple Pay, the actual card numbers are not stored on the device, nor on Apple servers. Instead, a unique Device Account Number is assigned, encrypted and securely stored in the Secure Element on your device, where each transaction is authorized with a one-time unique dynamic security code.</p>
