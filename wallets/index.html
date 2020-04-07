@@ -33,17 +33,11 @@
         
         var pageToc = [
           {title: "MasterPass", url: "#_top", children: [
+              {title: "Service Endpoints", url: "#service-endpoints" },
+              {title: "Redirection", url: "#redirection" },
           ]},
           {title: "VisaCheckout", url: "#visacheckout", children: [
-          ]},
-          {title: "Apple Pay", url: "#apple-pay", children: [
-              {title: "Setting Up Apple Pay", url: "#setting-up-apple-pay" },
-          ]},
-          {title: "Test Your Wallet Integration", url: "#test-your-wallet-integration", children: [
-          ]},
-          {title: "Go to Full API", url: "#go-to-full-api", children: [
-          ]},
-          {title: "Need further help?", url: "#need-further-help", children: [
+              {title: "Merchant Hosted Checkout Button", url: "#merchant-hosted-checkout-button" },
           ]},
         ];
 
@@ -70,12 +64,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../testing/" class="btn btn-xs btn-default pull-right">
+      <a href="../declinecodes/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../testing/" class="btn btn-xs btn-link">
-        Testing
+      <a href="../declinecodes/" class="btn btn-xs btn-link">
+        Decline Codes
       </a>
     </div>
     
@@ -91,34 +85,177 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <p>PayFort supports MasterPass, Visacheckout and ApplePay</p>
+    <p>PayFort supports MasterPass, Visacheckout and ApplePay.</p>
 <hr />
-<h2 id="masterpass">MasterPass</h2>
-<p>PAYFORT provides MasterPass that gives you a chance to inject a bit of extra security and convenience payment experience to your customers. The MasterPass button appears on your website checkout page allows a consumer to interact with their MasterPass digital wallet seamlessly without having to leave your website.</p>
+<h1 id="masterpass">MasterPass</h1>
 <hr />
-<h2 id="visacheckout">VisaCheckout</h2>
-<p>Make your customer’s online shopping experience more simple and convenient by implementing Visa checkout that securely stores the buyer’s credit card details, shipping address and any other information.Visa checkout can be offered through easy integration.</p>
+<p>As another move towards a cashless environment, PayFort provides <strong>MasterPass</strong>; a digital wallet that securely stores the buyer’s credit card details and shipping addresses and information, making shopping through thousands of online Merchants simple and convenient. This is fulfilled by enhancing and simplifying the buyer’s digital shopping experience.</p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>PAYFORT now supports MasterPass Redirect v7 in addition to v6.</div>
+
 <hr />
-<h2 id="apple-pay">Apple Pay</h2>
-<p>Apple Pay provides an easy way for users to buy goods and services using iPhone, iPad and Apple Watch through mobile application or website. Checking out is as easy as selecting “Apple Pay” and placing a finger on the touch ID of an iPhone, iPad or simply double clicking the side button on the Apple Watch. It’s quick, easy and secure!</p>
-<p>When using a credit or debit card with Apple Pay, the actual card numbers are not stored on the device, nor on Apple servers. Instead, a unique Device Account Number is assigned, encrypted and securely stored in the Secure Element on your device, where each transaction is authorized with a one-time unique dynamic security code.</p>
-<h3 id="setting-up-apple-pay">Setting Up Apple Pay</h3>
+<h2 id="service-endpoints">Service Endpoints</h2>
+<hr />
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">POST  https://sbcheckout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="http">POST  https://checkout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
+<hr />
+<h2 id="redirection">Redirection</h2>
+<hr />
+<h3 id="integration-flow">Integration Flow</h3>
 <hr />
 <ol>
-<li>Kindly visit <a href="http://developer.apple.com/">developer.apple.com</a> where you will Create a developer account, an Apple Pay Merchant ID and complete the Apple Pay certification (export the payment processing certificate in p12 file)</li>
-<li>Integrate Apple Pay in your app/website using the Apple Pay documentation found at https://developer.apple.com/apple-pay</li>
-<li>Submit the encrypted Apple Pay payload to PayFort’s API for decryption / processing. Please contact <a href="mailto:integration@payfort.com">integration@payfort.com</a> for PayFort’s integration documentation</li>
+<li>
+<p>You submit a form that includes all the parameters and call the following url to be redirected to PayFort as mentioned in the service endpoints<a href="#service-endpoints">&nbsp;&nbsp;<i class="fa fa-anchor"></i></a></p>
+</li>
+<li>
+<p>The FORT returns a response to the Merchant.</p>
+</li>
+<li>
+<p>The FORT inserts the response parameters into a JavaScript.</p>
+</li>
+<li>
+<p>A lightbox appears to the buyer where he enters his credentials, selects the card type and the shipping address, and clicks “Finish Shopping”.</p>
+</li>
+<li>
+<p>The FORT either proceeds to Authorize or Purchase the payment based on the value of the command parameter sent in the Merchant’s form.</p>
+</li>
+<li>
+<p>The FORT returns a response to the Merchant.(Please refer to section MasterPass Service - Response for the Response Parameters).</p>
+</li>
 </ol>
+<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>In the Redirection work flow, the “Channel” will always be considered redirection and the “Default Operation” won’t be considered.</div></p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>If the Merchant sent the “payment_option” value in his request, the FORT will use the value found in the request, no matter what other options are supported by the Merchant. However, if this value wasn’t sent in the Merchant’s request, the FORT will retrieve all the payment options supported by the Merchant.</div>
+
 <hr />
-<h2 id="test-your-wallet-integration">Test Your Wallet Integration</h2>
+<h3 id="parameters-submission-type">Parameters Submission Type</h3>
+<p>HTTPs Form Post Request.</p>
 <hr />
-<p>You can checkout this <a href="../testing/">link</a> for testing your wallet integration</p>
+<h3 id="service-request-example">Service Request Example</h3>
+<p>Below is the sample html request.</p>
+<pre><code class="html">&lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot;method=&quot;post&quot;id=&quot;simulatorForm&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;digital_wallet&quot; id=&quot;digital_wallet&quot; value=&quot;MASTERPASS&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;command&quot;id=&quot;command&quot; value=&quot;AUTHORIZATION&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; id=&quot;access_code&quot; value=&quot;zx0IPmPy5jp1vAz&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; id=&quot;merchant_identifier&quot; value=&quot;CycHZxVj&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; id=&quot;merchant_reference&quot; value=&quot;XYZ9239-yu898&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;amount&quot; id=&quot;amount&quot; value=&quot;10000&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;currency&quot; id=&quot;currency&quot; value=&quot;AED&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;language&quot; id=&quot;language&quot; value=&quot;en&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;customer_email&quot; id=&quot;customer_email&quot; value=&quot;someone@email.com&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;signature&quot; id=&quot;signature&quot; value=&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;payment_option&quot;id=&quot;payment_option&quot; value=&quot;VISA&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;order_description&quot; id=&quot;order_description&quot; value=&quot;iPhone 6-S&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;customer_ip&quot; id=&quot;customer_ip&quot; value=&quot;192.178.1.10&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;customer_name&quot; id=&quot;customer_name&quot; value=&quot;John Smith&quot;/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;cart_details&quot; id=&quot;cart_details&quot; value='{&quot;sub_total&quot;:&quot;900&quot;,&quot;cart_items&quot;:[{&quot;item_description&quot;:&quot;Xbox&quot;,&quot;item_image&quot;:&quot;http://image.com&quot;,&quot;item_name&quot;:&quot;Xbo x 360&quot;,&quot;item_price&quot;:&quot;300&quot;,&quot;item_quantity&quot;:&quot;2&quot;},{&quot;item_description&quot;:&quot;Playstation 3&quot;,&quot;item_image&quot;:&quot;http://image.com&quot;,&quot;item_name&quot;:&quot;Playstation 3&quot;,&quot;item_price&quot;:&quot;150&quot;,&quot;item_quantity&quot;:&quot;2&quot;}]}'/&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; id=&quot;return_url&quot; value=&quot;http://backtothemerchanturl.com&quot;/&gt;
+&lt;input value=&quot;Send&quot; type=&quot;submit&quot;&gt; &lt;/form&gt;
+</code></pre>
+
+<p>The following is an example for “cart_details” parameter:</p>
+<pre><code class="html">&lt;input type=“hidden”
+       name=“cart_details” 
+       id=“cart_details” 
+       value=
+       ’{
+       “sub_total”:“900”,
+       “cart_items”:[{
+       “item_description”:“Xbox”,
+       “item_image”:“http://image.com”,
+       “item_name”:“Xbox 360”,
+       “item_price”:“300”,
+       “item_quantity”:“2”},{
+       “item_description”:“Playstation 3”,
+       “item_image”:“http://image.com”,
+       “item_name”:“Playstation 3”,
+       “item_price”:“150”,
+       “item_quantity”:“2”}]}’/&gt; 
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+    Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
+
+<h3 id="masterpass-hosted">MasterPass Hosted</h3>
 <hr />
-<h2 id="go-to-full-api">Go to Full API</h2>
-<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<p>Masterpass Hosted accepts digital wallet transactions without redirection to Masterpass pages and instead; it will be hosted on the Merchant website.</p>
+<h1 id="visacheckout">VisaCheckout</h1>
 <hr />
-<h2 id="need-further-help">Need further help?</h2>
-<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+<p><strong>Visa Checkout</strong> is a digital wallet that securely stores the buyer’s credit card details and shipping addresses and information, making shopping through thousands of online Merchants simple and convenient. This service enhances and simplifies the buyer’s online shopping experience. <strong>Visa Checkout</strong> can be offered through two different integrations:</p>
+<ul>
+<li><a href="#merchant-hosted-checkout-button">Merchant Hosted Checkout Button.</a></li>
+<li><a href="#payfort-hosted-checkout-button">PayFort Hosted Checkout Button.</a></li>
+</ul>
+<hr />
+<h3 id="merchant-hosted-checkout-button">Merchant Hosted Checkout Button</h3>
+<h4 id="integration-flow_1">Integration Flow</h4>
+<hr />
+<p>This integration allows the you to host Visa Checkout button on his website giving him maximum control over the look and feel and user experience. The following steps describe how this integration works:</p>
+<ol>
+<li>You should include the following JavaScript in the HTML header of its checkout page. This JavaScript loads the Visa Checkout library and defines handlers to initialization and payment events.</li>
+</ol>
+<pre><code class="html">    &lt;head&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    function onVisaCheckoutReady() {
+    V.init({
+    apikey : “#API_KEY#”, // This will be provided by PayFort
+    externalProfileId : “#PROFILE_NAME#”, // This will be provided by PayFort
+    settings : {
+    locale : “en_AE”,
+    countryCode : “AE”, // depends on ISO-3166-1 alpha-2 standard codes
+    review : {
+    message : “Merchant defined message”, //
+    buttonAction : “Continue” // The button label
+    },
+    threeDSSetup : {
+    threeDSActive : “false” // true to enable the 3ds false to disable it
+    }
+    },
+    paymentRequest : {
+    currencyCode : “USD”, //depends on ISO 4217 standard alpha-3 code values
+    subtotal : “10.00”, // Subtotal of the payment.
+    }
+    });
+    V.on(“payment.success”, function(payment) {
+    document.write(JSON.stringify(payment)); // response when received success operation
+    });
+    V.on(“payment.cancel”, function(payment) {
+    document.write(JSON.stringify(payment)); // response when cancel operation
+    });
+    V.on(“payment.error”, function(payment, error) {
+    document.write(JSON.stringify(payment));// response when received error operation
+    document.write(error);
+    });
+    }
+    &lt;/script&gt;
+    &lt;/head&gt;
+</code></pre>
+
+<ol>
+<li>
+<p>You should use the following class to render Visa Checkout button that a consumer clicks to initiate a payment.</p>
+</li>
+<li></li>
+<li>
+<p>You should use the following JavaScript to control the operation on Visa Checkout on the website.</p>
+</li>
+<li>
+<p>After completing the previous steps, the consumer clicks on Visa Checkout button, Visa Checkout light box appears and the user complete the checkout process.</p>
+</li>
+<li>
+<p>You will receive a successful response. The response associated with the payment success event returns list of parameters. The Merchant has to collect the value of “call_id” parameter to be used in the following step.</p>
+</li>
+<li>
+<p>You submit Purchase request to the FORT adding 2 extra parameters: digital-wallet, call_id. Please refer to Merchant Hosted Visa Checkout - Request for more details.
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Merchants Page should be activated to accept Purchase and Authorization transactions</div></p>
+</li>
+<li>The Merchant system receives the FORT’s purchase request and then uses Visa Checkout update image pixel. Below you can find an example of how to use Visa Checkout update image pixel. Please refer to “Visa checkout PayFort documentation” for more details.</li>
+</ol>
 
   <br>
     
@@ -131,12 +268,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../testing/" class="btn btn-xs btn-default pull-right">
+      <a href="../declinecodes/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../testing/" class="btn btn-xs btn-link">
-        Testing
+      <a href="../declinecodes/" class="btn btn-xs btn-link">
+        Decline Codes
       </a>
     </div>
     
