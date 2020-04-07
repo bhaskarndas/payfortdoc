@@ -39,6 +39,16 @@
           {title: "VisaCheckout", url: "#visacheckout", children: [
               {title: "Merchant Hosted Checkout Button", url: "#merchant-hosted-checkout-button" },
           ]},
+          {title: "Apple Pay", url: "#apple-pay", children: [
+              {title: "Endpoints", url: "#endpoints_1" },
+              {title: "Setting Up Apple Pay", url: "#setting-up-apple-pay" },
+              {title: "The ApplePay Request", url: "#the-applepay-request" },
+              {title: "The ApplePay Response", url: "#the-applepay-response" },
+              {title: "Apple Pay SDK Service", url: "#apple-pay-sdk-service" },
+              {title: "Test Your Wallet Integration", url: "#test-your-wallet-integration" },
+              {title: "Go to Full API", url: "#go-to-full-api" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
         ];
 
     </script>
@@ -328,6 +338,310 @@ document.write(error);
 
 
 </code></pre>
+
+<hr />
+<h1 id="apple-pay">Apple Pay</h1>
+<hr />
+<p>Apple Pay provides an easy way for users to buy goods and services using iPhone, iPad and Apple Watch through mobile application or website. Checking out is as easy as selecting “Apple Pay” and placing a finger on the touch ID of an iPhone, iPad or simply double clicking the side button on the Apple Watch. It’s quick, easy and secure!</p>
+<p>When using a credit or debit card with Apple Pay, the actual card numbers are not stored on the device, nor on Apple servers. Instead, a unique Device Account Number is assigned, encrypted and securely stored in the Secure Element on your device, where each transaction is authorized with a one-time unique dynamic security code.</p>
+<hr />
+<h2 id="endpoints_1">Endpoints</h2>
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">POST  https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="http">POST  https://paymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+<hr />
+<h2 id="setting-up-apple-pay">Setting Up Apple Pay</h2>
+<hr />
+<ol>
+<li>Kindly visit <a href="http://developer.apple.com/">developer.apple.com</a> where you will Create a developer account, an Apple Pay Merchant ID and complete the Apple Pay certification (export the payment processing certificate in p12 file)</li>
+<li>Integrate Apple Pay in your app/website using the Apple Pay documentation found at https://developer.apple.com/apple-pay</li>
+<li>Submit the encrypted Apple Pay payload to PayFort’s API for decryption / processing. Please contact <a href="mailto:integration@payfort.com">integration@payfort.com</a> for PayFort’s integration documentation</li>
+</ol>
+<hr />
+<h3 id="parameters-submission-type_1">Parameters Submission Type</h3>
+<p>REST POST request using JSON.</p>
+<hr />
+<h2 id="the-applepay-request">The ApplePay Request</h2>
+<hr />
+<p>The sample JSON request</p>
+<pre><code class="http">{
+&quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
+&quot;command&quot;:&quot;PURCHASE&quot;,
+&quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+&quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+&quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
+&quot;amount&quot;: &quot;10000&quot;,
+&quot;currency&quot;: &quot;AED&quot;,
+&quot;language&quot;:&quot;en&quot;,
+&quot;customer_email&quot;:&quot;customer@domain.com&quot;,
+&quot;apple_data&quot;:“C0QcNob17qrbYmBX63UxsfLOp3iqNU7ieMz1fmSlAYEG8gbkXsukzymwy7E3cqFZHD4UCZRL5uX
+cSfOIqT99c4xsqalQ3gIZgwhqcLZL6m/xqOuxqx1j9XQ9C54nmZJyAh6//zQWjeJhIeybGKS1zHlNRba
+OScMp+hLMcvBnoL3EYkfbQiPJrxWUqXxGx/lxeo9G72Yp5Q
+fsuQ74RW/mwBmKXtirFq7UsUt/Mh/KGgw”,
+&quot;apple_signature&quot;:&quot;MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIID5jCC…&quot;,
+&quot;apple_header&quot;:{
+“apple_transactionId”: “93eec76cbedaedca44648e3d5c314766906e4e78ce33cd3b8396f105a1c0daed”,
+“apple_ephemeralPublicKey”: “MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEM9JqF04vDlGIHEzWsaDm4bGBlTJdCn3+DH8ptlA
+mOSwVddD7/FN93A2o+l7i2U6Lmjb8WhKJcz6ZB+2MabcF4g==”,
+“apple_publicKeyHash”: “bVTUiyTv0uCJgQz8SNYHBHOlHMD6sR1qDuCqTaETzkw=”
+},
+&quot;apple_transactionId&quot;:&quot;93eec76cbedaedca44648e3d5c314766906e4e78ce33cd3b8&quot;,
+&quot;apple_ephemeralPublicKey&quot;:&quot;MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEM9JqF04vD&quot;,
+&quot;apple_publicKeyHash&quot;:&quot;bVTUiyTv0uCJgQz8SNYHBHOlHMD6sR1qDuCqTaETzkw=&quot;,
+&quot;apple_paymentMethod&quot;: &quot; {
+“apple_displayName”: “Visa 0492”,
+“apple_network”: “Visa”,
+“apple_type”: “debit”
+}&quot;,
+&quot;apple_applicationData&quot;:&quot;5173d4e05f2e07dc4e7ea9669bda185712ffffe1d6
+cfce2d4e854d7661e70d67…&quot;,
+&quot;eci&quot;:&quot;MOTO&quot;,
+&quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+&quot;order_description&quot;:&quot;iPhone6-S&quot;,
+&quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
+&quot;customer_name&quot;:&quot;John Smith&quot;,
+&quot;phone_number&quot;:&quot;00962797219966&quot;,
+&quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
+&quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
+&quot;return_url&quot;:&quot;http://www.merchant.com&quot;
+}
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+    Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
+
+<hr />
+<h2 id="the-applepay-response">The ApplePay Response</h2>
+<p>Here is the sample response</p>
+<pre><code class="json">{
+ &quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
+ &quot;command&quot;:&quot;PURCHASE&quot;,
+ &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+ &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+ &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
+ &quot;amount&quot;:&quot;10000&quot;,
+ &quot;currency&quot;:&quot;AED&quot;,
+ &quot;language&quot;:&quot;en&quot;,
+ &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
+ &quot;eci&quot;:&quot;MOTO&quot;,
+ &quot;token_name&quot;:&quot;Op9Vmp&quot;,
+ &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+ &quot;order_description&quot;:&quot;iPhone6-S&quot;,
+ &quot;fort_id&quot;:&quot;149295435400084008&quot;,
+ &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
+ &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
+ &quot;customer_name&quot;:&quot;John Smith&quot;,
+ &quot;authorization_code&quot;:&quot;P1000000000000372136&quot;,
+ &quot;response_message&quot;:&quot;Success&quot;,
+ &quot;response_code&quot;:&quot;20064&quot;,
+ &quot;status&quot;:&quot;04&quot;,
+ &quot;expiry_date&quot;:&quot;2105&quot;,
+ &quot;card_number&quot;:&quot;400555******0001&quot;,
+ &quot;phone_number&quot;:&quot;00962797219966&quot;,
+ &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
+ &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
+ &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
+}
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones</div>
+
+<h2 id="apple-pay-sdk-service">Apple Pay SDK Service</h2>
+<hr />
+<p>Apple Pay is a digital wallet that allows Merchant’s customers to make payments using different Apple devices through FORT iOS SDK. The Customer authenticate his identity with Touch ID fingerprint verification to complete the payment.</p>
+<h3 id="requirements">Requirements</h3>
+<p>Before you start Apple Pay SDK integration; you need to check the following points:
+• You will need to have one of these iOS devices (iPhone 6, iPhone 6s, iPhone 6 Plus, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPhone SE, iPad Air 2, iPad mini 3, iPad mini 4, and iPad Pro models) running iOS 8.1 or later.</p>
+<p>• You will need a Mac with Xcode 6.1 or newer installed. You can install or upgrade Xcode in the <a href="https://itunes.apple.com/us/app/xcode/id497799835">Mac App Store</a>.</p>
+<p>• You will also need an apple developer account and a membership in the iOS Developer Program. You can create a one from <a href="https://idmsa.apple.com/IDMSWebAuth/login?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&amp;path=%2Fregister%2Fagree%2F&amp;rv=1">here</a>.</p>
+<p>• You will need to download the FORT iOS Mobile SDK, click <a href="https://docs.payfort.com/docs/mobile-sdk/build/lib/PayFortSDK2.1.zip">here</a>.</p>
+<h3 id="get-started">Get Started</h3>
+<p>Before you start Apple Pay integration with PayFort please refer to the following URL <a href="https://developer.apple.com/apple-pay/get-started/">here</a> to complete the following steps:</p>
+<ol>
+<li>
+<p>Setup your Apple Pay account.</p>
+</li>
+<li>
+<p>Complete the integration with Apple Pay SDK.</p>
+</li>
+<li>
+<p>After completing the integration with Apple Pay, check that you have got the following:
+     • Apple merchantID.
+     • Merchant certificate.
+     • Payment processing certificate.
+   Then copy the following sample code to complete integration with FORT Mobile SDK:</p>
+</li>
+</ol>
+<p><strong>Object-C code</strong></p>
+<p>```objective-c
+   #pragma mark - PKPaymentAuthorizationViewControllerDelegate</p>
+<p>(void)paymentAuthorizationViewController:
+   (PKPaymentAuthorizationViewController <em>)controller
+   didAuthorizePayment:(PKPayment </em>)payment
+   completion:(void (^)(PKPaymentAuthorizationStatus status))completion
+   {
+   BOOL asyncSuccessful = payment.token.paymentData.length != 0;</p>
+<p>if(asyncSuccessful) {</p>
+<p>PayFortController *payFort = [[PayFortController alloc]initWithEnviroment:(KPayFortEnviroment)_enviromentSegment.selectedSegmentIndex];</p>
+<p>NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
+   [request setValue:@“10000” forKey:@“amount”];
+   [request setValue:@“AUTHORIZATION” forKey:@“command”];
+   [request setValue:@“USD” forKey:@“currency”];
+   [request setValue:@“email@domain.com” forKey:@“customer_email”];
+   [request setValue:@“en” forKey:@“language”];
+   [request setValue:@“merchant” forKey:@“merchant_reference”];
+   [request setValue:@“” forKey:@“sdk_token”];
+   [request setValue:@“APPLE_PAY” forKey:@“digital_wallet”];</p>
+<p>[payFort callPayFortForApplePayWithRequest:request
+   applePayPayment:payment
+   currentViewController:self
+   Success:^(NSDictionary <em>requestDic, NSDictionary </em>responeDic) {
+   completion(PKPaymentAuthorizationStatusSuccess);</p>
+<p>}
+   Faild:^(NSDictionary <em>requestDic, NSDictionary </em>responeDic, NSString *message) {
+   completion(PKPaymentAuthorizationStatusFailure);</p>
+<p>}];
+   } else {
+   completion(PKPaymentAuthorizationStatusFailure);
+   }
+   }
+   ```</p>
+<p><strong>Swift Code</strong></p>
+<pre><code class="swift">func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController,
+didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -&gt; Void) {
+
+//Perform some very basic validation on the provided contact information
+let asyncSuccessful = payment.token.paymentData.count != 0
+
+if asyncSuccessful {
+let payFort = PayFortController.init(enviroment: KPayFortEnviromentSandBox)
+let request = NSMutableDictionary.init()
+request.setValue(“100100000”, forKey: “amount”)
+request.setValue(“AUTHORIZATION”, forKey: “command”)
+request.setValue(“USD”, forKey: “currency”)
+request.setValue(“email@domain.com”, forKey: “customer_email”)
+request.setValue(“en”, forKey: “language”)
+request.setValue(“merchant”, forKey: “merchant_reference”)
+request.setValue(“gr66zzwW9” , forKey: “sdk_token”)
+request.setValue(“APPLE_PAY” , forKey: “digital_wallet”)
+
+payFort?.callPayFortForApplePay(withRequest: request,
+applePay: payment,
+currentViewController: self
+, success: { (requestDic, responeDic) in
+completion(.success)
+}, faild:{ (requestDic, responeDic, message) in
+completion(.failure)
+})
+}else {
+completion(.failure)
+}
+}
+</code></pre>
+
+<hr />
+<h3 id="apple-pay-sdk-authorization-purchase-request">Apple Pay SDK Authorization/ Purchase - Request</h3>
+<pre><code class="json">{
+&quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
+&quot;command&quot;:&quot;PURCHASE&quot;,
+&quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+&quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+&quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
+&quot;amount&quot;: &quot;10000&quot;,
+&quot;currency&quot;: &quot;AED&quot;,
+&quot;language&quot;:&quot;en&quot;,
+&quot;customer_email&quot;:&quot;customer@domain.com&quot;,
+&quot;sdk_token&quot;:&quot;Dwp78q3&quot;,
+&quot;payment_option&quot;:&quot;MASTERCARD&quot;,
+&quot;eci&quot;:&quot;ECOMMERCE&quot;,
+&quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+&quot;order_description&quot;:&quot;iPhone6-S&quot;,
+&quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
+&quot;customer_name&quot;:&quot;John Smith&quot;,
+&quot;phone_number&quot;:&quot;00962797219966&quot;,
+&quot;token_name&quot;:&quot;Op9Vmp&quot;,
+&quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
+&quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
+&quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
+&quot;return_url&quot;:&quot;http://www.merchant.com&quot;
+}
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+    Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
+
+<hr />
+<h3 id="apple-pay-sdk-authorization-purchase-response">Apple Pay SDK Authorization/ Purchase - Response</h3>
+<pre><code class="json">{
+ &quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
+ &quot;command&quot;:&quot;PURCHASE&quot;,
+ &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+ &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+ &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
+ &quot;amount&quot;:&quot;10000&quot;,
+ &quot;currency&quot;:&quot;AED&quot;,
+ &quot;language&quot;:&quot;en&quot;,
+ &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
+ &quot;eci&quot;:&quot;ECOMMERCE&quot;,
+ &quot;token_name&quot;:&quot;Op9Vmp&quot;,
+ &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+ &quot;order_description&quot;:&quot;iPhone6-S&quot;,
+ &quot;fort_id&quot;:&quot;149295435400084008&quot;,
+ &quot;sdk_token&quot;: &quot;Dwp78q3&quot;,
+ &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
+ &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
+ &quot;customer_name&quot;:&quot;John Smith&quot;,
+ &quot;authorization_code&quot;:&quot;P1000000000000372136&quot;,
+ &quot;response_message&quot;:&quot;Success&quot;,
+ &quot;response_code&quot;:&quot;20064&quot;,
+ &quot;status&quot;:&quot;04&quot;,
+ &quot;expiry_date&quot;:&quot;2105&quot;,
+ &quot;card_number&quot;:&quot;400555******0001&quot;,
+ &quot;phone_number&quot;:&quot;00962797219966&quot;,
+ &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
+ &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
+ &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
+ &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
+}
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response - even the optional ones.</div>
+
+<hr />
+<h2 id="test-your-wallet-integration">Test Your Wallet Integration</h2>
+<hr />
+<p>You can checkout this <a href="../testing/">link</a> for testing your wallet integration</p>
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
 
   <br>
     
