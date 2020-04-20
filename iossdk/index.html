@@ -125,11 +125,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p><img alt="PayFORT iOS sdk project setup" src="../img/iosdk1.JPG" /></p>
 <ul>
-<li>Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.</li>
-<li>For Swift Projects Don’t forget to add the <strong>#import</strong> to the <strong>Bridging-Header.h</strong></li>
+<li>
+<p>Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.</p>
+</li>
+<li>
+<p>For Swift Projects add the following code In your Bridge-Header.h:</p>
+</li>
 </ul>
+<p><code>swift
+  #import &lt;PayFortSDK/PayFortSDK.h&gt;</code></p>
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>
-    Ensure linked once in the Linked Framework and Libraries or just drag the PayFortSDK.framework to Embedded Binaries in the general tab in the project settings.
+    Ensure linked once in the Linked Framework and Libraries or just drag the PayFortSDK to Embedded Binaries in the general tab in the project settings.
 </div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, secondary-click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final, same as below:

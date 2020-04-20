@@ -99,6 +99,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="mobile-sdk-integration-workflow">Mobile SDK Integration Workflow</h2>
 <p><img alt="mobilesdk workflow" src="../img/mobilesdkworkflow.JPG" /></p>
+<p>When your customer initiates the payment on your site, your site requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.</p>
 <p>Here is the description of mobile sdk integration workflow:</p>
 <ol>
 <li>The Merchant’s application initiates the FORT Mobile SDK and passes the parameters to the FORT Mobile SDK.</li>
