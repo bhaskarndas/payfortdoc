@@ -34,6 +34,8 @@
         var pageToc = [
           {title: "Integrate iOS SDK", url: "#_top", children: [
               {title: "About the Software", url: "#about-the-software" },
+          ]},
+          {title: "MobileSDK integration workflow", url: "#mobilesdk-integration-workflow", children: [
               {title: "Include the SDK to your Xcode Project", url: "#include-the-sdk-to-your-xcode-project" },
               {title: "Installation", url: "#installation" },
               {title: "SDK - Response", url: "#sdk-response" },
@@ -90,7 +92,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="integrate-ios-sdk">Integrate iOS SDK</h2>
+    <p><img alt="PayFort SDK Integration with Swift" src="../img/Payfort%20iOS%20integration%20with%20Swift%20Project.png" /></p>
+<p>image source : <a href="https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330">medium.com</a></p>
+<h2 id="integrate-ios-sdk">Integrate iOS SDK</h2>
 <hr />
 <p>The PayFort iOS SDK makes it faster and easy to build a perfect payment experience in your iOS app. PayFort offers powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users’ payment details. We also expose the low-level APIs that power those UIs so that you can build fully custom experiences.</p>
 <h3 id="about-the-software">About the Software</h3>
@@ -105,6 +109,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Through the first version of the FORT Mobile SDK, the Merchant has the ability to process a <strong>CREDIT CARD</strong> transactions only.</p>
 <h4 id="supported-payment-options">Supported Payment Options</h4>
 <p>The supported credit card payment options are <strong>VISA</strong>, <strong>MASTERCARD</strong>, <strong>American Express (AMEX)</strong>, <strong>MADA</strong> and <strong>MEEZA</strong>.</p>
+<hr />
+<h2 id="mobilesdk-integration-workflow">MobileSDK integration workflow</h2>
+<hr />
+<p><img alt="PayFort SDK integration workflow" src="https://miro.medium.com/max/1400/1*OG4TDHhIhARVIP_lQmGSUw.png" /></p>
+<p>image source : <a href="https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330">medium.com</a></p>
 <h3 id="include-the-sdk-to-your-xcode-project">Include the SDK to your Xcode Project</h3>
 <hr />
 <ul>
@@ -159,7 +168,6 @@ bgTask = UIBackgroundTaskInvalid
 </code></pre>
 
 
-
 </div>
 
 <hr />
@@ -188,8 +196,8 @@ bgTask = UIBackgroundTaskInvalid
 <li>
 <p>Set Dictionary contain all keys and values for SDK.</p>
 </li>
+<li><strong>Objective C</strong></li>
 </ul>
-<p><strong>Objective C</strong></p>
 <pre><code class="objective-c">NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
 [request setValue:@“10000” forKey:@“amount”];
 [request setValue:@“AUTHORIZATION” forKey:@“command”];
