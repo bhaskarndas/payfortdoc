@@ -156,6 +156,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To ensure that the application is not disconnected go to background make sure to add this code:
 Objective C
 
+
+
 <pre><code>(void)applicationDidEnterBackground:(UIApplication *)application {
 __block UIBackgroundTaskIdentifier backgroundTask; backgroundTask =
 [application beginBackgroundTaskWithExpirationHandler: ^ {
@@ -181,6 +183,7 @@ bgTask = UIBackgroundTaskInvalid
 
 <hr />
 <h3 id="installation">Installation</h3>
+<p>When you register for Payfort, you will receive separate keys for testing and production environment. </p>
 <ul>
 <li>
 <p>Import the PayFort Library. <code>#import &lt;PayFortSDK/PayFortSDK.h&gt;</code></p>
