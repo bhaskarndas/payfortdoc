@@ -132,13 +132,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>For Swift Projects add the following code In your Bridge-Header.h:</p>
 </li>
 </ul>
-<p><code>swift
-  #import &lt;PayFortSDK/PayFortSDK.h&gt;</code></p>
+<pre><code class="swift">  #import &lt;PayFortSDK/PayFortSDK.h&gt;
+</code></pre>
+
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>
     Ensure the option Link With Standard Libraries is Yes or just drag the PayFortSDK to Embedded Binaries in the general tab in the project settings.
 </div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final:
+
+
 
 <pre><code class="xml">&lt;/dict&gt;element
 &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
