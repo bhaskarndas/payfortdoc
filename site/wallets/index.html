@@ -40,6 +40,7 @@
               {title: "Merchant Hosted Checkout Button", url: "#merchant-hosted-checkout-button" },
           ]},
           {title: "Apple Pay", url: "#apple-pay", children: [
+              {title: "SUPPORTED DEVICES", url: "#supported-devices" },
               {title: "Endpoints", url: "#endpoints_1" },
               {title: "Setting Up Apple Pay", url: "#setting-up-apple-pay" },
               {title: "The ApplePay Request", url: "#the-applepay-request" },
@@ -74,12 +75,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../declinecodes/" class="btn btn-xs btn-default pull-right">
+      <a href="../lendservice/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../declinecodes/" class="btn btn-xs btn-link">
-        Decline Codes
+      <a href="../lendservice/" class="btn btn-xs btn-link">
+        Lend
       </a>
     </div>
     
@@ -344,6 +345,12 @@ document.write(error);
 <hr />
 <p>Apple Pay provides an easy way for users to buy goods and services using iPhone, iPad and Apple Watch through mobile application or website. Checking out is as easy as selecting “Apple Pay” and placing a finger on the touch ID of an iPhone, iPad or simply double clicking the side button on the Apple Watch. It’s quick, easy and secure!</p>
 <p>When using a credit or debit card with Apple Pay, the actual card numbers are not stored on the device, nor on Apple servers. Instead, a unique Device Account Number is assigned, encrypted and securely stored in the Secure Element on your device, where each transaction is authorized with a one-time unique dynamic security code.</p>
+<hr />
+<h3 id="supported-devices">SUPPORTED DEVICES</h3>
+<p>Refer to Apple’s <a href="https://support.apple.com/en-us/KM207105">compatibility documentation</a> to learn which devices support Apple Pay.</p>
+<p>PayFort users can accept <a href="https://stripe.com/apple-pay">Apple Pay</a> in iOS applications in iOS 8.1 and above. There are no additional fees to process Apple Pay payments, and the <a href="https://www.payfort.com/pricing/">pricing</a> is the same as other card transactions.</p>
+<p>Apple Pay is compatible with most PayFort products and features, allowing you to use it in place of a traditional payment form whenever possible. Use it to accept payments for physical or digital goods, donations, subscriptions, and more.</p>
+<p>Apple Pay is available to cardholders at participating banks in supported countries. Refer to Apple’s <a href="https://support.apple.com/en-us/ht204916">participating banks</a> documentation to learn which banks and countries are supported.</p>
 <hr />
 <h2 id="endpoints_1">Endpoints</h2>
 <p><strong>Sandbox</strong></p>
@@ -654,12 +661,12 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../declinecodes/" class="btn btn-xs btn-default pull-right">
+      <a href="../lendservice/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../declinecodes/" class="btn btn-xs btn-link">
-        Decline Codes
+      <a href="../lendservice/" class="btn btn-xs btn-link">
+        Lend
       </a>
     </div>
     

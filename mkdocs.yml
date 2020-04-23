@@ -40,7 +40,7 @@ nav:
         - Payment Methods:
             - Cards: cards.md
             - Wallets: wallets.md
-            - Lend: lend.md
+            - Lend: lendservice.md
             - Decline Codes: declinecodes.md
         - Payment Types:
             - Moto: moto.md

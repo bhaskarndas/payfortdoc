@@ -34,6 +34,8 @@
         var pageToc = [
           {title: "Integrate iOS SDK", url: "#_top", children: [
               {title: "About the Software", url: "#about-the-software" },
+          ]},
+          {title: "MobileSDK integration workflow", url: "#mobilesdk-integration-workflow", children: [
               {title: "Include the SDK to your Xcode Project", url: "#include-the-sdk-to-your-xcode-project" },
               {title: "Installation", url: "#installation" },
               {title: "SDK - Response", url: "#sdk-response" },
@@ -90,13 +92,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="integrate-ios-sdk">Integrate iOS SDK</h2>
+    <p><img alt="PayFort SDK Integration with Swift" src="../img/Payfort%20iOS%20integration%20with%20Swift%20Project.png" /></p>
+<p>image source : <a href="https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330">medium.com</a></p>
+<h2 id="integrate-ios-sdk">Integrate iOS SDK</h2>
 <hr />
-<p>To process a transaction using the FORT Mobile SDK, create a Mobile SDK Token and proceed through the following sections.</p>
+<p>The PayFort iOS SDK makes it faster and easy to build a perfect payment experience in your iOS app. PayFort offers powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users’ payment details. We also expose the low-level APIs that power those UIs so that you can build fully custom experiences.</p>
 <h3 id="about-the-software">About the Software</h3>
 <hr />
 <h4 id="supported-platforms">Supported Platforms</h4>
-<p>IOS 8+</p>
+<p>PayFort iOS SDK is supported on all the apple devices running iOS 8 and above.</p>
 <h4 id="localization">Localization</h4>
 <p>The FORT Mobile SDK supports both English and Arabic languages.</p>
 <h4 id="screen-orientation">Screen Orientation</h4>
@@ -105,22 +109,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Through the first version of the FORT Mobile SDK, the Merchant has the ability to process a <strong>CREDIT CARD</strong> transactions only.</p>
 <h4 id="supported-payment-options">Supported Payment Options</h4>
 <p>The supported credit card payment options are <strong>VISA</strong>, <strong>MASTERCARD</strong>, <strong>American Express (AMEX)</strong>, <strong>MADA</strong> and <strong>MEEZA</strong>.</p>
+<hr />
+<h2 id="mobilesdk-integration-workflow">MobileSDK integration workflow</h2>
+<hr />
+<p><img alt="PayFort SDK integration workflow" src="https://miro.medium.com/max/1400/1*OG4TDHhIhARVIP_lQmGSUw.png" /></p>
+<p>image source : <a href="https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330">medium.com</a></p>
 <h3 id="include-the-sdk-to-your-xcode-project">Include the SDK to your Xcode Project</h3>
 <hr />
-<ol>
-<li><a href="https://docs.payfort.com/docs/api/build/lib/PayFortSDK2.1.zip">Download</a> and extract sdk.</li>
+<ul>
+<li>Download the sdk from this <a href="https://docs.payfort.com/docs/api/build/lib/PayFortSDK2.1.zip">link</a> and extract it.</li>
 <li>Drag the PayFortSDK.framework &amp; PayFortSDK.bundle to Frameworks in Project Navigator.</li>
 <li>Create a new group Frameworks if it does not exist:</li>
 <li>Choose Create groups for any added folders.</li>
 <li>Make Sure to select Copy files if needed.</li>
-<li>Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.</li>
-<li>For Swift Projects Don’t forget to add the <strong>#import</strong> to the <strong>Bridging-Header.h</strong></li>
-</ol>
+</ul>
+<p><img alt="PayFORT iOS sdk project setup" src="../img/iosdk1.JPG" /></p>
+<ul>
+<li>
+<p>Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.</p>
+</li>
+<li>
+<p>For Swift Projects add the following code In your Bridge-Header.h:</p>
+</li>
+</ul>
+<pre><code class="swift">  #import &lt;PayFortSDK/PayFortSDK.h&gt;
+</code></pre>
+
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>
-    Ensure linked once in the Linked Framework and Libraries or just drag the PayFortSDK.framework to Embedded Binaries in the general tab in the project settings.
+    Ensure the option 'Link With Standard Libraries' is set to Yes or just drag the PayFortSDK to Embedded Binaries in the general tab in the project settings.
 </div>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, secondary-click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final, same as below:</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final:
+
+
 
 <pre><code class="xml">&lt;/dict&gt;element
 &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
@@ -129,17 +150,25 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 &lt;/dict&gt;
 </code></pre>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To make the application not disconnected when go to background make sure to add this code:</div>
 
-<p><strong>Objective C</strong></p>
-<pre><code class="objective-c">(void)applicationDidEnterBackground:(UIApplication *)application {
+</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To ensure that the application is not disconnected go to background make sure to add this code:
+Objective C
+
+
+
+<pre><code>(void)applicationDidEnterBackground:(UIApplication *)application {
 __block UIBackgroundTaskIdentifier backgroundTask; backgroundTask =
 [application beginBackgroundTaskWithExpirationHandler: ^ {
 [application endBackgroundTask:backgroundTask];
 backgroundTask = UIBackgroundTaskInvalid; }];
 </code></pre>
 
-<p><strong>Swift</strong></p>
+
+Swift
+
+
 <pre><code class="swift">func applicationDidEnterBackground(_ application: UIApplication) {
 var bgTask: UIBackgroundTaskIdentifier = 0
 bgTask = application.beginBackgroundTask(expirationHandler: {
@@ -149,26 +178,38 @@ bgTask = UIBackgroundTaskInvalid
 }
 </code></pre>
 
+
+</div>
+
+<hr />
 <h3 id="installation">Installation</h3>
-<ol>
-<li>Import the PayFort Library.</li>
-</ol>
-<p><code>#import &lt;PayFortSDK/PayFortSDK.h&gt;</code></p>
-<ol>
-<li>Initialize PayFortConrtoller with targeted environment, You set the target environment by setting one the two ENUM <em>KPayFortEnviromentSandBox</em> or <em>KPayFortEnviromentProduction</em>.</li>
-</ol>
+<p>When you register for Payfort, you will receive separate keys for testing and production environment. </p>
+<ul>
+<li>
+<p>Import the PayFort Library. <code>#import &lt;PayFortSDK/PayFortSDK.h&gt;</code></p>
+</li>
+<li>
+<p>Initialize PayFortController with targeted environment, You set the target environment by setting one the two ENUM <em>KPayFortEnviromentSandBox</em> or <em>KPayFortEnviromentProduction</em>.</p>
+<ul>
+<li>
 <p><strong>Objective C</strong></p>
-<pre><code class="objective-c">PayFortController *payFort = [[PayFortControlleralloc]initWithEnviroment:KPayFortEnviromentSandBox];
-</code></pre>
-
+<ul>
+<li><code>PayFortController *payFort =      [[PayFortControlleralloc]initWithEnviroment:KPayFortEnviromentSandBox];</code></li>
+</ul>
+</li>
+<li>
 <p><strong>Swift</strong></p>
-<pre><code class="swift">let payFort = PayFortController.init(enviroment: KPayFortEnviromentSandBox)
-</code></pre>
-
-<ol>
-<li>Set Dictionary contain all keys and values for SDK.</li>
-</ol>
-<p><strong>Objective C</strong></p>
+<ul>
+<li><code>let payFort = PayFortController.init(enviroment: KPayFortEnviromentSandBox)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Set Dictionary contain all keys and values for SDK.</p>
+</li>
+<li><strong>Objective C</strong></li>
+</ul>
 <pre><code class="objective-c">NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
 [request setValue:@“10000” forKey:@“amount”];
 [request setValue:@“AUTHORIZATION” forKey:@“command”];
@@ -192,9 +233,9 @@ request.setValue(“112233682686”, forKey: “merchant_reference”)
 request.setValue(“token” , forKey: “sdk_token”)
 </code></pre>
 
-<ol>
+<ul>
 <li>Call PayFort and Response callback</li>
-</ol>
+</ul>
 <p><strong>Objective C</strong></p>
 <pre><code class="objective-c">[payFort callPayFortWithRequest:request currentViewController:self
 Success:^(NSDictionary *requestDic, NSDictionary *responeDic) {
@@ -224,7 +265,9 @@ print(“faild”)
 })
 </code></pre>
 
+<hr />
 <h3 id="sdk-response">SDK - Response</h3>
+<hr />
 <p>By default the response will be dictionary to show the sent data in addition to the status, response message and response code.
 The response will be ready in the registered call back handler with success, failed and cancelled. You can view the response by log the result as the followings:</p>
 <p><strong>Objective C</strong></p>
@@ -278,7 +321,9 @@ print(“message=(message)”)
 <pre><code class="swift">PayFort.IsShowResponsePage = true;
 </code></pre>
 
+<hr />
 <h3 id="hidden-payfort-loading">Hidden PayFort loading</h3>
+<hr />
 <p>There is an option to hide loading view when SDK initialize the connection request. By disable the following option:</p>
 <p><strong>Objective C</strong></p>
 <pre><code class="objective-c">PayFort.HideLoading = YES;
@@ -288,7 +333,9 @@ print(“message=(message)”)
 <pre><code class="swift">PayFort.HideLoading = true;
 </code></pre>
 
+<hr />
 <h3 id="custom-payment-designing">Custom Payment Designing</h3>
+<hr />
 <p>You have the option to provide your custom UI theme for the payment view by the followings:</p>
 <ul>
 <li>Create your nibFile .xib and set the name of Arabic xib same name with English one with suffix -ar.</li>

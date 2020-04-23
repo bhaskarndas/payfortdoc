@@ -34,6 +34,7 @@
         var pageToc = [
           {title: "Mobile SDKs", url: "#_top", children: [
               {title: "Features of PayFort SDKs", url: "#features-of-payfort-sdks" },
+              {title: "Mobile SDK Integration Workflow", url: "#mobile-sdk-integration-workflow" },
               {title: "Mobile SDK Libraries", url: "#mobile-sdk-libraries" },
               {title: "SDK Token Endpoints", url: "#sdk-token-endpoints" },
               {title: "Go to Full API", url: "#go-to-full-api" },
@@ -96,6 +97,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Fully customized.</li>
 </ul>
 <hr />
+<h2 id="mobile-sdk-integration-workflow">Mobile SDK Integration Workflow</h2>
+<p><img alt="mobilesdk workflow" src="../img/mobilesdkworkflow.JPG" /></p>
+<p>When your customer initiates the payment on your site, your site requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.</p>
+<p>Here is the description of mobile sdk integration workflow:</p>
+<ol>
+<li>The Merchant’s application initiates the FORT Mobile SDK and passes the parameters to the FORT Mobile SDK.</li>
+<li>The FORT Mobile SDK starts a secure connection and passes the received parameters to the FORT API to be validated. </li>
+<li>The FORT API returns the validation response. </li>
+<li>The FORT Mobile SDK submits the cardholder’s data to the FORT API to process the order. </li>
+<li>The FORT API validates and processes the order with the third parties. </li>
+<li>The FORT API returns the FORT response. </li>
+<li>The FORT Mobile SDK returns the response to the corresponding callback method.</li>
+</ol>
+<p>For more details on PayFORT Android SDK Integration visit this <a href="../androidsdk/">link</a></p>
+<p>For more details on PayFORT iOS SDK Integration visit this <a href="../iossdk/">link</a></p>
 <h2 id="mobile-sdk-libraries">Mobile SDK Libraries</h2>
 <hr />
 <div class="row">
@@ -188,6 +204,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
 <p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<p>Check out iOS integrations by visiting this <a href="../iossdk/">link</a></p>
+<p>Check out Android integrations by visiting this <a href="../androidsdk/">link</a></p>
 <h2 id="need-further-help">Need further help?</h2>
 <hr />
 <p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>

@@ -1,20 +1,20 @@
+![PayFort SDK Integration with Swift](img\Payfort iOS integration with Swift Project.png)
+
+image source : [medium.com](https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330)
+
 ## Integrate iOS SDK
 
 ------
 
-To process a transaction using the FORT Mobile SDK, create a Mobile SDK Token and proceed through the following sections.
-
-
+The PayFort iOS SDK makes it faster and easy to build a perfect payment experience in your iOS app. PayFort offers powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users’ payment details. We also expose the low-level APIs that power those UIs so that you can build fully custom experiences.
 
 ### About the Software
 
 ------
 
-
-
 #### Supported Platforms
 
-IOS 8+
+PayFort iOS SDK is supported on all the apple devices running iOS 8 and above.
 
 #### Localization
 
@@ -32,27 +32,42 @@ Through the first version of the FORT Mobile SDK, the Merchant has the ability t
 
 The supported credit card payment options are **VISA**, **MASTERCARD**, **American Express (AMEX)**, **MADA** and **MEEZA**.
 
+------
+
+## MobileSDK integration workflow
+
+------
+
+![PayFort SDK integration workflow](https://miro.medium.com/max/1400/1*OG4TDHhIhARVIP_lQmGSUw.png)
+
+image source : [medium.com](https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330)
+
 ### Include the SDK to your Xcode Project
 
 ------
 
+- Download the sdk from this [link](https://docs.payfort.com/docs/api/build/lib/PayFortSDK2.1.zip) and extract it.
+- Drag the PayFortSDK.framework & PayFortSDK.bundle to Frameworks in Project Navigator.
+- Create a new group Frameworks if it does not exist:
+  - Choose Create groups for any added folders.
+  - Make Sure to select Copy files if needed.
 
+![PayFORT iOS sdk project setup](img\iosdk1.JPG)
 
-1. [Download](https://docs.payfort.com/docs/api/build/lib/PayFortSDK2.1.zip) and extract sdk.
-2. Drag the PayFortSDK.framework & PayFortSDK.bundle to Frameworks in Project Navigator.
-3. Create a new group Frameworks if it does not exist:
-   - Choose Create groups for any added folders.
-   - Make Sure to select Copy files if needed.
-4. Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.
-5. For Swift Projects Don’t forget to add the **#import** to the **Bridging-Header.h**
+- Set -ObjC in the Other Linker Flags in the Target → Build Settings Tab.
+
+- For Swift Projects add the following code In your Bridge-Header.h:
+
+```swift
+  #import <PayFortSDK/PayFortSDK.h>
+```
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>
-    Ensure linked once in the Linked Framework and Libraries or just drag the PayFortSDK.framework to Embedded Binaries in the general tab in the project settings.
+    Ensure the option 'Link With Standard Libraries' is set to Yes or just drag the PayFortSDK to Embedded Binaries in the general tab in the project settings.
 </div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final:
 
 
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>In Xcode, secondary-click your project’s .plist file and select Open As → Source Code. Insert the following XML snippet into the body of your file just before the final, same as below:</div>
 
 ```xml
 </dict>element
@@ -62,15 +77,13 @@ The supported credit card payment options are **VISA**, **MASTERCARD**, **Americ
 </dict>
 ```
 
+</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To ensure that the application is not disconnected go to background make sure to add this code:
+Objective C
 
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To make the application not disconnected when go to background make sure to add this code:</div>
-
- 
-
-**Objective C**
-
-```objective-c
+```
 (void)applicationDidEnterBackground:(UIApplication *)application {
 __block UIBackgroundTaskIdentifier backgroundTask; backgroundTask =
 [application beginBackgroundTaskWithExpirationHandler: ^ {
@@ -78,13 +91,7 @@ __block UIBackgroundTaskIdentifier backgroundTask; backgroundTask =
 backgroundTask = UIBackgroundTaskInvalid; }];
 ```
 
-
-
-
-
-**Swift**
-
-
+Swift
 
 ```swift
 func applicationDidEnterBackground(_ application: UIApplication) {
@@ -96,34 +103,40 @@ bgTask = UIBackgroundTaskInvalid
 }
 ```
 
+</div>
 
+------
 
 ### Installation
 
-1. Import the PayFort Library.
+When you register for Payfort, you will receive separate keys for testing and production environment. 
 
-   `#import <PayFortSDK/PayFortSDK.h>`
+- Import the PayFort Library. `#import <PayFortSDK/PayFortSDK.h>`
+
+- Initialize PayFortController with targeted environment, You set the target environment by setting one the two ENUM *KPayFortEnviromentSandBox* or *KPayFortEnviromentProduction*.
+
+    - **Objective C**
+
+    
+
+         - ```
+         PayFortController *payFort =      [[PayFortControlleralloc]initWithEnviroment:KPayFortEnviromentSandBox];
+    ```
+    
+    
+    
+    
+    - **Swift**
+
+        - ```
+        let payFort = PayFortController.init(enviroment: KPayFortEnviromentSandBox)
+    ```
+    
 
    
 
-2. Initialize PayFortConrtoller with targeted environment, You set the target environment by setting one the two ENUM *KPayFortEnviromentSandBox* or *KPayFortEnviromentProduction*.
-
-  **Objective C**
-```objective-c
-PayFortController *payFort = [[PayFortControlleralloc]initWithEnviroment:KPayFortEnviromentSandBox];
-```
-
-
-**Swift**
-```swift
-let payFort = PayFortController.init(enviroment: KPayFortEnviromentSandBox)
-```
-
-   
-
-3. Set Dictionary contain all keys and values for SDK.
-
-   **Objective C**
+- Set Dictionary contain all keys and values for SDK.
+- **Objective C**
 
 ```objective-c
 NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
@@ -137,6 +150,7 @@ NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
 [request setValue:@“” forKey:@“payment_option”];
 [request setValue:@“gr66zzwW9” forKey:@“token_name"];
 ```
+
 **Swift**
 
 ```swift
@@ -150,7 +164,7 @@ request.setValue(“112233682686”, forKey: “merchant_reference”)
 request.setValue(“token” , forKey: “sdk_token”)
 ```
 
-4. Call PayFort and Response callback
+- Call PayFort and Response callback
 
 **Objective C**
 
@@ -169,6 +183,7 @@ NSLog(@“Faild”);
 NSLog(@“responeDic=%@”,responeDic);
 }];
 ```
+
 **Swift**
 
 ```swift
@@ -183,7 +198,12 @@ faild: { (requestDic, responeDic, message) in
 print(“faild”)
 })
 ```
+
+------
+
 ### SDK - Response
+
+------
 
 By default the response will be dictionary to show the sent data in addition to the status, response message and response code.
 The response will be ready in the registered call back handler with success, failed and cancelled. You can view the response by log the result as the followings:
@@ -238,8 +258,6 @@ print(“message=(message)”)
 
 
 
-
-
 Also there is an option to show response view directly in elegant view that show response results either its success or failed. By activating the following option:
 
 **Objective C**
@@ -256,9 +274,13 @@ PayFort.IsShowResponsePage = YES;
 PayFort.IsShowResponsePage = true;
 ```
 
+------
+
 
 
 ### Hidden PayFort loading
+
+------
 
 There is an option to hide loading view when SDK initialize the connection request. By disable the following option:
 
@@ -276,9 +298,13 @@ PayFort.HideLoading = YES;
 PayFort.HideLoading = true;
 ```
 
+------
+
 
 
 ### Custom Payment Designing
+
+------
 
 You have the option to provide your custom UI theme for the payment view by the followings:
 
@@ -305,18 +331,16 @@ IBOutlet UIImageView *imageCard;
 
 
 - Assign new created xib file to PayFort Controller.
-  
+
   ```
   [payFort setPayFortCustomViewNib:@“PayFortView2”];
   ```
-  
+
   
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>If you call Arabic view and the Arabic view not existed the application will crash.</div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Don’t forget to set the custom view field in the identity inspector.</div>
-
-
 
 ## Go to Full API
 

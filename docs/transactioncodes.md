@@ -74,6 +74,12 @@ The Response code is made up of 5 digits; a combination of a 2-digit Status (Ple
 |          77 | Batch validation failed.                     |
 |          80 | Credit card verified successfully.           |
 |          81 | Failed to verify credit card.                |
+|          88 | ValU OTP Generate Success.                   |
+|          89 | ValU OTP Generate Failure Status             |
+|          90 | Customer Verify Success.                     |
+|          91 | Customer Verify Failed.                      |
+|          92 | Verify OTP success.                          |
+|          93 | Failed OTP verify.                           |
 
 ### Message Codes
 

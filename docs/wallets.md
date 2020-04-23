@@ -298,6 +298,18 @@ When using a credit or debit card with Apple Pay, the actual card numbers are no
 
 ------
 
+### SUPPORTED DEVICES
+
+Refer to Apple’s [compatibility documentation](https://support.apple.com/en-us/KM207105) to learn which devices support Apple Pay.
+
+PayFort users can accept [Apple Pay](https://stripe.com/apple-pay) in iOS applications in iOS 8.1 and above. There are no additional fees to process Apple Pay payments, and the [pricing](https://www.payfort.com/pricing/) is the same as other card transactions.
+
+Apple Pay is compatible with most PayFort products and features, allowing you to use it in place of a traditional payment form whenever possible. Use it to accept payments for physical or digital goods, donations, subscriptions, and more.
+
+Apple Pay is available to cardholders at participating banks in supported countries. Refer to Apple’s [participating banks](https://support.apple.com/en-us/ht204916) documentation to learn which banks and countries are supported.
+
+------
+
 ## Endpoints
 
 **Sandbox**
@@ -388,7 +400,6 @@ cfce2d4e854d7661e70d67…",
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
 For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
     Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
-
 ------
 
 ## The ApplePay Response
@@ -583,7 +594,6 @@ completion(.failure)
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
 For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
     Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
-
 ------
 
 ### Apple Pay SDK Authorization/ Purchase - Response

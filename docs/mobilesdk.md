@@ -16,6 +16,28 @@ The **PayFORT Mobile SDK** allows you to securely integrate the payment function
 
 ------
 
+## Mobile SDK Integration Workflow
+
+![mobilesdk workflow](img\mobilesdkworkflow.JPG)
+
+When your customer initiates the payment on your site, your site requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.
+
+Here is the description of mobile sdk integration workflow:
+
+1. The Merchant’s application initiates the FORT Mobile SDK and passes the parameters to the FORT Mobile SDK.
+2. The FORT Mobile SDK starts a secure connection and passes the received parameters to the FORT API to be validated. 
+3. The FORT API returns the validation response. 
+4. The FORT Mobile SDK submits the cardholder’s data to the FORT API to process the order. 
+5. The FORT API validates and processes the order with the third parties. 
+6. The FORT API returns the FORT response. 
+7. The FORT Mobile SDK returns the response to the corresponding callback method.
+
+For more details on PayFORT Android SDK Integration visit this [link](androidsdk.md)
+
+For more details on PayFORT iOS SDK Integration visit this [link](iossdk.md)
+
+
+
 ## Mobile SDK Libraries
 
 ------
@@ -125,6 +147,10 @@ POST  https://paymentservices.payfort.com/FortAPI/paymentApi
 ------
 
 Check out our full API by visiting this [link](https://docs.payfort.com/docs/api/build/index.html#redirection)
+
+Check out iOS integrations by visiting this [link](iossdk.md)
+
+Check out Android integrations by visiting this [link](androidsdk.md)
 
 ## Need further help?
 
