@@ -32,7 +32,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "iFrame For Web", url: "#_top", children: [
+          {title: "What is iFrame for Web", url: "#_top", children: [
               {title: "How it Works", url: "#how-it-works" },
               {title: "Integration Flow", url: "#integration-flow" },
               {title: "Give It a Try", url: "#give-it-a-try" },
@@ -79,19 +79,26 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="iframe-for-web">iFrame For Web</h1>
-<p>You can setup payment form and start accepting payments within few minutes with the help of iFrame. PayFort provides easy to use iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, Diners etc. </p>
+    <h1 id="what-is-iframe-for-web">What is iFrame for Web</h1>
+<p>You can setup payment form and start accepting payments within few minutes with the help of iFrame. PayFORT provides easy to use iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, etc. </p>
 <p><img alt="Figure1" src="../img/image-20200211222706973.png" /></p>
-<p>Figure 1 - Using PayFort iFrame for web</p>
+<p>Figure 1 - Using PayFORT iFrame for web</p>
 <hr />
 <h2 id="how-it-works">How it Works</h2>
-<p><strong>1.</strong> The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel as that of your website.</p>
-<p><strong>2.</strong> PayFort then receives the payment details and sends you the confirmation to complete the transaction.</p>
-<p><strong><em>Note</em></strong> - <em>You have the option to redirect the Customer directly to the payment details form.</em></p>
+<ol>
+<li>
+<p>The payment details form will appear to your Customer encapsulated inside an iframe that has the same look and feel as that of your website.</p>
+</li>
+<li>
+<p>PayFORT then receives the payment details and sends you the confirmation to complete the transaction.</p>
+</li>
+</ol>
+<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You have the option to redirect the Customer directly to the payment details form.</div></p>
 <hr />
 <h2 id="integration-flow">Integration Flow</h2>
 <p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
 <p>Figure 2 : Integration Flow using iFrame</p>
+<p>Here is the description of the Integration workflow :</p>
 <ol>
 <li>
 <p>The customer begins the checkout process on your website.</p>
@@ -100,37 +107,40 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>The payment page encapsulated inside iFrame is displayed.  Then the Customer enters the card’s details on the payment page.</p>
 </li>
 <li>
-<p>PayFort checks the card details.</p>
+<p>PayFORT checks the card details.</p>
 </li>
 <li>
-<p>PayFort creates a token for the Customer transaction and sends it to the payment page.</p>
+<p>PayFORT creates a token for the Customer transaction and sends it to the payment page.</p>
 </li>
 <li>
-<p>The Payment page then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFort.</p>
+<p>The Payment page then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFORT.</p>
 </li>
 <li>
-<p>In case your page receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br>
-   <strong>a.</strong> Your payment page redirects the Customer to the ACS to check his card enrollment.<br><strong>b.</strong> The Customer enters authentication data on the ACS platform.<br><strong>c.</strong> The ACS performs authentication of the Customer’s data and sends the authentication results to PayFort.</p>
-</li>
-<li>
-<p>PayFort completes the operation based on the 3-D Secure response and returns the response to your payment page.</p>
-</li>
-<li>
-<p>PayFort sends the payment results to your site.</p>
+<p>In case your page receives from PayFort a 3-D Secure URL “3ds_url”, and response indicating that a 3Ds check is required:<br></p>
 </li>
 </ol>
-<p><strong><em>Note</em></strong> -</p>
-<ul>
-<li>In this case, PayFort returns<em> </em><em>status “20: On hold”</em><em> </em>and<em> </em><em>message “064: 3-D Secure check requested”</em><em>. </em>For example, PayFort is waiting for your payment page to authenticate the Customer.*</li>
-<li><em>If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.</em></li>
-<li>If the Token is sent by you, it will be generated with the same name as sent by your page.</li>
-<li>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</li>
-</ul>
+<div class="alert alert-info">**a.** Your payment page redirects the Customer to the ACS to check his card enrollment.<br>**b.** The Customer enters authentication data on the ACS platform.<br>**c.** The ACS performs authentication of the Customer’s data and sends the authentication results to PayFORT.</div>
+
+<ol>
+<li>
+<p>PayFORT completes the operation based on the 3-D Secure response and returns the response to your payment page.</p>
+</li>
+<li>
+<p>PayFORT sends the payment results to your site.</p>
+</li>
+</ol>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>In this case, PayFort returns status <mark>20: On hold</mark>and message <mark>064: 3-D Secure check requested</mark>message.For example, PayFort is waiting for your payment page to authenticate the Customer.</div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>*If you include the “token_name” parameter in the request and this Token already has a successful Authorization, then the card number (masked) and expiry date will be displayed in their allocated fields.*</div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>If the Token is sent by you, it will be generated with the same name as sent by your page.</div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</div>
+
 <hr />
 <h2 id="give-it-a-try">Give It a Try</h2>
 <p>Use one of our <a href="../testing/">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
 <p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
-<p>Comment--Need to add dynamic code script block to accept test card and generate a test token here.</p>
 <hr />
 <h2 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h2>
 <h2 id="endpoints">Endpoints</h2>

@@ -141,3 +141,56 @@ Below is the sample of various column parameters which you can chose to pass in 
 
 Filter Parameters and Key Parameters
 
+```
+[]
+```
+
+
+
+
+
+
+
+```
+["fort_id",
+ "merchant_reference",
+ "authorization_code",
+ "customer_name",
+ "customer_ip",
+ "geolocation_ip",
+ "customer_email",
+ "acquirer_name",
+ "payment_option",
+ "channel",
+ "transaction_date",
+ "card_number",
+ "expiry_date",
+ "card_holder_name",
+ "amount",
+ "currency",
+ "card_bin",
+ "eci",
+ "operation",
+ "token_name",
+ "3ds_indicator",
+ "fraud_indicator",
+ "installments_indicator",
+ "status",
+ "response_code",
+ "response_message",
+ "third_party_message",
+ "third_party_code",
+ "order_date",
+ "order_description",
+ "acquirer_mid",
+ "acquirer_response_code",
+ "acquirer_response_message",
+ "processor_response_code",
+ "sadad_olp",
+ "sadad_transaction_id",
+ "payment_link_id",
+ "Invoice_id",
+ "digital_wallet"
+]
+```
+
