@@ -193,15 +193,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <p>The form consists of iframe tag which specifies the style, name of the style (you can give any name to your style), source code location, width and height of the iframe. All these are customizable values which you can provide. </p>
 <p>The form action tag consists of the endpoints &nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a>. This will come handy whenever submit action is performed on the page. Once the form is submitted the parameters provided in the form would be sent to the PayFORT server and Endpoints will serve as communication link between your page and PayFORT server.</p>
-<p>The very first input parameter is the service command Tokenization. This service command will provide the server with a valid command that it should perform once it receives the request.</p>
-<p>The second input parameter denotes the language. There are two options which you can use. The languages supported by our platform are <mark><strong>en/ar</strong></mark>. You can provide either en or ar in the input parameter value.</p>
-<p>The third input parameter is merchant identifier and the value of the same can be check in the <a href="../backoffice/">backoffice</a>.</p>
-<p>The fourth input parameter is the access code and again its value can be found in backoffice.</p>
-<p>The fifth input parameter is the signature which is a SHA based and can be generated in the backoffice.</p>
-<p>The sixth input parameter is the return url which the url of the page where you would like to receive the response of the PayFORT server or the response to your request.</p>
-<p>The seventh input parameter is the merchant reference which is nothing but unique order number.</p>
-<p>You need to provide the values of all the input parameters in the value field before your payment page can send request to the PayFORT server.</p>
-<p>Finally the laster input parameter would be a submit parameter which would submit the form and the request would be forwarded to the PayFORT server.</p>
+<p>Here is the description of the input parameters:</p>
+<ol>
+<li>The very first input parameter is the service command Tokenization. This service command will provide the server with a valid command that it should perform once it receives the request.</li>
+<li>The second input parameter denotes the language. There are two options which you can use. The languages supported by our platform are <mark><strong>en/ar</strong></mark>. You can provide either en or ar in the input parameter value.</li>
+<li>The third input parameter is merchant identifier and the value of the same can be check in the <a href="../backoffice/">backoffice</a>.</li>
+<li>The fourth input parameter is the access code and again its value can be found in backoffice.</li>
+<li>The fifth input parameter is the signature which is a SHA based and can be generated in the backoffice.</li>
+<li>The sixth input parameter is the return url which the url of the page where you would like to receive the response of the PayFORT server or the response to your request.</li>
+<li>The seventh input parameter is the merchant reference which is nothing but unique order number.</li>
+<li>You need to provide the values of all the input parameters in the value field before your payment page can send request to the PayFORT server.</li>
+<li>Finally the laster input parameter would be a submit parameter which would submit the form and the request would be forwarded to the PayFORT server.</li>
+</ol>
 <p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link </a></p>
 <h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
