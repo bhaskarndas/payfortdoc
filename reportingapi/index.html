@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Data Mine(Reporting API) - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "What is Data Mine (Reporting API)?", url: "#_top", children: [
+              {title: "How it Works?", url: "#how-it-works" },
+              {title: "Endpoints", url: "#endpoints" },
+              {title: "Parameters Submission Type", url: "#parameters-submission-type" },
+              {title: "Generate Report Request", url: "#generate-report-request" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../installments/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../installments/" class="btn btn-xs btn-link">
+        Installments
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../monitor/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../monitor/" class="btn btn-xs btn-link">
+        Monitor
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="what-is-data-mine-reporting-api">What is Data Mine (Reporting API)?</h1>
+<p>For retail merchants like you biggest dilemma they face is to download a customized reports. These customized reports includes sales reports, transaction reports, recurring payment reports, bulk sales reports etc. If you are planning to develop your own solution then you can easily use the PayFORT's easy to use reporting API to generate your own customized reports. The Reporting API provides you the feature to generate misc.. reports that can be customized as per your business requirements. You can specify the columns to be included and filters, then download the generated report. The report is limited to 200,000 transactions.</p>
+<hr />
+<h2 id="how-it-works">How it Works?</h2>
+<p>When you are developing the solution for report generation purpose then you need to send request to the PayFORT server using the Endpoints&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a>. There will be two requests (<mark>Generate Report</mark> and <mark>Download Report</mark>) that you will be sending to the PayFORT server. Following steps describes the way Reporting API works:</p>
+<ol>
+<li>You will submit <mark><strong><em>Generate Report</em></strong></mark> request for report generation. This request also allows you to specify the filters and columns to be included in the downloaded report.</li>
+<li>The PayFORT server returns the <mark><strong>Generate Report</strong></mark> response.</li>
+<li>You will then submit the <mark><strong>Download Report</strong></mark> request using the same <mark><em>merchant reference</em></mark> which was used to submit <strong><mark>Generate Report</mark></strong> request</li>
+</ol>
+<hr />
+<h2 id="endpoints">Endpoints</h2>
+<p>You can use these PayFORT endpoints for the purpose of testing and going live. If you don't have test account then you can use this <a href="https://www.payfort.com/test-account/">link</a> to signup for the test account else you can directly signup for the live account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
+<p><strong>Sandbox</strong></p>
+<pre><code class="json">POST   https://sbpaymentservices.payfort.com/FortAPI/reportingApi
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="json">POST   https://paymentservices.payfort.com/FortAPI/reportingApi
+</code></pre>
+
+<hr />
+<h2 id="parameters-submission-type">Parameters Submission Type</h2>
+<p>While submitting your request to PayFORT server using the Endpoints&nbsp; <a href="#endpoints"><i class="fa fa-anchor"></i></a> you need to pass parameters in your request. The parameters that you will pass to the server in your request should be <strong><em><mark>REST POST request using JSON Format</mark></em></strong>. Both the requests <mark>Generate Report&nbsp;<a href="#generate-report-request"><i class="fa fa-anchor"></i></a></mark> and <mark>Download Report&nbsp;<a href="#download-report-request"><i class="fa fa-anchor"></i></a></mark> will use set of parameters including the column parameters, filter parameters and the key parameters.</p>
+<hr />
+<h2 id="generate-report-request">Generate Report Request</h2>
+<p>Since you will be submitting REST POST using JSON Format, you can refer to the given JSON sample for creating a <mark><strong><em>Generate Report</em></strong></mark> request. The JSON sample also shows the parameters that are required to be sent along the request.</p>
+<p><em>Sample JSON Request</em></p>
+<pre><code class="json">{
+&quot;query_command&quot;: &quot;GENERATE_REPORT&quot;,
+&quot;access_code&quot;: &quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+&quot;merchant_identifier&quot;: &quot;CycHZxVj&quot;,
+&quot;merchant_reference&quot;: &quot;XYZ9239-yu898&quot;,
+&quot;from_date&quot;: &quot;2017-08-03T00:00:01+03:00&quot;,
+&quot;to_date&quot;: &quot;2017-08-03T23:59:59+03:00&quot;,
+&quot;response_format&quot;: &quot;JSON&quot;,
+&quot;language&quot;: &quot;en&quot;,
+&quot;columns&quot;: [
+    &quot;order_description&quot;,
+    &quot;customer_ip&quot;,
+    &quot;eci&quot;,
+    &quot;geolocation_ip&quot;,
+    &quot;merchant_reference&quot;,
+    &quot;card_holder_name&quot;,
+    &quot;currency&quot;,
+    &quot;amount&quot;,
+    &quot;payment_option&quot;,
+    &quot;fort_id&quot;,
+    &quot;customer_email&quot;,
+    &quot;customer_name&quot;,
+    &quot;operation&quot;,
+],
+&quot;filters&quot;: [
+    {
+    &quot;key&quot;: &quot;currency&quot;,
+    &quot;value&quot;: &quot;USD&quot;
+    },
+    {
+    &quot;key&quot;: &quot;payment_option&quot;,
+    &quot;value&quot;: &quot;VISA&quot;
+    }
+],
+&quot;signature&quot;: &quot;03a36d58acfc611f521528f2039a2228031d7ae4248d95181f2a24cfbe9f7865&quot;
+}
+</code></pre>
+
+<p>The above JSON sample is for information purpose and you need to check out the columns parameters, filter parameters and the key parameters (passed within the filters parameters as key value in the above JSON sample) to select the parameters you need to pass in your request.</p>
+<p><strong>Columns Parameter</strong></p>
+<p>Below is the sample of various column parameters which you can chose to pass in your request as a list. The list is surrounded by [] (square brackets) which is JSON based list. The list which you pass in your request will generate the data under the respective columns (passed as a list in the generate and download reports).</p>
+<p><em>Sample Column Parameters in JSON's List Format</em></p>
+<pre><code class="json">[
+&quot;fort_id&quot;,
+&quot;merchant_reference&quot;,
+&quot;authorization_code&quot;,
+&quot;customer_name&quot;,
+&quot;customer_ip&quot;,
+&quot;geolocation_ip&quot;,
+&quot;customer_email&quot;,
+&quot;acquirer_name&quot;,
+&quot;payment_option&quot;,
+&quot;channel&quot;,
+&quot;transaction_date&quot;,
+&quot;card_number&quot;,
+&quot;expiry_date&quot;,
+&quot;card_holder_name&quot;,
+&quot;amount&quot;,
+&quot;currency&quot;,
+&quot;card_bin&quot;,
+&quot;eci&quot;,
+&quot;operation&quot;,
+&quot;token_name&quot;,
+&quot;3ds_indicator&quot;,
+&quot;fraud_indicator&quot;,
+&quot;installments_indicator&quot;,
+&quot;status&quot;,
+&quot;response_code&quot;,
+&quot;response_message&quot;,
+&quot;third_party_message&quot;,
+&quot;third_party_code&quot;,
+&quot;order_date&quot;,
+&quot;order_description&quot;,
+&quot;acquirer_mid&quot;,
+&quot;acquirer_response_code&quot;,
+&quot;acquirer_response_message&quot;,
+&quot;processor_response_code&quot;,
+&quot;sadad_olp&quot;,
+&quot;sadad_transaction_id&quot;,
+&quot;payment_link_id&quot;,
+&quot;Invoice_id&quot;,
+&quot;digital_wallet&quot;
+]
+</code></pre>
+
+<p>Filter Parameters and Key Parameters</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../installments/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../installments/" class="btn btn-xs btn-link">
+        Installments
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../monitor/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../monitor/" class="btn btn-xs btn-link">
+        Monitor
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
