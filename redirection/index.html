@@ -36,13 +36,13 @@
           ]},
           {title: "Before you Start", url: "#before-you-start", children: [
           ]},
-          {title: "Try it out", url: "#try-it-out", children: [
-              {title: "Endpoints", url: "#endpoints" },
+          {title: "Endpoints", url: "#endpoints", children: [
           ]},
-          {title: "How to add the Tokenization service on the Redirection channel?", url: "#how-to-add-the-tokenization-service-on-the-redirection-channel", children: [
+          {title: "Parameters Submission Type", url: "#parameters-submission-type", children: [
           ]},
           {title: "Go to Full API", url: "#go-to-full-api", children: [
-              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+          {title: "Need further help?", url: "#need-further-help", children: [
           ]},
         ];
 
@@ -91,39 +91,87 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <hr />
-<p>Once the customer's payment details are verified and PayFORT server sends the token, the next payment process is the <mark>Redirection</mark> process. <a href="..">Integration</a> process enables you to capture the payment details of the customer and then validating the same with the PayFORT server whereas the redirection process enables you to capture payments made by the customer. It consists of <mark> Authorization</mark> and <mark>Purchase</mark> processing. </p>
-<h1 id="how-it-works">How it works?</h1>
+<p>Once the customer's payment details are verified and PayFORT server sends the token, the next payment process is the <mark>Redirection</mark> process. <a href="..">Integration</a> process enables you to capture the payment details of the customer and then validating the same with the PayFORT server whereas the redirection process enables you to capture payments made by the customer. The main <mark>Redirection</mark> process consists of <mark> Authorization</mark>  and <mark>Purchase</mark> processing. Other topics included in Redirection include <a href="../capturepayment/">Capturing Payment</a>, <a href="../voidauthorization/">Void Transaction</a> and <a href="../refund/">Refund Payment</a>.</p>
+<h2 id="how-it-works">How it works?</h2>
 <hr />
-<p>The <mark><strong>Authorization</strong></mark> operation holds the amount from the Customer’s credit card for a period of time until you capture or void the transaction. If no capture or void transaction is processed during this period, the transaction will be voided automatically. In <mark><strong>Purchase</strong></mark> you will send one single request in order to authorize and capture the transaction amount.</p>
+<p>The <mark><strong>Authorization</strong></mark> operation holds the amount from the Customer’s credit card for a period of time until you capture or void the transaction. If no capture or void transaction is processed during this period, the transaction will be voided automatically. In <mark><strong>Purchase</strong></mark> you will send one single request to the PayFORT server in order to authorize and capture the transaction amount.</p>
 <p>We offer you to <mark><strong>Redirect</strong></mark> your customer from your website to PayFORT’s gateway page to fill out his credit card details during these operations.</p>
-<p><strong>
-Looking to void a payment?</strong>
+<p><strong>Looking to void a payment?</strong>
 You can <a href="../voidauthorization/">void</a> an authorized payment at any time. However, captured payments can only be <a href="../refund/">refunded</a>.</p>
-<h1 id="before-you-start">Before you Start</h1>
+<h2 id="before-you-start">Before you Start</h2>
 <hr />
 <p>You are required to signup for test account by visiting this <a href="" title="https://www.payfort.com/test-account/">link</a> for testing your sample integrations. You can also directly get started by signing up for the live account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
-<h1 id="try-it-out">Try it out</h1>
+<h2 id="endpoints">Endpoints</h2>
 <hr />
-<p>You can use the below URLS to test the redirection methods.</p>
-<h3 id="endpoints">Endpoints</h3>
-<p><strong>SandBox:</strong></p>
-<pre><code>POST https://sbcheckout.payfort.com/FortAPI/paymentPage
+<p>An <strong>endpoint</strong> is one end of a communication channel and your merchant site will communicate with the PayFORT resources using Endpoints. For PayFORT <mark>APIs</mark>, an <strong>endpoint</strong> includes a URL of PayFORT server or service. </p>
+<p><strong>SandBox</strong></p>
+<pre><code class="http">POST https://sbcheckout.payfort.com/FortAPI/paymentPage
 </code></pre>
 
-<p><strong>Live:</strong></p>
-<pre><code>POST https://checkout.payfort.com/FortAPI/paymentPage
+<p><strong>Live</strong></p>
+<pre><code class="http">POST https://checkout.payfort.com/FortAPI/paymentPage
 </code></pre>
 
-<h1 id="how-to-add-the-tokenization-service-on-the-redirection-channel">How to add the Tokenization service on the Redirection channel?</h1>
 <hr />
-<p>The Tokenization service is applicable to be integrated through the Redirection Channel through the below steps:</p>
-<ol>
-<li>The Customer enables the remember_me option displayed in the payment page.</li>
-<li>Processes the first PURCHASE/ AUTHORIZATION payment successfully.</li>
-<li>The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment.</li>
-</ol>
-<p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
-<h1 id="go-to-full-api">Go to Full API</h1>
+<h2 id="parameters-submission-type">Parameters Submission Type</h2>
+<p>When you design your form(html page ) you have to provide the <mark>Endpoints</mark>&nbsp;&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> in the form method. Providing these endpoints in your page will redirect your request to the PayFORT server. The page can be designed in the programming language of your choice. But you have to include the below mentioned code in your html based form. </p>
+<p>Form Post Request.</p>
+<pre><code class="html">&lt;form method=“post” action=“https://sbcheckout.payfort.com/FortAPI/paymentPage” id=“form1” name=“form1”&gt; &lt;/form&gt;
+</code></pre>
+
+<p>The above code snippet is an HTML based form that will post a request to PayFORT serverand  you are also required to submit parameters in the form so that PayFORT server can understand your request and process the same. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">&nbsp;&nbsp;</i>The parameters are mandatory and are required by PayFORT server to validate, authenticate and provide the tokens for processing of payment</div>
+
+<div class="container">
+  <h2>Sample Codes</h2>
+  <p>To make the tabs toggleable, add the data-toggle="tab" attribute to each link. Then add a .tab-pane class with a unique ID for every tab and wrap them inside a div element with class .tab-content.</p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#php">Php</a></li>
+    <li><a data-toggle="tab" href="#python">Python</a></li>
+    <li><a data-toggle="tab" href="#ruby">Ruby</a></li>
+    <li><a data-toggle="tab" href="#java">Java</a></li>
+    <li><a data-toggle="tab" href="#curl">cURL</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+
+​    
+<pre>
+$requestParams = array(
+'command' => 'AUTHORIZATION',
+'access_code' => 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' => 'CycHZxVj',
+'merchant_reference' => 'XYZ9239-yu898',
+'amount' => '10000',
+'currency' => 'AED',
+'language' => 'en',
+'customer_email' => 'test@payfort.com',
+'signature' => '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' => 'iPhone 6-S',
+);
+
+</pre>
+
+
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
 <p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
 <h2 id="need-further-help">Need further help?</h2>
