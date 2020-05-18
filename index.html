@@ -36,6 +36,9 @@
         var pageToc = [
           {title: "Get Started With PayFORT", url: "#_top", children: [
               {title: "PayFORT Payment Features", url: "#payfort-payment-features" },
+              {title: "PayFORT Integration Type", url: "#payfort-integration-type" },
+              {title: "Using Merchant Page", url: "#using-merchant-page" },
+              {title: "Using Merchant Page 2", url: "#using-merchant-page-2" },
               {title: "Get Started With Testing", url: "#get-started-with-testing" },
               {title: "Need further help?", url: "#need-further-help" },
           ]},
@@ -103,7 +106,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpageintegration/" class="wm-article-link wm-toc-text">Merchant Page</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpage1/" class="wm-article-link wm-toc-text">Merchant Page 1</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpage2/" class="wm-article-link wm-toc-text">Merchant Page 2</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpageparameters/" class="wm-article-link wm-toc-text">Merchant Page Parameters</a>
 </li>
       <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Redirection</span>
 </li>
@@ -429,7 +436,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="get-started-with-payfort">Get Started With PayFORT</h1>
 <hr />
-<p>If you are starting out a new ecommerce or any other merchant site then you need a robust payment system that can capture not only customer's payment details but also helps you with various financial transactions needs of your customers such as recurring payments, financing purchase by the customer, one time payment etc. PayFORT helps you to build a robust payment system for your merchant site. With the help of PayFORT you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. </p>
+<p>If you are starting a new ecommerce or any other merchant site then you need a robust payment system that can capture not only customer's payment details but also helps you with various financial transaction needs of your customers such as recurring payments, financing purchase by the customer, one time payment etc. PayFORT helps you to build a robust payment system for your merchant site. With the help of PayFORT you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. </p>
+<p>You can signup for a PayFORT test account by navigating to this <a href="https://www.payfort.com/test-account/">link</a></p>
+<p>If you want to integrate payment systems with your site then you can sign up for a live account by visiting this <a href="https://www.payfort.com/get-started/">link</a> </p>
 <hr />
 <h2 id="payfort-payment-features">PayFORT Payment Features</h2>
 <hr />
@@ -447,18 +456,22 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><img alt="image-20200220202239150" src="img/image-20200220202239150.png" /></p>
 <p>​                                                     Figure 1 </p>
 <p>​                                 Shopping cart applications supported by PayFort</p>
-<p>You can get started with a PayFORT test account by signing up using this <a href="https://www.payfort.com/test-account/">link</a></p>
-<p>If you want to integrate payment systems with your site then you can sign up for a live account by visiting this <a href="https://www.payfort.com/get-started/">link</a> </p>
-<h2>Give It a Try</h2>
-
-<hr>
-
-<p>Use one of our <a href ="testing.md">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
-
-<p>You can use any expiry date (`mm/yy`), as long as it's in the future.</p>
-
-<p>PayFORT offers you two approaches for integrations with your merchant site please check out the merchant page integration section.</p>
-<p><a href="merchantpageintegration/"><button class="btn btn-primary">Merchant Page Integration</button></a></p>
+<hr />
+<h2 id="payfort-integration-type">PayFORT Integration Type</h2>
+<p>PayFORT offers you two approaches for integrations with your merchant site as mentioned below:</p>
+<ul>
+<li>By using PayFORT Merchant Page <a href="#using-merchant-page">&nbsp;<i class="fa fa-anchor"></i></a></li>
+<li>By using PayFORT Merchant Page 2<a href="#using-merchant-page-2">&nbsp;<i class="fa fa-anchor"></i></a></li>
+</ul>
+<h2 id="using-merchant-page">Using Merchant Page</h2>
+<hr />
+<p>PayFORT Merchant Page integration uses <strong><em>iFrame</em></strong> or internal frame that helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page.  For more details checkout the Merchant Page Integration.</p>
+<p><a href="merchantpage1/"><button class="btn btn-primary">Merchant Page Integration</button></a></p>
+<hr />
+<h2 id="using-merchant-page-2">Using Merchant Page 2</h2>
+<hr />
+<p>Merchant Page 2 provides you with the flexibility to develop your own custom form for collecting the customer's card details. For more details visit the Merchant Page 2 Integration.</p>
+<p><a href="merchantpage2/"><button class="btn btn-primary">Merchant Page 2 Integration </button></a></p>
 <hr />
 <h2 id="get-started-with-testing">Get Started With Testing</h2>
 <p>If you have developed your payment page then you can proceed with creation of a testing account by visiting <a href="" title="https://www.payfort.com/test-account/">link</a></p>
@@ -480,5 +493,5 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </html>
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-05-07 06:42:40
+Build Date UTC : 2020-05-18 08:54:46
 -->

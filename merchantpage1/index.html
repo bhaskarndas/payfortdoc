@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>What is iFrame for Web? - PayFort Documentation</title>
+    <title>Merchant Page 1 - PayFort Documentation</title>
     <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -32,11 +32,13 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "What is iFrame for Web?", url: "#_top", children: [
+          {title: "What is Merchant Page Integration?", url: "#_top", children: [
               {title: "How it Works?", url: "#how-it-works" },
               {title: "Integration Flow", url: "#integration-flow" },
               {title: "Give It a Try", url: "#give-it-a-try" },
               {title: "Integrate iFrames to Payment Page", url: "#integrate-iframes-to-payment-page" },
+              {title: "Request Parameters", url: "#request-parameters" },
+              {title: "Response Parameters", url: "#response-parameters" },
               {title: "Go to Full API", url: "#go-to-full-api" },
               {title: "Need further help?", url: "#need-further-help" },
           ]},
@@ -58,9 +60,28 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="what-is-iframe-for-web">What is iFrame for Web?</h1>
-<p>You can setup payment form and start accepting payments within few minutes with the help of iFrame. PayFORT provides easy to use iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, etc. You develop your site in any technology of your choice and integrate the iFrame in your html based checkout page. The PayFORT iframe takes the look and feel as that of your website.</p>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../merchantpage2/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../merchantpage2/" class="btn btn-xs btn-link">
+        Merchant Page 2
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="what-is-merchant-page-integration">What is Merchant Page Integration?</h1>
+<p>You can setup payment form and start accepting payments within few minutes with the help of PayFORT Merchant Page. Merchant Page Integration uses PayFORT iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, etc. You develop your site in any technology of your choice and integrate the iFrame in your html based checkout page. </p>
 <p><img alt="Figure1" src="../img/image-20200211222706973.png" /></p>
 <p>Figure 1 - Using PayFORT iFrame for web</p>
 <hr />
@@ -76,11 +97,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>PayFORT server receives the payment details and validates the same.</p>
 </li>
 <li>
-<p>PayFORT then sends a token to your checkout page to complete the transaction.</p>
+<p>PayFORT then sends a confirmation to your checkout page to complete the transaction.</p>
 </li>
 </ol>
 <p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You have the option to redirect the Customer directly to the checkout page.</div></p>
-<p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link</a></p>
 <hr />
 <h2 id="integration-flow">Integration Flow</h2>
 <p><img alt="Integration" src="../img/image-20200212214741915.png" /></p>
@@ -88,11 +108,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Here is the description of the PayFORT iFrame Integration workflow :</p>
 <div><ol>
     <li>The customer begins the checkout process on your website.</li>
-    <li>The payment page with integrated iFrame is displayed. The Customer then enters the card’s details on the payment page.</li>
+    <li>The payment page with integrated iFrame is displayed to the customer on the your site. The Customer then enters the card’s details on the payment page.</li>
     <li>PayFORT checks the card details.</li>
     <li>PayFORT creates a token for the Customer transaction and sends it to the payment page.</li>
     <li>The Payment page then sends a <a href="https://docs.payfort.com/docs/api/build/index.html#merchant-page-operations">JSON request</a> along with the token to PayFORT.</li>
     <li>In case your page receives from PayFORT server a 3-D Secure URL <mark>3ds_url</mark>, and response indicating that a 3ds check is required then:<div class="alert alert-info"><ol><li>Your payment page redirects the Customer to the ACS to check his card enrollment.</li><li>The Customer enters authentication data on the ACS platform.</li><li>The ACS performs authentication of the Customer’s data and sends the authentication results to PayFORT.</li><ol>
+
+
 
         </ol></ol></div></li>
     <li>PayFORT completes the operation based on the 3-D Secure response and returns the response to your payment page.</li>
@@ -128,73 +150,85 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>If you are planning to use PayFORT iFrames then you can use the endpoints&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> for testing and and also for going live. You can use programming language of your choice or what your site uses and can use the iFrame in your html based check out page.</p>
 <hr />
 <p><strong>Before you start</strong></p>
-<p>Make sure you have your <code>access_code</code>. Refer to Figure 2 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings &gt; <strong>Security Settings &gt; Access Code</strong>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with an active account by visiting this <a href="https://www.payfort.com/get-started/">link</a>. Once you signup you will get the access to the Backoffice. You can check out more about navigating through backoffice by visiting this <a href="../backoffice/">link</a>.</p>
-<p><a name="figure2"></a><br/></p>
-<p><img alt="" src="../img/integrationsettings2.png" /></p>
-<p>Figure 2 : Access Code Generation</p>
-<p>The Payment Page Template available in the backoffice provides you the feature to create a payment processing page using PayFort iFrame. Refer to the Figure 3  <a href="#figure3"><i class="fa fa-link"></i></a></p>
+<p>Make sure you have your <code>access_code</code>. Refer to Figure 3 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings &gt; <strong>Security Settings &gt; Access Code</strong>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with a live account by visiting this <a href="https://www.payfort.com/get-started/">link</a>. Once you signup you will get the access to the Backoffice. You can check out more about navigating through backoffice by visiting this <a href="../backoffice/">link</a>.</p>
 <p><a name="figure3"></a><br/></p>
+<p><img alt="" src="../img/integrationsettings2.png" /></p>
+<p>Figure 3 : Access Code Generation</p>
+<p>The Payment Page Template available in the backoffice provides you the feature to create a payment processing page using PayFort iFrame. Refer to the Figure 4  <a href="#figure3"><i class="fa fa-link"></i></a></p>
+<p><a name="figure4"></a><br/></p>
 <p><img alt="" src="../img/paymentintegration%20settings.png" /></p>
-<p>Figure 3 : Use Payment Settings to create a payment form</p>
+<p>Figure 4 : Use Payment Settings to create a payment form</p>
 <hr />
 <p><strong>Sample iFrame code snippet</strong></p>
 <p>The following sample code snippet is the start of the payment process and allows you to tokenize a customer's sensitive card information using iFrames.     </p>
-<pre><code class="html">&lt;html&gt;
-   &lt;/head&gt;
-&lt;body&gt;
+<pre><code class="html">
 &lt;iframe  style=&quot;border:5px dotted red&quot; name=&quot;myframe&quot; src = &quot;&quot; width=&quot;400&quot; height=&quot;600&quot;&gt;
 &lt;/iframe&gt;
 &lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; method=&quot;post&quot; id=&quot;&quot; target=&quot;myframe&quot;&gt;
 
 &lt;INPUT type=&quot;hidden&quot; NAME=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
 
-&lt;INPUT type=&quot;hidden&quot; NAME=&quot;language&quot; value=&quot; &quot;&gt;
-
-&lt;INPUT type=&quot;hidden&quot; NAME=&quot;merchant_identifier&quot; value=&quot;&quot;&gt;
-
-&lt;INPUT type=&quot;hidden&quot; NAME=&quot;access_code&quot; value=&quot;&quot;&gt;
-
-&lt;INPUT type=&quot;hidden&quot; NAME=&quot;signature&quot; value=&quot;&quot;&gt;
-
-&lt;INPUT type=&quot;hidden&quot; NAME=&quot;return_url&quot; value=&quot;&quot;&gt;
-
-&lt;INPUT type=&quot;hidden&quot; NAME=&quot;merchant_reference&quot; value=&quot;&quot;&gt;
-
-&lt;input value=&quot;Send&quot; type=&quot;submit&quot; id=&quot;form1&quot;&gt;
-
-&lt;/form&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
 </code></pre>
 
 <hr />
-<p>The above code snippet is an HTML based form that will post a request to PayFORT server. The request parameters are also added in the input tag of the code. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
-<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">&nbsp;&nbsp;</i>The parameters are mandatory and are required by PayFORT server to validate, authenticate and provide the tokens for processing of payment</div>
-
+<p>The above sample code is an HTML based form that will post a request to PayFORT server. The request parameters are also added in the input tag of the code. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
 <p>The form consists of iframe tag which specifies the style, name of the style (you can give any name to your style), source code location, width and height of the iframe. All these are customizable values which you can provide. </p>
 <p>The form action tag consists of the endpoints &nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a>. This will come handy whenever submit action is performed on the page. Once the form is submitted the parameters provided in the form would be sent to the PayFORT server and Endpoints will serve as communication link between your page and PayFORT server.</p>
-<p>Here is the description of the input parameters:</p>
-<ol>
-<li>The very first input parameter is the service command Tokenization. This service command will provide the server with a valid command that it should perform once it receives the request.</li>
-<li>The second input parameter denotes the language. There are two options which you can use. The languages supported by our platform are <mark><strong>en/ar</strong></mark>. You can provide either english(en) or arabic(ar) in the input parameter value.</li>
-<li>The third input parameter is merchant identifier and the value of the same can be check in the <a href="../backoffice/">backoffice</a>.</li>
-<li>The fourth input parameter is the access code and again its value can be found in backoffice.</li>
-<li>The fifth input parameter is the signature which is a SHA based and can be generated in the backoffice.</li>
-<li>The sixth input parameter is the return url which the url of the page where you would like to receive the response of the PayFORT server or the response to your request.</li>
-<li>The seventh input parameter is the merchant reference which is nothing but unique order number.</li>
-<li>You need to provide the values of all the input parameters in the value field before your payment page can send request to the PayFORT server.</li>
-<li>Finally the laster input parameter would be a submit parameter which would submit the form and the request would be forwarded to the PayFORT server.</li>
-</ol>
-<p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link </a></p>
+<h2 id="request-parameters">Request Parameters</h2>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">&nbsp;&nbsp;</i>The parameters are mandatory and are required by PayFORT server to validate, authenticate and provide the tokens for processing of payment</div>
+
+<p>Please refer to the section <a href="../merchantpageparameters/">Merchant Page Parameters</a> for request parameters.</p>
+<hr />
+<h2 id="response-parameters">Response Parameters</h2>
+<p>The PayFORT server will return the response in JSON format. Here is the sample response along with the parameters returned by PayFORT server.</p>
+<pre><code class="json">[{
+&quot;service_command&quot;: &quot;TOKENIZATION&quot;,
+&quot;access_code&quot;: &quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+&quot;merchant_identifier&quot;: &quot;CycHZxVj&quot;,
+&quot;merchant_reference&quot;: &quot;XYZ9239-yu898&quot;,
+&quot;language&quot;: &quot;en&quot;,
+&quot;signature&quot;: &quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+&quot;token_name&quot;: &quot;Op9Vmp&quot;,
+&quot;expiry_date&quot;: &quot;2105&quot;,
+&quot;card_number&quot;: &quot;400555*****0001&quot;,
+&quot;response_message&quot;: &quot;012&quot;,
+&quot;response_code&quot;: &quot;11012&quot;,
+&quot;status&quot;: &quot;11&quot;,
+&quot;card_bin&quot;: &quot;478773&quot;,
+&quot;return_url&quot;: &quot;http://www.merchant.com&quot;
+}]
+</code></pre>
+
+<p>Please refer to the section <a href="../merchantpageparameters/">Merchant Page Parameters</a> for reponse parameters.</p>
 <h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
 <p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link </a></p>
 <h2 id="need-further-help">Need further help?</h2>
 <p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
 
   <br>
     
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../merchantpage2/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../merchantpage2/" class="btn btn-xs btn-link">
+        Merchant Page 2
+      </a>
+    </div>
+    
+  </div>
 
     <br>
 </div>
