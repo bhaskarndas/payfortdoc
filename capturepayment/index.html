@@ -91,6 +91,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <p>The redirection process allows you to authorize a purchase and after a purchase has been approved you can capture a payment. This operation allows you to <strong>capture</strong> the authorized amount to your account. The capture could be partial or full depending on your requirements and request.</p>
 <p>Our two-step authorization and capture process enables you to capture payments either automatically or manually.</p>
+<hr />
 <h2 id="the-request">The request</h2>
 <p>Use the details below to set up your request.</p>
 <h2 id="endpoints">Endpoints</h2>
@@ -190,6 +191,7 @@ response = urllib2.urlopen(req)
 page = response.read()
 print page + '\n\n'
 ```  &lt;/div&gt;&lt;div id=&quot;python&quot; class=&quot;tab-pane fade&quot;&gt;
+
 </code></pre>
 
 import urllib
@@ -217,6 +219,7 @@ response = urllib2.urlopen(req)
 page = response.read()
 print page + '\n\n'
 ```</div><div id="ruby" class="tab-pane fade">
+
 
 <pre><code>require 'json'
 require 'net/http'
@@ -290,22 +293,21 @@ https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 <p>If you receive response code <code>20064</code> with status code <code>04</code> then your request to capture a payment has been accepted by the PayFort Server. Below is the sample response that you will receive from PayFORT in JSON format. </p>
 <h3 id="response-sample">Response Sample</h3>
 <hr />
-<pre><code class="json">{&quot;command&quot;:&quot;CAPTURE&quot;,
- &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
- &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
- &quot;merchant_reference&quot;:&quot;XYZ9239-yu898&quot;,
- &quot;amount&quot;:&quot;10000&quot;,
- &quot;currency&quot;:&quot;AED&quot;,
- &quot;language&quot;:&quot;en&quot;,
- &quot;fort_id&quot;:&quot;149295435400084008&quot;,
- &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
- &quot;order_description&quot;:&quot;iPhone 6-S&quot;,
- &quot;response_message&quot;:&quot;Success&quot;,
- &quot;response_code&quot;:&quot;20064&quot;,
- status&quot;:&quot;04&quot;
-}
-</code></pre>
-
+<p>​<code>json
+{"command":"CAPTURE",
+ "access_code":"zx0IPmPy5jp1vAz8Kpg7",
+ "merchant_identifier":"CycHZxVj",
+ "merchant_reference":"XYZ9239-yu898",
+ "amount":"10000",
+ "currency":"AED",
+ "language":"en",
+ "fort_id":"149295435400084008",
+ "signature":"7cad05f0212ed933c9a5d5dffa31661acf2c827a",
+ "order_description":"iPhone 6-S",
+ "response_message":"Success",
+ "response_code":"20064",
+ status":"04"
+}</code></p>
 <p>You can check out various transaction codes by visiting this <a href="../transactioncodes/">link</a></p>
 <h1 id="go-to-full-api">Go to Full API</h1>
 <hr />
