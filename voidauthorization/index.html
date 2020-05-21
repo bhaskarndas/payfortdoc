@@ -94,54 +94,195 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Use the details below to set up your request.</p>
 <h2 id="endpoints">Endpoints</h2>
 <h3 id="live">Live</h3>
-<pre><code>POST  https://paymentservices.payfort.com/FortAPI/paymentApi
+<pre><code class="http">POST  https://paymentservices.payfort.com/FortAPI/paymentApi
 </code></pre>
 
 <h3 id="sandbox">Sandbox</h3>
-<pre><code>POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+<pre><code class="http">POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 </code></pre>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>You can send “merchant_reference” and/ or “fort_id” in the VOID_AUTHORIZATION request.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>You can send “merchant_reference” and/or “fort_id” in the VOID_AUTHORIZATION request.</div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response even the optional ones.</div>
 
 <h3 id="the-request-example">The Request Example</h3>
 <hr />
-<h4 id="json">JSON</h4>
-<hr />
-<pre><code class="json">{
-    'command':'REFUND',
-    'access_code':'zx0IPmPy5jp1vAz8Kpg7',
-    'merchant_identifier':'CycHZxVj',
-    'merchant_reference':' XYZ9239-yu898',
-    'amount':'10000',
-    'currency':'AED',  
-    'language':'en',
-    'signature':'7cad05f0212ed933c9a5d5dffa31661acf2c827a',
-    'fort_id':'149295435400084008',
-    'order_description':'iPhone 6-S'
+<p>Check out the request parameters by visiting this <a href="../maintenanceparameters/">link</a></p>
+<div class="container">
+  <h2>Sample Request</h2>
+  <p>Here are the sample request you are required to send authorizing a purchase.</p>
 
-}
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#php">Php</a></li>
+    <li><a data-toggle="tab" href="#python">Python</a></li>
+    <li><a data-toggle="tab" href="#ruby">Ruby</a></li>
+    <li><a data-toggle="tab" href="#java">Java</a></li>
+    <li><a data-toggle="tab" href="#curl">cURL</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="php" class="tab-pane fade in active">
+
+<pre><code>error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+$url = 'https://sbpaymentservices.payfort.com/FortAPI/paymentApi';
+
+$arrData = array(
+'command' =&gt; 'VOID_AUTHORIZATION',
+'access_code' =&gt; 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' =&gt; 'CycHZxVj',
+'merchant_reference' =&gt; 'XYZ9239-yu898',
+'language' =&gt; 'en',
+'signature' =&gt; '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' =&gt; 'iPhone 6-S',
+);
+
+
+$ch = curl_init( $url );
+# Setup request to send json via POST.
+$data = json_encode($arrData);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+# Return response instead of printing.
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+# Send request.
+$result = curl_exec($ch);
+curl_close($ch);
+# Print response.
+echo &quot;&lt;pre&gt;$result&lt;/pre&gt;&quot;;
+
 </code></pre>
+
+    </div>
+    <div id="python" class="tab-pane fade">
+
+<pre><code>import urllib
+import urllib2
+import json
+
+url = 'https://sbpaymentservices.payfort.com/FortAPI/paymentApi';
+arrData = {
+'command':'VOID_AUTHORIZATION',
+'access_code':'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier':'CycHZxVj',
+'merchant_reference':'XYZ9239-yu898',
+'language':'en',
+'signature':'7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description':'iPhone 6-S',
+};
+
+values = json.dumps(arrData)
+data = urllib.urlencode(values)
+req = urllib2.Request(url, data)
+response = urllib2.urlopen(req)
+page = response.read()
+print page + '\n\n'
+</code></pre>
+
+    </div><div id="ruby" class="tab-pane fade">
+
+<pre><code>require 'json'
+require 'net/http'
+require 'net/https'
+require 'uri'
+require 'openssl'
+
+arrData = {
+'command' =&gt; 'VOID_AUTHORIZATION',
+'access_code' =&gt; 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' =&gt; 'CycHZxVj',
+'merchant_reference' =&gt; 'XYZ9239-yu898',
+'language' =&gt; 'en',
+'signature' =&gt; '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' =&gt; 'iPhone 6-S',
+};
+
+arrData = arrData.to_json
+uri = URI.parse(&quot;https://sbpaymentservices.payfort.com/FortAPI/paymentApi&quot;)
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+request = Net::HTTP::Post.new(&quot;/v1.1/auth&quot;)
+request.add_field('Content-Type', 'application/json')
+request.body = arrData
+response = http.request(request)
+</code></pre>
+
+    </div><div id="java" class="tab-pane fade">
+
+<pre><code>String jsonRequestString = &quot;{\&quot;command\&quot; : \&quot;VOID_AUTHORIZATION\&quot; , &quot;
+      + &quot;\&quot;access_code\&quot; : \&quot;zx0IPmPy5jp1vAz8Kpg7\&quot;, \&quot;merchant_identifier\&quot; : \&quot;CycHZxVj\&quot;, \&quot;merchant_reference\&quot; : \&quot;XYZ9239-yu898\&quot;,&quot;
+      + &quot;\&quot;language\&quot; : \&quot;en\&quot;, \&quot;signature\&quot; : \&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a\&quot;, &quot;
+      + &quot;\&quot;order_description\&quot; : \&quot;iPhone 6-S\&quot;}&quot;;
+
+// Define and Initialize HttpClient
+HttpClient httpClient = HttpClientBuilder.create().build();
+// Intialize HttpPOST with FORT Payment services URL
+HttpPost request = new HttpPost(&quot;https://sbpaymentservices.payfort.com/FortAPI/paymentApi&quot;);
+// Setup Http POST entity with JSON String
+StringEntity params = new StringEntity(jsonRequestString);
+// Setup request type as JSON
+request.addHeader(&quot;content-type&quot;, &quot;application/json&quot;);
+request.setEntity(params);
+// Post request to FORT
+HttpResponse response = httpClient.execute(request);
+// Read response using StringBuilder
+StringBuilder sb = new StringBuilder();
+BufferedReader reader = new BufferedReader(new InputStreamReader(
+  response.getEntity().getContent()), 65728);
+String line = null;
+while ((line = reader.readLine()) != null) {
+sb.append(line);
+}
+// Print response
+System.out.println(sb.toString());
+
+</code></pre>
+
+
+    </div><div id="curl" class="tab-pane fade">
+
+<pre><code>curl -H &quot;Content-Type: application/json&quot; -d 
+
+'{&quot;command&quot;:&quot;VOID_AUTHORIZATION&quot;,
+
+&quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+
+&quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
+
+merchant_reference&quot;:&quot;XYZ9239-yu898&quot;,
+
+&quot;language&quot;:&quot;en&quot;,
+
+&quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+
+&quot;order_description&quot;:&quot;iPhone6-S&quot;}'
+
+ https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+
+</code></pre>
+
+    </div></div></div>
 
 <h2 id="the-response">The Response</h2>
 <hr />
 <p>If you receive response code <code>20064</code> with status code <code>04</code> it means that your request to void authorization has been accepted by PayFort server.</p>
 <h3 id="response-example">Response Example</h3>
-<pre><code class="json">{&quot;command&quot;:&quot;VOID_AUTHORIZATION&quot;,
- &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
- &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
- &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
- &quot;language&quot;:&quot;en&quot;,
- &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
- &quot;order_description&quot;:&quot;iPhone6-S&quot;,
- &quot;fort_id&quot;:&quot;149295435400084008&quot;,
- &quot;response_message&quot;:&quot;Success&quot;,
- &quot;response_code&quot;:&quot;20064&quot;,
- &quot;status&quot;:&quot;04&quot;
-}
-</code></pre>
-
+<hr />
+<p>​<code>json
+{"command":"VOID_AUTHORIZATION",
+ "access_code":"zx0IPmPy5jp1vAz8Kpg7",
+ "merchant_identifier":"CycHZxVj",
+ "merchant_reference":"XYZ9239yu898",
+ "language":"en",
+ "signature":"7cad05f0212ed933c9a5d5dffa31661acf2c827a",
+ "order_description":"iPhone6-S",
+ "fort_id":"149295435400084008",
+ "response_message":"Success",
+ "response_code":"20064",
+ "status":"04"
+}</code></p>
 <p>You can check out various transaction codes by visiting this <a href="../transactioncodes/">link</a></p>
 <h1 id="go-to-full-api">Go to Full API</h1>
 <hr />

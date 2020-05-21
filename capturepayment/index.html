@@ -33,13 +33,10 @@
         
         var pageToc = [
           {title: "Capture a payment", url: "#_top", children: [
-          ]},
-          {title: "The request", url: "#the-request", children: [
+              {title: "The request", url: "#the-request" },
               {title: "Endpoints", url: "#endpoints" },
-              {title: "Request example", url: "#request-example" },
-          ]},
-          {title: "The response", url: "#the-response", children: [
-              {title: "Response examples", url: "#response-examples" },
+              {title: "Capture Payment Request", url: "#capture-payment-request" },
+              {title: "Capture Payment response", url: "#capture-payment-response" },
           ]},
           {title: "Go to Full API", url: "#go-to-full-api", children: [
               {title: "Need further help?", url: "#need-further-help" },
@@ -79,10 +76,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../redirection/" class="btn btn-xs btn-default pull-left">
+      <a href="../maintenance/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../redirection/" class="btn btn-xs btn-link">
-        What is redirection?
+        Previous</a><a href="../maintenance/" class="btn btn-xs btn-link">
+        What is Maintenance?
       </a>
     </div>
     
@@ -92,19 +89,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="capture-a-payment">Capture a payment</h1>
 <hr />
-<p>This operation that allows you to <strong>capture</strong> the authorized amount to your account. The capture could be partial or full depends on your requirements and request.</p>
-<h1 id="the-request">The request</h1>
+<p>The redirection process allows you to authorize a purchase and after a purchase has been approved you can capture a payment. This operation allows you to <strong>capture</strong> the authorized amount to your account. The capture could be partial or full depending on your requirements and request.</p>
+<p>Our two-step authorization and capture process enables you to capture payments either automatically or manually.</p>
+<h2 id="the-request">The request</h2>
 <p>Use the details below to set up your request.</p>
 <h2 id="endpoints">Endpoints</h2>
 <h3 id="live">Live</h3>
-<pre><code>POST https://paymentservices.payfort.com/FortAPI/paymentApi
+<pre><code class="http">POST https://paymentservices.payfort.com/FortAPI/paymentApi
 </code></pre>
 
 <h3 id="sandbox">Sandbox</h3>
-<pre><code>POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+<pre><code class="http">POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 </code></pre>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>You can send “merchant_reference” and/ or “fort_id” in the CAPTURE request.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>You can send "merchant_reference" and/or "fort_id" in the CAPTURE request.</div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code.<br/>
 For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.<br/>
@@ -114,8 +112,65 @@ Another example: If the amount value was 100 JOD; according to ISO code 3, you s
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response even the optional ones.</div>
 
-<h2 id="request-example">Request example</h2>
-<pre><code class="json">{
+<h2 id="capture-payment-request">Capture Payment Request</h2>
+<hr />
+<p>Here are the sample codes for requests posted to PayFORT server to authorize payment and capture the payment.</p>
+<p>Check out the request parameters by visiting this <a href="../maintenanceparameters/">link</a></p>
+<div class="container">
+  <h2>Sample Request</h2>
+  <p>Here are the sample request you are required to send authorizing a purchase.</p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#php">Php</a></li>
+    <li><a data-toggle="tab" href="#python">Python</a></li>
+    <li><a data-toggle="tab" href="#ruby">Ruby</a></li>
+    <li><a data-toggle="tab" href="#java">Java</a></li>
+    <li><a data-toggle="tab" href="#curl">cURL</a></li>
+  </ul>
+  <div class="tab-content">
+      <div id="php" class="tab-pane fade in active">
+
+<pre><code>error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+$url = 'https://sbpaymentservices.payfort.com/FortAPI/paymentApi';
+
+$arrData = array(
+'command' =&gt; 'CAPTURE',
+'access_code' =&gt; 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' =&gt; 'CycHZxVj',
+'merchant_reference' =&gt; 'XYZ9239-yu898',
+'amount' =&gt; '10000',
+'currency' =&gt; 'AED',
+'language' =&gt; 'en',
+'fort_id' =&gt; '149295435400084008',
+'signature' =&gt; '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' =&gt; 'iPhone 6-S',
+);
+
+
+$ch = curl_init( $url );
+# Setup request to send json via POST.
+$data = json_encode($arrData);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+# Return response instead of printing.
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+# Send request.
+$result = curl_exec($ch);
+curl_close($ch);
+# Print response.
+echo &quot;&lt;pre&gt;$result&lt;/pre&gt;&quot;;
+</code></pre>
+
+      </div><div id="python" class="tab-pane fade">
+
+<pre><code>import urllib
+import urllib2
+import json
+
+url = 'https://sbpaymentservices.payfort.com/FortAPI/paymentApi';
+arrData = {
 'command':'CAPTURE',
 'access_code':'zx0IPmPy5jp1vAz8Kpg7',
 'merchant_identifier':'CycHZxVj',
@@ -127,12 +182,114 @@ Another example: If the amount value was 100 JOD; according to ISO code 3, you s
 'signature':'7cad05f0212ed933c9a5d5dffa31661acf2c827a',
 'order_description':'iPhone 6-S',
 };
+
+values = json.dumps(arrData)
+data = urllib.urlencode(values)
+req = urllib2.Request(url, data)
+response = urllib2.urlopen(req)
+page = response.read()
+print page + '\n\n'
+```  &lt;/div&gt;&lt;div id=&quot;python&quot; class=&quot;tab-pane fade&quot;&gt;
 </code></pre>
 
-<h1 id="the-response">The response</h1>
+import urllib
+import urllib2
+import json
+
+url = 'https://sbpaymentservices.payfort.com/FortAPI/paymentApi';
+arrData = {
+'command':'CAPTURE',
+'access_code':'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier':'CycHZxVj',
+'merchant_reference':'XYZ9239-yu898',
+'amount':'10000',
+'currency':'AED',
+'language':'en',
+'fort_id':'149295435400084008',
+'signature':'7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description':'iPhone 6-S',
+};
+
+values = json.dumps(arrData)
+data = urllib.urlencode(values)
+req = urllib2.Request(url, data)
+response = urllib2.urlopen(req)
+page = response.read()
+print page + '\n\n'
+```</div><div id="ruby" class="tab-pane fade">
+
+<pre><code>require 'json'
+require 'net/http'
+require 'net/https'
+require 'uri'
+require 'openssl'
+
+arrData = {
+'command' =&gt; 'CAPTURE',
+'access_code' =&gt; 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' =&gt; 'CycHZxVj',
+'merchant_reference' =&gt; 'XYZ9239-yu898',
+'amount' =&gt; '10000',
+'currency' =&gt; 'AED',
+'language' =&gt; 'en',
+'fort_id' =&gt; '149295435400084008',
+'signature' =&gt; '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' =&gt; 'iPhone 6-S',
+};
+
+arrData = arrData.to_json
+uri = URI.parse(&quot;https://sbpaymentservices.payfort.com/FortAPI/paymentApi&quot;)
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+request = Net::HTTP::Post.new(&quot;/v1.1/auth&quot;)
+request.add_field('Content-Type', 'application/json')
+request.body = arrData
+response = http.request(request)
+</code></pre>
+
+</div><div id="java" class="tab-pane fade">
+
+<pre><code>String jsonRequestString = &quot;{\&quot;command\&quot; : \&quot;CAPTURE\&quot; , \&quot;access_code\&quot; : \&quot;zx0IPmPy5jp1vAz8Kpg7\&quot;, \&quot;merchant_identifier\&quot; : \&quot;CycHZxVj\&quot;, &quot; + &quot;\&quot;merchant_reference\&quot; : \&quot;XYZ9239-yu898\&quot;, \&quot;amount\&quot; : \&quot;10000\&quot;, \&quot;currency\&quot; : \&quot;AED\&quot;,&quot; + &quot;\&quot;language\&quot; : \&quot;en\&quot;, \&quot;fort_id\&quot; : \&quot;149295435400084008\&quot;, &quot; + &quot;\&quot;signature\&quot; : \&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a\&quot;, \&quot;order_description\&quot; : \&quot;iPhone 6-S\&quot;}&quot;;
+
+// Define and Initialize HttpClient
+HttpClient httpClient = HttpClientBuilder.create().build();
+// Intialize HttpPOST with FORT Payment services URL
+HttpPost request = new HttpPost(&quot;https://sbpaymentservices.payfort.com/FortAPI/paymentApi&quot;);
+// Setup Http POST entity with JSON String
+StringEntity params = new StringEntity(jsonRequestString);
+// Setup request type as JSON
+request.addHeader(&quot;content-type&quot;, &quot;application/json&quot;);
+request.setEntity(params);
+// Post request to FORT
+HttpResponse response = httpClient.execute(request);
+// Read response using StringBuilder
+StringBuilder sb = new StringBuilder();
+BufferedReader reader = new BufferedReader(new InputStreamReader(
+   response.getEntity().getContent()), 65728);
+String line = null;
+while ((line = reader.readLine()) != null) {
+ sb.append(line);
+}
+// Print response
+System.out.println(sb.toString());
+</code></pre>
+
+</div><div id="curl" class="tab-pane fade">
+
+<pre><code>curl -H &quot;Content-Type: application/json&quot; -d '{&quot;command&quot;:&quot;CAPTURE&quot;,&quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,&quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,&quot;merchant_reference&quot;:&quot;XYZ9239-yu898&quot;,&quot;amount&quot;:&quot;10000&quot;,&quot;currency&quot;:&quot;AED&quot;,&quot;language&quot;:&quot;en&quot;,&quot;fort_id&quot;:&quot;149295435400084008&quot;,&quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,&quot;order_description&quot;:&quot;iPhone6-S&quot;}'
+https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+</div>
+
+      </div></div>
+
+<h2 id="capture-payment-response">Capture Payment response</h2>
 <hr />
-<p>If you receive response code <code>20064</code> with status code <code>04</code> then your request to capture a payment has been accepted by the PayFort Server.</p>
-<h3 id="response-examples">Response examples</h3>
+<p>If you receive response code <code>20064</code> with status code <code>04</code> then your request to capture a payment has been accepted by the PayFort Server. Below is the sample response that you will receive from PayFORT in JSON format. </p>
+<h3 id="response-sample">Response Sample</h3>
+<hr />
 <pre><code class="json">{&quot;command&quot;:&quot;CAPTURE&quot;,
  &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
  &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
@@ -177,10 +334,10 @@ Another example: If the amount value was 100 JOD; according to ISO code 3, you s
     </div>
     
     <div class="wm-article-nav">
-      <a href="../redirection/" class="btn btn-xs btn-default pull-left">
+      <a href="../maintenance/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../redirection/" class="btn btn-xs btn-link">
-        What is redirection?
+        Previous</a><a href="../maintenance/" class="btn btn-xs btn-link">
+        What is Maintenance?
       </a>
     </div>
     
