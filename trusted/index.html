@@ -86,7 +86,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="what-is-trusted">What is Trusted?</h1>
-<p><strong>Trusted channel</strong> allows PCI certified Merchants to collect their customers' credit card details on the Merchant’s checkout page. The Merchants are able to process (Ecommerce, Recurring and MOTO) transactions through the FORT using clear card data and credit card tokens.</p>
+<p>With the help of <strong>Trusted channel</strong>  PCI certified Merchants are able to collect their customers' credit card details on the checkout page. The Merchants are able to process (Ecommerce, Recurring and MOTO) transactions through the FORT using clear card data and credit card tokens.</p>
 <hr />
 <h2 id="trusted-channel-endpoints">Trusted Channel Endpoints</h2>
 <p><strong>Sandbox</strong></p>
@@ -98,9 +98,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <hr />
+<p>For more details on input parameters please visit the <a href="../trustedchannelparameters/">link</a></p>
 <h3 id="parameters-submission-type">Parameters Submission Type</h3>
 <p>REST POST request using JSON.</p>
 <hr />
+<p>Placeholder  for sample code.</p>
 <p><strong>JSON Request Example</strong></p>
 <pre><code class="json">{
     'command':'PURCHASE',
@@ -143,7 +145,7 @@ Another example: If the amount value was 100 JOD; according to ISO code 3, you s
 
 <h2 id="the-response">The Response</h2>
 <hr />
-<p>You will receive sample response from the payfort server:</p>
+<p>You will receive sample response from the payfort server in JSON format as shown below:</p>
 <pre><code class="json">{&quot;command&quot;:&quot;PURCHASE&quot;,
  &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
  &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
