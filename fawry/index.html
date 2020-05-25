@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Fawry - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Fawry Payment", url: "#_top", children: [
+              {title: "Request a Fawry payment", url: "#request-a-fawry-payment" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <div class="toc">
+<ul>
+<li><a href="#fawry-payment">Fawry Payment</a><ul>
+<li><a href="#request-a-fawry-payment">Request a Fawry payment</a><ul>
+<li><a href="#the-request">The Request</a><ul>
+<li><a href="#endpoints">Endpoints</a></li>
+<li><a href="#body-parameters">Body parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="fawry-payment">Fawry Payment</h1>
+<hr />
+<p>Start accepting payments using Fawry, a favorite payment method in Egypt.</p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>To start accepting Fawry payments, please contact your customer success manager.</div>
+
+<h2 id="request-a-fawry-payment">Request a Fawry payment</h2>
+<h3 id="the-request">The Request</h3>
+<p>Use the details below to set up your request.</p>
+<h4 id="endpoints">Endpoints</h4>
+<p><strong>Live</strong></p>
+<pre><code class="http">POST  https://paymentservices.PayFort.com/FortAPI/paymentApi
+</code></pre>
+
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">POST  https://sbpaymentservices.PayFort.com/FortAPI/paymentApi
+</code></pre>
+
+<hr />
+<h4 id="body-parameters">Body parameters</h4>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>The table below describes the minimum recommended fields. You can find the full list, as well as complete request and response examples, in our <a href="https://docs.payfort.com/docs/api/build/index.html?java#bill-presentment-request">API reference</a></div>
+
+<p><strong>service_command</strong><sup>(String,mandatory,)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>BILL_PRESENTMENT</mark></td>
+<td><mark>_</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong><sup>(numeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>The transaction’s amount. <br>*Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount check the note after this table.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>AED</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>request_expiry_date</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>2017-12-20T15:36:55+03:00</td>
+<td><mark>- + :</mark></td>
+<td>The date when the bill expires.<br/>*The merchant will hold the item till the expiry date. If the customer didn’t pay, the holding will be canceled.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>payment_partner</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/Expected values</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><mark>FAWRY</mark></td>
+<td><mark>- + :</mark></td>
+<td>A financial corporation that generate bills to the customer.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_name</strong><sup>(alpha, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>John Smith</td>
+<td><mark>_ \ / - . <code>'</code><strong>Space</strong></mark></td>
+<td>The customer’s name</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>customer_email</strong><sup>(alphanumeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>254</td>
+<td>customer@domain.com</td>
+<td><mark>_ - . @ +</mark></td>
+<td>The customer’s email.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+  <br>
+    
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -32,7 +32,9 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Supported card schemes", url: "#_top", children: [
+          {title: "Endpoints", url: "#_top", children: [
+          ]},
+          {title: "Supported card schemes", url: "#supported-card-schemes", children: [
               {title: "International", url: "#international" },
               {title: "Local", url: "#local" },
           ]},
@@ -77,10 +79,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../trusted/" class="btn btn-xs btn-default pull-left">
+      <a href="../billpresentment/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../trusted/" class="btn btn-xs btn-link">
-        Trusted
+        Previous</a><a href="../billpresentment/" class="btn btn-xs btn-link">
+        Cash Payment
       </a>
     </div>
     
@@ -89,6 +91,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <p>With PayFort you can accept card payments from all major global providers and many local payment methods </p>
+<hr />
+<h2 id="endpoints">Endpoints</h2>
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">POST https://sbpaymentservices.PayFort.com/FortAPI/paymentApi
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="http">POST https://paymentservices.PayFort.com/FortAPI/paymentApi
+</code></pre>
+
 <hr />
 <h2 id="supported-card-schemes">Supported card schemes</h2>
 <p>We support the following international and domestic card schemes:</p>
@@ -107,14 +119,365 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <p>Capture the opportunity to expand your business reach by accepting Mada cards to enhance the customer experience on your checkout page. Payfort has partnered with MADA under the supervision of SAMA in taking a strategic initiative to enable all MADA cards for online buyers to enjoy a convenient way to digitalize cash and increase the spend through their existing MADA cards through various KSA e-commerce merchants. There are around 30 million MADA debit cards being issued by 16 member banks in KSA.</p>
 <p>PAYFORT gateway also supports Sadad for Merchants residing in the Kingdom of Saudi Arabia (KSA). More and more Saudi businesses are beginning to rely on online payment processes that’s why the addition of SADAD account to PAYFORT will provide businesses with the means to accept payments. At the moment Payfort supports following local payment methods:</p>
-<ul>
-<li>Sadad</li>
-<li>KNET</li>
-<li>Mada</li>
-<li>NAPS</li>
-<li>Oman NET</li>
-<li>MEEZA</li>
-</ul>
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#sadad">Sadad</a></li>
+    <li><a data-toggle="tab" href="#knet">KNET</a></li>
+    <li><a data-toggle="tab" href="#mada">Mada</a></li>
+    <li><a data-toggle="tab" href="#naps">NAPS</a></li>
+    <li><a data-toggle="tab" href="#omannet">Oman NET</a></li>
+     <li><a data-toggle="tab" href="#meeza">MEEZA</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="sadad" class="tab-pane fade in active">
+    <h1></h1>
+    <div class="table">
+    <div class="tr">
+    <div class="td">
+    <b>User Countries</b>
+    </div>
+
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Middle East/North Africa:</b>
+    </div>
+    <div class="td">
+    <ul><li>Saudi Arabia</li></ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Clearing and settlement:</b>
+    </div>
+    <div class="td"><ul><li>Instant</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Processing currencies:</b>
+    </div>
+    <div class="td"><ul><li>Saudi Riyal</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Default settlement currency:</b>
+    </div>
+    <div class="td"><ul><li>Saudi Riyal</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Partial refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    </div>
+
+    </div>
+    <!--KNET code-->
+    <div id="knet" class="tab-pane fade in active">
+    <h1></h1>
+    <div class="table">
+    <div class="tr">
+    <div class="td">
+    <b>User Countries</b>
+    </div>
+
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Middle East/North Africa:</b>
+    </div>
+    <div class="td">
+    <ul><li>Kuwait</li></ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Clearing and settlement:</b>
+    </div>
+    <div class="td"><ul><li>Instant</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Processing currencies:</b>
+    </div>
+    <div class="td"><ul><li>KWD</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Default settlement currency:</b>
+    </div>
+    <div class="td"><ul><li>KWD</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Partial refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    </div>
+    </div>
+
+    <!-- MADA Code-->
+    <div id="mada" class="tab-pane fade in active">
+    <h1></h1>
+    <div class="table">
+    <div class="tr">
+    <div class="td">
+    <b>User Countries</b>
+    </div>
+
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Middle East/North Africa:</b>
+    </div>
+    <div class="td">
+    <ul><li>Saudi Arabia</li></ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Clearing and settlement:</b>
+    </div>
+    <div class="td"><ul><li>Instant</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Processing currencies:</b>
+    </div>
+    <div class="td"><ul><li>SAR</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Default settlement currency:</b>
+    </div>
+    <div class="td"><ul><li>SAR</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Partial refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    </div>
+    </div>
+    <!--Code for NAPS-->
+    <div id="naps" class="tab-pane fade in active">
+    <h1></h1>
+    <div class="table">
+    <div class="tr">
+    <div class="td">
+    <b>User Countries</b>
+    </div>
+
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Middle East/North Africa:</b>
+    </div>
+    <div class="td">
+    <ul><li>Qatar</li></ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Clearing and settlement:</b>
+    </div>
+    <div class="td"><ul><li>Instant</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Processing currencies:</b>
+    </div>
+    <div class="td"><ul><li>Qatari Riyal</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Default settlement currency:</b>
+    </div>
+    <div class="td"><ul><li>Qatari Riyal</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Partial refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    </div>
+    </div>
+
+    <!--Code for omannet-->
+    <div id="omannet" class="tab-pane fade in active">
+    <h1></h1>
+    <div class="table">
+    <div class="tr">
+    <div class="td">
+    <b>User Countries</b>
+    </div>
+
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Middle East/North Africa:</b>
+    </div>
+    <div class="td">
+    <ul><li>Oman</li></ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Clearing and settlement:</b>
+    </div>
+    <div class="td"><ul><li>Instant</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Processing currencies:</b>
+    </div>
+    <div class="td"><ul><li>Oman Riyal</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Default settlement currency:</b>
+    </div>
+    <div class="td"><ul><li>Oman Riyal</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Partial refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    </div>
+    </div>
+
+    <!--Code for Meeza-->
+    <div id="meeza" class="tab-pane fade in active">
+    <h1></h1>
+    <div class="table">
+    <div class="tr">
+    <div class="td">
+    <b>User Countries</b>
+    </div>
+
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Middle East/North Africa:</b>
+    </div>
+    <div class="td">
+    <ul><li>Egypt</li></ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Clearing and settlement:</b>
+    </div>
+    <div class="td"><ul><li>Instant</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Processing currencies:</b>
+    </div>
+    <div class="td"><ul><li>EGP</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Default settlement currency:</b>
+    </div>
+    <div class="td"><ul><li>EGP</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    <div class="tr">
+    <div class="td">
+    <b>Partial refunds:</b>
+    </div>
+    <div class="td"><ul><li>YES</li> </ul></div>
+    </div>
+    </div>
+    </div>
+    </div></div>
+
+<hr />
+<h4 id="sadad">SADAD</h4>
+<hr />
+<p>Start accepting payments using SADAD, the payment method in Saudi Arabia.</p>
+<p><strong>The request</strong></p>
+<p>Placeholder: Input Parameters to be added here for SADAD</p>
+<p><strong>The Response</strong></p>
+<p>Placeholder: The response sample</p>
+<hr />
+<h4 id="knet">KNET</h4>
+<hr />
+<p>Start accepting payments using KNET, the leading payment method in Kuwait.</p>
+<p><strong>The request</strong></p>
+<p>Placeholder: Input Parameters to be added here for KNET</p>
+<p><strong>The Response</strong></p>
+<p>Placeholder: The response sample</p>
+<hr />
+<h4 id="mada">MADA</h4>
+<hr />
+<p>Start accepting payments using Mada, the leading payment method in Saudi Arabia.</p>
+<p><strong>The request</strong></p>
+<p>Placeholder: Input Parameters to be added here for MADA</p>
+<p><strong>The Response</strong></p>
+<p>Placeholder: The response sample</p>
+<hr />
+<h4 id="naps">NAPS</h4>
+<hr />
+<p>Start accepting payments using NAPS, the leading payment method in QATAR.</p>
+<p><strong>The request</strong></p>
+<p>Placeholder: Input Parameters to be added here for NAPS</p>
+<p><strong>The Response</strong></p>
+<p>Placeholder: The response sample</p>
+<hr />
+<h4 id="oman-net">OMAN NET</h4>
+<hr />
+<p>Start accepting payments using OMAN NET, the leading payment method in OMAN.</p>
+<p><strong>The request</strong></p>
+<p>Placeholder: Input Parameters to be added here for OMAN</p>
+<p><strong>The Response</strong></p>
+<p>Placeholder: The response sample</p>
+<hr />
+<h4 id="meeza">MEEZA</h4>
+<hr />
+<p>Start accepting payments using MEEZA, the leading payment method in EGYPT.</p>
+<p><strong>The request</strong></p>
+<p>Placeholder: Input Parameters to be added here for OMAN</p>
+<p><strong>The Response</strong></p>
+<p>Placeholder: The response sample</p>
 <hr />
 <h2 id="test-your-card-integration">Test Your Card Integration</h2>
 <hr />
@@ -147,10 +510,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../trusted/" class="btn btn-xs btn-default pull-left">
+      <a href="../billpresentment/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../trusted/" class="btn btn-xs btn-link">
-        Trusted
+        Previous</a><a href="../billpresentment/" class="btn btn-xs btn-link">
+        Cash Payment
       </a>
     </div>
     
