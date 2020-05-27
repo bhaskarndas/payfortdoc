@@ -65,12 +65,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../testing/" class="btn btn-xs btn-default pull-right">
+      <a href="../recurringparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../testing/" class="btn btn-xs btn-link">
-        Testing
+      <a href="../recurringparameters/" class="btn btn-xs btn-link">
+        Recurring Parameters
       </a>
     </div>
     
@@ -88,19 +88,22 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="what-is-recurring">What is Recurring?</h1>
 <hr />
-<p><strong>Recurring</strong> transactions allows the Merchant to charge Customer’s card a specific amount on regular basis using the <a href="https://docs.payfort.com/docs/api/build/index.html#recurring-request">Purchase operation</a> configured in single message mode. For example, the Merchant will be charging his Customer’s card the subscription fee on monthly basis.</p>
+<p>A <strong>Recurring</strong> contract is a set of one or more recurring payment details linked to a unique shopper on your merchant account. It allows you to charge your customer on monthly, yearly, quaterly basis depending on the terms of the contract. For example monthly subscription for a movie streaming platform or postpaid calling card bill payment, etc. You are able to charge your customer using the <a href="https://docs.payfort.com/docs/api/build/index.html#recurring-request">Purchase operation</a> configured in single message mode. </p>
 <hr />
 <h2 id="how-it-works-overview">How It Works - Overview</h2>
 <p>Placeholder: please provide pics for every step described in this section.</p>
 <ol>
-<li>The Merchant has to have a Token created assigned to a specific Customer account. For more details on “Token” please refer to the <a href="https://docs.payfort.com/docs/api/build/index.html#fort-tokenization-service">FORT Tokenization Service.</a></li>
-<li>The Merchant’s server sends the recurring transaction details along with the Customer’s Token to PayFort.</li>
-<li>The transaction is processed and a valid response is returned to the Merchant servers indicating the status of the transaction.</li>
+<li>You have to create a Token and assign to a specific Customer account. For more details on “Token” please refer to the <a href="../tokenization/">FORT Tokenization Service.</a></li>
+<li>Your site then sends the recurring transaction details along with the Customer’s Token to PayFORT.</li>
+<li>The transaction is processed and a valid response is returned to your site indicating the status of the transaction.</li>
 </ol>
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>The Token used to process recurring transactions, should be created when processing a successful transaction using an e-commerce MID registered for the same legal entity the recurring MID is configured for.</div>
 
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Issuers will charge the customer’s card if the card was used to process a successful e-commerce transaction for that merchant prior to the recurring transaction.</div>
 
+<hr />
+<h4 id="integration-workflow">Integration- Workflow</h4>
+<p>Placeholder: Provide a workflow visual diagram along with steps and description.</p>
 <hr />
 <h3 id="endpoints">Endpoints</h3>
 <p><strong>Sandbox</strong></p>
@@ -116,34 +119,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>REST POST request using JSON.</p>
 <hr />
 <h2 id="the-request">The Request</h2>
-<p>The sample JSON Request</p>
-<pre><code class="json">{&quot;command&quot;:&quot;PURCHASE&quot;,
- &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
- &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
- &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
- &quot;amount&quot;: &quot;10000&quot;,
- &quot;currency&quot;: &quot;AED&quot;,
- &quot;language&quot;:&quot;en&quot;,
- &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
- &quot;eci&quot;:&quot;RECURRING&quot;,
- &quot;token_name&quot;:&quot;Op9Vmp&quot;,
- &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
- &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
- &quot;order_description&quot;:&quot;iPhone6-S&quot;,
- &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
- &quot;customer_name&quot;:&quot;John Smith&quot;,
- &quot;phone_number&quot;:&quot;00962797219966&quot;,
- &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
- &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
- &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
-}
-</code></pre>
-
+<p>Placeholder: Provide sample code for placing recurring transaction request.</p>
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
 For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
     Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
@@ -205,12 +181,12 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../testing/" class="btn btn-xs btn-default pull-right">
+      <a href="../recurringparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../testing/" class="btn btn-xs btn-link">
-        Testing
+      <a href="../recurringparameters/" class="btn btn-xs btn-link">
+        Recurring Parameters
       </a>
     </div>
     

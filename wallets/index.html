@@ -42,7 +42,9 @@
           {title: "Apple Pay", url: "#apple-pay", children: [
               {title: "SUPPORTED DEVICES", url: "#supported-devices" },
               {title: "Endpoints", url: "#endpoints_1" },
-              {title: "Setting Up Apple Pay", url: "#setting-up-apple-pay" },
+          ]},
+          {title: "Before you start", url: "#before-you-start", children: [
+              {title: "Configure Apple Pay", url: "#configure-apple-pay" },
               {title: "The ApplePay Request", url: "#the-applepay-request" },
               {title: "The ApplePay Response", url: "#the-applepay-response" },
               {title: "Apple Pay SDK Service", url: "#apple-pay-sdk-service" },
@@ -100,7 +102,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h1 id="masterpass">MasterPass</h1>
 <hr />
-<p>As another move towards a cashless environment, PayFort provides <strong>MasterPass</strong>; a digital wallet that securely stores the buyer’s credit card details and shipping addresses and information, making shopping through thousands of online Merchants simple and convenient. This is fulfilled by enhancing and simplifying the buyer’s digital shopping experience.</p>
+<p>As another move towards a cashless environment, PayFort provides <strong>MasterPass</strong>. It is a digital wallet that securely stores your buyer’s credit card details and shipping addresses, making shopping through thousands of online Merchants simple and convenient. This is fulfilled by enhancing and simplifying the buyer’s digital shopping experience.</p>
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>PAYFORT now supports MasterPass Redirect v7 in addition to v6.</div>
 
 <hr />
@@ -124,23 +126,23 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>You submit a form that includes all the parameters and call the following url to be redirected to PayFort as mentioned in the service endpoints<a href="#service-endpoints">&nbsp;&nbsp;<i class="fa fa-anchor"></i></a></p>
 </li>
 <li>
-<p>The FORT returns a response to the Merchant.</p>
+<p>The PayFORT returns a response to the request which you sent in step 1.</p>
 </li>
 <li>
-<p>The FORT inserts the response parameters into a JavaScript.</p>
+<p>The payFORT inserts the response parameters into a JavaScript.</p>
 </li>
 <li>
 <p>A lightbox appears to the buyer where he enters his credentials, selects the card type and the shipping address, and clicks “Finish Shopping”.</p>
 </li>
 <li>
-<p>The FORT either proceeds to Authorize or Purchase the payment based on the value of the command parameter sent in the Merchant’s form.</p>
+<p>The payFORT either proceeds to Authorize or Purchase the payment based on the value of the command parameter sent in your request form.</p>
 </li>
 <li>
-<p>The FORT returns a response to the Merchant.(Please refer to section MasterPass Service - Response for the Response Parameters).</p>
+<p>The payFORT returns a response to the request sent to it in step5.(Please refer to section MasterPass Service - Response for the Response Parameters).</p>
 </li>
 </ol>
 <p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>In the Redirection work flow, the “Channel” will always be considered redirection and the “Default Operation” won’t be considered.</div></p>
-<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>If the Merchant sent the “payment_option” value in his request, the FORT will use the value found in the request, no matter what other options are supported by the Merchant. However, if this value wasn’t sent in the Merchant’s request, the FORT will retrieve all the payment options supported by the Merchant.</div>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>If you sent the “payment_option” value in your request, the payFORT will use the value found in the request, no matter what other options are supported by the Merchant. However, if this value wasn’t sent in the request, the payFORT will retrieve all the payment options supported by the Merchant.</div>
 
 <hr />
 <h3 id="parameters-submission-type">Parameters Submission Type</h3>
@@ -148,44 +150,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h3 id="service-request-example">Service Request Example</h3>
 <p>Below is the sample html request.</p>
-<pre><code class="html">&lt;form action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot;method=&quot;post&quot;id=&quot;simulatorForm&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;digital_wallet&quot; id=&quot;digital_wallet&quot; value=&quot;MASTERPASS&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;command&quot;id=&quot;command&quot; value=&quot;AUTHORIZATION&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; id=&quot;access_code&quot; value=&quot;zx0IPmPy5jp1vAz&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; id=&quot;merchant_identifier&quot; value=&quot;CycHZxVj&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; id=&quot;merchant_reference&quot; value=&quot;XYZ9239-yu898&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;amount&quot; id=&quot;amount&quot; value=&quot;10000&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;currency&quot; id=&quot;currency&quot; value=&quot;AED&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;language&quot; id=&quot;language&quot; value=&quot;en&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;customer_email&quot; id=&quot;customer_email&quot; value=&quot;someone@email.com&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;signature&quot; id=&quot;signature&quot; value=&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;payment_option&quot;id=&quot;payment_option&quot; value=&quot;VISA&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;order_description&quot; id=&quot;order_description&quot; value=&quot;iPhone 6-S&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;customer_ip&quot; id=&quot;customer_ip&quot; value=&quot;192.178.1.10&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;customer_name&quot; id=&quot;customer_name&quot; value=&quot;John Smith&quot;/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;cart_details&quot; id=&quot;cart_details&quot; value='{&quot;sub_total&quot;:&quot;900&quot;,&quot;cart_items&quot;:[{&quot;item_description&quot;:&quot;Xbox&quot;,&quot;item_image&quot;:&quot;http://image.com&quot;,&quot;item_name&quot;:&quot;Xbo x 360&quot;,&quot;item_price&quot;:&quot;300&quot;,&quot;item_quantity&quot;:&quot;2&quot;},{&quot;item_description&quot;:&quot;Playstation 3&quot;,&quot;item_image&quot;:&quot;http://image.com&quot;,&quot;item_name&quot;:&quot;Playstation 3&quot;,&quot;item_price&quot;:&quot;150&quot;,&quot;item_quantity&quot;:&quot;2&quot;}]}'/&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; id=&quot;return_url&quot; value=&quot;http://backtothemerchanturl.com&quot;/&gt;
-&lt;input value=&quot;Send&quot; type=&quot;submit&quot;&gt; &lt;/form&gt;
+<pre><code class="html">placeholder: add code for request
 </code></pre>
 
 <p>The following is an example for “cart_details” parameter:</p>
-<pre><code class="html">&lt;input type=“hidden”
-       name=“cart_details” 
-       id=“cart_details” 
-       value=
-       ’{
-       “sub_total”:“900”,
-       “cart_items”:[{
-       “item_description”:“Xbox”,
-       “item_image”:“http://image.com”,
-       “item_name”:“Xbox 360”,
-       “item_price”:“300”,
-       “item_quantity”:“2”},{
-       “item_description”:“Playstation 3”,
-       “item_image”:“http://image.com”,
-       “item_name”:“Playstation 3”,
-       “item_price”:“150”,
-       “item_quantity”:“2”}]}’/&gt; 
+<pre><code class="html">placeholder: add code for card_details parameter
 </code></pre>
 
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
@@ -194,10 +163,10 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 
 <h3 id="masterpass-hosted">MasterPass Hosted</h3>
 <hr />
-<p>Masterpass Hosted accepts digital wallet transactions without redirection to Masterpass pages and instead; it will be hosted on the Merchant website.</p>
+<p>Masterpass Hosted accepts digital wallet transactions without redirection to Masterpass pages, instead it will be hosted on the Merchant website.</p>
 <h1 id="visacheckout">VisaCheckout</h1>
 <hr />
-<p><strong>Visa Checkout</strong> is a digital wallet that securely stores the buyer’s credit card details and shipping addresses and information, making shopping through thousands of online Merchants simple and convenient. This service enhances and simplifies the buyer’s online shopping experience. <strong>Visa Checkout</strong> can be offered through two different integrations:</p>
+<p><strong>Visa Checkout</strong> is a digital wallet that securely stores the customer's credit card details and shipping addresses and information, making shopping through thousands of online Merchants simple and convenient. This service enhances and simplifies the buyer’s online shopping experience. <strong>Visa Checkout</strong> can be offered through two different integrations:</p>
 <ul>
 <li><a href="#merchant-hosted-checkout-button">Merchant Hosted Checkout Button.</a></li>
 <li><a href="#payfort-hosted-checkout-button">PayFort Hosted Checkout Button.</a></li>
@@ -206,7 +175,7 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 <h3 id="merchant-hosted-checkout-button">Merchant Hosted Checkout Button</h3>
 <h4 id="integration-flow_1">Integration Flow</h4>
 <hr />
-<p>This integration allows the you to host Visa Checkout button on his website giving him maximum control over the look and feel and user experience. The following steps describe how this integration works:</p>
+<p>This integration allows the you to host Visa Checkout button on your website giving you maximum control over the look and feel and user experience. The following steps describe how this integration works:</p>
 <ul>
 <li>You should include the following JavaScript in the HTML header of its checkout page. This JavaScript loads the Visa Checkout library and defines handlers to initialization and payment events.</li>
 </ul>
@@ -343,8 +312,8 @@ document.write(error);
 <hr />
 <h1 id="apple-pay">Apple Pay</h1>
 <hr />
-<p>Apple Pay provides an easy way for users to buy goods and services using iPhone, iPad and Apple Watch through mobile application or website. Checking out is as easy as selecting “Apple Pay” and placing a finger on the touch ID of an iPhone, iPad or simply double clicking the side button on the Apple Watch. It’s quick, easy and secure!</p>
-<p>When using a credit or debit card with Apple Pay, the actual card numbers are not stored on the device, nor on Apple servers. Instead, a unique Device Account Number is assigned, encrypted and securely stored in the Secure Element on your device, where each transaction is authorized with a one-time unique dynamic security code.</p>
+<p>Start seamlessly accepting credit card payments from your customers via Touch ID and Face ID, eliminating the need for them to manually type in their card and shipping details.</p>
+<p>When using a credit or debit card with Apple Pay, the actual card numbers are not stored on the device, or on Apple servers. Instead, a unique Device Account Number is assigned, encrypted and securely stored in the Secure Element on your device, where each transaction is authorized with a one-time unique dynamic security code.</p>
 <hr />
 <h3 id="supported-devices">SUPPORTED DEVICES</h3>
 <p>Refer to Apple’s <a href="https://support.apple.com/en-us/KM207105">compatibility documentation</a> to learn which devices support Apple Pay.</p>
@@ -362,12 +331,30 @@ document.write(error);
 </code></pre>
 
 <hr />
-<h2 id="setting-up-apple-pay">Setting Up Apple Pay</h2>
-<hr />
-<ol>
-<li>Kindly visit <a href="http://developer.apple.com/">developer.apple.com</a> where you will Create a developer account, an Apple Pay Merchant ID and complete the Apple Pay certification (export the payment processing certificate in p12 file)</li>
+<h1 id="before-you-start">Before you start</h1>
+<p>Before you get started with Apple Pay, you will need the following:</p>
+<ul>
+<li>An Apple Developer account. <a href="https://developer.apple.com/programs/enroll/">Sign up for one here</a> and complete the Apple Pay certification (export the payment processing certificate in p12 file)</li>
+<li>A domain with a valid SSL certificate (meaning your domain should start with <code>https</code>).</li>
+<li>Access to a Secure Shell (SSH) terminal.</li>
+<li>Access to your server's files, so you can upload files to your server.</li>
 <li>Integrate Apple Pay in your app/website using the Apple Pay documentation found at https://developer.apple.com/apple-pay</li>
 <li>Submit the encrypted Apple Pay payload to PayFort’s API for decryption / processing. Please contact <a href="mailto:integration@payfort.com">integration@payfort.com</a> for PayFort’s integration documentation</li>
+</ul>
+<h2 id="configure-apple-pay">Configure Apple Pay</h2>
+<hr />
+<ol>
+<li>Create your merchant IDs in your Apple Pay Developer account</li>
+</ol>
+<p>Placeholder: Sample video showing how to create merchant Ids in Apple Pay Developer account.</p>
+<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>We recommend that you create separate merchant IDs for your test environment and for your live/production environment.</div></p>
+<ol>
+<li>
+<p>Integrate Apple Pay in your app/website using the Apple Pay documentation found at https://developer.apple.com/apple-pay</p>
+</li>
+<li>
+<p>Submit the encrypted Apple Pay payload to PayFort’s API for decryption / processing. Please contact <a href="mailto:integration@payfort.com">integration@payfort.com</a> for PayFort’s integration documentation</p>
+</li>
 </ol>
 <hr />
 <h3 id="parameters-submission-type_1">Parameters Submission Type</h3>
@@ -375,55 +362,7 @@ document.write(error);
 <hr />
 <h2 id="the-applepay-request">The ApplePay Request</h2>
 <hr />
-<p>The sample JSON request</p>
-<pre><code class="http">{
-&quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
-&quot;command&quot;:&quot;PURCHASE&quot;,
-&quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
-&quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
-&quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
-&quot;amount&quot;: &quot;10000&quot;,
-&quot;currency&quot;: &quot;AED&quot;,
-&quot;language&quot;:&quot;en&quot;,
-&quot;customer_email&quot;:&quot;customer@domain.com&quot;,
-&quot;apple_data&quot;:“C0QcNob17qrbYmBX63UxsfLOp3iqNU7ieMz1fmSlAYEG8gbkXsukzymwy7E3cqFZHD4UCZRL5uX
-cSfOIqT99c4xsqalQ3gIZgwhqcLZL6m/xqOuxqx1j9XQ9C54nmZJyAh6//zQWjeJhIeybGKS1zHlNRba
-OScMp+hLMcvBnoL3EYkfbQiPJrxWUqXxGx/lxeo9G72Yp5Q
-fsuQ74RW/mwBmKXtirFq7UsUt/Mh/KGgw”,
-&quot;apple_signature&quot;:&quot;MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIID5jCC…&quot;,
-&quot;apple_header&quot;:{
-“apple_transactionId”: “93eec76cbedaedca44648e3d5c314766906e4e78ce33cd3b8396f105a1c0daed”,
-“apple_ephemeralPublicKey”: “MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEM9JqF04vDlGIHEzWsaDm4bGBlTJdCn3+DH8ptlA
-mOSwVddD7/FN93A2o+l7i2U6Lmjb8WhKJcz6ZB+2MabcF4g==”,
-“apple_publicKeyHash”: “bVTUiyTv0uCJgQz8SNYHBHOlHMD6sR1qDuCqTaETzkw=”
-},
-&quot;apple_transactionId&quot;:&quot;93eec76cbedaedca44648e3d5c314766906e4e78ce33cd3b8&quot;,
-&quot;apple_ephemeralPublicKey&quot;:&quot;MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEM9JqF04vD&quot;,
-&quot;apple_publicKeyHash&quot;:&quot;bVTUiyTv0uCJgQz8SNYHBHOlHMD6sR1qDuCqTaETzkw=&quot;,
-&quot;apple_paymentMethod&quot;: &quot; {
-“apple_displayName”: “Visa 0492”,
-“apple_network”: “Visa”,
-“apple_type”: “debit”
-}&quot;,
-&quot;apple_applicationData&quot;:&quot;5173d4e05f2e07dc4e7ea9669bda185712ffffe1d6
-cfce2d4e854d7661e70d67…&quot;,
-&quot;eci&quot;:&quot;MOTO&quot;,
-&quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
-&quot;order_description&quot;:&quot;iPhone6-S&quot;,
-&quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
-&quot;customer_name&quot;:&quot;John Smith&quot;,
-&quot;phone_number&quot;:&quot;00962797219966&quot;,
-&quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
-&quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
-&quot;return_url&quot;:&quot;http://www.merchant.com&quot;
-}
-</code></pre>
-
+<p>Placeholder: Insert sample request code for apple pay</p>
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
 For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
     Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
@@ -431,53 +370,20 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 <hr />
 <h2 id="the-applepay-response">The ApplePay Response</h2>
 <p>Here is the sample response</p>
-<pre><code class="json">{
- &quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
- &quot;command&quot;:&quot;PURCHASE&quot;,
- &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
- &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
- &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
- &quot;amount&quot;:&quot;10000&quot;,
- &quot;currency&quot;:&quot;AED&quot;,
- &quot;language&quot;:&quot;en&quot;,
- &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
- &quot;eci&quot;:&quot;MOTO&quot;,
- &quot;token_name&quot;:&quot;Op9Vmp&quot;,
- &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
- &quot;order_description&quot;:&quot;iPhone6-S&quot;,
- &quot;fort_id&quot;:&quot;149295435400084008&quot;,
- &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
- &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
- &quot;customer_name&quot;:&quot;John Smith&quot;,
- &quot;authorization_code&quot;:&quot;P1000000000000372136&quot;,
- &quot;response_message&quot;:&quot;Success&quot;,
- &quot;response_code&quot;:&quot;20064&quot;,
- &quot;status&quot;:&quot;04&quot;,
- &quot;expiry_date&quot;:&quot;2105&quot;,
- &quot;card_number&quot;:&quot;400555******0001&quot;,
- &quot;phone_number&quot;:&quot;00962797219966&quot;,
- &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
- &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
- &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
-}
-</code></pre>
-
+<p>Placeholder: Please insert sample response for Apple Pay Service as sent by PayFORT server.</p>
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones</div>
 
 <h2 id="apple-pay-sdk-service">Apple Pay SDK Service</h2>
 <hr />
-<p>Apple Pay is a digital wallet that allows Merchant’s customers to make payments using different Apple devices through FORT iOS SDK. The Customer authenticate his identity with Touch ID fingerprint verification to complete the payment.</p>
-<h3 id="requirements">Requirements</h3>
-<p>Before you start Apple Pay SDK integration; you need to check the following points:
-• You will need to have one of these iOS devices (iPhone 6, iPhone 6s, iPhone 6 Plus, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPhone SE, iPad Air 2, iPad mini 3, iPad mini 4, and iPad Pro models) running iOS 8.1 or later.</p>
+<p>Apple Pay is a digital wallet that allows your customers to make payments using different Apple devices via FORT iOS SDK. The Customer authenticate his identity with Touch ID fingerprint verification to complete the payment.</p>
+<hr />
+<h3 id="before-you-start_1">Before You Start</h3>
+<hr />
+<p>• You will need one of these iOS devices (iPhone 6, iPhone 6s, iPhone 6 Plus, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPhone SE, iPad Air 2, iPad mini 3, iPad mini 4, and iPad Pro models) running iOS 8.1 or later.</p>
 <p>• You will need a Mac with Xcode 6.1 or newer installed. You can install or upgrade Xcode in the <a href="https://itunes.apple.com/us/app/xcode/id497799835">Mac App Store</a>.</p>
 <p>• You will also need an apple developer account and a membership in the iOS Developer Program. You can create a one from <a href="https://idmsa.apple.com/IDMSWebAuth/login?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&amp;path=%2Fregister%2Fagree%2F&amp;rv=1">here</a>.</p>
 <p>• You will need to download the FORT iOS Mobile SDK, click <a href="https://docs.payfort.com/docs/mobile-sdk/build/lib/PayFortSDK2.1.zip">here</a>.</p>
+<hr />
 <h3 id="get-started">Get Started</h3>
 <p>Before you start Apple Pay integration with PayFort please refer to the following URL <a href="https://developer.apple.com/apple-pay/get-started/">here</a> to complete the following steps:</p>
 <ol>
@@ -495,7 +401,7 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
    Then copy the following sample code to complete integration with FORT Mobile SDK:</p>
 </li>
 </ol>
-<p><strong>Object-C code</strong></p>
+<p><strong>Object-C code for Integration with PayFORT iOS SDK</strong></p>
 <p>```objective-c
    #pragma mark - PKPaymentAuthorizationViewControllerDelegate</p>
 <p>(void)paymentAuthorizationViewController:
@@ -529,7 +435,7 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
    }
    }
    ```</p>
-<p><strong>Swift Code</strong></p>
+<p><strong>Swift Code for Integration with PayFORT iOS SDK</strong></p>
 <pre><code class="swift">func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController,
 didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -&gt; Void) {
 
@@ -564,34 +470,7 @@ completion(.failure)
 
 <hr />
 <h3 id="apple-pay-sdk-authorization-purchase-request">Apple Pay SDK Authorization/ Purchase - Request</h3>
-<pre><code class="json">{
-&quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
-&quot;command&quot;:&quot;PURCHASE&quot;,
-&quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
-&quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
-&quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
-&quot;amount&quot;: &quot;10000&quot;,
-&quot;currency&quot;: &quot;AED&quot;,
-&quot;language&quot;:&quot;en&quot;,
-&quot;customer_email&quot;:&quot;customer@domain.com&quot;,
-&quot;sdk_token&quot;:&quot;Dwp78q3&quot;,
-&quot;payment_option&quot;:&quot;MASTERCARD&quot;,
-&quot;eci&quot;:&quot;ECOMMERCE&quot;,
-&quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
-&quot;order_description&quot;:&quot;iPhone6-S&quot;,
-&quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
-&quot;customer_name&quot;:&quot;John Smith&quot;,
-&quot;phone_number&quot;:&quot;00962797219966&quot;,
-&quot;token_name&quot;:&quot;Op9Vmp&quot;,
-&quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
-&quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
-&quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
-&quot;return_url&quot;:&quot;http://www.merchant.com&quot;
-}
+<pre><code class="json">Placeholder: Sample code for Apple Pay SDK Authorization/Purchase - Request
 </code></pre>
 
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
@@ -600,41 +479,7 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
 
 <hr />
 <h3 id="apple-pay-sdk-authorization-purchase-response">Apple Pay SDK Authorization/ Purchase - Response</h3>
-<pre><code class="json">{
- &quot;digital_wallet&quot;:&quot;APPLE_PAY&quot;,
- &quot;command&quot;:&quot;PURCHASE&quot;,
- &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
- &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
- &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
- &quot;amount&quot;:&quot;10000&quot;,
- &quot;currency&quot;:&quot;AED&quot;,
- &quot;language&quot;:&quot;en&quot;,
- &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
- &quot;eci&quot;:&quot;ECOMMERCE&quot;,
- &quot;token_name&quot;:&quot;Op9Vmp&quot;,
- &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
- &quot;order_description&quot;:&quot;iPhone6-S&quot;,
- &quot;fort_id&quot;:&quot;149295435400084008&quot;,
- &quot;sdk_token&quot;: &quot;Dwp78q3&quot;,
- &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
- &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
- &quot;customer_name&quot;:&quot;John Smith&quot;,
- &quot;authorization_code&quot;:&quot;P1000000000000372136&quot;,
- &quot;response_message&quot;:&quot;Success&quot;,
- &quot;response_code&quot;:&quot;20064&quot;,
- &quot;status&quot;:&quot;04&quot;,
- &quot;expiry_date&quot;:&quot;2105&quot;,
- &quot;card_number&quot;:&quot;400555******0001&quot;,
- &quot;phone_number&quot;:&quot;00962797219966&quot;,
- &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
- &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
- &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
-}
+<pre><code class="json">Placeholder: Sample code for Apple Pay SDK authorization/Purchase Response in JSON format
 </code></pre>
 
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response - even the optional ones.</div>
