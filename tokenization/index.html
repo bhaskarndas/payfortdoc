@@ -32,6 +32,17 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "FORT Tokenization Service", url: "#_top", children: [
+              {title: "Create Token in Transaction Flow", url: "#create-token-in-transaction-flow" },
+              {title: "Create New Token Service", url: "#create-new-token-service" },
+              {title: "Update Token Service", url: "#update-token-service" },
+          ]},
+          {title: "Currency Exchange Service", url: "#currency-exchange-service", children: [
+              {title: "Currency Exchange URLs", url: "#currency-exchange-urls" },
+              {title: "Parameters Submission Type", url: "#parameters-submission-type" },
+              {title: "Currency Exchange - Request", url: "#currency-exchange-request" },
+              {title: "Currency Exchange - Response", url: "#currency-exchange-response" },
+          ]},
         ];
 
     </script>
@@ -67,10 +78,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../fraudbasic/" class="btn btn-xs btn-default pull-left">
+      <a href="../aciredfraud/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../fraudbasic/" class="btn btn-xs btn-link">
-        Fraud Basic(Protect)
+        Previous</a><a href="../aciredfraud/" class="btn btn-xs btn-link">
+        ACI Red Fraud(Protect+)
       </a>
     </div>
     
@@ -78,7 +89,448 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    
+    <h2 id="fort-tokenization-service">FORT Tokenization Service</h2>
+<p>The <strong>Tokenization</strong> service allows the Merchant to store the Customer’s credit card details in a safe and secure environment substituting the Customer’s sensitive card details with a non-sensitive equivalent referred to as a Token. The Token can be used to process transactions without the use of the card details.</p>
+<p>Remember -
+- This service can be used in both “Authorization” and “Purchase” operations.
+- PayFort’s Operations team must activate the Tokenization service.
+- The Customer should agree to save his/ her card details.
+- The Token will be stored only if the card is valid and if the transaction was processed successfully.</p>
+<h3 id="create-token-in-transaction-flow">Create Token in Transaction Flow</h3>
+<p>To create a new Token, include the following parameter in the Authorization/ Purchase Request parameters you will send to PayFort; the same parameter will hold the Token name in PayFort’s Response:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Optional max: 100</td>
+<td align="left">Holds the name of the Token to update the Token or rename it. Example: OpVmp Special characters: . @ - _</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<h3 id="create-new-token-service">Create New Token Service</h3>
+<p>This service allows Merchants to verify and tokenize their Customer’s credit cards without charging their Customers.</p>
+<p>FORT Tokenization Service URLs</p>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbcheckout.PayFort.com/FortAPI/paymentPage</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://checkout.PayFort.com/FortAPI/paymentPage</p>
+<p>Parameters Submission Type</p>
+<p>HTTPs Form Post Request.</p>
+<p>Create New Token Service - Request</p>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Mandatory Max: 20</td>
+<td align="left">Command. Possible/ expected values: CREATE_TOKEN</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Mandatory Max: 19</td>
+<td align="left">The clear card data collect on the Merchant page form, developed by the Merchant. <em>Only the MEEZA payment option takes 19 digits card number. </em>AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number Example: 4005550000000001</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Mandatory Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric Mandatory Max: 400</td>
+<td align="left">The URL of the Merchant’s page that will be displayed to the customer when the order is processed. Example: http://www.merchant.com Special characters: $ ! = ? # &amp; - _ / : .</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Optional Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Optional Max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp Special characters: . @ - _</td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Optional Max: 50</td>
+<td align="left">The card holder name. Example: John Smith Special characters: <code>'</code>- .</td>
+</tr>
+</tbody>
+</table>
+<p>Create New Token Service - Response</p>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Max: 20</td>
+<td align="left">Command. Possible/ expected values: CREATE_TOKEN</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Max: 19</td>
+<td align="left">The masked credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number. *AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number Example: 400555</em><strong>*</strong>0001</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric Max: 400</td>
+<td align="left">The URL of the Merchant’s page that will be displayed to the customer when the order is processed. Example: http://www.merchant.com</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp</td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Max: 50</td>
+<td align="left">The card holder name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric Max: 150</td>
+<td align="left">The message description of the response code; it returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a></td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<h3 id="update-token-service">Update Token Service</h3>
+<p>This service enables you to update your card associated with a token and the status of a token via API calls.</p>
+<p>Update Token Service URLs</p>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.payfort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.payfort.com/FortAPI/paymentApi</p>
+<p>Parameters Submission Type</p>
+<p>REST POST request using JSON.</p>
+<p>Update Token Service – Request</p>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Mandatory Max: 20</td>
+<td align="left">Command. Possible/ expected values: UPDATE_TOKEN Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Mandatory Max: 100</td>
+<td align="left">The token received from the Tokenization process. Example: Op9Vmp Special characters: . @ - _</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Optional Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Optional Max: 50</td>
+<td align="left">The card holder name. Example: John Smith Special characters: <code>'</code>- .</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Optional Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>token_status</strong> Alpha Optional Max: 8</td>
+<td align="left">Presents the token status. Possible/ expected values: - ACTIVE - INACTIVE</td>
+</tr>
+<tr>
+<td align="right"><strong>new_token_name</strong> Alphanumeric Optional Max: 100</td>
+<td align="left">The new name used to update the existing token. Example: Test1 Special characters: _ - @ .</td>
+</tr>
+</tbody>
+</table>
+<p>Update Token Service – Response</p>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Max: 20</td>
+<td align="left">Command. Possible/ expected values: UPDATE_TOKEN</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Max: 19</td>
+<td align="left">The masked credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number. *AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number Example: 400555</em><strong>*</strong>0001</td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Max: 50</td>
+<td align="left">The card holder name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric Max: 150</td>
+<td align="left">The message description of the response code; it returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 58000</td>
+</tr>
+<tr>
+<td align="right"><strong>token_status</strong> Alpha Max: 8</td>
+<td align="left">Presents the token status. Possible/ expected values: -ACTIVE -INACTIVE</td>
+</tr>
+<tr>
+<td align="right"><strong>creation_date</strong> Alphanumeric Max: 30</td>
+<td align="left">Creation date of content in UTC format. Example: 2017-03-13T10:09:19+02:00</td>
+</tr>
+<tr>
+<td align="right"><strong>card_brand</strong> Alpha Max: 10</td>
+<td align="left">Issuer account type. Possible/ expected values: - MASTERCARD - VISA - AMEX</td>
+</tr>
+<tr>
+<td align="right"><strong>card_bin</strong> Numeric Max: 8</td>
+<td align="left">The first 6 digits of the card number.*If the card number for MEEZA was of length 19 then the card bin will be the first 8 digits. Example: 478773</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a></td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<h2 id="currency-exchange-service">Currency Exchange Service</h2>
+<p>This service allows the merchant to convert the transaction amount from one currency into another currency using live currency exchange rate.</p>
+<p>Remember - Before start implementing this service please make sure to contact support@payfort.com to activate it in your account.</p>
+<h3 id="currency-exchange-urls">Currency Exchange URLs</h3>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.PayFort.com/FortAPI/paymentApi</p>
+<h3 id="parameters-submission-type">Parameters Submission Type</h3>
+<p>REST POST request using JSON.</p>
+<h3 id="currency-exchange-request">Currency Exchange - Request</h3>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: CURRENCY_CONVERSION Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>converted_currency</strong> Alpha Mandatory max: 3</td>
+<td align="left">The ISO3 currency code of the currency you are converting the amount to. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<h3 id="currency-exchange-response">Currency Exchange - Response</h3>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha max: 20</td>
+<td align="left">Command. Possible/ expected values: CURRENCY_CONVERSION</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>).</td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a>).</td>
+</tr>
+<tr>
+<td align="right"><strong>converted_amount</strong> Alpha max: 3</td>
+<td align="left">The amount after converting to another currency. Example: 100 USD = 367.298 AED</td>
+</tr>
+<tr>
+<td align="right"><strong>converted_currency</strong> Alpha max: 3</td>
+<td align="left">The ISO3 currency code of the currency you are converting the amount to. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>conversion_number</strong> Alphanumeric max: 20</td>
+<td align="left">A unique number generated by PayFort for every valid currency conversion request. Example: 1443796866848</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
 
   <br>
     
@@ -101,10 +553,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../fraudbasic/" class="btn btn-xs btn-default pull-left">
+      <a href="../aciredfraud/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../fraudbasic/" class="btn btn-xs btn-link">
-        Fraud Basic(Protect)
+        Previous</a><a href="../aciredfraud/" class="btn btn-xs btn-link">
+        ACI Red Fraud(Protect+)
       </a>
     </div>
     

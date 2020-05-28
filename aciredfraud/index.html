@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>ACI Red Fraud(Protect+) - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "What is it?", url: "#_top", children: [
+              {title: "ACI ReD Fraud - Request", url: "#aci-red-fraud-request" },
+              {title: "ACI ReD Cart Fraud - Request", url: "#aci-red-cart-fraud-request" },
+              {title: "ACI ReD Fraud - Response", url: "#aci-red-fraud-response" },
+              {title: "Cart Details Example Value", url: "#cart-details-example-value" },
+              {title: "Device fingerprint script", url: "#device-fingerprint-script" },
+              {title: "Go to Full API", url: "#go-to-full-api" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../tokenization/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../tokenization/" class="btn btn-xs btn-link">
+        Tokenization (Safe)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../fraudbasic/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../fraudbasic/" class="btn btn-xs btn-link">
+        Fraud Basic(Protect)
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="what-is-it">What is it?</h1>
+<hr />
+<p><strong>ACI ReD</strong> is a reliable Fraud Screening and Prevention service that will further help safeguard your online payments and minimize chargebacks. It is designed to meet the needs of e-commerce Merchants as well as PSPs. ReD focuses on protecting the Merchant’s revenues and support the growth of their business, not to mention enhancing their Customer experience and boosting Customer satisfaction.</p>
+<h3 id="aci-red-fraud-request">ACI ReD Fraud - Request</h3>
+<p>Remember — The “fraud_extra” fields are custom fields as their values depend on the sector.</p>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>customer_type</strong> Alpha Optional max: 1</td>
+<td align="left">This parameter is required if any customer detail is present. Example: B</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_id</strong> Alphanumeric Optional max: 16</td>
+<td align="left">The Customer’s ID/ account number. Example: Au8vJ9HxLo Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_first_name</strong> Alpha Optional max: 30</td>
+<td align="left">The Customer’s first name. Example: Osama Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_middle_initial</strong> Alpha Optional max: 1</td>
+<td align="left">The Customer’s middle name’s initial. Example: M Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_last_name</strong> Alpha Optional max: 30</td>
+<td align="left">The Customer’s last name. Example: Kamal Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_address1</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Customer/ Billing address line 1. Example: Amman - Khalda Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_address2</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Customer/ Billing address line 2 (for extra details). Example: Al Sati St. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_apartment_no</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Customer/ Billing apartment number. Example: 12 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_city</strong> Alphanumeric Optional max: 20</td>
+<td align="left">The Customer/ Billing city. Example: Amman Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_state</strong> Alpha Optional max: 10</td>
+<td align="left">The Customer/ Billing state code. Example: Jordan</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_zip_code</strong> Alphanumeric Optional max: 9</td>
+<td align="left">The Customer/ Billing post/ zip code. Example: 11183 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_country_code</strong> Alpha Optional max: 3</td>
+<td align="left">The Customer’s country code; ISO 3-digit country code. Example: JOR</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_phone</strong> Numeric Optional max: 19</td>
+<td align="left">The Customer’s home phone number. Example: 00962797219966</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_alt_phone</strong> Numeric Optional max: 19</td>
+<td align="left">The Customer’s alternative phone. * For the Telecommunications sector, send: MSISDN. Example: 00962797256645</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_date_birth</strong> Alphanumeric Optional max: 10</td>
+<td align="left">The Customer’s date of birth. Format: YYYY-MM- DD. Example: 1977-10-03 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_type</strong> Alpha Optional max: 1</td>
+<td align="left">Shipping details present flag. * This parameter is not applicable for the Gaming sector. Example: S</td>
+</tr>
+<tr>
+<td align="right"><strong>ship_first_name</strong> Alpha Optional max: 30</td>
+<td align="left">Ship to first name. * This parameter is not applicable for the Gaming sector. Example: Rana Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_middle_name</strong> Alpha Optional max: 1</td>
+<td align="left">Ship to middle initial. * This parameter is not applicable for the Gaming sector. Example: A Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_last_name</strong> Alpha Optional max: 30</td>
+<td align="left">Ship to last name. * This parameter is not applicable for the Gaming sector. Example: Rashdan Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_address1</strong> Alphanumeric Optional max: 30</td>
+<td align="left">Ship to address line 1. * This parameter is not applicable for the Gaming sector. Example: Cairo - Egypt Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ , <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_address2</strong> Alphanumeric Optional max: 30</td>
+<td align="left">Ship to address line 2. * This parameter is not applicable for the Gaming sector. Example: Garden City Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ , <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_apartment_no</strong> Alphanumeric Optional max: 30</td>
+<td align="left">Ship to appartment number. * This parameter is not applicable for the Gaming sector. Example: 22 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_address_city</strong> Alphanumeric Optional max: 20</td>
+<td align="left">Ship to address city. * This parameter is not applicable for the Gaming sector. Example: Dubai Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_address_state</strong> Alpha Optional max: 3</td>
+<td align="left">Ship to address state. * This parameter is not applicable for the Gaming sector. Example: UAE</td>
+</tr>
+<tr>
+<td align="right"><strong>ship_zip_code</strong> Alphanumeric Optional max: 9</td>
+<td align="left">Ship to post/ zip code. * This parameter is not applicable for the Gaming sector. Example: 11183</td>
+</tr>
+<tr>
+<td align="right"><strong>ship_country_code</strong> Alpha Optional max: 3</td>
+<td align="left">Ship to country code; ISO 3-Digit country code. * This parameter is not applicable for the Gaming sector. Example: JOR</td>
+</tr>
+<tr>
+<td align="right"><strong>ship_phone</strong> Numeric Optional max: 19</td>
+<td align="left">Ship to home phone number. * This parameter is not applicable for the Gaming sector. Example: 0096265534256</td>
+</tr>
+<tr>
+<td align="right"><strong>ship_alt_phone</strong> Numeric Optional max: 12</td>
+<td align="left">Ship To alternative phone. * This parameter is not applicable for the Gaming sector. Example: 0797334465</td>
+</tr>
+<tr>
+<td align="right"><strong>ship_email</strong> Alphanumeric Optional max: 254</td>
+<td align="left">Ship to email address. * For the Gaming sector, send: Player Email Address. Example: ship@gmail.com Special characters: @ - . _ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_comments</strong> Alphanumeric Optional max: 160</td>
+<td align="left">Any shipping comments. * For the Gaming sector, send: Player Email Address. Example: (Any shipping comments can be entered) Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>ship_method</strong> Alpha Optional max: 1</td>
+<td align="left">The shipping method. * This parameter is not applicable for the Gaming sector. Possible/ expected values: - N (Next Day Service) - T (Two-Day Service) - W (Three- Day Service) - C (Low-Cost Carrier) - D (Customer Choice) - I (International) - M (Military) - P (Collect at Store) - O (Other)</td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra1</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, then the field value must contain the “Concatenated Billing Address”. * For the Gaming sector, send: Player Email Address. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra2</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Travel, or Telecommunications, the value of the field must be the “Concatenated Shipping Address” as follows: street + + shipzip if the address is particularly long and space is lim ited then truncate the first portion of the address and send the postcode/Zip code in full. * This parameter is not applicable for the Gaming sector. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra3</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Address Verification (PayPal)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra4</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Account Status (PayPal)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra5</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Eligibility Status (PayPal)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra6</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Outstanding Balance on the Account (PayPal)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra7</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Credit Score (PayPal)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra8</strong> Alphanumeric Optional max: 256</td>
+<td align="left">If the sector is Telecommunications, the value must be the “Account Number” (if multiple MSISDN per account). Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra9</strong> Alphanumeric Optional max: 265</td>
+<td align="left">If the sector is Telecommunications, the value must be the “MSISDN Age in days”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra10</strong> Alphanumeric Optional max: 256</td>
+<td align="left">- If the sector is Travel, the value must be the “Full Travel Itinerary”. - If the sector is Telecommunications, the value must be the “Earliest Account Activity/ First Call Date”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra11</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Account Age”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra12</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Travel, or Telecommunications, the value must be the “Number of Previous Orders Sent to the Shipping Address”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra13</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Number of Days Since the Email Attached to the Account has Changed”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra14</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Number of Days Since the Password was Changed”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra16</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Number of Previous Orders Associated with the Card and Email”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra17</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Event/ Promotion Flag”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra18</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Retail, Gaming, or Telecommunications, the value must be the “Sales Channel”. - If the sector is Travel, the value must be the “Third Party Booking Flag, Yes or No”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra19</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Retail, Travel, or Telecommunications, the value must be the “Private/ Business/ Trade” (customerType). - If the sector is Gaming, the value must be the “Customer Gaming ID”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra20</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Retail, Gaming, or Telecommunications, the value must be the “Number of Previous Successful Transactions”. - If the sector is Travel, the value must be the “Number of Previous Successful Bookings”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra21</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Gaming, the values must be the “Gift for Other Player Flag”. - If the sector is Travel, the value must be the “Booking Type”. - If the sector is Telecommunications, the value must be the “Payment Type”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra22</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Gaming, the values must be the “Playing Time”. - If the sector is Travel, the value must be the “Time to First Departure in Hours”. - If the sector is Telecommunications, the value must be the “Number of Previous Successful Top-ups”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra23</strong> Alphanumeric Optional max: 30</td>
+<td align="left">If the sector is Retail, Gaming, Travel, or Telecommunications, the value must be the “Channel (IVR vs. Web vs. Mobile Application, etc.). Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra24</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Gaming, the values must be the "Premium Account Balance”. - If the sector is Travel, the value must be the “Loyalty Scheme”. - If the sector is Telecommunications, the value must be the “Sim IMSI (International Mobile Subscriber Identity)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>fraud_extra25</strong> Alphanumeric Optional max: 30</td>
+<td align="left">- If the sector is Gaming, the values must be the “Game Account Balance”. - If the sector is Travel, the value must be the “Loyalty Scheme Member Number”. - If the sector is Telecommunications, the value must be the “IMEI (International Mobile Equipment Identity)”. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>cart_details</strong> Alphanumeric Optional max: 999</td>
+<td align="left">This parameter is a parent parameter for other parameters that contain the details of the shopping cart created by the Merchant. Example: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#cart-details-example-value">Cart Details Example Value</a> Special characters: $</td>
+</tr>
+<tr>
+<td align="right"><strong>device_fingerprint</strong> Alphanumeric max: 4000</td>
+<td align="left">Unique device ID generated by <a href="https://docs.payfort.com/docs/api/build/index.html?java#device-fingerprint-script">Script</a>. please refer to <a href="https://docs.payfort.com/pdf/PAYFORT_Fraud_Native_Mobile_SDK_V_1.2.pdf">Fraud Native Mobile SDK Guide</a> to generate device fingerprint. Example: 04003hQUMXGB0po… Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ % + ! <strong>Space</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="aci-red-cart-fraud-request">ACI ReD Cart Fraud - Request</h3>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>item_quantity</strong> Alphanumeric Optional max: 10</td>
+<td align="left">The item’s quantity. * For the Gaming sector, send: Clan. Example: 4</td>
+</tr>
+<tr>
+<td align="right"><strong>item_sku</strong> Alphanumeric Optional max: 12</td>
+<td align="left">The item’s commodity or “Stock Keeping Unit” code. * For the Gaming sector, send: Gold balance. Example: 1ShirtBlueM Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>item_prod_code</strong> Alphanumeric Optional max: 12</td>
+<td align="left">The item’s product code. * For the Gaming sector, send: Silver balance. Example: MOB111 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>item_part_no</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The item’s Manufacturers Part or EAN number. * For the Gaming sector, send: Exp balance. * For the Travel sector, send: Flight/ Train/ Bus Number. Example: TSR-1002 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>item_description</strong> Alphanumeric Optional max: 256</td>
+<td align="left">The item’s description. * For the Gaming sector, send: Date of first credit. * For the Travel sector, send: Ticket Delivery Method. Example: iPhone 6-S Special characters: - _ <code>'</code>, . <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>item_price</strong> Numeric Optional max: 10</td>
+<td align="left">The item’s unit price (lowest denomination). * For the Travel sector, send: Ticket Price. Example: 700</td>
+</tr>
+<tr>
+<td align="right"><strong>item_shipping_no</strong> Alphanumeric Optional max: 19</td>
+<td align="left">The item’s shipping/ tracking number. * For the Travel sector, send: Ticket Departure Date And Time. Example: AB586985609GB Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>item_shipping_method</strong> Alpha Optional max: 1</td>
+<td align="left">The item’s shipping method. * For the Retail, Travel, Telecommunications sectors, send: New Shipping Address Flag. * This parameter is not applicable for the Gaming sector. Possible/ expected values: - N (Next Day Service) - T (Two-Day Service) - W (Three- Day Service) - C (Low-Cost Carrier) - D (Customer Choice) - I (International) - M (Military) - P (Collect at Store) - O (Other)</td>
+</tr>
+<tr>
+<td align="right"><strong>item_shipping_comments</strong> Alphanumeric Optional max: 160</td>
+<td align="left">The item’s shipping comments. * For the Travel sector, send: Ticket Itinerary. Example: (Any shipping comments can be entered). Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>item_gift_msg</strong> Alphanumeric Optional max: 160</td>
+<td align="left">The item’s gift message. * For the Retail and Telecommunications sectors, send: High Risk Product Flag. Example: Congrats! Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_title</strong> Alphanumeric Optional max: 5</td>
+<td align="left">The Recipient’s title. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Adult/Child/Infant flag. Example: Mr. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_first_name</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Recipient’s first name. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Passenger First Name. Example: Mohammad Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_middle_initial</strong> Alphanumeric Optional max: 1</td>
+<td align="left">The Recipient’s middle initial. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Passenger Middle Initial. Example: R Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_last_name</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Recipient’s last name. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Passenger Last Name. Example: Tawfeeq Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_apartment_no</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Recipient’s apartment number. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Travel Class; i.e.: Standard/ Economy etc. Example: 12 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_address1</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Recipient’s address line 1. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Departure Airport/ Station Code/ City. Example: Amman - Khalda Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_address2</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Recipient’s address line 2 (for extra details). * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Arrival Airport/ Station Code/ City. Example: Al Sati St. Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_city</strong> Alphanumeric Optional max: 30</td>
+<td align="left">The Recipient’s city. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Booking Type. Example: Sharjah Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_state</strong> Alphanumeric Optional max: 10</td>
+<td align="left">The Recipient’s state. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Departure Country 3 Digit ISO Code. Example: Qatar Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_zip_code</strong> Alphanumeric Optional max: 10</td>
+<td align="left">The Recipient’s post/ zip code. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Ticket Type; i.e.: One Way/ Return etc. Example: 11183 Special characters: @ - . _ <code>'</code>/ # \ : = ? &amp; ; ( ) $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_country_code</strong> Alpha Optional max: 3</td>
+<td align="left">The Recipient’s country code; ISO 3-Digit country code. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Arrival Country. Example: JOR</td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_phone</strong> Numeric Optional max: 19</td>
+<td align="left">The Recipient’s phone number. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. Example: 00962797675543</td>
+</tr>
+<tr>
+<td align="right"><strong>rcpt_email</strong> Alphanumeric Optional max: 45</td>
+<td align="left">The Recipient’s email address. * For the Retail and Telecommunications sectors, this parameter should be sent if multiple shipping addresses are available. * For the Travel sector, send: Passenger Name Record. Example: recipient@hotmail.com Special characters: @ - . _ <strong>Space</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="aci-red-fraud-response">ACI ReD Fraud - Response</h3>
+<p><strong>The following parameter will be returned in the Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>fraud_comment</strong> Alphanumeric max: 1000</td>
+<td align="left">“fraud_comment” this value represents the feedback of the agent reviewing “in review” transaction. This parameter is part of the Authorization/ Purchase response parameters returned on the notification URL after the In review transaction is updated. Example: Close</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cart-details-example-value">Cart Details Example Value</h3>
+<p>The following is an example value of the “cart_details”:</p>
+<p>“{cart_items:[{item_quantity:1,item_description:‘item desc’, item_price:50},{item_quantity:2,item_description:'item desc’, item_price:50}]}”</p>
+<h3 id="device-fingerprint-script">Device fingerprint script</h3>
+<p>The following is the script you should use to generate the device fingerprint:</p>
+<p>Remember - The value of the device fingerprint hidden field will be calculated from the below script, you should take this value and send it to PayFort.</p>
+<p><input type=“hidden” id="device_fingerprint” name=“device_fingerprint”/></p>
+<p>Remember - Please don’t edit on the values in the script below.</p>
+<script type=“text/javascript”>var io_bbout_element_id = 'device_fingerprint’;//the input id will be used to collect the device fingerprint valuevar io_install_stm = false;var io_exclude_stm = 0;//prevent the iovation Active X control from running on either Windowsvar io_install_flash = false;var io_enable_rip = true;// collect real ip information</script>
+
+<script type=“text/javascript” src=“https://mpsnare.iesnare.com/snare.js”></script>
+
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../tokenization/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../tokenization/" class="btn btn-xs btn-link">
+        Tokenization (Safe)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../fraudbasic/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../fraudbasic/" class="btn btn-xs btn-link">
+        Fraud Basic(Protect)
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
