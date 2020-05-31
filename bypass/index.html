@@ -32,6 +32,10 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "3-D Secure services", url: "#_top", children: [
+              {title: "Check 3-D Secure &amp; Flex 3-D Secure Services", url: "#check-3-d-secure-flex-3-d-secure-services" },
+              {title: "External MPI &amp; Expose 3-D Secure services", url: "#external-mpi-expose-3-d-secure-services" },
+          ]},
         ];
 
     </script>
@@ -78,7 +82,724 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    
+    <h1 id="3-d-secure-services">3-D Secure services</h1>
+<p>3-D Secure services is an extra authentication service to authenticate the transaction by sending an OTP to the card holder from the issuer bank then the card holder have to authenticate the transaction by entering this OTP on the 3DS page. There are two types of 3-D Secure Services:</p>
+<ol>
+<li>
+<p><a href="https://docs.payfort.com/docs/api/build/index.html?shell#check-3-d-secure-amp-flex-3-d-secure-services">Check 3-D Secure &amp; Flex 3-D Secure Services:</a></p>
+<p><strong>Check 3-D Secure Service:</strong> This service provides cardholders a decreased risk of other people being able to use their payment cards fraudulently on the Merchant’s site.
+ <strong>Flex 3-D Secure Service:</strong> This service gives you the flexibility to downgrade the 3-D Secure authentication in the transaction processing, based on a set of rules of your choice.</p>
+</li>
+<li>
+<p><a href="https://docs.payfort.com/docs/api/build/index.html?shell#external-mpi-amp-expose-3-d-secure-services">External MPI &amp; Expose 3-D Secure services:</a></p>
+<p><strong>External MPI Service:</strong> This service allows the Fort to accept Purchase/ Authorization transactions in which the 3ds check was done externally using an external MPI.
+ <strong>Expose 3-D Secure Service:</strong> This service allows the Merchant to use the 3-D Secure service in standalone request without the transactionpurchase/Authorization flow; the user 3-D Secure Authentication can be done separately to get the user Authentication data and then the merchant can perform the charge request “Authorization/Purchase” in another request.</p>
+</li>
+</ol>
+<h2 id="check-3-d-secure-flex-3-d-secure-services">Check 3-D Secure &amp; Flex 3-D Secure Services</h2>
+<h3 id="check-3-d-secure-service">Check 3-D Secure Service</h3>
+<p>This service provides cardholders a decreased risk of other people being able to use their payment cards fraudulently on the Merchant’s site.</p>
+<p><strong>Include the following parameter in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>check_3ds</strong> Alpha Optional max: 2</td>
+<td align="left">This parameter allows the Merchant to deactivate the 3-D Secure service per transaction. This parameter can be used with both Authorization and Purchase transactions. Possible/ expected values: NO</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - PayFort’s Operations team must activate the 3-D Secure service.</p>
+<h3 id="flex-3-d-secure-service">Flex 3-D Secure Service</h3>
+<p>This service gives you the flexibility to downgrade the 3-D Secure authentication in the transaction processing, based on a set of rules of your choice. You can active/ deactivate this service under the “Flex Management” tab on your FORT Back-office.</p>
+<p>How it Works?Click on the “Flex Management” tab on the main menu of your FORT Back-office. The following tabs should be displayed:
+• <strong>Service configuration:</strong> to allow the merchant to activate/ deactivate the flex service after accept the terms and conditions.
+• <strong>List management:</strong> allow the merchant to add multiple lists with different list types (email, IP, BIN, custom field and country) through “Add New List”.
+• <strong>Rules Management:</strong> to set the required rules for flex Management by merchant choice.
+• <strong>Audit log:</strong> triggered all the actions done by the merchant in configurations the Flex service.</p>
+<p><strong>Include the following parameter in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>flex_value</strong> Alphanumeric Optional max: 255</td>
+<td align="left">This parameter reflects the custom field value you had configure in the Back-office. *Only English values are applicable. Example: Sale50 Special characters: _ / \ - . # $ % &amp; @ *</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - This Service is only available for eci = ECOMMERCE transactions (Redirection, Trusted, SDK, Merchant page and Merchant page 2.0) and credit cards (Visa, MasterCard and Amex).</p>
+<h2 id="external-mpi-expose-3-d-secure-services">External MPI &amp; Expose 3-D Secure services</h2>
+<h3 id="external-mpi-3-d-secure-service">External MPI 3-D Secure Service</h3>
+<p>This service allows the Fort to accept Purchase/ Authorization transactions in which the 3ds check was done externally using an external MPI.</p>
+<p>External MPI 3-D Secure URLs</p>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p>Parameters Submission Type</p>
+<p>REST POST request using JSON.</p>
+<p>External MPI 3-D Secure - Request</p>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: AUTHORIZATION, PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Merchant account Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">FORT Merchant Account identifier. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898 Special characters: _ - .</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory Max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric Mandatory Max: 254</td>
+<td align="left">The customer’s email. Example: customer@domain.com Special characters: _ - . @ +</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha Optional Max: 16</td>
+<td align="left">Ecommerce indicator. Possible/ expected values: - ECOMMERCE - MOTO</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Mandatory Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Mandatory Max: 19</td>
+<td align="left">The clear credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number. </em>AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number. Example: 4005550000000001</td>
+</tr>
+<tr>
+<td align="right"><strong>card_security_code</strong> Numeric Max: 4</td>
+<td align="left">A security code for the card. * Only AMEX accepts card security code of 4 digits. Example: 123</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_xid</strong> Alphanumeric Optional Max: 28</td>
+<td align="left">Unique transaction Identification number to identify the 3DS transaction. Example: 6kQGHEiZDU0H4+mUWF7zELHAcqM=</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_enrolled</strong> Alpha Optional Max: 1</td>
+<td align="left">Parameter that hold if the card is enrolled or not. Possible/ expected values: - Y (Yes) - N (No)</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_status</strong> Alpha Optional Max: 1</td>
+<td align="left">The status of the 3ds check just like 3-DSEnrolled but this parameter is available after a check is completed. Possible/ expected values: - Y - N - U - A</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_eci</strong> Numeric Optional Max: 2</td>
+<td align="left">The eCommerce indicator returned from the MPI. Possible/ expected values: - 05 - 06</td>
+</tr>
+<tr>
+<td align="right"><strong>ver_token</strong> Alphanumeric Optional Max: 28</td>
+<td align="left">Verification token generated by the issuer to prove that the cardholders has been authenticated. Example: gIGCg4SFhoeIiYqLjI2Oj5CRkpM=</td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Optional max: 50</td>
+<td align="left">The card holder name. Example: John Smith Special characters: <code>'</code>- .</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Optional Max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp Special characters: . @ - _</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha Optional Max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX - MADA (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf">MADA Branding Document</a> - MEEZA (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric Optional Max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S Special characters: <code>'</code>/ . _ - # : $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric Optional max: 45</td>
+<td align="left">It holds the customer’s IP address. <em>It’s Mandatory, if the fraud service is active. </em>We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf Special characters: . :</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha Optional Max: 40</td>
+<td align="left">The customer’s name. Example: John Smith Special characters: _ \ / - . <code>'</code><strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Numeric Optional Max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966 Special characters: + - ( ) <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric Optional max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Optional Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric Optional Max: 400</td>
+<td align="left">The URL of the Merchant’s page to be displayed to the customer when the order is processed. Example: http://www.merchant.com Special characters: $ ! = ? # &amp; - _ / : .</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<p>External MPI 3-D Secure - Response</p>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: AUTHORIZATION, PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Merchant account Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">FORT Merchant Account identifier. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898 Special characters: _ - .</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory Max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric Mandatory Max: 254</td>
+<td align="left">The customer’s email. Example: customer@domain.com Special characters: _ - . @ +</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha Optional Max: 16</td>
+<td align="left">Ecommerce indicator. Possible/ expected values: - ECOMMERCE - MOTO</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Mandatory Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Mandatory Max: 19</td>
+<td align="left">The clear credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number. </em>AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number. Example: 4005550000000001</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Optional max: 50</td>
+<td align="left">The card holder name. Example: John Smith Special characters: <code>'</code>- .</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Optional Max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp Special characters: . @ - _</td>
+</tr>
+<tr>
+<td align="right"><strong>fort_id</strong> Numeric Max: 20</td>
+<td align="left">The order’s unique reference returned by our system. Example: 149295435400084008</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha Optional Max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX - MADA (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf">MADA Branding Document</a> - MEEZA (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric Optional Max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S Special characters: <code>'</code>/ . _ - # : $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric Optional max: 45</td>
+<td align="left">It holds the customer’s IP address. <em>It’s Mandatory, if the fraud service is active. </em>We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf Special characters: . :</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha Optional Max: 40</td>
+<td align="left">The customer’s name. Example: John Smith Special characters: _ \ / - . <code>'</code><strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Numeric Optional Max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966 Special characters: + - ( ) <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric Optional max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Optional Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric Optional Max: 400</td>
+<td align="left">The URL of the Merchant’s page to be displayed to the customer when the order is processed. Example: http://www.merchant.com Special characters: $ ! = ? # &amp; - _ / : .</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric Max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a></td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_url</strong> Alphanumeric Max: 300</td>
+<td align="left">The URL where the Merchant redirects a customer whose card is 3-D Secure for authentication. Example: http://www.3dsecure.com</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<h3 id="expose-3-d-secure-service">Expose 3-D Secure Service</h3>
+<p>This service allows the Merchant to use the 3-D Secure service in standalone request without the transaction purchase/Authorization flow; the user 3-D Secure Authentication can be done separately to get the user Authentication data and then the merchant can perform the charge request “Authorization/Purchase” in another request.</p>
+<p>3-D Secure Enrollment Service Command URLs</p>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p>Parameters Submission Type</p>
+<p>REST POST request using JSON.</p>
+<p>3-D Secure Enrollment Service Command - Request</p>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: 3DS_ENROLLMENT Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Merchant account Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">FORT Merchant Account identifier. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898 Special characters: _ - .</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory Max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Mandatory Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Mandatory Max: 19</td>
+<td align="left">The clear credit card’s number. Example: 4005550000000001</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_3ds_url</strong> Alphanumeric Mandatory max: 300</td>
+<td align="left">The URL where the Merchant will be redirected to see the returned 3ds parameters. Example: https://www.merchant.com Special characters: - &amp; ? = _ . : / #</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3-D Secure Enrollment Request Example!</strong></p>
+<p>{
+“merchant_reference”:“XYZ9239-yu898”,
+“access_code”:“zx0IPmPy5jp1vAz8Kpg7”,
+“service_command”:“3DS_ENROLLMENT”,
+“language”:“en”,
+“merchant_identifier”:“CycHZxVj”,
+“currency”:“AED”,
+“amount”:“10000”,
+“card_number”:“4005550000000001”,
+“expiry_date”:“2105”,
+“merchant_3ds_url”:“https://www.merchant.com”,
+“signature”:“a10048ca30a401d798f236bbdeb8b63a3a944449fafa9af2dee28eb6054dc07e”
+}</p>
+<p>3-D Secure Enrollment Service Command - Response</p>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha max: 50</td>
+<td align="left">Query operations command. Possible/ expected values: 3DS_ENROLLMENT</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Merchant account Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">FORT Merchant Account identifier. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric &gt; Max: 19</td>
+<td align="left">The masked credit card’s number. Example: 400555<strong>*</strong>*0001</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_3ds_url</strong> Alphanumeric max: 300</td>
+<td align="left">The URL where the Merchant will be redirected to see the returned 3ds parameters. Example: https://www.merchant.com Special characters: - &amp; ? = _ . : / #</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_enrolled</strong> Alpha Max: 1</td>
+<td align="left">Parameter that hold if the card is enrolled or not. Possible/ expected values: - Y (Yes) - N (No) - U (Unspecified failure)</td>
+</tr>
+<tr>
+<td align="right"><strong>threeds_id</strong> Alphanumeric Max: 100</td>
+<td align="left">The 3ds operations unique reference. Example: 153606397100001061</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_xid</strong> Alphanumeric max: 28</td>
+<td align="left">Unique transaction Identification number to identify the 3DS transaction. Example: 6kQGHEiZDU0H4+mUWF7zELHAcqM=</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Example: Insufficient Funds</td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 44000</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3-D Secure Enrollment Response Example!</strong></p>
+<p>{
+“amount”: “10000”,
+“response_code”: “44000”,
+“card_number”: “400555<strong>*</strong>*0001”,
+“signature”: “44d80139e9557661822c2e2d571983cc84a2de5a85e7499835dffd19f6192040”,
+“merchant_identifier”: “CycHZxVj”,
+“access_code”: “zx0IPmPy5jp1vAz8Kpg7”,
+“expiry_date”: “2105”,
+“merchant_3ds_url”: “https://www.merchant.com”,
+“language”: “en”,
+“threeds_id”: “153606397100001061”,
+“3ds_url”: “https://migs.mastercard.com.au/vpcpay?paymentId=3499269050937443526&amp;DOID=E870F0B65189A7128A86B7FC206F136E&amp;o=pt&amp;action=retry”,
+“service_command”: “3DS_ENROLLMENT”,
+“response_message”: “Success”,
+“merchant_reference”: “XYZ9239-yu898”,
+“3ds_enrolled”: “Y”,
+“currency”: “AED”,
+“status”: “44”
+}</p>
+<p>• After you get back a 3Ds Enrollment response that includes the parameter “3ds_enrolled” of value “Y”; follow the below steps for the 3Ds Authentication request:</p>
+<ol>
+<li>In case you are on “MIGS” processor; Copy the returned 3ds_url in a new browser. Then, select all the returned parameters to be send in the next request “3Ds Authentication”.</li>
+<li>In case you are on “Cybersource”/ “MPGS” processor; two parameters will returns in the “3Ds Enrollment”; as below:
+     • MD
+     • PaRes
+   And you have to copy them in the “3Ds Authentication” request; as you will see in the 3Ds Authentication request example.</li>
+</ol>
+<p>3-D Secure Authentication Service Command3-D Secure Authentication Service Command URLs</p>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p>Parameters Submission Type</p>
+<p>REST POST request using JSON.</p>
+<p>3-D Secure Authentication Service Command - Request<strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: 3DS_AUTHENTICATION Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td align="left">The Merchant’s unique number. *Please, use the same merchant reference you used in the “generate report” request. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>third_party_body</strong> Alphanumeric Mandatory Max: 6000</td>
+<td align="left">Combinations of 3ds parameters from the 3ds_enrollment. Example: Check the examples below Special characters: + \ / : . _ = ? % # &amp; -</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3-D Secure Authentication Request on MIGS processor Example!</strong></p>
+<p>{
+“access_code”:“zx0IPmPy5jp1vAz8Kpg7”,
+“service_command”:“3DS_AUTHENTICATION”,
+“language”:“en”,
+“merchant_identifier”:“bxgOIxIz”,</p>
+<p>“third_party_body”:“vpc_3DSECI=05&amp;vpc_3DSXID=6kQGHEiZDU0H4+mUWF7zELHAcqM=&amp;vpc_3DSenrolled=Y&amp;vpc_3DSstatus=Y&amp;vpc_Amount=1000&amp;vpc_BatchNo=0&amp;vpc_Command=pay&amp;vpc_Currency=USD&amp;vpc_Locale=en_SA&amp;vpc_MerchTxnRef=153615472100001289&amp;vpc_Merchant=TEST81002&amp;vpc_Message=Approved&amp;vpc_OrderInfo=153615472100001289&amp;vpc_SecureHash=5E22F556A03C3ED90065DDBDA51577D4FAFF45BD858C3587D6589E69953C5615&amp;vpc_SecureHashType=SHA256&amp;vpc_TransactionNo=0&amp;vpc_TxnResponseCode=0&amp;vpc_VerSecurityLevel=05&amp;vpc_VerStatus=Y&amp;vpc_VerToken=gIGCg4SFhoeIiYqLjI2Oj5CRkpM=&amp;vpc_VerType=3DS&amp;vpc_Version=1”,</p>
+<p>“merchant_reference”: “XYZ9239-yu898”,
+“signature”:“5342edd1b7f34cd7b2be93487f1b80e86a2266f78e274c9bde6b2c1b1eca0f20”
+}</p>
+<p><strong>3-D Secure Authentication Request on Cybersource/ MPGS Processors Example!</strong></p>
+<p>{
+“access_code”:“zx0IPmPy5jp1vAz8Kpg7”,
+“service_command”:“3DS_AUTHENTICATION”,
+“language”:“en”,
+“merchant_identifier”:“CycHZxVj”,</p>
+<p>“third_party_body”:“MD=153354476300012267&amp;PaRes=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”,</p>
+<p>“merchant_reference”: “XYZ9239-yu898”,
+“signature”:“714ae368b706be6db4073e75bd58e8feada61736edc7a07c0e59e3c9071ad2d5”
+}</p>
+<p>3-D Secure Authentication Service Command - Response<strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha max: 20</td>
+<td align="left">Command. Possible/ expected values: 3DS_AUTHENTICATION</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>threeds_id</strong> Alphanumeric Max: 100</td>
+<td align="left">The 3ds operations unique reference. Example: 153606397100001061</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_xid</strong> Alphanumeric Max: 28</td>
+<td align="left">Unique transaction Identification number to identify the 3DS transaction. Example: 6kQGHEiZDU0H4+mUWF7zELHAcqM=</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_enrolled</strong> Alpha Max: 1</td>
+<td align="left">Parameter that hold if the card is enrolled or not. Possible/ expected values: - Y (Yes) - N (No)</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_status</strong> Alpha Max: 1</td>
+<td align="left">The status of the 3ds check just like 3-DSEnrolled but this parameter is available after a check is completed. Possible/ expected values: - Y - N - U - A</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_eci</strong> Numeric Max: 2</td>
+<td align="left">The eCommerce indicator returned from the MPI. Possible/ expected values: - 05 - 06</td>
+</tr>
+<tr>
+<td align="right"><strong>ver_type</strong> Alphanumeric Max: 3</td>
+<td align="left">The type of verification used for 3DS. Possible/ expected values: - 3DS - SPA</td>
+</tr>
+<tr>
+<td align="right"><strong>ver_token</strong> Alphanumeric Max: 28</td>
+<td align="left">Verification token generated by the issuer to prove that the cardholders has been authenticated. Example: gIGCg4SFhoeIiYqLjI2Oj5CRkpM=</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Example: Insufficient Funds</td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 44000</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3Ds Authentication Response on MIGS Processor Example!</strong></p>
+<p>{
+“response_code”: “44000”,
+“signature”: “1f87e311965bf27cd497396420eb9c7abe5bfac14d17eb09904517ec86ee2caa”,
+“merchant_identifier”: “CycHZxVj”,
+“ver_token”: “gIGCg4SFhoeIiYqLjI2Oj5CRkpM=”,
+“access_code”: “zx0IPmPy5jp1vAz8Kpg7”,
+“language”: “en”,
+“3ds_eci”: “05”,
+“threeds_id”: “153606397100001061”,
+“3ds_status”: “Y”,
+“service_command”: “3DS_AUTHENTICATION”,
+“response_message”: “Success”,
+“3ds_xid”: “6kQGHEiZDU0H4+mUWF7zELHAcqM=”,
+“merchant_reference”: “XYZ9239-yu898”,
+“3ds_enrolled”: “Y”,
+“status”: “44”
+}</p>
+<p><strong>3-D Secure Authentication Response on Cybersource/ MPGS Processors Example!</strong></p>
+<p>{
+“response_code”: “44000”,
+“signature”: “1f87e311965bf27cd497396420eb9c7abe5bfac14d17eb09904517ec86ee2caa”,
+“merchant_identifier”: “CycHZxVj”,
+“ver_token”: “gIGCg4SFhoeIiYqLjI2Oj5CRkpM=”,
+“access_code”: “zx0IPmPy5jp1vAz8Kpg7”,
+“language”: “en”,
+“3ds_eci”: “05”,
+“threeds_id”: “153606397100001061”,
+“3ds_status”: “Y”,
+“service_command”: “3DS_AUTHENTICATION”,
+“response_message”: “Success”,
+“3ds_xid”: “6kQGHEiZDU0H4+mUWF7zELHAcqM=”,
+“merchant_reference”: “XYZ9239-yu898”,
+“3ds_enrolled”: “Y”,
+“status”: “44”
+}</p>
 
   <br>
     

@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Data Mine(Reporting API) - PayFort Documentation</title>
+    <title>Reporting API - PayFort Documentation</title>
     <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -37,6 +37,8 @@
               {title: "Endpoints", url: "#endpoints" },
               {title: "Parameters Submission Type", url: "#parameters-submission-type" },
               {title: "Generate Report Request", url: "#generate-report-request" },
+              {title: "Go to Full API", url: "#go-to-full-api" },
+              {title: "Need further help?", url: "#need-further-help" },
           ]},
         ];
 
@@ -63,12 +65,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../installments/" class="btn btn-xs btn-default pull-right">
+      <a href="../reportingapiparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../installments/" class="btn btn-xs btn-link">
-        Installments
+      <a href="../reportingapiparameters/" class="btn btn-xs btn-link">
+        Reporting API Parameters
       </a>
     </div>
     
@@ -85,7 +87,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="what-is-data-mine-reporting-api">What is Data Mine (Reporting API)?</h1>
-<p>For retail merchants like you biggest dilemma they face is to download a customized reports. These customized reports includes sales reports, transaction reports, recurring payment reports, bulk sales reports etc. If you are planning to develop your own solution then you can easily use the PayFORT's easy to use reporting API to generate your own customized reports. The Reporting API provides you the feature to generate misc.. reports that can be customized as per your business requirements. You can specify the columns to be included and filters, then download the generated report. The report is limited to 200,000 transactions.</p>
+<p>For retail merchants like you biggest dilemma they face is to download a customized reports. These customized reports includes sales reports, transaction reports, recurring payment reports, bulk sales reports etc. If you are planning to develop your own solution then you can easily use the PayFORT's easy to use reporting API to generate your own customized reports. The Reporting API provides you the feature to generate misc.. reports that can be customized as per your business requirements. You can specify the columns to be included and filters, then download the generated report. The report is limited to 200,000 transactions. </p>
+<p>PayFORT provides you with two options to generate your reports one is through APIs and another through Backoffice portal. You can develop your own report generation tool and use the PayFORT endpoints to generate and download your own customized report for the business purpose.</p>
 <hr />
 <h2 id="how-it-works">How it Works?</h2>
 <p>When you are developing the solution for report generation purpose then you need to send request to the PayFORT server using the Endpoints&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a>. There will be two requests (<mark>Generate Report</mark> and <mark>Download Report</mark>) that you will be sending to the PayFORT server. Following steps describes the way Reporting API works:</p>
@@ -112,136 +115,97 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="generate-report-request">Generate Report Request</h2>
 <p>Since you will be submitting REST POST using JSON Format, you can refer to the given JSON sample for creating a <mark><strong><em>Generate Report</em></strong></mark> request. The JSON sample also shows the parameters that are required to be sent along the request.</p>
 <p><em>Sample JSON Request</em></p>
+<p>The above JSON sample is for information purpose and you need to check out the columns parameters, filter parameters and the key parameters (passed within the filters parameters as key value in the above JSON sample) to select the parameters you need to pass in your request.</p>
+<p><strong>Generate Report Request Sample</strong></p>
+<hr />
+<p>Below is the sample request for the generation of report in the JSON format to be sent to the PayFORT server. The command <mark><strong>GENERATE_REPORT</strong></mark> notifies PayFORT server to generate a customized report based on the customized parameters that are sent via request in the JSON format. You have to check the different <a href="../reportingapiparameters/">input parameters</a> and select the parameters based on your requirements. You can opt for receiving the response either in JSON format or the xml format depending on the merchant site's design and architecture.</p>
+<p>Placeholder: Sample code in Java/PHP/Python/Ruby for report generation request.</p>
+<p>Sample JSON request</p>
 <pre><code class="json">{
-&quot;query_command&quot;: &quot;GENERATE_REPORT&quot;,
-&quot;access_code&quot;: &quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
-&quot;merchant_identifier&quot;: &quot;CycHZxVj&quot;,
-&quot;merchant_reference&quot;: &quot;XYZ9239-yu898&quot;,
-&quot;from_date&quot;: &quot;2017-08-03T00:00:01+03:00&quot;,
-&quot;to_date&quot;: &quot;2017-08-03T23:59:59+03:00&quot;,
-&quot;response_format&quot;: &quot;JSON&quot;,
-&quot;language&quot;: &quot;en&quot;,
-&quot;columns&quot;: [
-    &quot;order_description&quot;,
-    &quot;customer_ip&quot;,
-    &quot;eci&quot;,
-    &quot;geolocation_ip&quot;,
-    &quot;merchant_reference&quot;,
-    &quot;card_holder_name&quot;,
-    &quot;currency&quot;,
-    &quot;amount&quot;,
-    &quot;payment_option&quot;,
-    &quot;fort_id&quot;,
-    &quot;customer_email&quot;,
-    &quot;customer_name&quot;,
-    &quot;operation&quot;,
+“query_command”: “GENERATE_REPORT”,
+“access_code”: “zx0IPmPy5jp1vAz8Kpg7”,
+“merchant_identifier”: “CycHZxVj”,
+“merchant_reference”: “XYZ9239-yu898”,
+“from_date”: “2017-08-03T00:00:01+03:00”,
+“to_date”: “2017-08-03T23:59:59+03:00”,
+“response_format”: “JSON”,
+“language”: “en”,
+“columns”: [
+  “order_description”,
+  “customer_ip”,
+  “eci”,
+  “geolocation_ip”,
+  “merchant_reference”,
+  “card_holder_name”,
+  “currency”,
+  “amount”,
+  “payment_option”,
+  “fort_id”,
+  “customer_email”,
+  “customer_name”,
+  “operation”,
 ],
-&quot;filters&quot;: [
-    {
-    &quot;key&quot;: &quot;currency&quot;,
-    &quot;value&quot;: &quot;USD&quot;
-    },
-    {
-    &quot;key&quot;: &quot;payment_option&quot;,
-    &quot;value&quot;: &quot;VISA&quot;
-    }
+“filters”: [
+  {
+  “key”: “currency”,
+  “value”: “USD”
+  },
+  {
+  “key”: “payment_option”,
+  “value”: “VISA”
+  }
 ],
-&quot;signature&quot;: &quot;03a36d58acfc611f521528f2039a2228031d7ae4248d95181f2a24cfbe9f7865&quot;
+“signature”: “03a36d58acfc611f521528f2039a2228031d7ae4248d95181f2a24cfbe9f7865”
+}
+
+
+</code></pre>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You can customize your own report by providing different input parameters. Not all parameters might be of interest to you, hence select only those parameters which you think are important for your requirement. Providing unnecessary parameters/all parameters at a time to the server can increase the time to generate the report.</div>
+
+<p><strong>Submit download Report Request</strong></p>
+<p>Once the report generation request has been submitted next request would be to submit request for the download of the generated report. </p>
+<p>Placeholder: Sample code in Java/PHP/Python/Ruby for download report request.</p>
+<p><strong>Generate Report “JSON” Response Example</strong></p>
+<hr />
+<p>The below is the sample response sent in JSON format by the PayFORT server to the generate report request submitted by you.</p>
+<pre><code class="json">{
+“query_command”: “GENERATE_REPORT”,
+“access_code”: “ zx0IPmPy5jp1vAz8Kpg7”,
+“merchant_identifier”: “CycHZxVj”,
+“merchant_reference”: “XYZ9239-yu898”,
+“from_date”: “2017-08-03T00:00:01+03:00”,
+“to_date”: “2017-08-03T23:59:59+03:00”,
+“response_format”: “JSON”,
+“signature”: “521d32010a9988de86e16b49f6303985508d5f244784474da1184d457b53ded2”,
+“language”: “en”,
+“response_message”: “Success”,
+“response_code”: “56000”,
+“status”: “56”
 }
 </code></pre>
 
-<p>The above JSON sample is for information purpose and you need to check out the columns parameters, filter parameters and the key parameters (passed within the filters parameters as key value in the above JSON sample) to select the parameters you need to pass in your request.</p>
-<p><strong>Columns Parameter</strong></p>
-<p>Below is the sample of various column parameters which you can chose to pass in your request as a list. The list is surrounded by [] (square brackets) which is JSON based list. The list which you pass in your request will generate the data under the respective columns (passed as a list in the generate and download reports).</p>
-<p><em>Sample Column Parameters in JSON's List Format</em></p>
-<pre><code class="json">[
-&quot;fort_id&quot;,
-&quot;merchant_reference&quot;,
-&quot;authorization_code&quot;,
-&quot;customer_name&quot;,
-&quot;customer_ip&quot;,
-&quot;geolocation_ip&quot;,
-&quot;customer_email&quot;,
-&quot;acquirer_name&quot;,
-&quot;payment_option&quot;,
-&quot;channel&quot;,
-&quot;transaction_date&quot;,
-&quot;card_number&quot;,
-&quot;expiry_date&quot;,
-&quot;card_holder_name&quot;,
-&quot;amount&quot;,
-&quot;currency&quot;,
-&quot;card_bin&quot;,
-&quot;eci&quot;,
-&quot;operation&quot;,
-&quot;token_name&quot;,
-&quot;3ds_indicator&quot;,
-&quot;fraud_indicator&quot;,
-&quot;installments_indicator&quot;,
-&quot;status&quot;,
-&quot;response_code&quot;,
-&quot;response_message&quot;,
-&quot;third_party_message&quot;,
-&quot;third_party_code&quot;,
-&quot;order_date&quot;,
-&quot;order_description&quot;,
-&quot;acquirer_mid&quot;,
-&quot;acquirer_response_code&quot;,
-&quot;acquirer_response_message&quot;,
-&quot;processor_response_code&quot;,
-&quot;sadad_olp&quot;,
-&quot;sadad_transaction_id&quot;,
-&quot;payment_link_id&quot;,
-&quot;Invoice_id&quot;,
-&quot;digital_wallet&quot;
-]
+<hr />
+<p><strong>Generate Report “XML” Response Example</strong></p>
+<hr />
+<p>The below is the sample response sent in XML format by the PayFORT server to the generate report request submitted by you.</p>
+<pre><code class="xml">&lt;response&gt;
+    &lt;response_code&gt;56000&lt;/response_code&gt;
+    &lt;from_date&gt;2017-08-03T00:00:01+03:00&lt;/from_date&gt;&lt;signature&gt;521d32010a9988de86e16b49f6303985508d5f244784474da1184d457b53ded2&lt;/signature&gt;     &lt;merchant_identifier&gt;CycHZxVj&lt;/merchant_identifier&gt;                                     &lt;access_code&gt;zx0IPmPy5jp1vAz8Kpg7&lt;/access_code&gt;
+    &lt;language&gt;en&lt;/language&gt;&lt;response_format&gt;XML&lt;/response_format&gt;                           &lt;response_message&gt;Success&lt;/response_message&gt;
+    &lt;to_date&gt;2017-08-03T23:59:59+03:00&lt;/to_date&gt;
+    &lt;merchant_reference&gt;XYZ9239-yu898&lt;/merchant_reference&gt;                                  &lt;query_command&gt;GENERATE_REPORT&lt;/query_command&gt;
+    &lt;status&gt;56&lt;/status&gt;
+&lt;/response&gt;
 </code></pre>
 
-<p>Filter Parameters and Key Parameters</p>
-<pre><code>[]
-</code></pre>
-
-<pre><code>[&quot;fort_id&quot;,
- &quot;merchant_reference&quot;,
- &quot;authorization_code&quot;,
- &quot;customer_name&quot;,
- &quot;customer_ip&quot;,
- &quot;geolocation_ip&quot;,
- &quot;customer_email&quot;,
- &quot;acquirer_name&quot;,
- &quot;payment_option&quot;,
- &quot;channel&quot;,
- &quot;transaction_date&quot;,
- &quot;card_number&quot;,
- &quot;expiry_date&quot;,
- &quot;card_holder_name&quot;,
- &quot;amount&quot;,
- &quot;currency&quot;,
- &quot;card_bin&quot;,
- &quot;eci&quot;,
- &quot;operation&quot;,
- &quot;token_name&quot;,
- &quot;3ds_indicator&quot;,
- &quot;fraud_indicator&quot;,
- &quot;installments_indicator&quot;,
- &quot;status&quot;,
- &quot;response_code&quot;,
- &quot;response_message&quot;,
- &quot;third_party_message&quot;,
- &quot;third_party_code&quot;,
- &quot;order_date&quot;,
- &quot;order_description&quot;,
- &quot;acquirer_mid&quot;,
- &quot;acquirer_response_code&quot;,
- &quot;acquirer_response_message&quot;,
- &quot;processor_response_code&quot;,
- &quot;sadad_olp&quot;,
- &quot;sadad_transaction_id&quot;,
- &quot;payment_link_id&quot;,
- &quot;Invoice_id&quot;,
- &quot;digital_wallet&quot;
-]
-</code></pre>
+<hr />
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
 
   <br>
     
@@ -254,12 +218,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../installments/" class="btn btn-xs btn-default pull-right">
+      <a href="../reportingapiparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../installments/" class="btn btn-xs btn-link">
-        Installments
+      <a href="../reportingapiparameters/" class="btn btn-xs btn-link">
+        Reporting API Parameters
       </a>
     </div>
     

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Reporting API Parameters - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Reporting API Request and Response", url: "#_top", children: [
+              {title: "Generate Report - Request", url: "#generate-report-request" },
+              {title: "Generate Report - Response", url: "#generate-report-response" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../reportingbackoffice/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../reportingbackoffice/" class="btn btn-xs btn-link">
+        Report Generation (BackOffice)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../reportingapi/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../reportingapi/" class="btn btn-xs btn-link">
+        Reporting API
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="reporting-api-request-and-response">Reporting API Request and Response</h1>
+<hr />
+<h2 id="generate-report-request">Generate Report - Request</h2>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha Mandatory max: 50</td>
+<td align="left">Query operations command. Possible/ expected values: GENERATE_REPORT Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Merchant account Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">FORT Merchant Account identifier. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898 Special characters: _ - .</td>
+</tr>
+<tr>
+<td align="right"><strong>from_date</strong> Alphanumeric Mandatory max: 30</td>
+<td align="left">Query parameter to filter from a specific date. Example: 2017-01-01T14:36:55+03:00 Special characters: + - :</td>
+</tr>
+<tr>
+<td align="right"><strong>to_date</strong> Alphanumeric Mandatory max: 30</td>
+<td align="left">Query parameter to filter the results till a specific date. Example: 2017-06-28T14:36:55+03:00 Special characters: + - :</td>
+</tr>
+<tr>
+<td align="right"><strong>columns</strong> List Mandatory max: 110</td>
+<td align="left">The columns you want to appear in your report. Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#columns-parameter">column parameters</a>). Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Optional max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>response_format</strong> Alpha Optional max: 4</td>
+<td align="left">The FORT response format; weather its JSON or XML. *The default response format is “JSON”. Possible/ expected values: - JSON - XML</td>
+</tr>
+<tr>
+<td align="right"><strong>filters</strong> List Optional max: 10</td>
+<td align="left">The filters the merchant wants to use to filter the generated report results. possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#filters-parameter">filters parameters</a>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="columns-parameter">Columns Parameter</h3>
+<p><strong>The following table contains all the possible values you want to revert in your response, you can choose any of them:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">fort_id</td>
+<td align="left">The order’s unique reference returned by our system.</td>
+</tr>
+<tr>
+<td align="right">merchant_reference</td>
+<td align="left">The Merchant’s unique order number.</td>
+</tr>
+<tr>
+<td align="right">authorization_code</td>
+<td align="left">The authorization code returned from the 3rd party responsible for processing the transaction.</td>
+</tr>
+<tr>
+<td align="right">customer_name</td>
+<td align="left">The Customer’s name.</td>
+</tr>
+<tr>
+<td align="right">customer_ip</td>
+<td align="left">The customer’s IP address; where the Merchant sends as part of the authorization/ purchase request.</td>
+</tr>
+<tr>
+<td align="right">geolocation_ip</td>
+<td align="left">The card for the Customer’s computer.</td>
+</tr>
+<tr>
+<td align="right">customer_email</td>
+<td align="left">The Customer’s email; where the Merchant sends with the authorization/purchase request.</td>
+</tr>
+<tr>
+<td align="right">acquirer_name</td>
+<td align="left">The name of the Acquirer.</td>
+</tr>
+<tr>
+<td align="right">payment_option</td>
+<td align="left">The payment option use to process the authorization/ purchase request.</td>
+</tr>
+<tr>
+<td align="right">channel</td>
+<td align="left">The FORT channel used to receive the authorization/purchase request.</td>
+</tr>
+<tr>
+<td align="right">transaction_date</td>
+<td align="left">The date of the transaction.</td>
+</tr>
+<tr>
+<td align="right">card_number</td>
+<td align="left">The card number used to process the transaction.</td>
+</tr>
+<tr>
+<td align="right">expiry_date</td>
+<td align="left">The card’s expiry date.</td>
+</tr>
+<tr>
+<td align="right">card_holder_name</td>
+<td align="left">The cardholder’s name.</td>
+</tr>
+<tr>
+<td align="right">amount</td>
+<td align="left">The transaction’s amount.</td>
+</tr>
+<tr>
+<td align="right">currency</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+<tr>
+<td align="right">card_bin</td>
+<td align="left">The bank identification number (BIN); which is the initial four to eight numbers that appear on a credit card.</td>
+</tr>
+<tr>
+<td align="right">eci</td>
+<td align="left">The E-commerce indicator associated with the transactions authorization/ purchase request.</td>
+</tr>
+<tr>
+<td align="right">operation</td>
+<td align="left">The operation type (authorization, purchase, void authorization, capture, and refund)</td>
+</tr>
+<tr>
+<td align="right">token_name</td>
+<td align="left">The Token associated with the card used to process the transaction.</td>
+</tr>
+<tr>
+<td align="right">3ds_indicator</td>
+<td align="left">This indicator will hold the value “yes” in case 3-D Secure check was performed on a specific transaction. Otherwise, it will holds the value “no”.</td>
+</tr>
+<tr>
+<td align="right">fraud_indicator</td>
+<td align="left">This indicator will hold the value “yes” in case fraud check was performed on a specific transaction. Otherwise, it will holds the value “no”.</td>
+</tr>
+<tr>
+<td align="right">installments_indicator</td>
+<td align="left">This indicator will hold the value “yes” in case installments service was applied on a specific transaction. Otherwise, it will holds the value “no”.</td>
+</tr>
+<tr>
+<td align="right">status</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+<tr>
+<td align="right">response_code</td>
+<td align="left">Carries the value of our system’s response.</td>
+</tr>
+<tr>
+<td align="right">response_message</td>
+<td align="left">The Message description of the response code. It returns according to the request language.</td>
+</tr>
+<tr>
+<td align="right">third_party_message</td>
+<td align="left">The message retrieved from the third party.</td>
+</tr>
+<tr>
+<td align="right">third_party_code</td>
+<td align="left">The code retrieved from the third party.</td>
+</tr>
+<tr>
+<td align="right">order_date</td>
+<td align="left">The creation date of the order.</td>
+</tr>
+<tr>
+<td align="right">order_description</td>
+<td align="left">The description of the order provided by the merchant.</td>
+</tr>
+<tr>
+<td align="right">acquirer_mid</td>
+<td align="left">The Acquirer Merchant identifier.</td>
+</tr>
+<tr>
+<td align="right">acquirer_response_code</td>
+<td align="left">The code the Acquirer returns.</td>
+</tr>
+<tr>
+<td align="right">acquirer_response_message</td>
+<td align="left">The code the Acquirer returns.</td>
+</tr>
+<tr>
+<td align="right">processor_response_code</td>
+<td align="left">The code the Acquirer returns.</td>
+</tr>
+<tr>
+<td align="right">sadad_olp</td>
+<td align="left">SADAD Online Payment ID Alias. The value that SADAD’s Customer provides to process SADAD order.</td>
+</tr>
+<tr>
+<td align="right">sadad_transaction_id</td>
+<td align="left">The identifier returned by SADAD for a specific SADAD transaction.</td>
+</tr>
+<tr>
+<td align="right">payment_link_id</td>
+<td align="left">Payment link unique identifier.</td>
+</tr>
+<tr>
+<td align="right">Invoice_id</td>
+<td align="left">The identification for a specific subscription service.</td>
+</tr>
+<tr>
+<td align="right">digital_wallet</td>
+<td align="left">The buyer’s digital wallet.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="filters-parameter">Filters Parameter</h3>
+<p><strong>Include the following parameters into “filters” parameter you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>key</strong> Alphanumeric max: 110</td>
+<td align="left">The name of the column you want to filter. You can choose more than one. Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#key-parameter">Key parameter</a>). Special characters: # <code>'</code>\ / . _ - @ : <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>value</strong> Alphanumeric max: -</td>
+<td align="left">The value of the key you want to revert in your response. It depends on the key you have chosen to revert.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-parameter">Key Parameter</h3>
+<p><strong>The following table contains all the possible values of the “key” parameter, you can choose any of them:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">Key</th>
+<th align="left">Description &amp; Possible Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">fort_id</td>
+<td align="left">The order’s unique reference returned by our system.</td>
+</tr>
+<tr>
+<td align="right">merchant_reference</td>
+<td align="left">The Merchant’s unique order number.</td>
+</tr>
+<tr>
+<td align="right">authorization_code</td>
+<td align="left">The authorization code returned from the 3rd party responsible for processing the transaction.</td>
+</tr>
+<tr>
+<td align="right">customer_name</td>
+<td align="left">The Customer’s name.</td>
+</tr>
+<tr>
+<td align="right">customer_ip</td>
+<td align="left">The customer’s IP address; where the Merchant sends as part of the authorization/ purchase request.</td>
+</tr>
+<tr>
+<td align="right">geolocation_ip</td>
+<td align="left">The card for the Customer’s computer.</td>
+</tr>
+<tr>
+<td align="right">customer_email</td>
+<td align="left">The Customer’s email; where the Merchant sends with the authorization/purchase request.</td>
+</tr>
+<tr>
+<td align="right">acquirer_name</td>
+<td align="left">The name of the Acquirer.</td>
+</tr>
+<tr>
+<td align="right">payment_option</td>
+<td align="left">The payment option use to process the authorization/ purchase request. Possible/ Expected Values: - MASTERCARD - VISA - AMEX - SADAD - NAPS - KNET - MADA - MEEZA</td>
+</tr>
+<tr>
+<td align="right">channel</td>
+<td align="left">The FORT channel used to receive the authorization/purchase request. Possible/ Expected Values: - MOTO - Trusted - Merchant Page - Redirection - eTerminal - Recurring</td>
+</tr>
+<tr>
+<td align="right">transaction_date</td>
+<td align="left">The date of the transaction.</td>
+</tr>
+<tr>
+<td align="right">card_number</td>
+<td align="left">The card number used to process the transaction.</td>
+</tr>
+<tr>
+<td align="right">expiry_date</td>
+<td align="left">The card’s expiry date.</td>
+</tr>
+<tr>
+<td align="right">card_holder_name</td>
+<td align="left">The cardholder’s name.</td>
+</tr>
+<tr>
+<td align="right">amount</td>
+<td align="left">The transaction’s amount.</td>
+</tr>
+<tr>
+<td align="right">currency</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+<tr>
+<td align="right">card_bin</td>
+<td align="left">The bank identification number (BIN); which is the initial four to eight numbers that appear on a credit card.</td>
+</tr>
+<tr>
+<td align="right">eci</td>
+<td align="left">The E-commerce indicator associated with the transactions authorization/ purchase request. Possible/ Expected Values: - ECOMMERCE - RECURRING - MOTO</td>
+</tr>
+<tr>
+<td align="right">operation</td>
+<td align="left">The operation type (authorization, purchase, void authorization, capture, and refund).</td>
+</tr>
+<tr>
+<td align="right">token_name</td>
+<td align="left">The Token associated with the card used to process the transaction.</td>
+</tr>
+<tr>
+<td align="right">3ds_indicator</td>
+<td align="left">This indicator will hold the value “yes” in case 3-D Secure check was performed on a specific transaction. Otherwise, it will holds the value “no”. Possible/ Expected Values: - YES - NO</td>
+</tr>
+<tr>
+<td align="right">fraud_indicator</td>
+<td align="left">This indicator will hold the value “yes” in case fraud check was performed on a specific transaction. Otherwise, it will holds the value “no”. Possible/ Expected Values: - YES - NO</td>
+</tr>
+<tr>
+<td align="right">installments_indicator</td>
+<td align="left">This indicator will hold the value “yes” in case installments service was applied on a specific transaction. Otherwise, it will holds the value “no”. Possible/ Expected Values: - YES - NO</td>
+</tr>
+<tr>
+<td align="right">status</td>
+<td align="left">A transaction status value that indicates the status of the transaction.</td>
+</tr>
+<tr>
+<td align="right">response_code</td>
+<td align="left">Carries the value of our system’s response.</td>
+</tr>
+<tr>
+<td align="right">response_message</td>
+<td align="left">The Message description of the response code. It returns according to the request language.</td>
+</tr>
+<tr>
+<td align="right">third_party_message</td>
+<td align="left">The message retrieved from the third party.</td>
+</tr>
+<tr>
+<td align="right">third_party_code</td>
+<td align="left">The code retrieved from the third party.</td>
+</tr>
+<tr>
+<td align="right">order_date</td>
+<td align="left">The creation date of the order.</td>
+</tr>
+<tr>
+<td align="right">order_description</td>
+<td align="left">The description of the order provided by the merchant.</td>
+</tr>
+<tr>
+<td align="right">acquirer_mid</td>
+<td align="left">The Acquirer Merchant identifier.</td>
+</tr>
+<tr>
+<td align="right">acquirer_response_code</td>
+<td align="left">The code the Acquirer returns.</td>
+</tr>
+<tr>
+<td align="right">acquirer_response_message</td>
+<td align="left">The code the Acquirer returns.</td>
+</tr>
+<tr>
+<td align="right">processor_response_code</td>
+<td align="left">The code the Acquirer returns.</td>
+</tr>
+<tr>
+<td align="right">sadad_olp</td>
+<td align="left">SADAD Online Payment ID Alias. The value that SADAD’s Customer provides to process SADAD order.</td>
+</tr>
+<tr>
+<td align="right">sadad_transaction_id</td>
+<td align="left">The identifier returned by SADAD for a specific SADAD transaction.</td>
+</tr>
+<tr>
+<td align="right">payment_link_id</td>
+<td align="left">Payment link unique identifier.</td>
+</tr>
+<tr>
+<td align="right">Invoice_id</td>
+<td align="left">The identification for a specific subscription service.</td>
+</tr>
+<tr>
+<td align="right">digital_wallet</td>
+<td align="left">The buyer’s digital wallet. Possible/ Expected Values: - MASTERPASS - VISA_CHECKOUT - APPLE_PAY</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="generate-report-response">Generate Report - Response</h2>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha max: 50</td>
+<td align="left">Query operations command. Possible/ expected values: GENERATE_REPORT</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Merchant account Access Code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">FORT Merchant Account identifier. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric max: 40</td>
+<td align="left">The Merchant’s unique reference for a specific request. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>from_date</strong> Alphanumeric Mandatory max: 30</td>
+<td align="left">Query parameter to filter from a specific date. Example: 2017-01-01T14:36:55+03:00</td>
+</tr>
+<tr>
+<td align="right"><strong>to_date</strong> Alphanumeric Mandatory max: 30</td>
+<td align="left">Query parameter to filter the results till a specific date. Example: 2017-06-28T14:36:55+03:00</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>response_format</strong> Alpha Max: 4</td>
+<td align="left">The FORT response format; weather its JSON or XML. *The default response format is “JSON”. Possible/ expected values: - JSON - XML</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Example: Insufficient Funds</td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#messages">messages</a>. Example: 56000</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#statuses">statuse</a></td>
+</tr>
+</tbody>
+</table>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../reportingbackoffice/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../reportingbackoffice/" class="btn btn-xs btn-link">
+        Report Generation (BackOffice)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../reportingapi/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../reportingapi/" class="btn btn-xs btn-link">
+        Reporting API
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
