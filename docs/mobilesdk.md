@@ -8,8 +8,6 @@ The **PayFORT Mobile SDK** allows you to securely integrate the payment function
 
 ------
 
-
-
 - Native in-app payment.
 - Fully secure.
 - Fully customized.
@@ -20,7 +18,7 @@ The **PayFORT Mobile SDK** allows you to securely integrate the payment function
 
 ![mobilesdk workflow](img\mobilesdkworkflow.JPG)
 
-When your customer initiates the payment on your site, your site requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.
+When your customer initiates the payment on your merchant app, your app requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response to your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.
 
 Here is the description of mobile sdk integration workflow:
 
@@ -42,7 +40,7 @@ For more details on PayFORT iOS SDK Integration visit this [link](iossdk.md)
 
 ------
 
-
+You can download the two available FORT mobile sdk libraries from this section.
 
 <div class="row">
   <div class="col-sm-6">
@@ -114,13 +112,17 @@ For more details on PayFORT iOS SDK Integration visit this [link](iossdk.md)
 
 ------
 
+## Mobile SDK Token
+
+------
 
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>A Mobile SDK Token is required to authenticate every request sent to the SDK. The Token is also significant to process payment operations in the FORT through our FORT Mobile SDK.</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>A Mobile SDK Token is required to authenticate every request sent to the SDK. The Token is also important to process payment operations in the FORT through our FORT Mobile SDK.</div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>A unique Token should be created for each transaction. Each Token has a life-time of only one hour if no new request from the same device is sent.</div>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>The creation and initiation of a Mobile SDK Token happens on the Merchant’s server side.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>The creation and initiation of a Mobile SDK Token happens on your server side.</div>
 
 ------
 
@@ -138,9 +140,19 @@ POST  https://sbpaymentservices.payfort.com/FortAPI/paymentApi
 POST  https://paymentservices.payfort.com/FortAPI/paymentApi
 ```
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
+### SDK Token Request
 
+------
 
+Placeholder for sample code.
+
+You can check out the full list of parameters that are required for SDK Token request by visiting this [link](sdktokenparameters.md)
+
+### SDK Response
+
+------
+
+Placeholder for sample JSON response.
 
 ## Go to Full API
 

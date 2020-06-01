@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Currency Exchange Service - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Currency Exchange Service", url: "#_top", children: [
+              {title: "Currency Exchange URLs", url: "#currency-exchange-urls" },
+              {title: "Parameters Submission Type", url: "#parameters-submission-type" },
+              {title: "Currency Exchange - Request", url: "#currency-exchange-request" },
+              {title: "Currency Exchange - Response", url: "#currency-exchange-response" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../incommon/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../incommon/" class="btn btn-xs btn-link">
+        In Common Service
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../verifyservice/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../verifyservice/" class="btn btn-xs btn-link">
+        Verify Service
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="currency-exchange-service">Currency Exchange Service</h2>
+<p>This service allows the merchant to convert the transaction amount from one currency into another currency using live currency exchange rate.</p>
+<p>Remember - Before start implementing this service please make sure to contact support@payfort.com to activate it in your account.</p>
+<h3 id="currency-exchange-urls">Currency Exchange URLs</h3>
+<p><strong>Test Environment URL:</strong></p>
+<p>https://sbpaymentservices.PayFort.com/FortAPI/paymentApi</p>
+<p><strong>Production Environment URL:</strong></p>
+<p>https://paymentservices.PayFort.com/FortAPI/paymentApi</p>
+<h3 id="parameters-submission-type">Parameters Submission Type</h3>
+<p>REST POST request using JSON.</p>
+<h3 id="currency-exchange-request">Currency Exchange - Request</h3>
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: CURRENCY_CONVERSION Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>converted_currency</strong> Alpha Mandatory max: 3</td>
+<td align="left">The ISO3 currency code of the currency you are converting the amount to. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<h3 id="currency-exchange-response">Currency Exchange - Response</h3>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha max: 20</td>
+<td align="left">Command. Possible/ expected values: CURRENCY_CONVERSION</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a>).</td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">statuses</a>).</td>
+</tr>
+<tr>
+<td align="right"><strong>converted_amount</strong> Alpha max: 3</td>
+<td align="left">The amount after converting to another currency. Example: 100 USD = 367.298 AED</td>
+</tr>
+<tr>
+<td align="right"><strong>converted_currency</strong> Alpha max: 3</td>
+<td align="left">The ISO3 currency code of the currency you are converting the amount to. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>conversion_number</strong> Alphanumeric max: 20</td>
+<td align="left">A unique number generated by PayFort for every valid currency conversion request. Example: 1443796866848</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../incommon/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../incommon/" class="btn btn-xs btn-link">
+        In Common Service
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../verifyservice/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../verifyservice/" class="btn btn-xs btn-link">
+        Verify Service
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>One to Many(Batch invoicing) - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "One to Many (Batch Invoicing)", url: "#_top", children: [
+              {title: "Before You Start", url: "#before-you-start" },
+              {title: "Steps to activate Batch and Invoicing services", url: "#steps-to-activate-batch-and-invoicing-services" },
+              {title: "Steps to download the Batch Invoicing Template", url: "#steps-to-download-the-batch-invoicing-template" },
+              {title: "How it Works", url: "#how-it-works" },
+              {title: "Supported Schemes", url: "#supported-schemes" },
+          ]},
+          {title: "Go to Full API", url: "#go-to-full-api", children: [
+          ]},
+          {title: "Need further help?", url: "#need-further-help", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../inovicegenerationbackoffice/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../inovicegenerationbackoffice/" class="btn btn-xs btn-link">
+        Invoice Generation(BackOffice)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../invoicingparameters/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../invoicingparameters/" class="btn btn-xs btn-link">
+        Invoicing Parameters
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="one-to-many-batch-invoicing">One to Many (Batch Invoicing)</h2>
+<hr />
+<p>PayFORT also allows you to generate and upload bulk of invoice to PayFORT as a batch. This service helps you to serve several customers in one go. For example sending bulk invoices to customers for fixed price item. Batch invoicing works on similar principle of <a href="../batchservice/">Batch Service</a>. There are two types of invoicing services which you can use as per your business requirement. This section describes one to many or batch invoicing service. For one to one invoice generation visit this <a href="../invoicing/">link</a>. </p>
+<hr />
+<h3 id="before-you-start">Before You Start</h3>
+<p>Before starting you have to know the following:</p>
+<ol>
+<li>You’re only allowed to send <mark>PAYMENT_LINK</mark> service command in the invoice batch file.</li>
+<li>You should active the Batch processing and invoicing services.</li>
+<li>You can download the invoice batch file template from the Back office by clicking on the <mark><strong>Batch invoicing</strong></mark> tab that appears only if you activate the batch and invoicing services.</li>
+</ol>
+<hr />
+<h3 id="steps-to-activate-batch-and-invoicing-services">Steps to activate Batch and Invoicing services</h3>
+<hr />
+<p>Provide steps to activate batch and invoicing services from the back office along with images, videos etc.</p>
+<hr />
+<h3 id="steps-to-download-the-batch-invoicing-template">Steps to download the Batch Invoicing Template</h3>
+<p>Provide steps to download batch invoicing template from the backoffice along with images, videos, etc.</p>
+<hr />
+<h3 id="how-it-works">How it Works</h3>
+<p>Placeholder: Add Integration flow/Process flow diagram.</p>
+<p>As Batch Invoice process applies similar steps as that of Batch service, here are steps :</p>
+<ol>
+<li><strong>Upload Invoicing Batch File</strong></li>
+</ol>
+<p>This request is quite similar to the upload batch file request that you process in the <a href="../batchservice/">Batch Service</a> . Only difference is that you will be uploading the batch invoicing template (which can be downloaded from the back office, provided you have activated the batch and invoicing service). This request allows you to upload the invoice batch file to PayFORT system.</p>
+<p>Please refer to the section upload batch file- request and upload batch file - response by visiting this <a href="../batchservice/">link</a></p>
+<p><strong>Upload Invoicing Batch File - Request</strong></p>
+<p>Placeholder: please provide sample code for the request</p>
+<p>For more details on input parameters refer to the <a href="../batchserviceparameters/">link</a></p>
+<p><strong>Upload Invoicing Batch File - Response</strong></p>
+<p>Placeholder: Please provide sample response sent from the PayFORT.</p>
+<ol>
+<li><strong>Get Invoicing Batch Results</strong>
+   This request is similar to the Get Batch file results request in the Batch Service. In this case you will be requesting the results of the invoicing template which has been uploaded to the PayFORT system. This request allows you to validate the format of the file and to check that the merchant reference for each and every transaction is unique. After validation the <mark>Account Administrator</mark> will receive an email notification with success invoices count.</li>
+</ol>
+<p>Please refer to the section get batch file results- request and get batch file results - response by visiting this <a href="../batchservice/">link</a></p>
+<p><strong>Get Invoicing Batch Results - Request</strong></p>
+<p>Placeholder: please provide sample code for the request</p>
+<p>For more details on input parameters refer to the <a href="../batchserviceparameters/">link</a></p>
+<p><strong>Get Invoicing Batch Results - Response</strong></p>
+<p>Placeholder: Please provide sample response sent from the PayFORT.</p>
+<ol>
+<li><strong>Process Invoicing Batch File</strong>
+   This is again similar to the last step in the Batch service where you process the batch file. In this case you will be requesting to process the invoicing template for further transactions. This request allows you to initiate the processing of transactions. To start the processing the file should have been validated in the Get Invoicing Batch Results-request and passed the validation process which you will be able to know from the PayFORT response. After processing the <mark>Account Administrator</mark> will receive an email notification with success invoices count.</li>
+</ol>
+<p>Please refer to the section process batch file- request and process batch file - response by visiting this <a href="../batchservice/">link</a></p>
+<p><strong>Process Invoicing Batch File - Request</strong></p>
+<p>Placeholder: please provide sample code for the request</p>
+<p>For more details on input parameters refer to the <a href="../batchserviceparameters/">link</a></p>
+<p><strong>Process Invoicing Batch File - Response</strong></p>
+<p>Placeholder: Please provide sample response sent from the PayFORT.</p>
+<h3 id="supported-schemes">Supported Schemes</h3>
+<hr />
+<p>Placeholder: Details for supported schemes to be added here.</p>
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../inovicegenerationbackoffice/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../inovicegenerationbackoffice/" class="btn btn-xs btn-link">
+        Invoice Generation(BackOffice)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../invoicingparameters/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../invoicingparameters/" class="btn btn-xs btn-link">
+        Invoicing Parameters
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

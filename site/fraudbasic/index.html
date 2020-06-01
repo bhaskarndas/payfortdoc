@@ -32,6 +32,15 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "PayFORT Fraud Protection Service", url: "#_top", children: [
+              {title: "How it Works?", url: "#how-it-works" },
+              {title: "Integration Flow", url: "#integration-flow" },
+              {title: "PayFORT Fraud prevention services Request", url: "#payfort-fraud-prevention-services-request" },
+              {title: "PayFORT Fraud prevention services Response", url: "#payfort-fraud-prevention-services-response" },
+              {title: "Fraud Management (Back Office)", url: "#fraud-management-back-office" },
+              {title: "Go to Full API", url: "#go-to-full-api" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
         ];
 
     </script>
@@ -57,12 +66,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../tokenization/" class="btn btn-xs btn-default pull-right">
+      <a href="../aciredfraud/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../tokenization/" class="btn btn-xs btn-link">
-        Tokenization (Safe)
+      <a href="../aciredfraud/" class="btn btn-xs btn-link">
+        ACI Red Fraud(Protect+)
       </a>
     </div>
     
@@ -78,7 +87,81 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    
+    <h1 id="payfort-fraud-protection-service">PayFORT Fraud Protection Service</h1>
+<hr />
+<p>These days it is very common to get lured into various scams and expose any application and device to the scamsters. The scamsters use various novel techniques such as phishing, etc to scam. PayFORT helps to protect against  online frauds. This service protects you being lured into a scam over the Internet, and as a result minimizes chargebacks.  </p>
+<p>It's light fraud check rules can be enabled on the merchant account if the merchant business is not that risky or have complex fraud rules. Its limited number of fraud rules can be permitted to monitor the merchant transactions online during the transaction processing.</p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>This service can be used in both <a href="../docs/redirections.md">Authorization and Purchase </a>operations. The Fraud service must be activated by PayFort’s Operations team.
+    \- Please note that PayFort’s operations team must activate the fraud service.</div>
+
+<p>PayFORT fraud management consists of two layers first one is the basic fraud management service and another is <a href="../aciredfraud/">ACI ReD Fraud Service</a>. This section covers fraud management service API and basic fraud management through the back office.</p>
+<hr />
+<h2 id="how-it-works">How it Works?</h2>
+<hr />
+<p>The PayFORT service helps your application or site to detect customer's IP Geolocation and helps track the payment transactions.</p>
+<p>Placeholder: Explain the working process for the PayFORT fraud protection service.</p>
+<h2 id="integration-flow">Integration Flow</h2>
+<hr />
+<p>Workflow Diagram required here to explain the Integration flow as well.</p>
+<h2 id="payfort-fraud-prevention-services-request">PayFORT Fraud prevention services Request</h2>
+<p><strong>The Request</strong></p>
+<p>Placeholder: Provide a sample code for sending the request.</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>customer_ip</strong><sup>( Alphanumeric Mandatory max: 45)</sup></td>
+<td align="left">Refers to the customer’s IP Geolocation. *We support IPv4 and IPv6 as shown in the example below. Example: 192.178.1.10 Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf Special characters: . :</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="payfort-fraud-prevention-services-response">PayFORT Fraud prevention services Response</h2>
+<p>PayFORT will send back the customer_ip details in the response</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>customer_ip</strong><sup>( Alphanumeric )</sup></td>
+<td align="left">Refers to the customer’s IP Geolocation. *We support IPv4 and IPv6 as shown in the example below. Example: 192.178.1.10 Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf Special characters: . :</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fraud-management-back-office">Fraud Management (Back Office)</h2>
+<hr />
+<p>You can also manage fraud management service from the Back Office portal. </p>
+<p>You can follow the steps mentioned in this section to configure fraud management services</p>
+<ol>
+<li>On the left hand side under the services menu you will find fraud management screen</li>
+<li>Once you click on fraud management screen, a window as shown below will open.</li>
+<li>You can configure Velocity check, hotlist, combination rules.</li>
+</ol>
+<p><img alt="" src="../img/fraudmanagementbackoffice.jpg" /></p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>It is advisable to use default PayFORT settings unless your business requirements are different.</div>
+
+<p>You can also check out the video tutorial below</p>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe width="734" height="413" src="https://www.youtube.com/embed/L_mE9GqCA-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<hr />
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
 
   <br>
     
@@ -91,12 +174,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../tokenization/" class="btn btn-xs btn-default pull-right">
+      <a href="../aciredfraud/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../tokenization/" class="btn btn-xs btn-link">
-        Tokenization (Safe)
+      <a href="../aciredfraud/" class="btn btn-xs btn-link">
+        ACI Red Fraud(Protect+)
       </a>
     </div>
     

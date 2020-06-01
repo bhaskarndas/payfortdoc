@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>In Common Service - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "In Common Services", url: "#_top", children: [
+              {title: "Query Operations", url: "#query-operations" },
+              {title: "Services Activation", url: "#services-activation" },
+              {title: "Signature", url: "#signature" },
+              {title: "FORT XML Response Builder", url: "#fort-xml-response-builder" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../securitysettings/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../securitysettings/" class="btn btn-xs btn-link">
+        Security Settings
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../currencyexchange/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../currencyexchange/" class="btn btn-xs btn-link">
+        Currency Exchange Service
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="in-common-services">In Common Services</h1>
+<hr />
+<h2 id="query-operations">Query Operations</h2>
+<p>A type of query that can be requested through our system, which includes the “Check Status” query.</p>
+<h3 id="check-status">Check Status</h3>
+<p><strong>Check Status</strong> allows the Merchant to check the status of a specific order and the status of the latest operation performed on that order.</p>
+<h3 id="endpoints">Endpoints</h3>
+<hr />
+<p><strong>Sandbox</strong></p>
+<pre><code class="http">POST https://sbpaymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+<p><strong>Live</strong></p>
+<pre><code class="http">POST https://paymentservices.payfort.com/FortAPI/paymentApi
+</code></pre>
+
+<h3 id="parameters-submission-type">Parameters Submission Type</h3>
+<p>REST POST request using JSON.</p>
+<h3 id="check-status-request">Check Status - Request</h3>
+<p>(Please take a look at the <em>Check Status Request Example</em> on the right side of the page.)</p>
+<blockquote>
+<p>Check Status Request Example</p>
+</blockquote>
+<pre><code>String jsonRequestString = &quot;{\&quot;query_command\&quot; : \&quot;CHECK_STATUS\&quot; \&quot;access_code\&quot; : \&quot;zx0IPmPy5jp1vAz8Kpg7\&quot;, \&quot;merchant_identifier\&quot; : \&quot;CycHZxVj\&quot;,&quot;
+        + &quot;\&quot;merchant_reference\&quot; : \&quot;XYZ9239-yu898\&quot;, \&quot;language\&quot; : \&quot;en\&quot;, &quot;
+        + &quot;\&quot;signature\&quot; : \&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a\&quot;}&quot;;
+
+// Define and Initialize HttpClient
+HttpClient httpClient = HttpClientBuilder.create().build();
+// Intialize HttpPOST with FORT Payment services URL
+HttpPost request = new HttpPost(&quot;https://sbpaymentservices.payfort.com/FortAPI/paymentApi&quot;);
+// Setup Http POST entity with JSON String
+StringEntity params = new StringEntity(jsonRequestString);
+// Setup request type as JSON
+request.addHeader(&quot;content-type&quot;, &quot;application/json&quot;);
+request.setEntity(params);
+// Post request to FORT
+HttpResponse response = httpClient.execute(request);
+// Read response using StringBuilder
+StringBuilder sb = new StringBuilder();
+BufferedReader reader = new BufferedReader(new InputStreamReader(
+    response.getEntity().getContent()), 65728);
+String line = null;
+while ((line = reader.readLine()) != null) {
+  sb.append(line);
+}
+// Print response
+System.out.println(sb.toString());
+</code></pre>
+
+<p><strong>Include the following parameters in the Request you will send to PayFort:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha Mandatory max: 50</td>
+<td align="left">The query operations command. Possible/ expected values: CHECK_STATUS Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>fort_id</strong> Numeric Optional Max: 20</td>
+<td align="left">The order’s unique reference returned by our system. Example: 149295435400084008</td>
+</tr>
+<tr>
+<td align="right"><strong>return_third_party_response_codes</strong> Alpha Optional Max: 3</td>
+<td align="left">This parameter allows you to return the 3rd party response codes in the transaction’s response. Possible/ expected values: - YES - NO</td>
+</tr>
+</tbody>
+</table>
+<p>You can send “merchant_reference” and/ or “fort_id” in the CHECK_STATUS request.</p>
+<h3 id="check-status-response">Check Status - Response</h3>
+<p>(Please take a look at the <em>Check Status Example Response</em> on the right side of the page.)</p>
+<blockquote>
+<p>Check Status Response Example</p>
+</blockquote>
+<pre><code>{&quot;query_command&quot;:&quot;CHECK_STATUS&quot;,&quot;access_code&quot;:&quot;s31bpM1ebfNnwqo&quot;,&quot;merchant_identifier&quot;:&quot;FD1Ptq&quot;,&quot;merchant_reference&quot;:&quot;141127176&quot;,&quot;language&quot;:&quot;en&quot;,&quot;signature&quot;:&quot;90f7092923c9eea8b0df6d509453a1791a36e2cd4a80eaef366e235b169a40e0&quot;,&quot;fort_id&quot;:&quot;21722423333&quot;,&quot;response_message&quot;:&quot;Success&quot;,&quot;response_code&quot;:&quot;12000&quot;,&quot;status&quot;:&quot;12&quot;,&quot;transaction_status&quot;:&quot;12&quot;,&quot;transaction_code&quot;:&quot;12000&quot;,&quot;transaction_message&quot;:&quot;Success&quot;}
+</code></pre>
+
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha max: 50</td>
+<td align="left">The query operations command. Possible/ expected values: CHECK_STATUS</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>fort_id</strong> Numeric Max: 20</td>
+<td align="left">The order’s unique reference returned by our system. Example: 149295435400084008</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric Max: 150</td>
+<td align="left">Message description of the response code; it returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">statuses</a></td>
+</tr>
+<tr>
+<td align="right"><strong>transaction_status</strong> Numeric Max: 2</td>
+<td align="left">The status of the last operation performed on a specific order. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">statuses</a></td>
+</tr>
+<tr>
+<td align="right"><strong>transaction_code</strong> Numeric Max: 5</td>
+<td align="left">The message code returned for the last operation performed on a specific order. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>transaction_message</strong> Alphanumeric Max: 150</td>
+<td align="left">The message returned for the last operation performed on a specific order. Example: Success</td>
+</tr>
+<tr>
+<td align="right"><strong>refunded_amount</strong> Numeric Max: 10</td>
+<td align="left">The total refunded amount for the order. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>captured_amount</strong> Numeric Max: 10</td>
+<td align="left">The total captured amount for the order. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>authorized_amount</strong> Numeric Max: 10</td>
+<td align="left">The total authorized amount for the order. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>authorization_code</strong> Alphanumeric Max: 100</td>
+<td align="left">Authorization Code returned from the 3rd party. Example: 017201</td>
+</tr>
+<tr>
+<td align="right"><strong>processor_response_code</strong> Alphanumeric Max: 100</td>
+<td align="left">Response code returns from the Processor. Example: APPROVED</td>
+</tr>
+<tr>
+<td align="right"><strong>acquirer_response_code</strong> Alphanumeric Max: 10</td>
+<td align="left">Response code returns from the Acquirer. Example: 00</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<h2 id="services-activation">Services Activation</h2>
+<p>Services are activated for our Merchants by our back-office team. Once you open your Merchant account and click “Payment Stack” under the Services tab. The services provided by PayFort are:</p>
+<ul>
+<li>Fraud Prevention.</li>
+<li>3-D Secure.</li>
+<li>Installments.</li>
+<li>Tokenization.</li>
+<li>Batch service.</li>
+</ul>
+<p>Remember - If you wish to activate extra services for your Merchant account, you need to contact PayFort’s Back-office team. For detailed information, please download our <a href="https://docs.payfort.com/pdf/PAYFORT_Merchant_Integration_Guide_V_10.0.pdf">Merchant Integration Guide</a> and read the “Services Activation” section to guide you through this process.</p>
+<h2 id="signature">Signature</h2>
+<p>The <strong>Signature</strong> is a parameter that holds the digital signature value calculated by the SHA algorithm. The digital signature is used to authenticate the sender and receiver of the message and allows the receiver to verify the integrity of the message.</p>
+<h3 id="message-digest">Message Digest</h3>
+<table>
+<thead>
+<tr>
+<th align="right">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">SHA Type</td>
+<td align="left">The Secure Hash Algorithm is a family of cryptographic hash functions published by the National Institute of Standards as a US Federal information processing standard (FIPS) including: SHA-0, SHA-2, and SHA-3. Values: SHA-256, SHA 512, and SHA-128 (not recommended).</td>
+</tr>
+<tr>
+<td align="right">SHA Request Phrase</td>
+<td align="left">This value is used when the Merchant generates the request signature. Values: Dynamic value defined by the Merchant.</td>
+</tr>
+<tr>
+<td align="right">SHA Response Phrase</td>
+<td align="left">This value is used by our system to generate the response signature for the Merchant’s Request. Values: Dynamic value defined by the Merchant.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="signature-pattern">Signature Pattern</h3>
+<p>The below steps describe the signature pattern:</p>
+<ol>
+<li>Sort all PayFort requests parameters (both mandatory and optional) in an ascending alphabetical order based on the parameters names.</li>
+<li>Concatenate the parameter name with the value separated by ’=’ (param_name=param_value).</li>
+<li>Concatenate all the parameters directly without any separator. (param_name1=param_value1param_name2=param_value2).</li>
+<li>Add the Merchant’s Passphrase at the beginning and end of the parameters string. (REQUESTPHRASEparam_name1=param_value1param_name2=param_value2RE QUESTPHRASE).</li>
+<li>Use the SHA function to generate the SHA value of the resulted string depending on the type of SHA selected by the Merchant.</li>
+</ol>
+<h3 id="create-signature-value">Create Signature Value</h3>
+<pre><code>Map&lt;String, Object&gt;requestMap = new HashedMap();
+    requestMap.put(&quot;command&quot;, &quot;PURCHASE&quot;);
+    requestMap.put(&quot;merchant_reference&quot;, &quot;Test010&quot;);
+    requestMap.put(&quot;amount&quot;, &quot;1000&quot;);
+    requestMap.put(&quot;access_code&quot;, &quot;SILgpo7pWbmzuURp2qri&quot;);
+    requestMap.put(&quot;merchant_identifier&quot;, &quot;MxvOupuG&quot;);
+    requestMap.put(&quot;currency&quot;, &quot;USD&quot;);
+    requestMap.put(&quot;language&quot;, &quot;en&quot;);
+    requestMap.put(&quot;customer_email&quot;, &quot;test@gmail.com&quot;);
+
+//order by key
+requestMap = requestMap.entrySet().stream().sorted(Map.Entry.comparingByKey())
+          .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+          (oldValue, newValue) -&gt; oldValue, LinkedHashMap::new));
+
+String requestString = &quot;PASS&quot;;
+for(Entry&lt;String, Object&gt; entry: requestMap.entrySet())
+    requestString += entry.getKey() + &quot;=&quot; + entry.getValue();  
+requestString+= &quot;PASS&quot;;
+
+MessageDigest digest = MessageDigest.getInstance(&quot;SHA-256&quot;);
+byte[] hashed = digest.digest(requestString.getBytes(StandardCharsets.UTF_8));
+String signature = javax.xml.bind.DatatypeConverter.printHexBinary(hashed);
+</code></pre>
+
+<p>In this section, you can find examples on how to create the signature value for request and response messages. Please note that all values mentioned in the examples are fictitious.</p>
+<p><strong>The following is an example of the Request Parameters:</strong></p>
+<ul>
+<li>signature = b88db48baaa600c3fadac502c75a832e3470029f</li>
+<li>command = PURCHASE</li>
+<li>merchant_reference = Test010</li>
+<li>amount = 1000</li>
+<li>access_code = SILgpo7pWbmzuURp2qri</li>
+<li>merchant_identifier = MxvOupuG</li>
+<li>currency = USD</li>
+<li>language = en</li>
+<li>customer_email = test@gmail.com</li>
+</ul>
+<p><strong>Below are the Merchant signature settings from the back-office:</strong></p>
+<ul>
+<li><strong>SHA Request Phrase:</strong> PASS.</li>
+<li><strong>SHA-Type:</strong> SHA-256.</li>
+</ul>
+<p>After sorting the parameters and completing <strong>step 4</strong> of the <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature-pattern">Signature Pattern</a>, the result will be the following concatenated string:</p>
+<p>PASSaccess_code=SILgpo7pWbmzuURp2qriamount=1000command=PURCHASEcurrenc
+y=USDcustomer_email=test@gmail.comlanguage=enmerchant_identifier=MxvOupuGmerch
+ant_reference=Test010PASS</p>
+<p>After applying <strong>step 5</strong> of the <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature-pattern">Signature Pattern</a>, the result will be as follows:</p>
+<p>Signature = 94C38AFC7BDAE0114FC8C740EDF12416F22998241CE4B4EA70D5521233A2C882</p>
+<p><strong>The following is an example for the Merchant Page 2.0 request signature calculations:</strong></p>
+<p>Remember - The calculations for the Merchant Page 2.0 require you to calculate the signature without including the following parameters in the signature even if these parameters included in the request of Merchant Page 2.0: card_security_code, card_number, expiry_date, card_holder_name, remember_me.</p>
+<p><strong>Assume you have the below parameters included in the request of Merchant Page 2.0:</strong></p>
+<ul>
+<li>service_command = TOKENIZATION</li>
+<li>language = en</li>
+<li>merchant_identifier = MxvOupuG</li>
+<li>access_code = SILgpo7pWbmzuURp2qri</li>
+<li>merchant_reference = MyReference0001</li>
+<li>card_security_code = 123</li>
+<li>card_number = 4005550000000001</li>
+<li>expiry_date = 2105</li>
+<li>remember_me = YES</li>
+<li>card_holder_name = John Smith</li>
+</ul>
+<p><strong>Below are the Merchant signature settings from the back-office:</strong></p>
+<ul>
+<li><strong>SHA Request Phrase:</strong> PASS.</li>
+<li><strong>SHA-Type:</strong> SHA-256.</li>
+</ul>
+<p>The string to hash should be prepared for the above request is the following <strong>step 4</strong> of the <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature-pattern">Signature Pattern</a>:</p>
+<p>PASSaccess_code=SILgpo7pWbmzuURp2qrilanguage=enmerchant_identifier=MxvOupuG
+merchant_reference=MyReference0001service_command=TOKENIZATIONPASS</p>
+<p>After applying <strong>step 5</strong> of the <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature-pattern">Signature Pattern</a>, the result will be as follows:</p>
+<p>signature = 7EE560CCD621DA61BFC772F2F1B5849BABDA768F5EE36D4DE67EFA88403E4B99</p>
+<p><strong>The following is an example for the Reporting API request signature calculations: </strong></p>
+<p><strong>Assume you have the below parameters included in the request of Reporting API: </strong></p>
+<p>• query_command = GENERATE_REPORT • access_code = zx0IPmPy5jp1vAz8Kpg7 • merchant_identifier = CycHZxVj • merchant_reference = XYZ9239-yu898 • columns = [order_description, customer_ip, eci, geolocation_ip, merchant_reference, card_holder_name, currency, amount, payment_option, fort_id, customer_email, customer_name, operation] • filters = [{key=currency, value=USD}, {key=payment_option, value= VISA}] • from_date = 2017-08-03T00:00:01+03:00 • to_date = 2017-08-03T23:59:59+03:00 • response_format = JSON • language = en</p>
+<p><strong>Below are the Merchant signature settings from the back-office:</strong></p>
+<ul>
+<li><strong>SHA Request Phrase:</strong> PASS.</li>
+<li><strong>SHA-Type:</strong> SHA-256.</li>
+</ul>
+<p>The string to hash should be prepared for the above request is the following <strong>step 4</strong> of the <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature-pattern">Signature Pattern</a>:</p>
+<p><strong>Remember:</strong>
+* In the columns parameter; you should:
+  \1. Open brackets.
+  \2. Put a “comma” then a “space” between the columns value.
+Example: columns=[ order_description, customer_ip, eci, geolocation_ip, merchant_reference]
+* In the filters parameter; you should:
+  \1. Open brackets.
+  \2. Then open a curly brackets {}.
+  \3. Write the “key”.
+  \4. Put a “comma” then a “space.
+  \5. Write the “value” of the key.
+Example: filters=[{key=currency, value=USD}, {key=payment_option, value= VISA}]</p>
+<p>PASSaccess_code=zx0IPmPy5jp1vAz8Kpg7columns=[order_description, customer_ip, eci, geolocation_ip, merchant_reference, card_holder_name, currency, amount, payment_option, fort_id, customer_email, customer_name]filters=[{key=currency, value=USD}, {key=payment_option, value=VISA}]from_date=2017-08-03T00:00:01+03:00language=enmerchant_identifier=CycHZxVjmerchant_reference=XYZ9239-yu898query_command=GENERATE_REPORTresponse_format=JSONto_date=2017-08-03T23:59:59+03:00PASS</p>
+<p>After applying <strong>step 5</strong> of the <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature-pattern">Signature Pattern</a>, the result will be as follows:</p>
+<p>Signature = 6750d396772be7df79347306324b1ad20320b31522583346e79b2ae8a5bc8970</p>
+<p><strong>PayFort Gateway</strong> includes the signature in the Response so you can check the integrity of the received data. You do this by calculating the secure hash using the above method, then comparing your calculation with the value you received from PayFort Gateway. If the values match, then you can be assured that we received the data you sent, and you received the data we sent.</p>
+<h3 id="try-it-yourself">Try It Yourself</h3>
+<pre><code>Map&lt;String, Object&gt;requestMap = new HashedMap();
+    requestMap.put(&quot;command&quot;, &quot;PURCHASE&quot;);
+    requestMap.put(&quot;merchant_reference&quot;, &quot;Test010&quot;);
+    requestMap.put(&quot;amount&quot;, &quot;1000&quot;);
+    requestMap.put(&quot;access_code&quot;, &quot;SILgpo7pWbmzuURp2qri&quot;);
+    requestMap.put(&quot;merchant_identifier&quot;, &quot;MxvOupuG&quot;);
+    requestMap.put(&quot;currency&quot;, &quot;USD&quot;);
+    requestMap.put(&quot;language&quot;, &quot;en&quot;);
+    requestMap.put(&quot;customer_email&quot;, &quot;test@gmail.com&quot;);
+
+//order by key
+requestMap = requestMap.entrySet().stream().sorted(Map.Entry.comparingByKey())
+          .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+          (oldValue, newValue) -&gt; oldValue, LinkedHashMap::new));
+
+String requestString = &quot;PASS&quot;;
+for(Entry&lt;String, Object&gt; entry: requestMap.entrySet())
+    requestString += entry.getKey() + &quot;=&quot; + entry.getValue();  
+requestString+= &quot;PASS&quot;;
+
+MessageDigest digest = MessageDigest.getInstance(&quot;SHA-256&quot;);
+byte[] hashed = digest.digest(requestString.getBytes(StandardCharsets.UTF_8));
+String signature = javax.xml.bind.DatatypeConverter.printHexBinary(hashed);
+</code></pre>
+
+<p>In this section, you can create the concatenated string to calculate signature value for request and response messages. Please note that you need to replace “PASS” phrase with yours.</p>
+<p><strong>Choose input type:</strong></p>
+<p>JSONKey/Value</p>
+<p>Was this helpful? Yes No</p>
+<h2 id="fort-xml-response-builder">FORT XML Response Builder</h2>
+<p>Through this section you can discover one of the FORT services that enables you to receive the FORT response in XML format.</p>
+<h3 id="structure">Structure</h3>
+<p><response><FORT_PARAMETER_NAME_1>VALUE</FORT_PARAMETER_NAME_1><FORT_PARAMETER_NAME_2_list><FORT_PARAMETER_NAME_2><FORT_PARAMETER_NAME_3>VALUE</FORT_PARAMETER_NAME_3><FORT_PARAMETER_NAME_4>VALUE</FORT_PARAMETER_NAME_4><FORT_PARAMETER_NAME_5>VALUE</FORT_PARAMETER_NAME_5></FORT_PARAMETER_NAME_2><FORT_PARAMETER_NAME_2><FORT_PARAMETER_NAME_3>VALUE</FORT_PARAMETER_NAME_3><FORT_PARAMETER_NAME_4>VALUE</FORT_PARAMETER_NAME_4><FORT_PARAMETER_NAME_5>VALUE</FORT_PARAMETER_NAME_5></FORT_PARAMETER_NAME_2></FORT_PARAMETER_NAME_2_list></FORT_PARAMETER_NAME_1>VALUE</FORT_PARAMETER_NAME_1></response></p>
+<p>The XML response builder results specifications are:
+<strong>1.</strong> The root node name is ‘response’.
+<strong>2.</strong> The FORT_PARAMETER of type “List” has a special tag name format; where the parent node tag name format is:
+<FORT_PARAMETER + “_list”>
+<strong>3.</strong> The list child nodes tag name’s is the name of the parameter name itself.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="xml">&lt;response&gt;&lt;response_code&gt;54000&lt;/response_code&gt;&lt;from_date&gt;2017-01-19T12:20:00+02:00&lt;/from_date&gt;&lt;data_list&gt;   &lt;data&gt;   &lt;card_number&gt;455701******8902&lt;/card_number&gt;   &lt;expiry_date&gt;2105&lt;/expiry_date&gt;   &lt;token_name&gt;466E93413AB648DEE053320A10AC5986&lt;/token_name&gt;   &lt;card_brand&gt;VISA&lt;/card_brand&gt;   &lt;card_bin&gt;455701&lt;/card_bin&gt;   &lt;token_status&gt;ACTIVE&lt;/token_status&gt;   &lt;creation_date&gt;2017-01-20T08:25:37+13:00&lt;/creation_date&gt;   &lt;/data&gt;   &lt;data&gt;   &lt;card_number&gt;400555******0001&lt;/card_number&gt;   &lt;expiry_date&gt;1705&lt;/expiry_date&gt;   &lt;token_name&gt;tkn001&lt;/token_name&gt;   &lt;card_brand&gt;VISA&lt;/card_brand&gt;   &lt;card_bin&gt;455701&lt;/card_bin&gt;   &lt;token_status&gt;ACTIVE&lt;/token_status&gt;   &lt;creation_date&gt;2016-05-13T14:34:09+13:00&lt;/creation_date&gt;   &lt;/data&gt;&lt;/data_list&gt;&lt;signature&gt;4b6b1f0219169b0dc77f7ceac83b930cf71995ab7a4fcc435a&lt;/signature&gt;&lt;merchant_identifier&gt;uZOJfKqb&lt;/merchant_identifier&gt;&lt;access_code&gt;AwvucffCjzibl0eZYTB3&lt;/access_code&gt;&lt;language&gt;en&lt;/language&gt;&lt;response_format&gt;XML&lt;/response_format&gt;&lt;response_message&gt;Success&lt;/response_message&gt;&lt;to_date&gt;2017-01-19T12:30:00+02:00&lt;/to_date&gt;&lt;query_command&gt;GET_TOKENS&lt;/query_command&gt;&lt;data_count&gt;1&lt;/data_count&gt;&lt;status&gt;54&lt;/status&gt;&lt;/response&gt;
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../securitysettings/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../securitysettings/" class="btn btn-xs btn-link">
+        Security Settings
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../currencyexchange/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../currencyexchange/" class="btn btn-xs btn-link">
+        Currency Exchange Service
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

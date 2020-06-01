@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>MOTO Parameters - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "MOTO Request Parameters", url: "#_top", children: [
+          ]},
+          {title: "MOTO Response", url: "#moto-response", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../recurring/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../recurring/" class="btn btn-xs btn-link">
+        Recurring(API)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../moto/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../moto/" class="btn btn-xs btn-link">
+        Moto
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="moto-request-parameters">MOTO Request Parameters</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: AUTHORIZATION, PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric Mandatory max: 254</td>
+<td align="left">The customer’s email. Example: customer@domain.com Special characters: _ - . @ +</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha Mandatory max: 16</td>
+<td align="left">Ecommerce indicator. Possible/ expected values: MOTO</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Mandatory max: 100</td>
+<td align="left">The token received from the Tokenization process. Example: Op9Vmp Special characters: _ - . @</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha Optional max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric Optional max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S Special characters: <code>'</code>/ . _ - # : $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric Optional max: 45</td>
+<td align="left">It holds the customer’s IP address. <em>It’s Mandatory, if the fraud service is active. </em>We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf Special characters: . :</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha Optional max: 40</td>
+<td align="left">The customer’s name. Example: John Smith Special characters: _ \ / - . <code>'</code><strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Alphanumeric Optional max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966 Special characters: + - ( ) <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric Optional max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Optional Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric Optional max: 400</td>
+<td align="left">The URL of the Merchant’s page to be redirected to when the order is processed. Example: http://www.merchant.com Special characters: $ ! = ? # &amp; - _ / : .</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+    Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
+
+<hr />
+<h2 id="moto-response">MOTO Response</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha max: 20</td>
+<td align="left">Command. Possible/ expected values: AUTHORIZATION, PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric max: 254</td>
+<td align="left">The customer’s email. Example: customer@domain.com</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha max: 16</td>
+<td align="left">Ecommerce indicator. Possible/ expected values: MOTO</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric max: 100</td>
+<td align="left">The token received from the Tokenization process. Example: Op9Vmp</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>fort_id</strong> Numeric max: 20</td>
+<td align="left">The order’s unique reference returned by our system. Example: 149295435400084008</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric max: 45</td>
+<td align="left">It holds the customer’s IP address. *We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha max: 40</td>
+<td align="left">The customer’s name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>authorization_code</strong> Alphanumeric max: 100</td>
+<td align="left">The authorization code returned from the 3rd party. Example: P1000000000000372136</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?java#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?java#statuses">statuses</a>).</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric max: 16</td>
+<td align="left">The card’s number masked based on a certain standard that is selected in the technical settings. Example: 400555<strong>*</strong>*0001</td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Alphanumeric max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966</td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric max: 400</td>
+<td align="left">The URL of the Merchant’s page to be redirected to when the order is processed. Example: http://www.merchant.com</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones</div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../recurring/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../recurring/" class="btn btn-xs btn-link">
+        Recurring(API)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../moto/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../moto/" class="btn btn-xs btn-link">
+        Moto
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

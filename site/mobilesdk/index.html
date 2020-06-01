@@ -36,6 +36,7 @@
               {title: "Features of PayFort SDKs", url: "#features-of-payfort-sdks" },
               {title: "Mobile SDK Integration Workflow", url: "#mobile-sdk-integration-workflow" },
               {title: "Mobile SDK Libraries", url: "#mobile-sdk-libraries" },
+              {title: "Mobile SDK Token", url: "#mobile-sdk-token" },
               {title: "SDK Token Endpoints", url: "#sdk-token-endpoints" },
               {title: "Go to Full API", url: "#go-to-full-api" },
               {title: "Need further help?", url: "#need-further-help" },
@@ -75,10 +76,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../refund/" class="btn btn-xs btn-default pull-left">
+      <a href="../maintenanceparameters/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../refund/" class="btn btn-xs btn-link">
-        Refund Payment
+        Previous</a><a href="../maintenanceparameters/" class="btn btn-xs btn-link">
+        Maintenance Parameters
       </a>
     </div>
     
@@ -99,7 +100,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="mobile-sdk-integration-workflow">Mobile SDK Integration Workflow</h2>
 <p><img alt="mobilesdk workflow" src="../img/mobilesdkworkflow.JPG" /></p>
-<p>When your customer initiates the payment on your site, your site requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.</p>
+<p>When your customer initiates the payment on your merchant app, your app requests Payfort server for a new token every time, then process the customer's payment. When PayFort server sends a successful response to your site your backend is notified of successful payment and your backend server confirms the same with Payfort server.</p>
 <p>Here is the description of mobile sdk integration workflow:</p>
 <ol>
 <li>The Merchant’s application initiates the FORT Mobile SDK and passes the parameters to the FORT Mobile SDK.</li>
@@ -114,6 +115,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>For more details on PayFORT iOS SDK Integration visit this <a href="../iossdk/">link</a></p>
 <h2 id="mobile-sdk-libraries">Mobile SDK Libraries</h2>
 <hr />
+<p>You can download the two available FORT mobile sdk libraries from this section.</p>
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
@@ -183,11 +185,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 
 <hr />
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>A Mobile SDK Token is required to authenticate every request sent to the SDK. The Token is also significant to process payment operations in the FORT through our FORT Mobile SDK.</div>
+<h2 id="mobile-sdk-token">Mobile SDK Token</h2>
+<hr />
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>A Mobile SDK Token is required to authenticate every request sent to the SDK. The Token is also important to process payment operations in the FORT through our FORT Mobile SDK.</div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>A unique Token should be created for each transaction. Each Token has a life-time of only one hour if no new request from the same device is sent.</div>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>The creation and initiation of a Mobile SDK Token happens on the Merchant’s server side.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>The creation and initiation of a Mobile SDK Token happens on your server side.</div>
 
 <hr />
 <h2 id="sdk-token-endpoints">SDK Token Endpoints</h2>
@@ -199,8 +203,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code>POST  https://paymentservices.payfort.com/FortAPI/paymentApi
 </code></pre>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
-
+<h3 id="sdk-token-request">SDK Token Request</h3>
+<hr />
+<p>Placeholder for sample code.</p>
+<p>You can check out the full list of parameters that are required for SDK Token request by visiting this <a href="../sdktokenparameters/">link</a></p>
+<h3 id="sdk-response">SDK Response</h3>
+<hr />
+<p>Placeholder for sample JSON response.</p>
 <h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
 <p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
@@ -231,10 +240,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../refund/" class="btn btn-xs btn-default pull-left">
+      <a href="../maintenanceparameters/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../refund/" class="btn btn-xs btn-link">
-        Refund Payment
+        Previous</a><a href="../maintenanceparameters/" class="btn btn-xs btn-link">
+        Maintenance Parameters
       </a>
     </div>
     

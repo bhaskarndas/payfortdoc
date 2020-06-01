@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Installmentsparameters - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Installments Redirection Service - Request", url: "#_top", children: [
+          ]},
+          {title: "Installments Redirection Service - Response", url: "#installments-redirection-service-response", children: [
+          ]},
+          {title: "Installments Merchant page Service - Request", url: "#installments-merchant-page-service-request", children: [
+          ]},
+          {title: "Installments Merchant page Service - Response", url: "#installments-merchant-page-service-response", children: [
+          ]},
+          {title: "Installments Purchase Service - Request", url: "#installments-purchase-service-request", children: [
+          ]},
+          {title: "Installments Purchase Service - Response", url: "#installments-purchase-service-response", children: [
+          ]},
+          {title: "Get Installments Plans API - Request", url: "#get-installments-plans-api-request", children: [
+          ]},
+          {title: "Get Installments Plans API - Response", url: "#get-installments-plans-api-response", children: [
+          ]},
+          {title: "Issuer Detail", url: "#issuer-detail", children: [
+          ]},
+          {title: "Plan Details", url: "#plan-details", children: [
+          ]},
+          {title: "Bins Details", url: "#bins-details", children: [
+          ]},
+          {title: "Installment Service For Merchant Page 2.0 Operations - Request", url: "#installment-service-for-merchant-page-20-operations-request", children: [
+          ]},
+          {title: "Installment Service For Merchant Page 2.0 Operations - Response", url: "#installment-service-for-merchant-page-20-operations-response", children: [
+              {title: "Installments Hosted for Trusted \u2013 Request", url: "#installments-hosted-for-trusted-request" },
+              {title: "Installments Hosted for Trusted \u2013 Response", url: "#installments-hosted-for-trusted-response" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <h3 id="installments-redirection-service-request">Installments Redirection Service - Request</h3>
+<p>You have to include the following parameters in the <a href="../redirectionsparameters/">Purchase - Request Parameters</a> which you will send to PayFort:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Optional max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: STANDALONE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="installments-redirection-service-response">Installments Redirection Service - Response</h3>
+<p>Placeholder : Provide sample JSON response</p>
+<p>The following parameters will be returned in PayFort’s JSON Response in addition to the <a href="../redirectionsparameters/">Purchase - Response Parameters</a>:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: STANDALONE</td>
+</tr>
+<tr>
+<td align="right"><strong>number_of_installments</strong> Numeric max: 2</td>
+<td align="left">The number of installments the customer has selected in the payment page. Example: 3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="installments-merchant-page-service-request">Installments Merchant page Service - Request</h3>
+<hr />
+<p>Placeholder: Provide sample code for request</p>
+<p>Include the following parameters in the <a href="../merchantpageparameters/">Merchant page - Request Parameters</a> you will send to PayFort:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Mandatory max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: STANDALONE</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory Max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_country_code</strong> Alpha Optional Max: 3</td>
+<td align="left">The Customer’s country code. ISO 3 digit country code. Example: JOR</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="installments-merchant-page-service-response">Installments Merchant page Service - Response</h3>
+<p>Placeholder: Please provide sample JSON response.</p>
+<p>The following parameters will be returned in PayFort’s Response in addition to the <a href="../merchantpageparameters/">Merchant Page - Response Parameters</a></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: STANDALONE</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_country_code</strong> Alpha Max: 3</td>
+<td align="left">The Customer’s country code. ISO 3-digit country code. Example: JOR</td>
+</tr>
+<tr>
+<td align="right"><strong>number_of_installments</strong> Numeric Max: 2</td>
+<td align="left">The number of installments the customer has selected in payment page. Example: 3</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the <strong>“installments plan”</strong> the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the <strong>“card issuer”</strong> the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="installments-purchase-service-request">Installments Purchase Service - Request</h3>
+<p>Placeholder: Sample code for merchant page operations request</p>
+<p>For transactions being carried out under operations you have to Include the following parameters in the <a href="https://docs.payfort.com/docs/api/build/index.html?shell#operations-request">Operation - Request Parameters</a> while sending to PayFort:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Mandatory max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: YES</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Mandatory Max: 8</td>
+<td align="left">A code that refers to the <strong>“installments plan”</strong> the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Mandatory Max: 8</td>
+<td align="left">A code that refers to the <strong>“card issuer”</strong> the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="installments-purchase-service-response">Installments Purchase Service - Response</h3>
+<hr />
+<p>Placeholder: Provide sample JSON response sent from the PayFORT server.</p>
+<p>The following parameters will be returned in PayFort’s Response in addition to the <a href="https://docs.payfort.com/docs/api/build/index.html?shell#operations-response">Operation - Response Parameters</a>:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: YES</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the <strong>“installments plan”</strong> the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the <strong>“card issuer”</strong> the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>number_of_installments</strong> Numeric Max: 2</td>
+<td align="left">The number of installments the customer has selected in payment page. Example: 3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="get-installments-plans-api-request">Get Installments Plans API - Request</h3>
+<p>Placeholder: Provide the sample code for the request</p>
+<p>Include the following parameters in the Request you will send to PayFort:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha Mandatory max: 50</td>
+<td align="left">Query operations command. Possible/ expected values: GET_INSTALLMENTS_PLANS Special characters: _</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Optional max: 10</td>
+<td align="left">The transaction’s amount.*Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Optional max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Optional max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Optional max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="get-installments-plans-api-response">Get Installments Plans API - Response</h3>
+<p>Placeholder: Provide sample JSON response</p>
+<p>The following parameters will be returned in PayFort’s Response:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>query_command</strong> Alpha max: 50</td>
+<td align="left">Query operations command. Possible/ expected values: GET_INSTALLMENTS_PLANS</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Example: Insufficient Funds</td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction Possible/ expected values: (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a>).</td>
+</tr>
+<tr>
+<td align="right"><strong>installment_detail</strong> List max: -</td>
+<td align="left">This parameter is a parent parameter for other parameters that contain the details of installment. Possible/ expected values: (Please refer to the below section <strong>issuer_detal</strong>).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="issuer-detail">Issuer Detail</h3>
+<p>You can use the following attributes to know the details of the installment services issuers.</p>
+<p>Placeholder: Provide sample code for issuer details</p>
+<p>This parameter is a sub parameter of the <mark><strong>installment_detail</strong></mark> parameter, the table below shows the children parameters of the <mark><strong>issuer_detail</strong></mark>:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_name_ar</strong> Alphanumeric max: 50</td>
+<td align="left">The issuer name in Arabic. Example: Issuer2عربي</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_name_en</strong> Alphanumeric max: 50</td>
+<td align="left">The issuer name in English. Example: Issuer2</td>
+</tr>
+<tr>
+<td align="right"><strong>terms_and_condition_ar</strong> Alphanumeric max: 200</td>
+<td align="left">The Arabic terms and condition URL. Example: http://www.gmail.com</td>
+</tr>
+<tr>
+<td align="right"><strong>terms_and_condition_en</strong> Alphanumeric max: 200</td>
+<td align="left">The English terms and condition URL. Example: http://www.yahoo.com</td>
+</tr>
+<tr>
+<td align="right"><strong>country_code</strong> Alpha max: 3</td>
+<td align="left">The country’s code in ISO 3-digits. Example: JOR</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_logo_ar</strong> Alphanumeric max: 350</td>
+<td align="left">The issuer logo for the Arabic version. Example: https://payfort-fort-images-lt.s3.amazonaws.com/frontend/files/logos/issuer/logo_en_164.jpg</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_logo_en</strong> Alphanumeric max: 350</td>
+<td align="left">The issuer logo for the English version. Example: https://payfort-fort-images-lt.s3.amazonaws.com/frontend/files/logos/issuer/logo_en_164.jpg</td>
+</tr>
+<tr>
+<td align="right"><strong>banking_system</strong> Alpha max: 11</td>
+<td align="left">The type of institutions that provide financial services. Possible/ expected values: -Non Islamic -Islamic</td>
+</tr>
+<tr>
+<td align="right"><strong>formula</strong> Alphanumeric max: 100</td>
+<td align="left">The equation of calculating the installment value. Example: (amount +(amount *effective rate/100))/period Please check the note below the table for more details.</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_details</strong> List max: -</td>
+<td align="left">This parameter contain all the plans for this issuer. Possible/ expected values: (Please refer to next <strong>plan_detail</strong> section).</td>
+</tr>
+<tr>
+<td align="right"><strong>bins</strong> List max: -</td>
+<td align="left">List of 6 digits of the card number related to this issuer. Possible/ expected values: (Please refer to next <strong>bins</strong> section).</td>
+</tr>
+<tr>
+<td align="right"><strong>confirmation_message_ar</strong> Alphanumeric max: 500</td>
+<td align="left">This parameter shows to the customer the confirmation message in Arabic.</td>
+</tr>
+<tr>
+<td align="right"><strong>disclaimer_message_ar</strong> Alphanumeric max: 500</td>
+<td align="left">This parameter shows to the customer the disclaimer message in Arabic.</td>
+</tr>
+<tr>
+<td align="right"><strong>processing_fees_message_ar</strong> Alphanumeric max: 500</td>
+<td align="left">This parameter shows to the customer the processing fee message in Arabic.</td>
+</tr>
+<tr>
+<td align="right"><strong>confirmation_message_en</strong> Alphanumeric max: 500</td>
+<td align="left">This parameter shows the customer to the confirmation message in English.</td>
+</tr>
+<tr>
+<td align="right"><strong>disclaimer_message_en</strong> Alphanumeric max: 500</td>
+<td align="left">This parameter shows to the customer the disclaimer message in English.</td>
+</tr>
+<tr>
+<td align="right"><strong>processing_fees_message_en</strong> Alphanumeric max: 500</td>
+<td align="left">This parameter shows to the customer the processing fee message in English.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="plan-details">Plan Details</h3>
+<p>If you want to fetch details of various installment plans you can use the attributes in this section and send in your request to the PayFORT server.</p>
+<p>Placeholder: provide sample code for plan details.</p>
+<p>This parameter is a sub parameter of the <mark><strong>issuer_detail</strong></mark> parameter, the table below shows the children parameters of the <mark><strong>plan_detail</strong></mark>:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric max: 8</td>
+<td align="left">A code that refers to the “installments plan”. Example: NNNN89JJ</td>
+</tr>
+<tr>
+<td align="right"><strong>currency_code</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>number_of_installment</strong> Numeric max: 2</td>
+<td align="left">The number of installments. Example: 3</td>
+</tr>
+<tr>
+<td align="right"><strong>fees_type</strong> Alpha max: 10</td>
+<td align="left">The type of the fee. Possible/ expected values: -Fixed -Percentage *Please refer to the below formulas section to know the difference.</td>
+</tr>
+<tr>
+<td align="right"><strong>fees_amount</strong> Numeric max: 10</td>
+<td align="left">The amount of the fee. Example: 11</td>
+</tr>
+<tr>
+<td align="right"><strong>processing_fees_type</strong> Alpha max: 10</td>
+<td align="left">The type of the processing fee. Possible/ expected values: -Fixed -Percentage *Please refer to the below formulas section to know the difference.</td>
+</tr>
+<tr>
+<td align="right"><strong>processing_fees_amount</strong> Numeric max: 10</td>
+<td align="left">The amount of the processing fee. Example: 11</td>
+</tr>
+<tr>
+<td align="right"><strong>rate_type</strong> Alpha max: 15</td>
+<td align="left">The type of the rate. Possible/ expected values: -Reducing Balance -Flat</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_merchant_type</strong> Alpha max: 11</td>
+<td align="left">The type of agreement between the plan and Merchant. Possible/ expected values: -Partner -Non Partner</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_type</strong> Alpha max: 12</td>
+<td align="left">The type of the installments plan. Possible/ expected values: -Local -Cross-Border</td>
+</tr>
+<tr>
+<td align="right"><strong>fee_display_value</strong> Numeric max:</td>
+<td align="left">The display value that represent the fees amount. Example: 11.0</td>
+</tr>
+<tr>
+<td align="right"><strong>minimum_amount</strong> Numeric max: 10</td>
+<td align="left">The minimum range of the accepted amount for this plan. Example: 11</td>
+</tr>
+<tr>
+<td align="right"><strong>maximum_amount</strong> Numeric max: 10</td>
+<td align="left">The maximum range of the accepted amount for this plan. Example: 110000000</td>
+</tr>
+<tr>
+<td align="right"><strong>amountPerMonth</strong> Numeric max: 10</td>
+<td align="left">The payable amount per month. Example: 3.00</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="bins-details">Bins Details</h3>
+<p>This section will help you to capture the details of the credit card that customer will use for availing the installment service. You have to use the attributes in your request to fetch the details of the credit card.</p>
+<p>Placeholder: provide  sample code for bins details.</p>
+<p>This parameter is a sub parameter of the <mark><strong>issuer_detail</strong></mark> parameter, the table below shows the children parameters of the <mark><strong>bins</strong></mark>:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>bin</strong> Numeric max: 6</td>
+<td align="left">The first 6 digits of the card number. Example: 478773</td>
+</tr>
+<tr>
+<td align="right"><strong>currency_code</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: JOR</td>
+</tr>
+<tr>
+<td align="right"><strong>card_brand_code</strong> Alpha max: 16</td>
+<td align="left">The type of the credit card. Possible/ expected values: -VISA -Master Card -American Express</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="installment-service-for-merchant-page-20-operations-request">Installment Service For Merchant Page 2.0 Operations - Request</h2>
+<p>You can use the endpoints to integrate and send request for Merchant Page 2.0 operations.</p>
+<p>Placeholder: Provide sample code for merchant page 2.0 operations for installment service.</p>
+<p>Include the following parameters in the Request you will send to PayFort:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha Mandatory max: 20</td>
+<td align="left">Command. Possible/ expected values: PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Mandatory Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Mandatory Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Mandatory Max: 10</td>
+<td align="left">The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Mandatory Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Mandatory Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric Mandatory Max: 254</td>
+<td align="left">The customer’s email. Example: customer@domain.com Special characters: _ - . @ +</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric Mandatory Max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp Special characters: _ - . @</td>
+</tr>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Mandatory Max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: HOSTED</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Mandatory Max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Mandatory Max: 8</td>
+<td align="left">A code that refers to the “installments plan” the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric Mandatory max: 45</td>
+<td align="left">It holds the customer’s IP address. <em>It’s Mandatory, if the fraud service is active. </em>We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf Special characters: . :</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Mandatory Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha Optional Max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha Optional Max: 16</td>
+<td align="left">Ecommerce indicator. Possible/ expected values: ECOMMERCE</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric Optional Max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S Special characters: <code>'</code>/ . _ - # : $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>card_security_code</strong> Numeric Optional Max: 4</td>
+<td align="left">A security code for the card. * Only AMEX accepts card security code of 4 digits. Example: 123</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha Optional Max: 40</td>
+<td align="left">The customer’s name. Example: John Smith Special characters: _ \ / - . <code>'</code><strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Optional Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Optional Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith Special characters: . ; / _ - , <code>'</code>@</td>
+</tr>
+<tr>
+<td align="right"><strong>remember_me</strong> Alpha Optional Max: 3</td>
+<td align="left">This parameter provides you with an indication to whether to save this token for the user based on the user selection. *The Tokenization service MUST be activated in order to be able to send “remember_me” parameter. Possible/ expected values: -YES -NO</td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Alphanumeric Optional max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966 Special characters: + - ( ) <strong>Space</strong></td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric Optional max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric Optional Max: 400</td>
+<td align="left">The URL of the Merchant’s page to be displayed to the customer when the order is processed. Example: http://www.merchant.com Special characters: $ ! = ? # &amp; - _ / : .</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</p>
+<hr />
+<h2 id="installment-service-for-merchant-page-20-operations-response">Installment Service For Merchant Page 2.0 Operations - Response</h2>
+<hr />
+<p>Placeholder: Provide sample JSON response for merchant page 2.0 operations for installments.</p>
+<p>The following parameters will be returned in PayFort’s Response:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha max: 20</td>
+<td align="left">Command. Possible/ expected values: PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Max: 20</td>
+<td align="left">The ID of the Merchant. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric Max: 254</td>
+<td align="left">The customer’s email. Example: customer1@domain.com</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: COp9Vmp</td>
+</tr>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: HOSTED</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the “installments plan” the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric max: 45</td>
+<td align="left">It holds the customer’s IP address. *We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#signature">Signature</a> Example: d7c185c475ac0e3</td>
+</tr>
+<tr>
+<td align="right"><strong>fort_id</strong> Numeric Max: 20</td>
+<td align="left">The order’s unique reference returned by our system. Example: 149295435400084008</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha Max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha Max: 16</td>
+<td align="left">Ecommerce indicator. Possible/ expected values: ECOMMERCE</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric Max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S</td>
+</tr>
+<tr>
+<td align="right"><strong>authorization_code</strong> Alphanumeric Max: 100</td>
+<td align="left">The authorization code returned from the 3rd party. Example: P1000000000000372136</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric Max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?shell#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha Max: 40</td>
+<td align="left">The customer’s name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Max: 19</td>
+<td align="left">The masked credit card’s number. <em>AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number. Example: 400555</em><strong>*</strong>0001</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?shell#statuses">statuses</a></td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Max: 50</td>
+<td align="left">The card holder name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>3ds_url</strong> Alphanumeric Max: 300</td>
+<td align="left">The URL where the Merchant redirects a customer whose card is 3-D Secure for authentication. Example: http://www.3dsecure.com</td>
+</tr>
+<tr>
+<td align="right"><strong>remember_me</strong> Alpha Max: 3</td>
+<td align="left">This parameter provides you with an indication to whether to save this token for the user based on the user selection. Possible/ expected values: - YES - NO</td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Alphanumeric max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966</td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898</td>
+</tr>
+</tbody>
+</table>
+<p>Remember - Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones-.</p>
+<hr />
+<h3 id="installments-hosted-for-trusted-request">Installments Hosted for Trusted – Request</h3>
+<p>Placeholder: Please provide sample code for trusted channel partner request for installment.</p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>First, you need to send a [Get Instalments Plans API](https://docs.payfort.com/docs/api/build/index.html?shell#get-installments-plans-api) request; to get the instalments details.
+
+Include the following input parameters in the [Trusted Channel – Request](https://docs.payfort.com/docs/api/build/index.html?shell#trusted-channel-request) Parameters you will send to PayFort:</div>
+
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Mandatory Max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: HOSTED</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Mandatory Max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Mandatory Max: 8</td>
+<td align="left">A code that refers to the “installments plan” the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="installments-hosted-for-trusted-response">Installments Hosted for Trusted – Response</h3>
+<hr />
+<p>The following parameters will be returned in PayFort’s Response in addition to <a href="../trustedchannelparameters/">Trusted Channel – Response</a> parameters:</p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>installments</strong> Alpha Max: 10</td>
+<td align="left">Used to specify the type of the Installments service. Possible/ expected values: HOSTED</td>
+</tr>
+<tr>
+<td align="right"><strong>issuer_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the “card issuer” the customer selected from the merchant page. Example: 12HP34SE</td>
+</tr>
+<tr>
+<td align="right"><strong>plan_code</strong> Alphanumeric Max: 8</td>
+<td align="left">A code that refers to the “installments plan” the customer selected from the merchant page. Example: NNNN89JJ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+  <br>
+    
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

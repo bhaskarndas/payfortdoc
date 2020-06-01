@@ -1,8 +1,6 @@
 # What is Trusted?
 
-
-
-**Trusted channel** allows PCI certified Merchants to collect their customers' credit card details on the Merchant’s checkout page. The Merchants are able to process (Ecommerce, Recurring and MOTO) transactions through the FORT using clear card data and credit card tokens.
+With the help of **Trusted channel**  PCI certified Merchants are able to collect their customers' credit card details on the checkout page. The Merchants are able to process (Ecommerce, Recurring and MOTO) transactions through the FORT using clear card data and credit card tokens.
 
 ------
 
@@ -22,7 +20,7 @@ POST  https://paymentservices.PayFort.com/FortAPI/paymentApi
 
 ------
 
-
+For more details on input parameters please visit the [link](trustedchannelparameters.md)
 
 ### Parameters Submission Type
 
@@ -30,41 +28,11 @@ REST POST request using JSON.
 
 ------
 
-**JSON Request Example**
 
-```json
-{
-	'command':'PURCHASE',
-	'access_code':'zx0IPmPy5jp1vAz8Kpg7',
-	'merchant_identifier':'CycHZxVj',
-	'merchant_reference':' XYZ9239-yu898',
-	'amount':'10000',
-	'currency':'AED',  
-	'language':'en',
-    'customer_email': 'john_doe@abc.com',
-    'eci': 'MOTO',
-    'expiry_date': '2105',
-    'card_number': '4005550000000001',
-    'card_security_code': '123',
-    'customer_ip': '192.178.1.10',
-    'signature':'7cad05f0212ed933c9a5d5dffa31661acf2c827a',
-    'card_holder_name': 'John Smith',
-    'token_name': 'Op9Vmp',
-    'payment_option': 'MASTERCARD',
-    'order_description':'iPhone 6-S',
-    'customer_name':'John Smith',
-    'phone_number': '00962797219966',
-    'settlement_reference': 'XYZ9239-yu898',
-    'merchant_extra': 'John Smith',
-    'merchant_extra1': 'John Smith',
-    'merchant_extra2': 'John Smith',
-    'merchant_extra3': 'John Smith',
-    'merchant_extra4': 'John Smith',
-    'merchant_extra5': 'John Smith',
-    'return_url': 'http://www.merchant.com'
 
-}
-```
+**Request Example**
+
+Placeholder  for sample code.
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>
     Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
@@ -76,7 +44,7 @@ Another example: If the amount value was 100 JOD; according to ISO code 3, you s
 
 ------
 
-You will receive sample response from the payfort server:
+You will receive sample response from the payfort server in JSON format as shown below:
 
 ```json
 {"command":"PURCHASE",

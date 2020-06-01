@@ -34,15 +34,13 @@
         var pageToc = [
           {title: "How it works?", url: "#_top", children: [
           ]},
-          {title: "Before you Start", url: "#before-you-start", children: [
+          {title: "Endpoints", url: "#endpoints", children: [
           ]},
-          {title: "Try it out", url: "#try-it-out", children: [
-              {title: "Endpoints", url: "#endpoints" },
-          ]},
-          {title: "How to add the Tokenization service on the Redirection channel?", url: "#how-to-add-the-tokenization-service-on-the-redirection-channel", children: [
+          {title: "Parameters Submission Type", url: "#parameters-submission-type", children: [
           ]},
           {title: "Go to Full API", url: "#go-to-full-api", children: [
-              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+          {title: "Need further help?", url: "#need-further-help", children: [
           ]},
         ];
 
@@ -69,20 +67,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../capturepayment/" class="btn btn-xs btn-default pull-right">
+      <a href="../redirectionsparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../capturepayment/" class="btn btn-xs btn-link">
-        Capture Payment
+      <a href="../redirectionsparameters/" class="btn btn-xs btn-link">
+        Redirections Parameters
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-left">
+      <a href="../merchantpageparameters/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../custompaymentform/" class="btn btn-xs btn-link">
-        Custom Payment Form
+        Previous</a><a href="../merchantpageparameters/" class="btn btn-xs btn-link">
+        Merchant Page Parameters
       </a>
     </div>
     
@@ -91,42 +89,188 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <hr />
-<p>Redirection process enables you to capture payments.</p>
-<p>PayFort Redirection consists of Authorization and Purchase processing.</p>
-<h1 id="how-it-works">How it works?</h1>
+<p>Once the customer's payment details are verified, the next payment process is the <mark>Redirection</mark> process. <a href="..">Integration</a> process enables you to capture the payment details of the customer and then validating the same with the PayFORT server whereas the redirection process enables you to <mark> Authorize</mark>  a <mark>Purchase</mark>. </p>
+<h2 id="how-it-works">How it works?</h2>
 <hr />
-<p>The <strong>Authorization</strong> operation hold an amount from the Customer’s credit card account for a period of time until you capture or void the transaction. If no capture or void is processed during this period, the transaction will be voided automatically. In <strong>Purchase</strong> you will send one single request in order to authorize and capture the transaction amount.</p>
-<p>We offer you to <strong>Redirect</strong> your Customer from your website to PayFort’s gateway page to fill out his credit card details during these operations.</p>
-<p><strong>
-Looking to void a payment?</strong>
+<p>The <mark><strong>Authorization</strong></mark> operation holds the amount from the Customer’s credit card for a period of time until you capture or void the transaction. If no capture or void transaction is processed during this period, the transaction will be voided automatically. In <mark><strong>Purchase</strong></mark> you will send one single request to the PayFORT server in order to authorize and capture the transaction amount.</p>
+<p>We offer you to <mark><strong>Redirect</strong></mark> your customer from your website to PayFORT’s gateway page to fill out his credit card details during these operations.</p>
+<p><strong>Looking to void a payment?</strong>
 You can <a href="../voidauthorization/">void</a> an authorized payment at any time. However, captured payments can only be <a href="../refund/">refunded</a>.</p>
-<h1 id="before-you-start">Before you Start</h1>
+<h2 id="endpoints">Endpoints</h2>
 <hr />
-<p>You are required to signup for test account by visiting this <a href="" title="https://www.payfort.com/test-account/">link</a> for testing your sample integrations. You can also directly get started by signing up for the live account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
-<h1 id="try-it-out">Try it out</h1>
-<hr />
-<p>You can use the below URLS to test the redirection methods.</p>
-<h3 id="endpoints">Endpoints</h3>
-<p><strong>SandBox:</strong></p>
-<pre><code>POST https://sbcheckout.payfort.com/FortAPI/paymentPage
+<p>You can use the sandbox endpoint to test your payment processing page for redirection or you can use the production endpoint if you want to go live.</p>
+<p><strong>SandBox</strong></p>
+<pre><code class="http">POST https://sbcheckout.payfort.com/FortAPI/paymentPage
 </code></pre>
 
-<p><strong>Live:</strong></p>
-<pre><code>POST https://checkout.payfort.com/FortAPI/paymentPage
+<p><strong>Live</strong></p>
+<pre><code class="http">POST https://checkout.payfort.com/FortAPI/paymentPage
 </code></pre>
 
-<h1 id="how-to-add-the-tokenization-service-on-the-redirection-channel">How to add the Tokenization service on the Redirection channel?</h1>
 <hr />
-<p>The Tokenization service is applicable to be integrated through the Redirection Channel through the below steps:</p>
-<ol>
-<li>The Customer enables the remember_me option displayed in the payment page.</li>
-<li>Processes the first PURCHASE/ AUTHORIZATION payment successfully.</li>
-<li>The Merchant will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment.</li>
-</ol>
-<p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
-<h1 id="go-to-full-api">Go to Full API</h1>
+<h2 id="parameters-submission-type">Parameters Submission Type</h2>
+<p>When you design your form(html page ) you have to provide the <mark>Endpoints</mark>&nbsp;&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> in the form method. Providing these endpoints in your page will redirect your request to the PayFORT server. The page can be designed in the programming language of your choice. But you have to include the below mentioned code in your html based form. </p>
+<p>Form Post Request.</p>
+<pre><code class="html">&lt;form method=“post” action=“https://sbcheckout.payfort.com/FortAPI/paymentPage” id=“form1” name=“form1”&gt; &lt;/form&gt;
+</code></pre>
+
+<p>The above code snippet is an HTML based form that will post a request to PayFORT serverand  you are also required to submit parameters in the form so that PayFORT server can understand your request and process the same. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">&nbsp;&nbsp;</i>The parameters are mandatory and are required by PayFORT server to validate, authenticate and provide the tokens for processing of payment</div>
+
+<p>Visit the <a href="../redirectionsparameters/">link</a> to check the different parameters to be sent in a redirection request.</p>
+<div class="container">
+  <h2>Sample Request</h2>
+  <p>You can design your form in any programming language.Here is the sample request (written different languages) which is sent for authorizing a purchase.</p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#php">Php</a></li>
+    <li><a data-toggle="tab" href="#python">Python</a></li>
+    <li><a data-toggle="tab" href="#ruby">Ruby</a></li>
+    <!--<li><a data-toggle="tab" href="#java">Java</a></li>
+    <li><a data-toggle="tab" href="#curl">cURL</a></li>-->
+  </ul>
+
+  <div class="tab-content">
+    <div id="php" class="tab-pane fade in active">
+
+​    
+<pre>
+$requestParams = array(
+'command' => 'AUTHORIZATION',
+'access_code' => 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' => 'CycHZxVj',
+'merchant_reference' => 'XYZ9239-yu898',
+'amount' => '10000',
+'currency' => 'AED',
+'language' => 'en',
+'customer_email' => 'test@payfort.com',
+'signature' => '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' => 'iPhone 6-S',
+);
+
+</pre>
+
+
+    </div>
+    <div id="python" class="tab-pane fade">
+      <pre>
+import cgi
+requestParams = {
+'command' => 'AUTHORIZATION',
+'access_code' => 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' => 'CycHZxVj',
+'merchant_reference' => 'XYZ9239-yu898',
+'amount' => '10000',
+'currency' => 'AED',
+'language' => 'en',
+'customer_email' => 'test@payfort.com',
+'signature' => '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' => 'iPhone 6-S',
+};
+</pre>
+
+    </div>
+    <div id="ruby" class="tab-pane fade">
+     <pre>
+require 'cgi'
+requestParams = {
+'command' => 'AUTHORIZATION',
+'access_code' => 'zx0IPmPy5jp1vAz8Kpg7',
+'merchant_identifier' => 'CycHZxVj',
+'merchant_reference' => 'XYZ9239-yu898',
+'amount' => '10000',
+'currency' => 'AED',
+'language' => 'en',
+'customer_email' => 'test@payfort.com',
+'signature' => '7cad05f0212ed933c9a5d5dffa31661acf2c827a',
+'order_description' => 'iPhone 6-S',
+};
+requestParams.each {|key, value|
+  puts key +value ;
+}
+     </pre>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Code for the redirection url-->
+
+<div class="container">
+  <h2>Sample code for redirection</h2>
+  <p>Here are the sample code for redirecting the request to PayFORT.</p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#php">Php</a></li>
+    <li><a data-toggle="tab" href="#python">Python</a></li>
+    <li><a data-toggle="tab" href="#ruby">Ruby</a></li>
+    <!--<li><a data-toggle="tab" href="#java">Java</a></li>
+    <li><a data-toggle="tab" href="#curl">cURL</a></li>-->
+  </ul>
+
+  <div class="tab-content">
+    <div id="php" class="tab-pane fade in active">
+
+​    
+
+
+<pre><code>$redirectUrl = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
+echo &quot;&lt;html xmlns='http://www.w3.org/1999/xhtml'&gt;\n&lt;head&gt;&lt;/head&gt;\n&lt;body&gt;\n&quot;;
+echo &quot;&lt;form action='$redirectUrl' method='post' name='frm'&gt;\n&quot;;
+foreach ($requestParams as $a =&gt; $b) {
+    echo &quot;\t&lt;input type='hidden' name='&quot;.htmlentities($a).&quot;' value='&quot;.htmlentities($b).&quot;'&gt;\n&quot;;
+}
+echo &quot;\t&lt;script type='text/javascript'&gt;\n&quot;;
+echo &quot;\t\tdocument.frm.submit();\n&quot;;
+echo &quot;\t&lt;/script&gt;\n&quot;;
+echo &quot;&lt;/form&gt;\n&lt;/body&gt;\n&lt;/html&gt;&quot;;
+</code></pre>
+
+
+    </div>
+    <div id="python" class="tab-pane fade">
+
+<pre><code>redirectUrl = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
+print &quot;&lt;html xmlns='http://www.w3.org/1999/xhtml'&gt;\n&lt;head&gt;&lt;/head&gt;\n&lt;body&gt;\n&quot;;
+print &quot;&lt;form action='redirectUrl' method='post' name='frm'&gt;\n&quot;;
+for (slug, title) in requestParams.items():
+    print &quot;\t&lt;input type='hidden' name='&quot;+ cgi.escape(slug)+&quot;' value='&quot;+ cgi.escape(title)+&quot;'&gt;\n&quot;;
+
+print &quot;&lt;/form&gt;&quot;;
+print &quot;\t&lt;script type='text/javascript'&gt;\n&quot;;
+print &quot;\t\tdocument.frm.submit();\n&quot;;
+print &quot;\t&lt;/script&gt;\n&quot;;
+print &quot;\n&lt;/body&gt;\n&lt;/html&gt;&quot;;
+</code></pre>
+
+
+    </div>
+    <div id="ruby" class="tab-pane fade">
+
+<pre><code>redirectUrl = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
+puts &quot;&lt;html xmlns='http://www.w3.org/1999/xhtml'&gt;\n&lt;head&gt;&lt;/head&gt;\n&lt;body&gt;\n&quot;;
+puts &quot;&lt;form action='redirectUrl' method='post' name='frm'&gt;\n&quot;;
+requestParams.each {|key, value|
+    puts &quot;\t&lt;input type='hidden' name='&quot;+ CGI.escapeHTML(key)+&quot;' value='&quot;+ CGI.escapeHTML(value)+&quot;'&gt;\n&quot;;
+}
+puts &quot;&lt;/form&gt;\n&quot;;
+puts &quot;\t&lt;script type='text/javascript'&gt;\n&quot;;
+puts &quot;\t\tdocument.frm.submit();\n&quot;;
+puts &quot;\t&lt;/script&gt;\n&quot;;
+puts &quot;&lt;/body&gt;\n&lt;/html&gt;&quot;;
+</code></pre>
+
+    </div>
+
+
+  </div>
+</div>
+
 <hr />
+<h2 id="go-to-full-api">Go to Full API</h2>
 <p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<hr />
 <h2 id="need-further-help">Need further help?</h2>
 <p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
 
@@ -141,20 +285,20 @@ You can <a href="../voidauthorization/">void</a> an authorized payment at any ti
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../capturepayment/" class="btn btn-xs btn-default pull-right">
+      <a href="../redirectionsparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../capturepayment/" class="btn btn-xs btn-link">
-        Capture Payment
+      <a href="../redirectionsparameters/" class="btn btn-xs btn-link">
+        Redirections Parameters
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../custompaymentform/" class="btn btn-xs btn-default pull-left">
+      <a href="../merchantpageparameters/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../custompaymentform/" class="btn btn-xs btn-link">
-        Custom Payment Form
+        Previous</a><a href="../merchantpageparameters/" class="btn btn-xs btn-link">
+        Merchant Page Parameters
       </a>
     </div>
     

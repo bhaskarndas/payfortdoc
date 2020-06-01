@@ -19,33 +19,45 @@ nav:
     #- Home: index.md
     - Get Started (Process Payments):
         - Integration Type:
-            - Merchant Page:
-                - iFrame For Web: iframe_web.md
-                - Custom Payment Form: custompaymentform.md
+            - Merchant Page 1: merchantpage1.md
+            - Merchant Page 2: merchantpage2.md
+            - Merchant Page Parameters: merchantpageparameters.md
                 #- SDKs: sdk.md
+               
             - Redirection: 
                 - What is redirection?: redirection.md
+                
+                - Redirections Parameters: redirectionsparameters.md
+            - Maintenance:
+                - What is Maintenance?: maintenance.md
                 - Capture Payment: capturepayment.md
                 - Void an Authorization: voidauthorization.md
                 - Refund Payment: refund.md
-              
+                - Maintenance Parameters: maintenanceparameters.md
             - Mobile:
                 - Mobile SDK Library: mobilesdk.md
                 - Integrate Android SDK: androidsdk.md
+                - Android SDK Parameters: androidsdkoperations.md
                 - Integrate iOS SDK: iossdk.md
+                - iOS SDK Parameters: iossdkoperations.md
+                - Mobile SDK Parameters: sdktokenparameters.md
             - Plugins: plugins.md
             - Trusted: trusted.md
               
                     
         - Payment Methods:
+            - Cash Payment: billpresentment.md
+            
             - Cards: cards.md
             - Wallets: wallets.md
             - Lend: lendservice.md
             - Decline Codes: declinecodes.md
         - Payment Types:
             - Moto: moto.md
+            - MOTO Parameters: motoparameters.md
             - Recurring(API): recurring.md
-            - Subscription(Back Office): subscription.md
+            - Recurring Parameters: recurringparameters.md
+           
         
         
         
@@ -60,9 +72,26 @@ nav:
         - Tokenization (Safe): tokenization.md
         - Bypass: bypass.md
         - Monitor: monitor.md
-        - Data Mine(Reporting API): reportingapi.md
+        - Data Mine: 
+            - Reporting API:    reportingapi.md
+            - Reporting API Parameters: reportingapiparameters.md
+            - Report Generation (BackOffice): reportingbackoffice.md
         - Installments: installments.md
-        - Collect: collection.md
+        - Collect: 
+                - One to One(invoicing): invoicing.md
+                - Invoicing Parameters: invoicingparameters.md
+                
+                - One to Many(Batch invoicing): batchinvoicing.md
+                - Batch Invoicing Parameters: batchinvoicingparameters.md
+                - Invoice Generation(BackOffice): inovicegenerationbackoffice.md
+        - Other services:
+                - Batch Service: batchservice.md
+                - Verify Service: verifyservice.md
+                - Currency Exchange Service: currencyexchange.md
+                - In Common Service: incommon.md
+                - Security Settings: securitysettings.md
+                - PayFORT Transaction Feedback: transactionfeedback.md
+                
         
         
     

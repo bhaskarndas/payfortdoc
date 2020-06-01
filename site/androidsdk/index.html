@@ -33,28 +33,25 @@
         
         var pageToc = [
           {title: "Integrate Android SDK", url: "#_top", children: [
-              {title: "About the Software", url: "#about-the-software" },
-              {title: "IDE Configurations", url: "#ide-configurations" },
+              {title: "About the PayFORT Android SDK", url: "#about-the-payfort-android-sdk" },
           ]},
-          {title: "Android Studio", url: "#android-studio", children: [
+          {title: "Android Integration Flow", url: "#android-integration-flow", children: [
+              {title: "Setting up Development Environment", url: "#setting-up-development-environment" },
           ]},
-          {title: "Eclipse", url: "#eclipse", children: [
+          {title: "Android Studio Project Setup", url: "#android-studio-project-setup", children: [
+          ]},
+          {title: "Eclipse Project Setup", url: "#eclipse-project-setup", children: [
           ]},
           {title: "Project Configuration", url: "#project-configuration", children: [
           ]},
           {title: "OS Permissions", url: "#os-permissions", children: [
           ]},
           {title: "Using the FORT Mobile SDK", url: "#using-the-fort-mobile-sdk", children: [
-              {title: "Collect the FORT Mobile SDK Request", url: "#collect-the-fort-mobile-sdk-request" },
-              {title: "Define a Callback Manager", url: "#define-a-callback-manager" },
-              {title: "Attach the Callback to the Activity", url: "#attach-the-callback-to-the-activity" },
-              {title: "Call the FORT Mobile SDK", url: "#call-the-fort-mobile-sdk" },
-              {title: "Register Callback Request", url: "#register-callback-request" },
-              {title: "Call the Fort SDK Function", url: "#call-the-fort-sdk-function" },
-              {title: "FORT Mobile SDK Device ID Value", url: "#fort-mobile-sdk-device-id-value" },
           ]},
           {title: "Customizing the Mobile SDK Payment Layout", url: "#customizing-the-mobile-sdk-payment-layout", children: [
-              {title: "FORT Android SDK \u2013 Device ID permission", url: "#fort-android-sdk-device-id-permission" },
+          ]},
+          {title: "PayFORT Android SDK Operations", url: "#payfort-android-sdk-operations", children: [
+              {title: "PayFORT Android SDK \u2013 Device ID permission", url: "#payfort-android-sdk-device-id-permission" },
           ]},
           {title: "Go to Full API", url: "#go-to-full-api", children: [
           ]},
@@ -85,12 +82,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../iossdk/" class="btn btn-xs btn-default pull-right">
+      <a href="../androidsdkoperations/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../iossdk/" class="btn btn-xs btn-link">
-        Integrate iOS SDK
+      <a href="../androidsdkoperations/" class="btn btn-xs btn-link">
+        Android SDK Parameters
       </a>
     </div>
     
@@ -108,14 +105,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h2 id="integrate-android-sdk">Integrate Android SDK</h2>
 <hr />
-<p>To process a transaction using the FORT Mobile SDK, create a Mobile SDK Token and proceed through the following sections.</p>
-<h3 id="about-the-software">About the Software</h3>
+<p>You can also enable Payment processing through your mobile app by integrating PayFORT payment gateway. This section helps you to integrate PayFORT Android SDK with your android project and develop a a payment system for  your mobile  application.</p>
+<p>To process a transaction using the FORT Mobile SDK, create a Mobile SDK Token and proceed through the following sections. Please refer to the SDK Token section by visiting this <a href="../mobilesdk/">link</a></p>
+<h3 id="about-the-payfort-android-sdk">About the PayFORT Android SDK</h3>
 <hr />
-<h4 id="supported-platforms">Supported Platforms</h4>
+<h4 id="list-of-supported-platforms">List of Supported Platforms</h4>
 <p>The FORT Mobile SDK supports all devices running Android 4.1.x (API level 16).
 ICE CREAM SANDWICH or higher are supported.
 This release supports Android Pie API 28.</p>
-<h4 id="localization">Localization</h4>
+<h4 id="localization-support">Localization Support</h4>
 <p>The FORT Mobile SDK supports both English and Arabic languages.</p>
 <h4 id="screen-orientation">Screen Orientation</h4>
 <p>Portrait is the only orientation supported within the FORT Mobile SDK.</p>
@@ -123,9 +121,18 @@ This release supports Android Pie API 28.</p>
 <p>Through the first version of the FORT Mobile SDK, the Merchant has the ability to process a <strong>CREDIT CARD</strong> transactions only.</p>
 <h4 id="supported-payment-options">Supported Payment Options</h4>
 <p>The supported credit card payment options are <strong>VISA</strong>, <strong>MASTERCARD</strong>, <strong>American Express (AMEX)</strong>, <strong>MADA</strong> and <strong>MEEZA</strong>.</p>
-<h3 id="ide-configurations">IDE Configurations</h3>
+<h2 id="android-integration-flow">Android Integration Flow</h2>
+<hr />
+<p>Placeholder : Explain the Integration Flow with diagram.</p>
+<h3 id="setting-up-development-environment">Setting up Development Environment</h3>
+<hr />
+<p><strong>Prerequisites</strong></p>
+<hr />
+<p>You are required to download the FORT android sdk  from this <a href="../mobilesdk/">link</a>. You can select either <a href="https://www.eclipse.org/downloads/">eclipse</a> or <a href="https://developer.android.com/studio/?gclid=CjwKCAjw8J32BRBCEiwApQEKgYlsVaAaHQq3SOIcbmlQwO1NSLHwhaCGlX4cmdxT7Twz4NsaMh6gNhoCD2MQAvD_BwE&amp;gclsrc=aw.ds">android studio</a> for your development setup. You are also required to have some knowledge of mobile app development. You are also required to generate SDK Token.</p>
+<p><strong>IDE Configurations</strong></p>
 <hr />
 <p><strong>To start using the FORT Mobile SDK, Please follow the steps:</strong></p>
+<p>Placeholder: Provide the pic</p>
 <ol>
 <li>
 <p><a href="https://docs.payfort.com/docs/mobile-sdk/build/lib/FORTSDKv1.5.zip">Download</a> the SDK and extract the SDK.</p>
@@ -159,11 +166,14 @@ This release supports Android Pie API 28.</p>
 </li>
 </ul>
 <p><div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Please make sure to read our notes according to the IDE you are using whether it’s the Android Studio or Eclipse.</div>     </p>
-<h2 id="android-studio">Android Studio</h2>
+<h2 id="android-studio-project-setup">Android Studio Project Setup</h2>
 <hr />
-<p>To continue the integration, please proceed with the following steps:</p>
+<p>Once you have downloaded and extracted the PayFORT SDK as explained above you can next setup the Android Studio. To continue the integration, please proceed with the following steps:</p>
 <ol>
 <li>Go to File → New → New Module.</li>
+</ol>
+<p>Placeholder: Pictures of Android Studio for each step.</p>
+<ol>
 <li>Select “Import .JAR/.AAR Package” and click next.</li>
 <li>Enter the path to .aar file and click finish.</li>
 <li>Browse to the dependencies folder and open the “AndroidStudio_gradle” text file.</li>
@@ -172,20 +182,35 @@ This release supports Android Pie API 28.</p>
 <li>Clean the project.</li>
 <li>The SDK is now ready for your use.</li>
 </ol>
-<h2 id="eclipse">Eclipse</h2>
+<h2 id="eclipse-project-setup">Eclipse Project Setup</h2>
 <hr />
-<p>The integration will include two main steps. For the first step, you need to create a library project by following the below steps:</p>
+<p>Incase you are using Eclipse instead of Android Studio then you can ignore the above section and follow the instructions in this section. The integration will include two main steps. For the first step, you need to create a library project by following the below steps:</p>
 <ol>
 <li>Create a new project (from this time it’s called “library project”) in your workspace.</li>
-<li>Do not forget to mark it as library.</li>
-<li>Clear the src folder of the library project.</li>
-<li>Unzip the .aar file. You can rename it to zip and then unzip it or use any tool.</li>
-<li>Copy the classes.jar file to libs folder on the library project.</li>
-<li>Replace the res folder on library project with the res folder of the .aar file.</li>
+</ol>
+<p>Placeholder: Provide picture of Eclipse platform for each step.</p>
+<ol>
+<li>
+<p>Do not forget to mark it as library.</p>
+</li>
+<li>
+<p>Clear the src folder of the library project.</p>
+</li>
+<li>
+<p>Unzip the .aar file. You can rename it to zip and then unzip it or use any tool.</p>
+</li>
+<li>
+<p>Copy the classes.jar file to libs folder on the library project.</p>
+</li>
+<li>
+<p>Replace the res folder on library project with the res folder of the .aar file.</p>
+</li>
 </ol>
 <h2 id="project-configuration">Project Configuration</h2>
 <hr />
+<p>Once the IDEs have been installed, next we will configure the project. This section discusses the steps to configure the Project. The configuration will help to integrate the PayFORT android SDK with the IDE. </p>
 <p>The project you have created contains almost everything you need. Now let’s start configuring your project to reference this library project by following the below points:</p>
+<p>Placeholder: Provide pictures for project configuration.</p>
 <ol>
 <li>In the target project, use the library created in step one (mentioned above) as a dependency.</li>
 <li>Open the AndroidManifest.xml file inside .aar file and make sure to copy everything it takes (permissions, activities, services, receivers …) in the AndroidManifest.xml file of the target project.</li>
@@ -197,7 +222,7 @@ This release supports Android Pie API 28.</p>
 </ol>
 <h2 id="os-permissions">OS Permissions</h2>
 <hr />
-<p>The FORT Mobile SDK requires the following permissions to work properly:</p>
+<p>The PayFORT android SDK requires the following android OS permissions to work properly as shown by the following code. You are required to include the below code in your project. </p>
 <pre><code class="xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot;/&gt;
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;
@@ -205,8 +230,8 @@ This release supports Android Pie API 28.</p>
 
 <h2 id="using-the-fort-mobile-sdk">Using the FORT Mobile SDK</h2>
 <hr />
-<h3 id="collect-the-fort-mobile-sdk-request">Collect the FORT Mobile SDK Request</h3>
-<p>Please take a look at the <strong>Java model/ bean of the FORT Mobile SDK request</strong> below.</p>
+<p><strong>Collect the FORT Mobile SDK Request Through a Java Bean</strong></p>
+<p>You can create a Java bean class for the PayFORT Mobile SDK request as shown below:</p>
 <pre><code class="java">// FORT Mobile SDK request
 
 public class FortRequest implements Serializable{
@@ -227,12 +252,12 @@ public void setShowResponsePage(boolean showResponsePage) {
 }
 </code></pre>
 
-<p><strong>The following are the Mobile SDK Call Parameters:</strong></p>
+<p>The following are the Mobile SDK Call Parameters:</p>
 <ul>
-<li>The “requestMap” must contain all the FORT parameters of the order/ transaction.</li>
-<li>“showResponsePage” is the Boolean field where you can determine if you want the FORT response page to be displayed or not.</li>
+<li>The “requestMap” will contain all the PayFORT <a href="../androidsdkoperations/">parameters</a> of the order/ transaction.</li>
+<li>“showResponsePage” is the Boolean field where you can determine if you want the FORT response page to be displayed or not. </li>
 </ul>
-<h3 id="define-a-callback-manager">Define a Callback Manager</h3>
+<p><strong>Define a Callback Manager</strong></p>
 <p>Define and initialize an instance of the <strong>FortCallBackManager</strong> in your activity as shown below:</p>
 <pre><code class="java">// FORT Callback Manager Instance
 
@@ -240,7 +265,7 @@ private FortCallBackManager fortCallback = null;
 fortCallback = FortCallback.Factory.create();
 </code></pre>
 
-<h3 id="attach-the-callback-to-the-activity">Attach the Callback to the Activity</h3>
+<p><strong>Attach the Callback to the Activity</strong></p>
 <p>You need to add the statement that appears below to the <strong>onActivityResult</strong> function.</p>
 <pre><code class="java">//Callback Statement
 @Override
@@ -250,7 +275,7 @@ fortCallback.onActivityResult(requestCode,resultCode,data);
 }
 </code></pre>
 
-<h3 id="call-the-fort-mobile-sdk">Call the FORT Mobile SDK</h3>
+<p><strong>Call the FORT Mobile SDK</strong></p>
 <p>For every transaction that needs to be processed, do the call as shown below and handle the callback methods upon your business flow. The FORT Mobile SDK Call registers a new callback for a new request. The <strong>registerCallBack</strong> requires the inputs as shown below.</p>
 <pre><code class="java">//FORT Mobile SDK Call
 FortSdk.getInstance().registerCallback(this,fortRequest,5, fortCallback, showLoading, new FortInterfaces.OnTnxProcessed() {
@@ -273,7 +298,7 @@ public void onSuccess(Map&lt;String, Object&gt; requestParamsMap, Map&lt;String,
 });
 </code></pre>
 
-<h3 id="register-callback-request">Register Callback Request</h3>
+<p><strong>Register Callback Request</strong></p>
 <pre><code class="java">//The registerCallBack Request
   public void registerCallback(
   Activity context,
@@ -285,18 +310,19 @@ public void onSuccess(Map&lt;String, Object&gt; requestParamsMap, Map&lt;String,
   final FortInterfaces.OnTnxProcessed callback)
 </code></pre>
 
-<h3 id="call-the-fort-sdk-function">Call the Fort SDK Function</h3>
+<p><strong>Call the Fort SDK Function</strong></p>
 <pre><code class="java">//FortSDK function
 String device_id = FortSdk.getDeviceId(this);
 </code></pre>
 
-<h3 id="fort-mobile-sdk-device-id-value">FORT Mobile SDK Device ID Value</h3>
+<p><strong>FORT Mobile SDK Device ID Value</strong></p>
 <p>Please Make sure to use the FortSDK function<a href="#call-the-fort-sdk-function">&nbsp;<i class="fa fa-anchor"></i></a> as shown above to generate the device_id parameter value that must be used for creating the sdk_token from your business security server.</p>
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>The Merchant can choose to display the FORT response page by passing “showResponsePage” value as “True”.</div>
 
 <h2 id="customizing-the-mobile-sdk-payment-layout"><strong>Customizing the Mobile SDK Payment Layout</strong></h2>
 <hr />
 <p>We provide you with the res folder that includes the source code of the pages in order to customize the design, themes, etc. You can customize both English and Arabic layouts as needed. However, please take the following tips into consideration:</p>
+<p>Placeholder: Provide Android UI flow diagrams and Android based mobile screenshots.</p>
 <ol>
 <li>Don’t change the layout name because it’s considered an override process.</li>
 <li>Make sure to use all the views that has the ID property in order to avoid the NullPointerException.</li>
@@ -378,25 +404,9 @@ android:textSize=“@dimen/pf_15_txt_size” /&gt;
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>The customized XML file should be added to the layout file in the target project (Merchant Application) to override the SDK file.</div>
 
-<h3 id="fort-android-sdk-device-id-permission">FORT Android SDK – Device ID permission</h3>
+<h2 id="payfort-android-sdk-operations">PayFORT Android SDK Operations</h2>
 <hr />
-<p>This section helps the developers to understand the need and usage of the permission requested by the FORT Payment SDK to generate a unique device ID.</p>
-<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>
-    You might not face this issue through your payment flow. It depends on the time you are requesting the getDeviceID function and ask about the permission for the first time.
-</div>
-
-<p>A part of the FORT mobile SDK flow is to get a unique ID for the device. Generating the ID based on more than one input (collecting as much as possible will lead to a real unique ID).</p>
-<p>The Telephone manager is one of these sources. Accessing the Telephone manager need the use of ‘android.permission.READ_PHONE_STATE’ permission. According to Android that’s a dangerous permission to be used. Getting the needed permission through the flow on the case of getting the client granted that will produce a miss match device ID on the 1st SDK call.</p>
-<p>To avoid the mismatch flow we are suggesting you the following solutions:</p>
-<ul>
-<li>
-<p><strong>Handle the 1st SDK call in the onActivityResults().</strong>
-  Since The FORT SDK is a module running within the main application context the requested permission response will be returned to the merchant context. Once the activity that called geDeviceId for the 1st received a call-back in the onActivityResult() with request code = 222 you can for sure starts the payment flow of creating an SDK token and calling the SDK afterwards.</p>
-</li>
-<li>
-<p>Call getDeviceID on a previous activity or in your application class to make sure that the permission request was triggered before you reach the payment step.</p>
-</li>
-</ul>
+<p>Once you have done the project setup and installation, you will be performing the Operations for authorization and purchase done through mobile application. These operations helps your mobile application to process Authorization and Purchase operations. You will be sending the request parameters in your code which will be sent to the PayFORT server and your application will receive response from the PayFORT server. </p>
 <p><strong>Sample Code</strong></p>
 <pre><code class="java">public class PayFortSdkSample extends Activity {
 
@@ -474,17 +484,35 @@ Log.e(“execute Payment”, “call FortSdk”, e);
 
 }
 
-
-
 @Override
 public void onActivityResult(int requestCode, int resultCode, Intent data) {
 super.onActivityResult(requestCode, resultCode, data);
 fortCallback.onActivityResult(requestCode, resultCode, data);
 }
 
-
 </code></pre>
 
+<p>Placeholder for sample response from the PayFORT server.</p>
+<p>You can check out the request and response parameters by visiting this <a href="../androidsdkoperations/">link</a>.</p>
+<h3 id="payfort-android-sdk-device-id-permission">PayFORT Android SDK – Device ID permission</h3>
+<hr />
+<p>This section helps the developers to understand the need and usage of the permission requested by the PayFORT Payment SDK to generate a unique device ID.</p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>
+    You might not face this issue through your payment flow. It depends on the time you are requesting the getDeviceID function and ask about the permission for the first time.
+</div>
+
+<p>A part of the FORT mobile SDK flow is to get a unique ID for the device. Generating the ID based on more than one input (collecting as much as possible will lead to a real unique ID).</p>
+<p>The Telephone manager is one of these sources. Accessing the Telephone manager need the use of ‘android.permission.READ_PHONE_STATE’ permission. According to Android that’s a dangerous permission to be used. Getting the needed permission through the flow on the case of getting the client granted that will produce a miss match device ID on the 1st SDK call.</p>
+<p>To avoid the mismatch flow we are suggesting you the following solutions:</p>
+<ul>
+<li>
+<p><strong>Handle the 1st SDK call in the onActivityResults().</strong>
+  Since The FORT SDK is a module running within the main application context the requested permission response will be returned to the merchant context. Once the activity that called geDeviceId for the 1st received a call-back in the onActivityResult() with request code = 222 you can for sure starts the payment flow of creating an SDK token and calling the SDK afterwards.</p>
+</li>
+<li>
+<p>Call getDeviceID on a previous activity or in your application class to make sure that the permission request was triggered before you reach the payment step.</p>
+</li>
+</ul>
 <h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
 <p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
@@ -503,12 +531,12 @@ fortCallback.onActivityResult(requestCode, resultCode, data);
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../iossdk/" class="btn btn-xs btn-default pull-right">
+      <a href="../androidsdkoperations/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../iossdk/" class="btn btn-xs btn-link">
-        Integrate iOS SDK
+      <a href="../androidsdkoperations/" class="btn btn-xs btn-link">
+        Android SDK Parameters
       </a>
     </div>
     

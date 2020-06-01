@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Merchant Page 2 - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "What is Merchant Page 2 integration?", url: "#_top", children: [
+              {title: "How it works?", url: "#how-it-works" },
+              {title: "Integration Flow", url: "#integration-flow" },
+              {title: "Give It a Try", url: "#give-it-a-try" },
+              {title: "Endpoints", url: "#endpoints" },
+              {title: "Before you start", url: "#before-you-start" },
+              {title: "Sample Code", url: "#sample-code" },
+              {title: "Request Parameters", url: "#request-parameters" },
+              {title: "Response Parameters", url: "#response-parameters" },
+              {title: "Payment Page Customization", url: "#payment-page-customization" },
+              {title: "Go to Full API", url: "#go-to-full-api" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../merchantpageparameters/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../merchantpageparameters/" class="btn btn-xs btn-link">
+        Merchant Page Parameters
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../merchantpage1/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../merchantpage1/" class="btn btn-xs btn-link">
+        Merchant Page 1
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="what-is-merchant-page-2-integration">What is Merchant Page 2 integration?</h1>
+<hr />
+<p>You can also build your own custom payment form without using default payment template provided by PayFoRT and collect customer's payment details and send it to PayFORT server for further processing.</p>
+<p><img alt="custom-payment" src="../img/custom-payment-form.png" /></p>
+<p>Figure 1</p>
+<hr />
+<h3 id="how-it-works">How it works?</h3>
+<hr />
+<ol>
+<li>
+<p>You develop your own custom payment details form that collects the card details (credit card number, expiry date, CVV).</p>
+</li>
+<li>
+<p>Customer fills his/her payment details in the custom payment checkout page. </p>
+</li>
+<li>
+<p>PayFORT server receives the payment details and validates the same.</p>
+</li>
+<li>
+<p>PayFORT then sends a confirmation to your checkout page to complete the transaction which includes Token.</p>
+</li>
+<li>
+<p>You use the token to complete the <a href="https://docs.payfort.com/docs/api/build/index.html#operations-request">Authorization or Purchase operation</a>.</p>
+</li>
+</ol>
+<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You should develop a form that does not send data to your website but directly submits the form to PayFORT.</div></p>
+<hr />
+<h3 id="integration-flow">Integration Flow</h3>
+<p><img alt="image-20200213230424907" src="../img/image-20200213230424907.png" /></p>
+<p>Figure 2</p>
+<p>Here is the Integration flow description</p>
+<div><ol>
+    <li>The customer begins the checkout process on your website.</li>
+    <li>Your website displays the custom payment form to collect the card’s details. Then the Customer enters the card’s details on the payment page.</li>
+    <li>PayFORT checks the card details.</li>
+    <li>PayFORT creates a token for the Customer transaction and sends it to the payment page.</li>
+    <li>The merchant site sends a payment request along with the Token to PayFORT</li>
+    <li>In case your page receives from PayFORT server a 3-D Secure URL <mark>3ds_url</mark>, and response indicating that a 3ds check is required then:<br><div class="alert alert-info"><ol><li>Your payment page redirects the Customer to the ACS to check his card enrollment.</li><li>The Customer enters authentication data on the ACS platform.</li><li>The ACS performs authentication of the Customer’s data and sends the authentication results to PayFORT.</li><ol></ol></ol></div></li>
+<li>PayFORT completes the operation based on the 3-D Secure response and returns the response to your payment page.</li>
+<li>PayFORT sends the payment results to your site.</li>
+</ol></div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>In case of 3ds secure check, PayFort returns status <mark>20: On hold</mark>and message <mark>064: 3-D Secure check requested</mark>message.For example, PayFort is waiting for your payment page to authenticate the Customer.</div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>If the Token is sent by the payment page, it will be generated with the same name sent by the website.</div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</div>
+
+<p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link</a></p>
+<hr />
+<h2 id="give-it-a-try">Give It a Try</h2>
+<p>Use one of our <a href="../testing/">test cards</a> and corresponding CVV to try out for yourself. </p>
+<p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
+<hr />
+<h2 id="endpoints">Endpoints</h2>
+<hr />
+<p>Endpoints for Merchant Page is also applicable for Merchant 2 Integration. You can check the Endpoints by visiting this <a href="../merchantpage1/">link</a></p>
+<hr />
+<h2 id="before-you-start">Before you start</h2>
+<p>Make sure you have your <code>access_code</code>. Refer figure 3. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings <mark>Security Settings &gt; Access Code</mark>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with an active account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
+<hr />
+<p><img alt="" src="../img/paymentintegration%20settings.png" /></p>
+<p>Figure 3 : Uploading custom template</p>
+<p>The Payment Page Template available in the backoffice provides you the feature to create a custom payment processing page. Refer to the figure 4. Once you upload your custom payment page our support team will validate the same.</p>
+<p><img alt="" src="../img/integrationsettings2.png" /></p>
+<p>Figure 4:  Generating Access Code.</p>
+<hr />
+<h2 id="sample-code">Sample Code</h2>
+<p>The following code snippet shown here is an example of the start of the payment process. You can refer to this example, replacing the supplied <code>acccess_code</code> with your own. The card token will be posted via the URL specified in the form's <code>action</code> attribute.</p>
+<pre><code class="HTML">
+&lt;form method=&quot;post&quot; action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; id=form1 name=form1&gt;
+&lt;input type=&quot;hidden&quot; NAME=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
+
+&lt;input type=&quot;submit&quot; value=&quot;&quot; id=&quot;submit2&quot; name=&quot;&quot;&gt;
+
+</code></pre>
+
+<hr />
+<p>The above code snippet is an HTML based form that will post a request to PayFORT server. The request parameters are also added in the input tag of the code. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
+<p>The form action tag consists of the endpoints. This will come handy whenever submit action is performed on the page. Once the form is submitted the parameters provided in the form would be sent to the PayFORT server and Endpoints will serve as communication link between your page and PayFORT server.</p>
+<h2 id="request-parameters">Request Parameters</h2>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">&nbsp;&nbsp;</i>The parameters are mandatory and are required by PayFORT server to validate, authenticate and provide the tokens for processing of payment</div>
+
+<p>Please refer to the section <a href="../merchantpageparameters/">Merchant Page 2 Request Parameters</a> for request parameters.</p>
+<h2 id="response-parameters">Response Parameters</h2>
+<p>The PayFORT server will return the response in JSON format. Here is the sample response along with the parameters returned by PayFORT server.</p>
+<pre><code class="json">[{
+&quot;service_command&quot;: &quot;TOKENIZATION&quot;,
+&quot;access_code&quot;: &quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
+&quot;merchant_identifier&quot;: &quot;CycHZxVj&quot;,
+&quot;merchant_reference&quot;: &quot;XYZ9239-yu898&quot;,
+&quot;language&quot;: &quot;en&quot;,
+&quot;signature&quot;: &quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
+&quot;token_name&quot;: &quot;Op9Vmp&quot;,
+&quot;expiry_date&quot;: &quot;2105&quot;,
+&quot;card_number&quot;: &quot;400555*****0001&quot;,
+&quot;response_message&quot;: &quot;012&quot;,
+&quot;response_code&quot;: &quot;11012&quot;,
+&quot;status&quot;: &quot;11&quot;,
+&quot;card_bin&quot;: &quot;478773&quot;,
+&quot;card_holder_name&quot;: &quot;John Smith&quot;,
+&quot;remember_me&quot;: &quot;No&quot;,
+&quot;return_url&quot;: &quot;http://www.merchant.com&quot;
+}]
+</code></pre>
+
+<p>Please refer to the section <a href="../merchantpageparameters/">Merchant Page 2 Response</a> for reponse parameters.</p>
+<hr />
+<h2 id="payment-page-customization">Payment Page Customization</h2>
+<p>When you begin designing your own custom payment page you will also need to style your custom payment page so that it is in line with the look and feel of your website. Inorder to style your custom payment page you will require CSS files and within those files you need use the css classes. If you are new to HTML and CSS don't worry you can visit this <a href="https://www.w3schools.com/css/default.asp">link</a> to learn about HTML/CSS.</p>
+<p>This is a list with all customizable CSS classes on the basic payment page:</p>
+<ul>
+<li><strong>The <code>Wrapper</code> class</strong></li>
+</ul>
+<p>It is responsible for the total width of the form container and the background.</p>
+<ul>
+<li><strong>The <code>Container</code> class</strong></li>
+</ul>
+<p>It is responsible for the form’s shape and width.</p>
+<ul>
+<li><strong>The <code>Popover</code> class</strong></li>
+</ul>
+<p>It is responsible for the error messages.</p>
+<ul>
+<li><strong>The <code>Half-container</code> class</strong></li>
+</ul>
+<p>It is used to merge the date and CVV fields into one block if needed.</p>
+<ul>
+<li><strong>The <code>Input</code> class</strong></li>
+</ul>
+<p>It is the container of each single input field.</p>
+<ul>
+<li><strong>The <code>Pay</code> class</strong></li>
+</ul>
+<p>It is responsible for the submit button.</p>
+<ul>
+<li><strong>The <code>Visa/ MasterCard</code> classes</strong></li>
+</ul>
+<p>It is used to change the color of the Visa/ MasterCard colors.</p>
+<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.Theme files offer you the flexibility to change the look and feel of your page.</div></p>
+<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i><mark>Theme</mark> files can be uploaded from the back-office using the Payment Page template screen.</div></p>
+<hr />
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<p>To learn more about Tokens and Tokenization process visit this <a href="../tokenization/">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../merchantpageparameters/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../merchantpageparameters/" class="btn btn-xs btn-link">
+        Merchant Page Parameters
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../merchantpage1/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../merchantpage1/" class="btn btn-xs btn-link">
+        Merchant Page 1
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

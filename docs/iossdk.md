@@ -34,7 +34,7 @@ The supported credit card payment options are **VISA**, **MASTERCARD**, **Americ
 
 ------
 
-## MobileSDK integration workflow
+## Mobile SDK integration workflow
 
 ------
 
@@ -42,9 +42,19 @@ The supported credit card payment options are **VISA**, **MASTERCARD**, **Americ
 
 image source : [medium.com](https://medium.com/@yoloabdo/payfort-ios-sdk-integration-with-swift-afe04f83330)
 
-### Include the SDK to your Xcode Project
+placeholder for Integration flow description and Integration flow diagram.
+
+### Project Setup
 
 ------
+
+**Include the PayFORT iOS SDK to your Xcode Project**
+
+------
+
+The following steps describe how to setup an Xcode project for iOS development environment using the FORT iOS SDK. The prerequisites are the apple machine. You can chose to write the program either in Objective-C or in Swift programming which is the latest programming by the apple development community. The below steps describes the project setup for both objective-c and swift programming.
+
+Placeholder: please provide pics for every step described in this section.
 
 - Download the sdk from this [link](https://docs.payfort.com/docs/api/build/lib/PayFortSDK2.1.zip) and extract it.
 - Drag the PayFortSDK.framework & PayFortSDK.bundle to Frameworks in Project Navigator.
@@ -79,8 +89,8 @@ image source : [medium.com](https://medium.com/@yoloabdo/payfort-ios-sdk-integra
 
 </div>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To ensure that the application is not disconnected go to background make sure to add this code:
-Objective C
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>To ensure that the application is not disconnected go to background make sure to add this code:Objective C
+
 
 
 ```
@@ -107,11 +117,13 @@ bgTask = UIBackgroundTaskInvalid
 
 ------
 
-### Installation
+### Installation of PayFORT SDK
 
 When you register for Payfort, you will receive separate keys for testing and production environment. 
 
-- Import the PayFort Library. `#import <PayFortSDK/PayFortSDK.h>`
+Placeholder: please provide pics for every step described in this section.
+
+- Import the PayFort Library. ```#import <PayFortSDK/PayFortSDK.h>```
 
 - Initialize PayFortController with targeted environment, You set the target environment by setting one the two ENUM *KPayFortEnviromentSandBox* or *KPayFortEnviromentProduction*.
 
@@ -205,8 +217,10 @@ print(“faild”)
 
 ------
 
-By default the response will be dictionary to show the sent data in addition to the status, response message and response code.
-The response will be ready in the registered call back handler with success, failed and cancelled. You can view the response by log the result as the followings:
+Once you send your SDK request to PayFORT you will receive a response which will be a dictionary which displays  the request parameters being sent in addition to the status, response message and response code.
+
+The response(along with message success, failed or cancelled) will be already in the registered call back handler.
+The response can be viewed in the log as shown below for both objective C and swift programming:
 
 **Objective C**
 
@@ -258,7 +272,7 @@ print(“message=(message)”)
 
 
 
-Also there is an option to show response view directly in elegant view that show response results either its success or failed. By activating the following option:
+If you do not want to investigate logs for response message you have the option to show response in the view directly in an elegant manner by displaying the response results as success or failed. You can check the sample code in objective c and swift programming to display the response message as shown below:
 
 **Objective C**
 
@@ -282,7 +296,7 @@ PayFort.IsShowResponsePage = true;
 
 ------
 
-There is an option to hide loading view when SDK initialize the connection request. By disable the following option:
+There is an option to hide loading view when SDK initializes the connection request. You can disable the loading view by setting HideLoading option to yes or true as shown in the sample code. If you are using Objective C then you have to set it to yes and if you are using swift you have to set it to true. Please refer to below piece of code.
 
 **Objective C**
 
@@ -306,10 +320,10 @@ PayFort.HideLoading = true;
 
 ------
 
-You have the option to provide your custom UI theme for the payment view by the followings:
+The payment view is what your customer will see when they open your merchant app on their cellphone and payment view will help them to make payment through your application. You can create your own custom UI theme for the payment view by the following ways:
 
 - Create your nibFile .xib and set the name of Arabic xib same name with English one with suffix -ar.
-- Link the xib with PayFortView and bind all the IBOutlets in interface section
+- Link the xib with PayFortView and bind all the IBOutlets in interface section as shown in the code example below
 
 ```
 IBOutlet UILabel *titleLbl;
@@ -328,7 +342,7 @@ IBOutlet UILabel *saveCardLbl;
 IBOutlet UIImageView *imageCard;
 ```
 
-
+Placeholder: please provide UI flow diagram alongwith iphone screenshot for the same.
 
 - Assign new created xib file to PayFort Controller.
 
@@ -338,9 +352,29 @@ IBOutlet UIImageView *imageCard;
 
   
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>If you call Arabic view and the Arabic view not existed the application will crash.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>If you call Arabic view and the Arabic view does not exist then the application will crash.</div>
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info">&nbsp;&nbsp;</i>Don’t forget to set the custom view field in the identity inspector.</div>
+
+
+
+## PayFORT iOS SDK Operations
+
+------
+
+Once you have done the project setup and installation, you will be performing the Operations for authorization and purchase done through mobile application. These operations helps your mobile application to process Authorization and Purchase operations. You will be sending the request parameters in your code which will be sent to the PayFORT server and your application will receive response from the PayFORT server. 
+
+
+
+Placeholder for operations' ios sample code.
+
+
+
+Placeholder for sample response from the PayFORT server.
+
+You can check out the request and response parameters by visiting this [link](iossdkoperations.md).
+
+
 
 ## Go to Full API
 

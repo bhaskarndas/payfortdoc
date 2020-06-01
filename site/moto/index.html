@@ -66,12 +66,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../recurring/" class="btn btn-xs btn-default pull-right">
+      <a href="../motoparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../recurring/" class="btn btn-xs btn-link">
-        Recurring(API)
+      <a href="../motoparameters/" class="btn btn-xs btn-link">
+        MOTO Parameters
       </a>
     </div>
     
@@ -89,7 +89,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="moto-channel">MOTO Channel</h1>
 <hr />
-<p><strong>MOTO</strong> (Mobile Order/ Telephone Order) channel allows the Merchant to process MOTO transactions through the FORT API using credit card Tokens ONLY.</p>
+<p>Now your customers can make transactions through mobile and Telephone orders also. <strong>MOTO</strong> (Mobile Order/ Telephone Order) channel allows the you to process MOTO transactions through the FORT API using credit card Tokens ONLY. </p>
+<p>Whenever any customer places an order in your site he/she can carry out transactions over the telephone and cellphone IVR.</p>
 <h2 id="endpoints">Endpoints</h2>
 <p><strong>Sandbox</strong></p>
 <pre><code class="http">POST  https://sbpaymentservices.PayFort.com/FortAPI/paymentApi
@@ -105,40 +106,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="the-request">The Request</h2>
 <p>The sample JSON Request</p>
-<pre><code class="json">{&quot;command&quot;:&quot;PURCHASE&quot;,
- &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
- &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
- &quot;merchant_reference&quot;:&quot;XYZ9239yu898&quot;,
- &quot;amount&quot;: &quot;10000&quot;,
- &quot;currency&quot;: &quot;AED&quot;,
- &quot;language&quot;:&quot;en&quot;,
- &quot;customer_email&quot;:&quot;customer@domain.com&quot;,
- &quot;eci&quot;:&quot;MOTO&quot;,
- &quot;token_name&quot;:&quot;Op9Vmp&quot;,
- &quot;signature&quot;:&quot;7cad05f0212ed933c9a5d5dffa31661acf2c827a&quot;,
- &quot;payment_option&quot;:&quot;MASTERCARD&quot;,
- &quot;order_description&quot;:&quot;iPhone6-S&quot;,
- &quot;customer_ip&quot;:&quot;192.178.1.10&quot;,
- &quot;customer_name&quot;:&quot;John Smith&quot;,
- &quot;phone_number&quot;:&quot;00962797219966&quot;,
- &quot;settlement_reference&quot;:&quot;XYZ9239-yu898&quot;,
- &quot;merchant_extra&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra1&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra2&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra3&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra4&quot;:&quot;JohnSmith&quot;,
- &quot;merchant_extra5&quot;:&quot;JohnSmith&quot;,
- &quot;return_url&quot;:&quot;http://www.merchant.com&quot;
-}
-</code></pre>
-
+<p>Placeholder: Provide Sample code for MOTO request.</p>
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
 For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
     Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
 
+<p>For input parameters please visit the <a href="../motoparameters/">link</a></p>
 <h2 id="the-response">The Response</h2>
 <hr />
-<p>Here is the response example</p>
+<p>Here is the response that would be sent by PayFORT to the request sent to it for MOTO transactions.</p>
 <pre><code class="json">{&quot;command&quot;:&quot;PURCHASE&quot;,
  &quot;access_code&quot;:&quot;zx0IPmPy5jp1vAz8Kpg7&quot;,
  &quot;merchant_identifier&quot;:&quot;CycHZxVj&quot;,
@@ -193,12 +169,12 @@ For example: If the amount value was 500 AED; according to ISO code 3, you shoul
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../recurring/" class="btn btn-xs btn-default pull-right">
+      <a href="../motoparameters/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../recurring/" class="btn btn-xs btn-link">
-        Recurring(API)
+      <a href="../motoparameters/" class="btn btn-xs btn-link">
+        MOTO Parameters
       </a>
     </div>
     

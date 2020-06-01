@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Maintenance Parameters - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Maintenance Operations Parameters", url: "#_top", children: [
+              {title: "Capture Payment  Request Parameters", url: "#capture-payment-request-parameters" },
+              {title: "Capture Payment Response", url: "#capture-payment-response" },
+              {title: "Void Payment  Request Parameters", url: "#void-payment-request-parameters" },
+              {title: "Void Payment Response", url: "#void-payment-response" },
+              {title: "Refund Payment Request Parameters", url: "#refund-payment-request-parameters" },
+              {title: "Refund Payment Response", url: "#refund-payment-response" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../mobilesdk/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../mobilesdk/" class="btn btn-xs btn-link">
+        Mobile SDK Library
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../refund/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../refund/" class="btn btn-xs btn-link">
+        Refund Payment
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="maintenance-operations-parameters">Maintenance Operations Parameters</h1>
+<hr />
+<h2 id="capture-payment-request-parameters">Capture Payment  Request Parameters</h2>
+<hr />
+<p><strong>command</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>CAPTURE</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong><sup>(numeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>149295435400084008</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong><sup>(numeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>The transaction’s amount. <br>*Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount check the note after this table.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>AED</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong><sup>(Alphanumeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>iPhone 6-S</td>
+<td><mark><code>'</code>/ . _ - # : $ <strong>Space</strong></mark></td>
+<td>It holds the description of the order.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</i></div>
+
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">You can send “merchant_reference” and/ or “fort_id” in the CAPTURE request.</i></div>
+
+<h2 id="capture-payment-response">Capture Payment Response</h2>
+<hr />
+<p><strong>command</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>CAPTURE</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>The transaction’s amount. <br></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>AED</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong><sup>(Alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>iPhone 6-S</td>
+<td><mark><code>'</code>/ . _ - # : $ <strong>Space</strong></mark></td>
+<td>It holds the description of the order.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>149295435400084008</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a></td>
+<td>The message description of the response code; it returns according to the request language.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>20064</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="../transactioncodes/">status</a>, and the last 3 digits represent the response <a href="../transactioncodes/">messages</a>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Please refer to section <a href="../transactioncodes/">statuses</a></td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info"></i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
+
+<p>Please refer to section <a href="../transactioncodes/">Transactions Response Codes</a> for more details about operation’s statuses</p>
+<hr />
+<h2 id="void-payment-request-parameters">Void Payment  Request Parameters</h2>
+<p><strong>command</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>VOID_AUTHORIZATION</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong><sup>(numeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>149295435400084008</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong><sup>(numeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>The transaction’s amount. <br>*Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount check the note after this table.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>AED</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong><sup>(Alphanumeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>iPhone 6-S</td>
+<td><mark><code>'</code>/ . _ - # : $ <strong>Space</strong></mark></td>
+<td>It holds the description of the order.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">You can send “merchant_reference” and/ or “fort_id” in the VOID_AUTHORIZATION request.</i></div>
+
+<h2 id="void-payment-response">Void Payment Response</h2>
+<hr />
+<p><strong>command</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>VOID_AUTHORIZATION</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong><sup>(Alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>iPhone 6-S</td>
+<td><mark><code>'</code>/ . _ - # : $ <strong>Space</strong></mark></td>
+<td>It holds the description of the order.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>149295435400084008</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a></td>
+<td>The message description of the response code; it returns according to the request language.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>20064</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="../transactioncodes/">status</a>, and the last 3 digits represent the response <a href="../transactioncodes/">messages</a>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Please refer to section <a href="../transactioncodes/">statuses</a></td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info"></i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
+
+<p>Please refer to section <a href="../transactioncodes/">Transactions Response Codes</a> for more details about operation’s statuses</p>
+<hr />
+<h2 id="refund-payment-request-parameters">Refund Payment Request Parameters</h2>
+<p><strong>command</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>REFUND</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong><sup>(numeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>149295435400084008</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong><sup>(numeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>The transaction’s amount. <br>*Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount check the note after this table.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>AED</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong><sup>(Alphanumeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>iPhone 6-S</td>
+<td><mark><code>'</code>/ . _ - # : $ <strong>Space</strong></mark></td>
+<td>It holds the description of the order.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>maintenance_reference</strong><sup>(alphanumeric, optional)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>customer123</td>
+<td><mark>- _ .</mark></td>
+<td>The Refund’s unique order number. <br/>* You will be able to retry on the refund request using the same maintenance reference if the refund transaction was declined.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</i></div>
+
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">You can send “merchant_reference” and/ or “fort_id” in the REFUND request.</i></div>
+
+<h2 id="refund-payment-response">Refund Payment Response</h2>
+<hr />
+<p><strong>command</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>AUTHORIZATION, PURCHASE</mark></td>
+<td>A command for payFORT server to understand.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_reference</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special Characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>XYZ9239-yu898</td>
+<td><mark>- _ .</mark></td>
+<td>The Merchant’s unique order number.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>amount</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>The transaction’s amount. <br></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>currency</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>AED</td>
+<td>The currency of the transaction’s amount in ISO code 3.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>order_description</strong><sup>(Alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>iPhone 6-S</td>
+<td><mark><code>'</code>/ . _ - # : $ <strong>Space</strong></mark></td>
+<td>It holds the description of the order.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>maintenance_reference</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>customer123</td>
+<td>The Refund’s unique order number. <br/>* You will be able to retry on the refund request using the same maintenance reference if the refund transaction was declined.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>fort_id</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>149295435400084008</td>
+<td>The order’s unique reference returned by our system.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#messages">messages</a></td>
+<td>The message description of the response code; it returns according to the request language.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>20064</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="../transactioncodes/">status</a>, and the last 3 digits represent the response <a href="../transactioncodes/">messages</a>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Please refer to section <a href="../transactioncodes/">statuses</a></td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info"></i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
+
+<p>Please refer to section <a href="../transactioncodes/">Transactions Response Codes</a> for more details about operation’s statuses</p>
+<hr />
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../mobilesdk/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../mobilesdk/" class="btn btn-xs btn-link">
+        Mobile SDK Library
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../refund/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../refund/" class="btn btn-xs btn-link">
+        Refund Payment
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

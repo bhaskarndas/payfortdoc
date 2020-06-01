@@ -34,10 +34,11 @@
       var is_top_frame = (window === window.parent);
         
         var pageToc = [
-          {title: "Get Started With PayFort", url: "#_top", children: [
+          {title: "Get Started With PayFORT", url: "#_top", children: [
               {title: "PayFORT Payment Features", url: "#payfort-payment-features" },
-              {title: "Using PayFORT iFrame", url: "#using-payfort-iframe" },
-              {title: "Using Custom Payment Form", url: "#using-custom-payment-form" },
+              {title: "PayFORT Integration Type", url: "#payfort-integration-type" },
+              {title: "Using Merchant Page", url: "#using-merchant-page" },
+              {title: "Using Merchant Page 2", url: "#using-merchant-page-2" },
               {title: "Get Started With Testing", url: "#get-started-with-testing" },
               {title: "Need further help?", url: "#need-further-help" },
           ]},
@@ -105,28 +106,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Merchant Page</span>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpage1/" class="wm-article-link wm-toc-text">Merchant Page 1</a>
 </li>
-<li class="wm-toc-li-nested collapse">
-  <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev4 "><a href="iframe_web/" class="wm-article-link wm-toc-text">iFrame For Web</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpage2/" class="wm-article-link wm-toc-text">Merchant Page 2</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev4 "><a href="custompaymentform/" class="wm-article-link wm-toc-text">Custom Payment Form</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="merchantpageparameters/" class="wm-article-link wm-toc-text">Merchant Page Parameters</a>
 </li>
-  </ul>
-</li>
-
       <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Redirection</span>
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev4 "><a href="redirection/" class="wm-article-link wm-toc-text">What is redirection?</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="redirectionsparameters/" class="wm-article-link wm-toc-text">Redirections Parameters</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Maintenance</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="maintenance/" class="wm-article-link wm-toc-text">What is Maintenance?</a>
+</li>
       <li class="wm-toc-li wm-toc-lev4 "><a href="capturepayment/" class="wm-article-link wm-toc-text">Capture Payment</a>
 </li>
       <li class="wm-toc-li wm-toc-lev4 "><a href="voidauthorization/" class="wm-article-link wm-toc-text">Void an Authorization</a>
 </li>
       <li class="wm-toc-li wm-toc-lev4 "><a href="refund/" class="wm-article-link wm-toc-text">Refund Payment</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="maintenanceparameters/" class="wm-article-link wm-toc-text">Maintenance Parameters</a>
 </li>
   </ul>
 </li>
@@ -139,7 +148,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
       <li class="wm-toc-li wm-toc-lev4 "><a href="androidsdk/" class="wm-article-link wm-toc-text">Integrate Android SDK</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="androidsdkoperations/" class="wm-article-link wm-toc-text">Android SDK Parameters</a>
+</li>
       <li class="wm-toc-li wm-toc-lev4 "><a href="iossdk/" class="wm-article-link wm-toc-text">Integrate iOS SDK</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="iossdkoperations/" class="wm-article-link wm-toc-text">iOS SDK Parameters</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="sdktokenparameters/" class="wm-article-link wm-toc-text">Mobile SDK Parameters</a>
 </li>
   </ul>
 </li>
@@ -155,6 +170,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="billpresentment/" class="wm-article-link wm-toc-text">Cash Payment</a>
+</li>
       <li class="wm-toc-li wm-toc-lev3 "><a href="cards/" class="wm-article-link wm-toc-text">Cards</a>
 </li>
       <li class="wm-toc-li wm-toc-lev3 "><a href="wallets/" class="wm-article-link wm-toc-text">Wallets</a>
@@ -172,9 +189,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev3 "><a href="moto/" class="wm-article-link wm-toc-text">Moto</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="motoparameters/" class="wm-article-link wm-toc-text">MOTO Parameters</a>
+</li>
       <li class="wm-toc-li wm-toc-lev3 "><a href="recurring/" class="wm-article-link wm-toc-text">Recurring(API)</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="subscription.md" class="wm-article-link wm-toc-text">Subscription(Back Office)</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="recurringparameters/" class="wm-article-link wm-toc-text">Recurring Parameters</a>
 </li>
   </ul>
 </li>
@@ -194,7 +213,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev3 "><a href="fraudbasic/" class="wm-article-link wm-toc-text">Fraud Basic(Protect)</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="aciredfraud.md" class="wm-article-link wm-toc-text">ACI Red Fraud(Protect+)</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="aciredfraud/" class="wm-article-link wm-toc-text">ACI Red Fraud(Protect+)</a>
 </li>
   </ul>
 </li>
@@ -205,12 +224,57 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="monitor/" class="wm-article-link wm-toc-text">Monitor</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="reportingapi/" class="wm-article-link wm-toc-text">Data Mine(Reporting API)</a>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Data Mine</span>
 </li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="reportingapi/" class="wm-article-link wm-toc-text">Reporting API</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="reportingapiparameters/" class="wm-article-link wm-toc-text">Reporting API Parameters</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="reportingbackoffice/" class="wm-article-link wm-toc-text">Report Generation (BackOffice)</a>
+</li>
+  </ul>
+</li>
+
       <li class="wm-toc-li wm-toc-lev2 "><a href="installments/" class="wm-article-link wm-toc-text">Installments</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="collection/" class="wm-article-link wm-toc-text">Collect</a>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Collect</span>
 </li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="invoicing/" class="wm-article-link wm-toc-text">One to One(invoicing)</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="invoicingparameters/" class="wm-article-link wm-toc-text">Invoicing Parameters</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="batchinvoicing/" class="wm-article-link wm-toc-text">One to Many(Batch invoicing)</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="batchinvoicingparameters.md" class="wm-article-link wm-toc-text">Batch Invoicing Parameters</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="inovicegenerationbackoffice/" class="wm-article-link wm-toc-text">Invoice Generation(BackOffice)</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Other services</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="batchservice/" class="wm-article-link wm-toc-text">Batch Service</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="verifyservice/" class="wm-article-link wm-toc-text">Verify Service</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="currencyexchange/" class="wm-article-link wm-toc-text">Currency Exchange Service</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="incommon/" class="wm-article-link wm-toc-text">In Common Service</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="securitysettings/" class="wm-article-link wm-toc-text">Security Settings</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="transactionfeedback/" class="wm-article-link wm-toc-text">PayFORT Transaction Feedback</a>
+</li>
+  </ul>
+</li>
+
   </ul>
 </li>
 
@@ -438,16 +502,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="get-started-with-payfort">Get Started With PayFort</h1>
+    <h1 id="get-started-with-payfort">Get Started With PayFORT</h1>
 <hr />
-<p>PayFORT helps you to build a robust payment system for your merchant site. With the help of PayFORT you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. </p>
-<p>You can get started with a PayFORT test account by signing up using this <a href="https://www.payfort.com/test-account/">link</a></p>
+<p>If you are starting a new ecommerce or any other merchant site then you need a robust payment system that can capture not only customer's payment details but also helps you with various financial transaction needs of your customers such as recurring payments, financing purchase by the customer, one time payment etc. PayFORT helps you to build a robust payment system for your merchant site. With the help of PayFORT you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. </p>
+<p>You can signup for a PayFORT test account by navigating to this <a href="https://www.payfort.com/test-account/">link</a></p>
 <p>If you want to integrate payment systems with your site then you can sign up for a live account by visiting this <a href="https://www.payfort.com/get-started/">link</a> </p>
-<p>PayFORT offers you two approaches for integrations with your merchant site as mentioned below:</p>
-<ul>
-<li>By using PayFORT iFrame <a href="#using-payfort-iframe"><i class="fa fa-anchor"></i></a></li>
-<li>By developing your own custom payment form<a href="custompaymentform/"><i class="fa fa-anchor"></i></a></li>
-</ul>
 <hr />
 <h2 id="payfort-payment-features">PayFORT Payment Features</h2>
 <hr />
@@ -466,16 +525,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>​                                                     Figure 1 </p>
 <p>​                                 Shopping cart applications supported by PayFort</p>
 <hr />
-<h2 id="using-payfort-iframe">Using PayFORT iFrame</h2>
+<h2 id="payfort-integration-type">PayFORT Integration Type</h2>
+<p>PayFORT offers you two approaches for integrations with your merchant site as mentioned below:</p>
+<ul>
+<li>By using PayFORT Merchant Page <a href="#using-merchant-page">&nbsp;<i class="fa fa-anchor"></i></a></li>
+<li>By using PayFORT Merchant Page 2<a href="#using-merchant-page-2">&nbsp;<i class="fa fa-anchor"></i></a></li>
+</ul>
+<h2 id="using-merchant-page">Using Merchant Page</h2>
 <hr />
-<p><em>PayFORT </em><strong>iFrame</strong>* helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page or in your mobile based app. Once the details are entered PayFort generates a secure single use token through tokenization process. This token can be used to request a payment without the need to store any customer's payment information in your site.</p>
-<p><em>PayFORT</em> processes the transaction and returns the results back to the your site through invisible redirection.</p>
-<p><a href="iframe_web/"><button class="btn btn-primary">check out iframe for web here</button></a></p>
+<p>PayFORT Merchant Page integration uses <strong><em>iFrame</em></strong> or internal frame that helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page.  For more details checkout the Merchant Page Integration.</p>
+<p><a href="merchantpage1/"><button class="btn btn-primary">Merchant Page Integration</button></a></p>
 <hr />
-<h2 id="using-custom-payment-form">Using Custom Payment Form</h2>
+<h2 id="using-merchant-page-2">Using Merchant Page 2</h2>
 <hr />
-<p>You can also design and develop your own custom form for collecting the card details. The card details are sent directly to <em>PayFORT</em> and substituted with Token. You can then use this Token to complete the transaction.</p>
-<p><a href="custompaymentform/"><button class="btn btn-primary">custom payment form </button></a></p>
+<p>Merchant Page 2 provides you with the flexibility to develop your own custom form for collecting the customer's card details. For more details visit the Merchant Page 2 Integration.</p>
+<p><a href="merchantpage2/"><button class="btn btn-primary">Merchant Page 2 Integration </button></a></p>
 <hr />
 <h2 id="get-started-with-testing">Get Started With Testing</h2>
 <p>If you have developed your payment page then you can proceed with creation of a testing account by visiting <a href="" title="https://www.payfort.com/test-account/">link</a></p>
@@ -497,5 +561,5 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </html>
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-04-23 05:21:01
+Build Date UTC : 2020-06-01 17:40:17
 -->

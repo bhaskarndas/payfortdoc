@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Invoicing Parameters - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Invoicing (One to One) Request and Response Parameters", url: "#_top", children: [
+              {title: "Invoicing Service - Response", url: "#invoicing-service-response" },
+              {title: "Go to Full API", url: "#go-to-full-api" },
+              {title: "Need further help?", url: "#need-further-help" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../batchinvoicing/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../batchinvoicing/" class="btn btn-xs btn-link">
+        One to Many(Batch invoicing)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../invoicing/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../invoicing/" class="btn btn-xs btn-link">
+        One to One(invoicing)
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="invoicing-one-to-one-request-and-response-parameters">Invoicing (One to One) Request and Response Parameters</h1>
+<hr />
+<table>
+<thead>
+<tr>
+<th><strong>service_command</strong> Alpha Mandatory max: 20</th>
+<th>Command. Possible/ expected values: PAYMENT_LINK Special characters: _</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>access_code</strong> Alphanumeric Mandatory max: 20</td>
+<td>Access code. Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td><strong>merchant_identifier</strong> Alphanumeric Mandatory max: 20</td>
+<td>The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td><strong>merchant_reference</strong> Alphanumeric Mandatory max: 40</td>
+<td>The Merchant’s unique order number. Example: XYZ9239-yu898 Special characters: - _ .</td>
+</tr>
+<tr>
+<td><strong>amount</strong> Numeric Mandatory max: 10</td>
+<td>The transaction’s amount. *Each currency has predefined allowed decimal points that should be taken into consideration when sending the amount. Example: 100 USD=1.00 USD</td>
+</tr>
+<tr>
+<td><strong>currency</strong> Alpha Mandatory max: 3</td>
+<td>The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td><strong>language</strong> Alpha Mandatory max: 2</td>
+<td>The invoice and the received messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td><strong>customer_email</strong> Alphanumeric Mandatory max: 254</td>
+<td>The customer’s email. Example: customer@domain.com Special characters: _ - . @ +</td>
+</tr>
+<tr>
+<td><strong>request_expiry_date</strong> Alphanumeric Mandatory max: 25</td>
+<td>The invoice link expiry date. Example: 2017-12-20T15:36:55+03:00 Special characters: + : -</td>
+</tr>
+<tr>
+<td><strong>notification_type</strong> Alpha Mandatory max: 20</td>
+<td>The way the Customer wants to use to get his notification. The Merchant can choose more than one way. * If the Customer chooses NONE with “EMAIL” or “SMS”, then the NONE will be taken as notification type. Possible/ expected values: - SMS - EMAIL - NONE Special characters: ,</td>
+</tr>
+<tr>
+<td><strong>signature</strong> Alphanumeric Mandatory max: 200</td>
+<td>A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td><strong>link_command</strong> Alphanumeric Optional max: 15</td>
+<td>Link operation to be executed. Possible/ expected values: AUTHORIZATION/ PURCHASE</td>
+</tr>
+<tr>
+<td><strong>payment_link_id</strong> Alphanumeric Optional max: 20</td>
+<td>The ID of the generated Invoice payment link. Example: 148708392700020346 Special characters: - _ .</td>
+</tr>
+<tr>
+<td><strong>payment_option</strong> Alpha Optional max: 10</td>
+<td>Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX - SADAD (for Purchase operations only) - NAPS (for Purchase operations only) - KNET(for Purchase operations only) - MADA (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf">MADA Branding Document</a> - MEEZA (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+<tr>
+<td><strong>order_description</strong> Alphanumeric Optional max: 150</td>
+<td>It holds the description of the order. Example: iPhone 6-S Special characters: <code>'</code>/ . _ - # : $ <strong>Space</strong></td>
+</tr>
+<tr>
+<td><strong>customer_name</strong> Alpha Optional max: 40</td>
+<td>The customer’s name. Example: John Smith Special characters: _ \ / - . <code>'</code><strong>Space</strong></td>
+</tr>
+<tr>
+<td><strong>customer_phone</strong> Numeric Optional max: 19</td>
+<td>The Customer mobile number. It’s mandatory when selecting SMS as notification type. Example: 00962797219966</td>
+</tr>
+<tr>
+<td><strong>return_url</strong> Alphanumeric Optional max: 400</td>
+<td>The URL of the Merchant’s page to be redirected to when the order is processed. Example: http://www.merchant.com Special characters:$ ! = ? # &amp; _ - / : .</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>If the Customer chooses NONE with “EMAIL” or “SMS”, then the NONE will be taken as notification type.</div>
+
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Before sending the amount value of any transaction, you have to multiply the value with the currency decimal code according to ISO code 3.
+For example: If the amount value was 500 AED; according to ISO code 3, you should multiply the value with 100 (2 decimal points); so it will be sent in the request as 50000.
+Another example: If the amount value was 100 JOD; according to ISO code 3, you should multiply the value with 1000 (3 decimal points); so it will be sent in the request as 100000.</div>
+
+<h2 id="invoicing-service-response">Invoicing Service - Response</h2>
+<p><strong>The following parameters will be returned in PayFort’s Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>service_command</strong> Alpha max: 20</td>
+<td align="left">Command. Possible/ expected values: PAYMENT_LINK</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric max: 20</td>
+<td align="left">Access code. Possible/ expected Example: zx0IPmPy5jp1vAz</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ2939-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric max: 10</td>
+<td align="left">The transaction’s amount. Example: 100 USD=1.00 USD</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: USD</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha max: 2</td>
+<td align="left">The invoice and received messages language. Possible/ expected values: en / ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric max: 254</td>
+<td align="left">The customer’s email. Example: customer@domain.com</td>
+</tr>
+<tr>
+<td align="right"><strong>request_expiry_date</strong> Alphanumeric max: 25</td>
+<td align="left">The invoice link expiry date. Example: 2017-12-20T15:36:55+03:00</td>
+</tr>
+<tr>
+<td align="right"><strong>notification_type</strong> Alpha max: 20</td>
+<td align="left">The way the Customer wants to use to get his notification. The Merchant can choose more than one way. *If the Customer chooses NONE with “EMAIL” or “SMS”, then the NONE will be taken as notification type. Possible/ expected values: - SMS - EMAIL - NONE</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. (Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#signature">Signature</a> for more details). Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>link_command</strong> Alphanumeric max: 15</td>
+<td align="left">Link operation to be executed. Possible/ expected values: AUTHORIZATION/ PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_link_id</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the generated Invoice payment link. Example: 148708392700020346</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_link</strong> Alphanumeric max: 150</td>
+<td align="left">The generated invoice link notified to the Customer by one of the notification types, used to complete the payment process. Example: https://checkout.payfort.com/dfc3d762</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX - SADAD (for Purchase operations only) - NAPS (for Purchase operations only) - KNET(for Purchase operations only) - MADA (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf">MADA Branding Document</a> - MEEZA (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha max: 40</td>
+<td align="left">The customer’s name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric max: 150</td>
+<td align="left">Message description of the response code. It returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code is made up of five digits, the first 2 digits refer to the request <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#statuses">status</a>, and the last 3 digits refer to the request <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#statuses">statuses</a></td>
+</tr>
+<tr>
+<td align="right"><strong>customer_phone</strong> Numeric max: 19</td>
+<td align="left">The Customer mobile number. Example: 00962797219966</td>
+</tr>
+<tr>
+<td align="right"><strong>return_url</strong> Alphanumeric max: 400</td>
+<td align="left">The URL of the Merchant’s page to be redirected to when the order is processed. Example: http://www.merchant.com</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones.</div>
+
+<p>After completing the checkout process through the payment link; the following list of parameters will be returned under the “Direct Transaction Feedback”:</p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>To find your “Direct Transaction Feedback” from the back office; follow these steps:
+Integration Settings → Technical Settings → Redirection Channel → you will find your “Direct Transaction Feedback”.</div>
+
+<table>
+<thead>
+<tr>
+<th align="right">ATTRIBUTES</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>command</strong> Alpha Max: 20</td>
+<td align="left">A command. Possible/ expected values: AUTHORIZATION, PURCHASE</td>
+</tr>
+<tr>
+<td align="right"><strong>access_code</strong> Alphanumeric Max: 20</td>
+<td align="left">Access code. Example: zx0IPmPy5jp1vAz8Kpg7</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_identifier</strong> Alphanumeric Max: 20</td>
+<td align="left">The ID of the Merchant. Example: CycHZxVj</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_reference</strong> Alphanumeric Max: 40</td>
+<td align="left">The Merchant’s unique order number. Example: XYZ9239-yu898</td>
+</tr>
+<tr>
+<td align="right"><strong>amount</strong> Numeric Max: 10</td>
+<td align="left">The transaction’s amount. Example: 10000</td>
+</tr>
+<tr>
+<td align="right"><strong>currency</strong> Alpha Max: 3</td>
+<td align="left">The currency of the transaction’s amount in ISO code 3. Example: AED</td>
+</tr>
+<tr>
+<td align="right"><strong>language</strong> Alpha Max: 2</td>
+<td align="left">The checkout page and messages language. Possible/ expected values: en/ ar</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_email</strong> Alphanumeric Max: 254</td>
+<td align="left">The customer’s email. Example: customer1@domain.com</td>
+</tr>
+<tr>
+<td align="right"><strong>signature</strong> Alphanumeric Max: 200</td>
+<td align="left">A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#signature">Signature</a> Example: 7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_link_id</strong> Alphanumeric max: 20</td>
+<td align="left">The ID of the generated Invoice payment link. Example: 148708392700020346</td>
+</tr>
+<tr>
+<td align="right"><strong>token_name</strong> Alphanumeric max: 100</td>
+<td align="left">The Token received from the Tokenization process. Example: Op9Vmp</td>
+</tr>
+<tr>
+<td align="right"><strong>fort_id</strong> Numeric Max: 20</td>
+<td align="left">The order’s unique reference returned by our system. Example: 149295435400084008</td>
+</tr>
+<tr>
+<td align="right"><strong>payment_option</strong> Alpha Max: 10</td>
+<td align="left">Payment option. Possible/ expected values: - MASTERCARD - VISA - AMEX - SADAD (for Purchase operations only) - NAPS (for Purchase operations only) - KNET(for Purchase operations only) - MADA (for Purchase operations and eci Ecommerce only) Click here to download <a href="https://docs.payfort.com/pdf/mada branding - ecommerce merchant - payment providers.pdf">MADA Branding Document</a> - MEEZA (for Purchase operations and ECOMMERCE eci only)</td>
+</tr>
+<tr>
+<td align="right"><strong>sadad_olp</strong> Alphanumeric Max: 12</td>
+<td align="left">SADAD Online Payment ID Alias. The merchant sends this value if the OLP ID is collected on the merchant checkout. Example: SABBP2P_UAT2</td>
+</tr>
+<tr>
+<td align="right"><strong>eci</strong> Alpha Max: 16</td>
+<td align="left">The E-commerce indicator. Possible/ expected values: - ECOMMERCE - MOTO</td>
+</tr>
+<tr>
+<td align="right"><strong>order_description</strong> Alphanumeric Max: 150</td>
+<td align="left">It holds the description of the order. Example: iPhone 6-S</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_ip</strong> Alphanumeric max: 45</td>
+<td align="left">It holds the customer’s IP address. *We support IPv4 and IPv6 as shown in the example below. Example: IPv4 → 192.178.1.10 IPv6 → 2001:0db8:3042:0002:5a55:caff:fef6:bdbf</td>
+</tr>
+<tr>
+<td align="right"><strong>customer_name</strong> Alpha Max: 40</td>
+<td align="left">The customer’s name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra</strong> Alphanumeric Max: 999</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra1</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra2</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra3</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra4</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>merchant_extra5</strong> Alphanumeric Max: 250</td>
+<td align="left">Extra data sent by merchant. Will be received and sent back as received. Will not be displayed in any report. Example: JohnSmith</td>
+</tr>
+<tr>
+<td align="right"><strong>authorization_code</strong> Alphanumeric Max: 100</td>
+<td align="left">The authorization code returned from the 3rd party. Example: P1000000000000372136</td>
+</tr>
+<tr>
+<td align="right"><strong>response_message</strong> Alphanumeric Max: 150</td>
+<td align="left">The message description of the response code; it returns according to the request language. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#messages">messages</a></td>
+</tr>
+<tr>
+<td align="right"><strong>response_code</strong> Numeric Max: 5</td>
+<td align="left">Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#statuses">status</a>, and the last 3 digits represent the response <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#messages">messages</a>. Example: 20064</td>
+</tr>
+<tr>
+<td align="right"><strong>status</strong> Numeric Max: 2</td>
+<td align="left">A two-digit numeric value that indicates the status of the transaction. Possible/ expected values: Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html?ruby#statuses">statuses</a></td>
+</tr>
+<tr>
+<td align="right"><strong>card_holder_name</strong> Alpha Max: 50</td>
+<td align="left">The card holder name. Example: John Smith</td>
+</tr>
+<tr>
+<td align="right"><strong>expiry_date</strong> Numeric Max: 4</td>
+<td align="left">The card’s expiry date. Example: 2105</td>
+</tr>
+<tr>
+<td align="right"><strong>card_number</strong> Numeric Max: 19</td>
+<td align="left">The masked credit card’s number. <em>Only the MEEZA payment option takes 19 digits card number. *AMEX payment option takes 15 digits card number. *Otherwise, they take 16 digits card number.  Example: 400555</em><strong>*</strong>0001</td>
+</tr>
+<tr>
+<td align="right"><strong>remember_me</strong> Alpha Max: 2</td>
+<td align="left">This parameter provides you with an indication to whether to save this token for the user based on the user selection. Possible/ expected values: NO</td>
+</tr>
+<tr>
+<td align="right"><strong>phone_number</strong> Alphanumeric max: 19</td>
+<td align="left">The customer’s phone number. Example: 00962797219966</td>
+</tr>
+<tr>
+<td align="right"><strong>settlement_reference</strong> Alphanumeric max: 34</td>
+<td align="left">The Merchant submits this value to the FORT. The value is then passed to the Acquiring bank and displayed to the merchant in the Acquirer settlement file. Example: XYZ9239-yu898</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="go-to-full-api">Go to Full API</h2>
+<hr />
+<p>Check out our full API by visiting this <a href="https://docs.payfort.com/docs/api/build/index.html#redirection">link</a></p>
+<p>To learn more about Tokens and Tokenization process visit this <a href="../tokenization/">link</a></p>
+<h2 id="need-further-help">Need further help?</h2>
+<p>Thanks for using PayFort.com. If you need any help or support, then message our support team at <a href="mailto:support@payfort.com">support@payfort.com</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../batchinvoicing/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../batchinvoicing/" class="btn btn-xs btn-link">
+        One to Many(Batch invoicing)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../invoicing/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../invoicing/" class="btn btn-xs btn-link">
+        One to One(invoicing)
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

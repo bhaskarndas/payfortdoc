@@ -2,16 +2,11 @@
 
 ------
 
-If you are starting out a new ecommerce or any other merchant site then you need a robust payment system that can capture not only customer's payment details but also helps you with various financial transactions needs of your customers such as recurring payments, financing purchase by the customer, one time payment etc. PayFORT helps you to build a robust payment system for your merchant site. With the help of PayFORT you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. 
+If you are starting a new ecommerce or any other merchant site then you need a robust payment system that can capture not only customer's payment details but also helps you with various financial transaction needs of your customers such as recurring payments, financing purchase by the customer, one time payment etc. PayFORT helps you to build a robust payment system for your merchant site. With the help of PayFORT you can collect payment information conveniently and securely. It offers your customer the choice to pay in multiple currencies. Your customers can also select from available payment methods such as 3D secure, Apple Pay, Visa Checkout or MasterPass. 
 
-You can get started with a PayFORT test account by signing up using this [link](https://www.payfort.com/test-account/)
+You can signup for a PayFORT test account by navigating to this [link](https://www.payfort.com/test-account/)
 
 If you want to integrate payment systems with your site then you can sign up for a live account by visiting this [link](https://www.payfort.com/get-started/) 
-
-PayFORT offers you two approaches for integrations with your merchant site as mentioned below:
-
-- By using PayFORT iFrame [<i class="fa fa-anchor"></i>](#using-payfort-iframe)
-- By developing your own custom payment form[<i class="fa fa-anchor"></i>](custompaymentform.md)
 
 
 
@@ -39,27 +34,34 @@ PayFORT offers you two approaches for integrations with your merchant site as me
 
 ------
 
-## Using PayFORT iFrame
+## PayFORT Integration Type
+
+PayFORT offers you two approaches for integrations with your merchant site as mentioned below:
+
+- By using PayFORT Merchant Page [&nbsp;<i class="fa fa-anchor"></i>](#using-merchant-page)
+- By using PayFORT Merchant Page 2[&nbsp;<i class="fa fa-anchor"></i>](#using-merchant-page-2)
+
+
+
+## Using Merchant Page
 
 ------
 
-*PayFORT ***iFrame*** helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page. Once the details are entered PayFORT generates a secure single use token through tokenization process. This token can be used to request a payment without the need to store any customer's payment information in your site.
+PayFORT Merchant Page integration uses ***iFrame*** or internal frame that helps you to create a customizable payment form. It gives the customer freedom to provide their payment details on your site's checkout page.  For more details checkout the Merchant Page Integration.
 
- *PayFORT* processes the transaction and returns the results back to the your site through invisible redirection.
-
-[<button class="btn btn-primary">check out iframe for web here</button>](iframe_web.md)
+[<button class="btn btn-primary">Merchant Page Integration</button>](merchantpage1.md)
 
 
 
 ------
 
-## Using Custom Payment Form
+## Using Merchant Page 2
 
 ------
 
-You can also design and develop your own custom form for collecting the card details. The card details are sent directly to *PayFORT* and substituted with Token. You can then use this Token to complete the transaction.
+Merchant Page 2 provides you with the flexibility to develop your own custom form for collecting the customer's card details. For more details visit the Merchant Page 2 Integration.
 
-[<button class="btn btn-primary">custom payment form </button>](custompaymentform.md)
+[<button class="btn btn-primary">Merchant Page 2 Integration </button>](merchantpage2.md)
 
 ------
 

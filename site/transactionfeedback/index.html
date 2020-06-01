@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>PayFORT Transaction Feedback - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "PayFORT Transaction Feedback", url: "#_top", children: [
+              {title: "Overview", url: "#overview" },
+              {title: "Registering Transaction Feedback URLs", url: "#registering-transaction-feedback-urls" },
+              {title: "Transaction Feedback implementation", url: "#transaction-feedback-implementation" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../glossary/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../glossary/" class="btn btn-xs btn-link">
+        Glossary
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../securitysettings/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../securitysettings/" class="btn btn-xs btn-link">
+        Security Settings
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="payfort-transaction-feedback">PayFORT Transaction Feedback</h1>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Transaction feedback keeps you updated regarding a transaction.</p>
+<p>The PayFORT transaction Feedback system provides you with two types of configurable notifications:</p>
+<p><strong>1.</strong> <strong>Direct Transaction Feedback</strong></p>
+<p>PayFort sends you HTTPs notifications that informs the transaction’s final status whenever a transaction is processed.
+<strong>2. Notification Transaction Feedback</strong> </p>
+<p>PayFort sends you HTTPs notifications that inform the transaction’s final status whenever a transaction status is updated.</p>
+<hr />
+<h2 id="registering-transaction-feedback-urls">Registering Transaction Feedback URLs</h2>
+<p><strong>1.</strong> Log in to your back-office account.
+<strong>2.</strong> Select the active channel under Integration Settings &gt; Technical Settings.
+<strong>3.</strong> Enter your Direct Transaction Feedback URL and Notification Transaction Feedback URL.
+<strong>4.</strong> Click “Save Changes” button.</p>
+<h2 id="transaction-feedback-implementation">Transaction Feedback implementation</h2>
+<hr />
+<p>The Transaction Feedback URL is required to send you the response parameters after processing the transaction on the your side.</p>
+<p>For the Direct Transaction Feedback, it sends the immediate payments response in all cases , like if the user closed the browser before getting redirected to the Redirection URL due to a drop in the internet connection or he closed the browser during the Redirection , you will create an endpoint which accepts the notifications received from PayFort side as POST Method.</p>
+<p>For the Notification Transaction Feedback , it’s required to provide you the transaction final status update whenever received , like if the Transaction was pending due to the unavailability for any party , the final update will be pushed to the Notification Feedback URL as POST Method.</p>
+<p>Beyond whatever your Transaction Feedback URL does with the data received, it must also return a 2xx (like 200 , 201 , etc…) or 302 HTTP status code to update the PayFORT system that the notification was received. If your URL does not return 2xx or 302, the PayFORT will continue to retry the notification for 10 times with 10 seconds in between until it’s properly acknowledged.</p>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You can check the Direct and Notification Feedback logs in your PayFort back-office Account to check the details related to the submission like the Transaction Feedback URL which was triggered, The response which our FORT system pushed , The response Code and Status retuned from your Transaction Feedback URL.
+The specifics of the data will differ based upon the financial operation that has been processed. Please refer to the FORT integration guide for more details.
+If you want to change the submission type to JSON or XML, you can contact us on **integration@payfort.com**.
+If you want to change the grace period or the time interval between the retries please contact us on **integration@payfort.com**.</div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../glossary/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../glossary/" class="btn btn-xs btn-link">
+        Glossary
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../securitysettings/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../securitysettings/" class="btn btn-xs btn-link">
+        Security Settings
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

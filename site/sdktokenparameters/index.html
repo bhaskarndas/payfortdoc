@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Mobile SDK Parameters - PayFort Documentation</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "SDK Token Parameters", url: "#_top", children: [
+              {title: "Request Parameters", url: "#request-parameters" },
+              {title: "Response Parameters", url: "#response-parameters" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../plugins/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../plugins/" class="btn btn-xs btn-link">
+        Plugins
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../iossdkoperations/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../iossdkoperations/" class="btn btn-xs btn-link">
+        iOS SDK Parameters
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="sdk-token-parameters">SDK Token Parameters</h1>
+<hr />
+<h2 id="request-parameters">Request Parameters</h2>
+<p><strong>service_command</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Special Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>SDK_TOKEN</mark></td>
+<td><mark>_</mark></td>
+<td>Command</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>device_id</strong><sup>(alphanumeric, mandatory)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Special characters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>ffffffff-a9fa-0b44-7b27-29e70033c587</td>
+<td><mark>_ - . @ +</mark></td>
+<td>A unique device identifier.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="response-parameters">Response Parameters</h2>
+<p><strong>service_command</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Special Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><mark>SDK_TOKEN</mark></td>
+<td><mark>_</mark></td>
+<td>Command</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>access_code</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>zx0IPmPy5jp1vAz8Kpg7</td>
+<td>Merchant access code that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>merchant_identifier</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>CycHZxVj</td>
+<td>Merchant ID that can be found in the backoffice</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>signature</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>7cad05f0212ed933c9a5d5dffa31661acf2c827a</td>
+<td>A string hashed using the Secure Hash Algorithm. Please refer to section <a href="https://docs.payfort.com/docs/api/build/index.html#signature">Signature</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>language</strong><sup>(String)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/ expected values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><mark>en/ar</mark></td>
+<td>The checkout page and messages language where en is for english and ar for Arabic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>sdk_token</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>dwp78q3</td>
+<td>A unique device identifier.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_message</strong><sup>(alphanumeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/Expected Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>Possible/ expected values: Please refer to section <a href="../transactioncodes/">messages</a></td>
+<td>Message description of the response code. It returns according to the request language.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>response_code</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/Expected Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Response Code carries the value of our system’s response. *The code consists of five digits, the first 2 digits represent the response <a href="../transactioncodes/">status</a>, and the last 3 digits represent the response <a href="../transactioncodes/">messages</a>.</td>
+<td>Message description of the response code. It returns according to the request language.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>status</strong><sup>(numeric)</sup></p>
+<table>
+<thead>
+<tr>
+<th>Maximum Length</th>
+<th>Possible/Expected Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Please refer to section <a href="../transactioncodes/">statuses</a></td>
+<td>A two-digit numeric value that indicates the status of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Every parameter the Merchant sends in the Request should be received by the Merchant in the Response -even the optional ones</div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../plugins/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../plugins/" class="btn btn-xs btn-link">
+        Plugins
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../iossdkoperations/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../iossdkoperations/" class="btn btn-xs btn-link">
+        iOS SDK Parameters
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
