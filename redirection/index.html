@@ -89,11 +89,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <hr />
-<p>Once the customer's payment details are verified, the next payment process is the <mark>Redirection</mark> process. <a href="..">Integration</a> process enables you to capture the payment details of the customer and then validating the same with the PayFORT server whereas the redirection process enables you to <mark> Authorize</mark>  a <mark>Purchase</mark>. </p>
+<p>Redirection means <strong>Authorization</strong> and <strong>Purchase</strong> operation and helps you to complete the payment process.  Redirection provides you with the benefit of redirecting the customer to payfort's gateway to fill out the credit card details and whenever he makes a purchase his payment is authorized and hold for certain period of time until you capture it or void it on your side. In case the customer cancels his purchase then any amount that has been captured can be refunded to the customer. </p>
 <h2 id="how-it-works">How it works?</h2>
 <hr />
-<p>The <mark><strong>Authorization</strong></mark> operation holds the amount from the Customer’s credit card for a period of time until you capture or void the transaction. If no capture or void transaction is processed during this period, the transaction will be voided automatically. In <mark><strong>Purchase</strong></mark> you will send one single request to the PayFORT server in order to authorize and capture the transaction amount.</p>
-<p>We offer you to <mark><strong>Redirect</strong></mark> your customer from your website to PayFORT’s gateway page to fill out his credit card details during these operations.</p>
+<p>When a customer makes a purchase on your website then his purchase needs to be authorized </p>
+<p>We offer you to <mark><strong>Redirect</strong></mark> your customer from your website to PayFORT’s gateway page to fill out his credit card details during these operations. The <mark><strong>Authorization</strong></mark> operation holds the amount from the Customer’s credit card for a period of time until you capture or void the transaction. If no capture or void transaction is processed during this period, the transaction will be voided automatically. In <mark><strong>Purchase</strong></mark> you will send one single request to the PayFORT server in order to authorize and capture the transaction amount.</p>
 <p><strong>Looking to void a payment?</strong>
 You can <a href="../voidauthorization/">void</a> an authorized payment at any time. However, captured payments can only be <a href="../refund/">refunded</a>.</p>
 <h2 id="endpoints">Endpoints</h2>
@@ -109,12 +109,12 @@ You can <a href="../voidauthorization/">void</a> an authorized payment at any ti
 
 <hr />
 <h2 id="parameters-submission-type">Parameters Submission Type</h2>
-<p>When you design your form(html page ) you have to provide the <mark>Endpoints</mark>&nbsp;&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> in the form method. Providing these endpoints in your page will redirect your request to the PayFORT server. The page can be designed in the programming language of your choice. But you have to include the below mentioned code in your html based form. </p>
-<p>Form Post Request.</p>
+<p>When you design your form(html page ) you have to provide the <mark>Endpoints</mark>&nbsp;&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> in the form method. Providing these endpoints in your page will redirect your request to the PayFORT server. The page can be designed in the programming language of your choice. But you have to include the below mentioned code in your html based form. When you create an HTML based form your request will be sent through the HTML form only. Below is the sample code for the same.</p>
+<p><strong>Form Post Request.</strong></p>
 <pre><code class="html">&lt;form method=“post” action=“https://sbcheckout.payfort.com/FortAPI/paymentPage” id=“form1” name=“form1”&gt; &lt;/form&gt;
 </code></pre>
 
-<p>The above code snippet is an HTML based form that will post a request to PayFORT serverand  you are also required to submit parameters in the form so that PayFORT server can understand your request and process the same. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
+<p>The above code snippet is an HTML based form that will post a request to PayFORT server and  you are also required to submit parameters in the form so that PayFORT server can understand your request and process the same. There are various parameters that are required to be sent to the PayFORT server which are nothing but set of commands and set of requests which the PayFORT server understands. However, If you are not familiar with HTML tags and forms then you can checkout this <a href="https://www.w3schools.com/">site</a>.</p>
 <div class="alert alert-info">&nbsp;&nbsp;<i class="fa fa-info">&nbsp;&nbsp;</i>The parameters are mandatory and are required by PayFORT server to validate, authenticate and provide the tokens for processing of payment</div>
 
 <p>Visit the <a href="../redirectionsparameters/">link</a> to check the different parameters to be sent in a redirection request.</p>
