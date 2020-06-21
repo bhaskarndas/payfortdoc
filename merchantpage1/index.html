@@ -81,7 +81,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="what-is-merchant-page-integration">What is Merchant Page Integration?</h1>
-<p>You can setup payment form and start accepting payments within few minutes with the help of PayFORT Merchant Page. Merchant Page Integration uses PayFORT iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, etc. You develop your site in any technology of your choice and integrate the iFrame in your html based checkout page. </p>
+<p>You can setup payment form and start accepting payments with the help of PayFORT Merchant Page. Merchant Page Integration uses PayFORT iFrame which can be easily integrated with your payment form. It takes the look and feel of your merchant site and accepts payments from major credit cards including MADA, VISA, Mastercard, etc. You develop your site in any technology of your choice and integrate the iFrame in your html based checkout page. </p>
 <p><img alt="Figure1" src="../img/image-20200211222706973.png" /></p>
 <p>Figure 1 - Using PayFORT iFrame for web</p>
 <hr />
@@ -131,6 +131,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link</a></p>
 <hr />
+<h3 id="difference-between-merchant-page-and-redirection">Difference Between Merchant Page and Redirection</h3>
+<hr />
+<p>Merchant Page Integration allows you to design a checkout page using PayFORT iframe where you can capture and verify the details of customer's credit card. The complete process involves displaying a checkout page to the customer where they will enter their credit card details and the details would be verified by the PayFORT servers and a token would be sent back to the merchant site which can be further used for carrying out check out process. </p>
+<p>Redirection involves authorizing a customer purchase. In this case amount for the purchase is hold for a particular period of time until it is captured or voided. If no action is taken by the merchant site then by default the amount is voided and refunded back to the card. For more details on redirection please visit the <a href="redirections.md">link</a></p>
+<hr />
 <h2 id="give-it-a-try">Give It a Try</h2>
 <p>Use one of our <a href="../testing/">test cards</a> and corresponding CVV to try iFrames out for yourself. </p>
 <p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
@@ -138,19 +143,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="endpoints">Endpoints</h3>
 <p>An <strong>endpoint</strong> is one end of a communication channel and your merchant site will communicate with the PayFORT resources using Endpoints. For PayFORT <mark>APIs</mark>, an <strong>endpoint</strong> includes a URL of PayFORT server or service. </p>
 <p><strong>Sandbox</strong></p>
-<pre><code class="http">POST https://sbcheckout.payfort.com/FortAPI/paymentPage
-</code></pre>
-
+<p>Placeholder: provide correct sandbox url</p>
 <p><strong>Live</strong></p>
-<pre><code class="http">POST https://checkout.payfort.com/FortAPI/paymentPage
-</code></pre>
-
+<p>Placeholder: Provide correct live environment url</p>
 <hr />
 <h2 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h2>
 <p>If you are planning to use PayFORT iFrames then you can use the endpoints&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> for testing and and also for going live. You can use programming language of your choice or what your site uses and can use the iFrame in your html based check out page.</p>
 <hr />
 <p><strong>Before you start</strong></p>
-<p>Make sure you have your <code>access_code</code>. Refer to Figure 3 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings &gt; <strong>Security Settings &gt; Access Code</strong>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with a live account by visiting this <a href="https://www.payfort.com/get-started/">link</a>. Once you signup you will get the access to the Backoffice. You can check out more about navigating through backoffice by visiting this <a href="../backoffice/">link</a>.</p>
+<p>You need to signup for a <a href="https://www.payfort.com/test-account/">test</a> account or a <a href="https://www.payfort.com/get-started/">live</a> account with PayFORT. Once you signup you will get the access to the Backoffice. Make sure you have your <code>access_code</code>. Refer to Figure 3 <a href="#figure2"><i class="fa fa-link"></i></a>. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings &gt; <strong>Security Settings &gt; Access Code</strong>.  You can check out more about navigating through backoffice by visiting this <a href="../backoffice/">link</a>.</p>
 <p><a name="figure3"></a><br/></p>
 <p><img alt="" src="../img/integrationsettings2.png" /></p>
 <p>Figure 3 : Access Code Generation</p>
