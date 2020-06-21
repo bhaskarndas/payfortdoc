@@ -35,13 +35,13 @@
           {title: "What is Merchant Page 2 integration?", url: "#_top", children: [
               {title: "How it works?", url: "#how-it-works" },
               {title: "Integration Flow", url: "#integration-flow" },
+              {title: "How to add the Tokenization service on the Merchant Page 2.0 channel?", url: "#how-to-add-the-tokenization-service-on-the-merchant-page-20-channel" },
               {title: "Give It a Try", url: "#give-it-a-try" },
               {title: "Endpoints", url: "#endpoints" },
               {title: "Before you start", url: "#before-you-start" },
               {title: "Sample Code", url: "#sample-code" },
               {title: "Request Parameters", url: "#request-parameters" },
               {title: "Response Parameters", url: "#response-parameters" },
-              {title: "Payment Page Customization", url: "#payment-page-customization" },
               {title: "Go to Full API", url: "#go-to-full-api" },
               {title: "Need further help?", url: "#need-further-help" },
           ]},
@@ -117,6 +117,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 </ol>
 <p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You should develop a form that does not send data to your website but directly submits the form to PayFORT.</div></p>
+<p>### Difference Between Merchant Page 2.0 and Redirection</p>
+<hr />
+<p>Merchant Page 2.0 allows you to design your own checkout page where you can capture and verify the details of customer's credit card. The complete process involves displaying a checkout page to the customer where they will enter their credit card details and the details would be verified by the PayFORT servers and a token would be sent back to the merchant site which can be further used for carrying out check out process. </p>
+<p>Redirection involves authorizing a customer purchase. In this case amount for the purchase is hold for a particular period of time until it is captured or voided. If no action is taken by the merchant site then by default the amount is voided and refunded back to the card. For more details on redirection please visit the <a href="redirections.md">link</a></p>
 <hr />
 <h3 id="integration-flow">Integration Flow</h3>
 <p><img alt="image-20200213230424907" src="../img/image-20200213230424907.png" /></p>
@@ -139,17 +143,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>Payment processing page, payment form and payment details form all refer to payment page on your site where customer will enter card details.</div>
 
+<h2 id="how-to-add-the-tokenization-service-on-the-merchant-page-20-channel">How to add the Tokenization service on the Merchant Page 2.0 channel?</h2>
+<p>The Tokenization service is applicable to be integrated through the Merchant Page 2.0 Channel through the below steps:
+<strong>1.</strong> The Customer processes the first PURCHASE/ AUTHORIZATION payment successfully.
+<strong>2.</strong> You will receive a token_name in the response. This token_name should be considered as a permanent token name, and it can be used in the future customer’s payments by submitting the token_name in the next PURCHASE/ AUTHORIZATION payment with card_security_code parameter.
+<strong>3.</strong> No need to open the Merchant Page to fill all the card details again in the next checkouts.</p>
+<p>If the Customer wants to update/ delete his card, you should check <a href="https://docs.payfort.com/docs/api/build/index.html#update-token-service">Update Token</a> section.</p>
 <p>For more details on Tokens and Tokenization process visit the <a href="../tokenization/">link</a></p>
 <hr />
 <h2 id="give-it-a-try">Give It a Try</h2>
 <p>Use one of our <a href="../testing/">test cards</a> and corresponding CVV to try out for yourself. </p>
 <p>You can use any expiry date (<code>mm/yy</code>), as long as it's in the future.</p>
+<p>Supported Credit Cards:</p>
+<ul>
+<li>Visa</li>
+<li>Master Card</li>
+<li>AMEX</li>
+</ul>
+<p>Credit Cards Not Supported:</p>
+<ul>
+<li>Diners Club</li>
+<li>JCB</li>
+</ul>
 <hr />
 <h2 id="endpoints">Endpoints</h2>
 <hr />
-<p>Endpoints for Merchant Page is also applicable for Merchant 2 Integration. You can check the Endpoints by visiting this <a href="../merchantpage1/">link</a></p>
+<p>Endpoints for Merchant Page is also applicable for Merchant 2 Integration. You can check the Endpoints by visiting this </p>
+<p><strong>Sandbox</strong></p>
+<p>Placeholder : Please provide correct endpoint url for sandbox</p>
+<p><strong>Live</strong></p>
+<p>Placeholder: Please provide correct endpoint url for live environment</p>
 <hr />
 <h2 id="before-you-start">Before you start</h2>
+<p>You need to signup for a <a href="https://www.payfort.com/test-account/">test</a> account or a <a href="https://www.payfort.com/get-started/">live</a> account with PayFORT. Once you signup you will get the access to the Backoffice.</p>
 <p>Make sure you have your <code>access_code</code>. Refer figure 3. You can find it in the <a href="https://fort.payfort.com/account/MerchantManagement/EntitySecurity">backoffice</a>, under Integration Settings <mark>Security Settings &gt; Access Code</mark>. If you don't have an account with us yet, you can create a test account by visiting the <a href="" title="https://www.payfort.com/test-account/">link</a>. You can also get started with an active account by visiting this <a href="https://www.payfort.com/get-started/">link</a></p>
 <hr />
 <p><img alt="" src="../img/paymentintegration%20settings.png" /></p>
@@ -199,40 +225,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p>Please refer to the section <a href="../merchantpageparameters/">Merchant Page 2 Response</a> for reponse parameters.</p>
-<hr />
-<h2 id="payment-page-customization">Payment Page Customization</h2>
-<p>When you begin designing your own custom payment page you will also need to style your custom payment page so that it is in line with the look and feel of your website. Inorder to style your custom payment page you will require CSS files and within those files you need use the css classes. If you are new to HTML and CSS don't worry you can visit this <a href="https://www.w3schools.com/css/default.asp">link</a> to learn about HTML/CSS.</p>
-<p>This is a list with all customizable CSS classes on the basic payment page:</p>
-<ul>
-<li><strong>The <code>Wrapper</code> class</strong></li>
-</ul>
-<p>It is responsible for the total width of the form container and the background.</p>
-<ul>
-<li><strong>The <code>Container</code> class</strong></li>
-</ul>
-<p>It is responsible for the form’s shape and width.</p>
-<ul>
-<li><strong>The <code>Popover</code> class</strong></li>
-</ul>
-<p>It is responsible for the error messages.</p>
-<ul>
-<li><strong>The <code>Half-container</code> class</strong></li>
-</ul>
-<p>It is used to merge the date and CVV fields into one block if needed.</p>
-<ul>
-<li><strong>The <code>Input</code> class</strong></li>
-</ul>
-<p>It is the container of each single input field.</p>
-<ul>
-<li><strong>The <code>Pay</code> class</strong></li>
-</ul>
-<p>It is responsible for the submit button.</p>
-<ul>
-<li><strong>The <code>Visa/ MasterCard</code> classes</strong></li>
-</ul>
-<p>It is used to change the color of the Visa/ MasterCard colors.</p>
-<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i>You can always create multiple theme files that will enable you to switch freely and easily between them when necessary.Theme files offer you the flexibility to change the look and feel of your page.</div></p>
-<p><div class="alert alert-info"><i class="fa fa-info">&nbsp;&nbsp;</i><mark>Theme</mark> files can be uploaded from the back-office using the Payment Page template screen.</div></p>
 <hr />
 <h2 id="go-to-full-api">Go to Full API</h2>
 <hr />
