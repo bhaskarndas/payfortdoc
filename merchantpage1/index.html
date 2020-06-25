@@ -162,9 +162,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="endpoints">Endpoints</h3>
 <p>An <strong>endpoint</strong> is one end of a communication channel and your merchant site will communicate with the PayFORT resources using Endpoints. For PayFORT <mark>APIs</mark>, an <strong>endpoint</strong> includes a URL of PayFORT server or service. </p>
 <p><strong>Sandbox</strong></p>
-<p>Placeholder: provide correct sandbox url</p>
+<pre><code class="http">POST https://sbcheckout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
 <p><strong>Live</strong></p>
-<p>Placeholder: Provide correct live environment url</p>
+<pre><code class="http">POST https://checkout.payfort.com/FortAPI/paymentPage
+</code></pre>
+
 <hr />
 <h2 id="integrate-iframes-to-payment-page">Integrate iFrames to Payment Page</h2>
 <p>If you are planning to use PayFORT iFrames then you can use the endpoints&nbsp;<a href="#endpoints"><i class="fa fa-anchor"></i></a> for testing and and also for going live. You can use programming language of your choice or what your site uses and can use the iFrame in your html based check out page.</p>

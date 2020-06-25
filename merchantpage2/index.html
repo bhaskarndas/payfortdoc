@@ -187,10 +187,29 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="sample-code">Sample Code</h2>
 <p>The following code snippet shown here is an example of the start of the payment process. You can refer to this example, replacing the supplied <code>acccess_code</code> with your own. The card token will be posted via the URL specified in the form's <code>action</code> attribute.</p>
 <pre><code class="HTML">
-&lt;form method=&quot;post&quot; action=&quot;https://sbcheckout.payfort.com/FortAPI/paymentPage&quot; id=form1 name=form1&gt;
-&lt;input type=&quot;hidden&quot; NAME=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
+&lt;FORM METHOD=&quot;post&quot; ACTION=&quot;https://sbcheckout.PayFort.com/FortAPI/paymentPage&quot; id=form1 name=form1&gt;
 
-&lt;input type=&quot;submit&quot; value=&quot;&quot; id=&quot;submit2&quot; name=&quot;&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;service_command&quot; value=&quot;TOKENIZATION&quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;access_code&quot; value=&quot; &quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;language&quot; value=&quot;en&quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;merchant_identifier&quot; value=&quot; &quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;merchant_reference&quot; value=&quot; &quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;card_number&quot; value=&quot;4005550000000001&quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;expiry_date&quot; value=&quot;2105&quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;card_security_code&quot; value=&quot;123&quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;return_url&quot; value=&quot;https://www.example.com&quot;&gt;
+
+&lt;input type=&quot;hidden&quot; name=&quot;signature&quot; value=&quot; &quot;&gt;
+
+&lt;input type=&quot;submit&quot; value=&quot;Pay&quot; id=&quot;&quot; name=&quot;&quot;&gt;
 
 </code></pre>
 
